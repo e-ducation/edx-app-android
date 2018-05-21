@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/courses_profile_icon_left_margin"
                 android:layout_marginStart="@dimen/courses_profile_icon_left_margin"
+                android:imeOptions="flagNoFullscreen"
                 android:visibility="gone" />
         </LinearLayout>
 
