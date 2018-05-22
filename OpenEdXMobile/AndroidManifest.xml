@@ -91,7 +91,6 @@
         <activity
             android:name="org.edx.mobile.view.CourseOutlineActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
 
         <activity
@@ -146,7 +145,6 @@
         <activity
             android:name="org.edx.mobile.view.DownloadListActivity"
             android:label="@string/title_download"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
 
         <activity
@@ -170,7 +168,6 @@
         <activity
             android:name="org.edx.mobile.view.CourseHandoutActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
 
         <activity
@@ -182,7 +179,6 @@
         <activity
             android:name=".view.CourseAnnouncementsActivity"
             android:label="@string/announcement_title"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
 
         <activity
