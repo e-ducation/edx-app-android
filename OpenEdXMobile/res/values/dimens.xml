@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- A really high maxWidth to expand views to full available width, it will usually required
-     where we need to override the default hard coded maxWidth of the views. -->
+    <!-- A really high maxWidth to expand views to full available width, it will usually be required
+    where we need to override the default hardcoded maxWidth of the views. -->
     <dimen name="highest_max_width">10000dp</dimen>
 
     <!-- Common margin for course data such as Handouts, Announcements, Course Detail, etc... -->

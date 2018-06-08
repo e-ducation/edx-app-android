@@ -56,6 +56,12 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         final boolean isUserProfileEnabled = environment.getConfig().isUserProfilesEnabled();
         if (isUserProfileEnabled) {
             profile = loginPrefs.getCurrentUserProfile();
@@ -64,7 +70,6 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
         if (!isUserProfileEnabled) {
             toolbarCallbacks.getProfileView().setVisibility(View.GONE);
         }
-        EventBus.getDefault().register(this);
     }
 
     @Override
