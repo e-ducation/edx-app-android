@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import com.google.inject.Inject;
 
 import org.edx.mobile.R;
-import org.edx.mobile.base.BaseFragment;
 import org.edx.mobile.core.IEdxEnvironment;
 import org.edx.mobile.course.CourseAPI;
 import org.edx.mobile.course.CourseService;
@@ -60,7 +59,6 @@ public abstract class BaseWebViewDiscoverFragment extends OfflineSupportBaseFrag
 
         webView = (EdxWebView) view.findViewById(R.id.webview);
         progressWheel = (ProgressBar) view.findViewById(R.id.loading_indicator);
-        errorNotification = new FullScreenErrorNotification(webView);
 
         initWebView();
     }
@@ -151,6 +149,12 @@ public abstract class BaseWebViewDiscoverFragment extends OfflineSupportBaseFrag
         return false;
     }
 
+    /**
+     * Callback to notify that WebView has loaded something.
+     */
+    protected void onWebViewPartiallyUpdated() {
+    }
+
     /*
      * In order to avoid reflection issues of public functions in event bus especially those that
      * aren't available on a certain api level, this listener has been refactored to a class
@@ -206,6 +210,9 @@ public abstract class BaseWebViewDiscoverFragment extends OfflineSupportBaseFrag
 
         @Override
         public void onPagePartiallyLoaded() {
+            // AJAX updates are mostly reported through this function, following call gives us the
+            // option to do stuff based on AJAX updates (if required)
+            onWebViewPartiallyUpdated();
         }
     };
 }

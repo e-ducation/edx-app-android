@@ -353,6 +353,10 @@ public class Router {
         activity.startActivity(AccountActivity.newIntent(activity));
     }
 
+    public void showSubjectsActivityForResult(@NonNull Fragment fragment, int requestCode) {
+        fragment.startActivityForResult(ViewSubjectsActivity.newIntent(fragment.getActivity()), requestCode);
+    }
+
     /**
      * Open an email client for user to write feedback
      *
