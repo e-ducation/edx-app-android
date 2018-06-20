@@ -31,7 +31,6 @@ import org.edx.mobile.profiles.UserProfileActivity;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.EmailUtil;
 import org.edx.mobile.util.SecurityUtil;
-import org.edx.mobile.view.dialog.WebViewActivity;
 import org.edx.mobile.whatsnew.WhatsNewActivity;
 
 import de.greenrobot.event.EventBus;
@@ -43,6 +42,7 @@ public class Router {
     public static final String EXTRA_COURSE_ID = "course_id";
     public static final String EXTRA_COURSE_DETAIL = "course_detail";
     public static final String EXTRA_COURSE_DATA = "course_data";
+    public static final String EXTRA_COURSE_VIDEOS_STATUS = "extra_course_videos_status";
     public static final String EXTRA_COURSE_UNIT = "course_unit";
     public static final String EXTRA_COURSE_COMPONENT_ID = "course_component_id";
     public static final String EXTRA_LAST_ACCESSED_ID = "last_accessed_id";
