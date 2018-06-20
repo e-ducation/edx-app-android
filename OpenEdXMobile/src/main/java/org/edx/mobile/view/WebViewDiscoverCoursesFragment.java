@@ -13,6 +13,7 @@ import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -211,9 +212,9 @@ public class WebViewDiscoverCoursesFragment extends BaseWebViewDiscoverFragment 
 
     @NonNull
     protected String getInitialUrl() {
-        return binding.webview.getUrl() == null ?
-                environment.getConfig().getCourseDiscoveryConfig().getCourseSearchUrl() :
-                binding.webview.getUrl();
+        return URLUtil.isValidUrl(binding.webview.getUrl()) ?
+                binding.webview.getUrl() :
+                environment.getConfig().getCourseDiscoveryConfig().getCourseSearchUrl();
     }
 
     public static String buildQuery(@NonNull String baseUrl, @NonNull Logger logger,
