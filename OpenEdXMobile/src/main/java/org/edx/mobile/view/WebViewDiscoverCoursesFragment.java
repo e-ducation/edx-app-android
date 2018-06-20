@@ -28,6 +28,7 @@ import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.SubjectModel;
 import org.edx.mobile.util.FileUtil;
 import org.edx.mobile.util.UiUtil;
+import org.edx.mobile.util.ViewAnimationUtil;
 import org.edx.mobile.util.images.ImageUtils;
 
 import java.io.IOException;
@@ -138,7 +139,7 @@ public class WebViewDiscoverCoursesFragment extends BaseWebViewDiscoverFragment 
                                     queryParams.put(QUERY_PARAM_SUBJECT, popularSubjects.get(position).filter);
                                     String subjectFilterUrl = buildQuery(baseUrl, logger, queryParams);
                                     loadUrl(subjectFilterUrl);
-                                    binding.llSubjectContent.setVisibility(View.GONE);
+                                    ViewAnimationUtil.animateViewFading(binding.llSubjectContent, View.GONE);
                                 }
                             });
                             break;
@@ -240,9 +241,9 @@ public class WebViewDiscoverCoursesFragment extends BaseWebViewDiscoverFragment 
     public void onWebViewPartiallyUpdated() {
         if (binding.webview.getUrl().contains(QUERY_PARAM_SUBJECT)) {
             // It means that WebView just loaded subject related content
-            binding.llSubjectContent.setVisibility(View.GONE);
+            ViewAnimationUtil.animateViewFading(binding.llSubjectContent, View.GONE);
         } else {
-            binding.llSubjectContent.setVisibility(View.VISIBLE);
+            ViewAnimationUtil.animateViewFading(binding.llSubjectContent, View.VISIBLE);
         }
     }
 
@@ -287,7 +288,7 @@ public class WebViewDiscoverCoursesFragment extends BaseWebViewDiscoverFragment 
                     queryParams.put(QUERY_PARAM_SUBJECT, subjectFilter);
                     String subjectFilterUrl = buildQuery(baseUrl, logger, queryParams);
                     loadUrl(subjectFilterUrl);
-                    binding.llSubjectContent.setVisibility(View.GONE);
+                    ViewAnimationUtil.animateViewFading(binding.llSubjectContent, View.GONE);
                 }
                 break;
         }
