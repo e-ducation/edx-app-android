@@ -19,6 +19,8 @@ import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragment;
 import org.edx.mobile.databinding.FragmentViewSubjectsBinding;
 import org.edx.mobile.model.SubjectModel;
+import org.edx.mobile.module.analytics.Analytics;
+import org.edx.mobile.module.analytics.AnalyticsRegistry;
 import org.edx.mobile.util.FileUtil;
 import org.edx.mobile.util.SoftKeyboardUtil;
 import org.edx.mobile.view.adapters.SubjectsAdapter;
@@ -27,7 +29,11 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class ViewSubjectsFragment extends BaseFragment {
+    @Inject
+    private AnalyticsRegistry analyticsRegistry;
     private FragmentViewSubjectsBinding binding;
     private SubjectsAdapter adapter;
     private String searchQuery;
@@ -47,6 +53,8 @@ public class ViewSubjectsFragment extends BaseFragment {
             }
         }
 
+        analyticsRegistry.trackScreenView(Analytics.Screens.ALL_SUBJECTS);
+
         return binding.getRoot();
     }
 
@@ -65,6 +73,9 @@ public class ViewSubjectsFragment extends BaseFragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final SubjectModel subjectModel = adapter.getItem(position);
                     final Intent data = new Intent().putExtra("SUBJECT_FILTER", subjectModel.filter);
+
+                    analyticsRegistry.trackSubjectClicked(subjectModel.filter);
+
                     getActivity().setResult(Activity.RESULT_OK, data);
                     getActivity().finish();
                 }

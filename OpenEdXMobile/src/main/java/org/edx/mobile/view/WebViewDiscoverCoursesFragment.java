@@ -27,6 +27,7 @@ import org.edx.mobile.event.NetworkConnectivityChangeEvent;
 import org.edx.mobile.http.notifications.FullScreenErrorNotification;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.SubjectModel;
+import org.edx.mobile.module.analytics.Analytics;
 import org.edx.mobile.util.FileUtil;
 import org.edx.mobile.util.UiUtil;
 import org.edx.mobile.util.ViewAnimationUtil;
@@ -122,6 +123,7 @@ public class WebViewDiscoverCoursesFragment extends BaseWebViewDiscoverFragment 
                                 public void onClick(View v) {
                                     environment.getRouter().showSubjectsActivityForResult(WebViewDiscoverCoursesFragment.this,
                                             VIEW_SUBJECTS_REQUEST_CODE);
+                                    environment.getAnalyticsRegistry().trackSubjectClicked(Analytics.Values.VIEW_ALL_SUBJECTS);
                                 }
                             });
                             break;
@@ -136,11 +138,13 @@ public class WebViewDiscoverCoursesFragment extends BaseWebViewDiscoverFragment 
                                 @Override
                                 public void onClick(View v) {
                                     final String baseUrl = getInitialUrl();
+                                    final String subjectFilter = popularSubjects.get(position).filter;
                                     final Map<String, String> queryParams = new HashMap<>();
-                                    queryParams.put(QUERY_PARAM_SUBJECT, popularSubjects.get(position).filter);
+                                    queryParams.put(QUERY_PARAM_SUBJECT, subjectFilter);
                                     String subjectFilterUrl = buildQuery(baseUrl, logger, queryParams);
                                     loadUrl(subjectFilterUrl);
                                     ViewAnimationUtil.animateViewFading(binding.llSubjectContent, View.GONE);
+                                    environment.getAnalyticsRegistry().trackSubjectClicked(subjectFilter);
                                 }
                             });
                             break;
