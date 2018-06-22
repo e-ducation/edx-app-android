@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +19,6 @@ import com.google.gson.reflect.TypeToken;
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.databinding.FragmentWebviewCourseDiscoveryBinding;
-import org.edx.mobile.databinding.SubjectItemBinding;
 import org.edx.mobile.event.MainDashboardRefreshEvent;
 import org.edx.mobile.event.NetworkConnectivityChangeEvent;
 import org.edx.mobile.http.notifications.FullScreenErrorNotification;
@@ -29,9 +26,8 @@ import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.SubjectModel;
 import org.edx.mobile.module.analytics.Analytics;
 import org.edx.mobile.util.FileUtil;
-import org.edx.mobile.util.UiUtil;
 import org.edx.mobile.util.ViewAnimationUtil;
-import org.edx.mobile.util.images.ImageUtils;
+import org.edx.mobile.view.adapters.PopularSubjectsAdapter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -87,80 +83,27 @@ public class WebViewDiscoverCoursesFragment extends BaseWebViewDiscoverFragment 
                 }
             }
 
-            final RecyclerView.Adapter adapter = new RecyclerView.Adapter() {
-                private SubjectItemBinding subjectItemBinding;
-
+            final PopularSubjectsAdapter adapter = new PopularSubjectsAdapter(popularSubjects, new PopularSubjectsAdapter.ClickListener() {
                 @Override
-                public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                    switch (viewType) {
-                        case 1:
-                            final View viewItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_subjects_item, parent, false);
-
-                            return new RecyclerView.ViewHolder(viewItem) {
-                                @Override
-                                public String toString() {
-                                    return super.toString();
-                                }
-                            };
-                        default:
-                            final View subjectItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.subject_item, parent, false);
-
-                            return new RecyclerView.ViewHolder(subjectItem) {
-                                @Override
-                                public String toString() {
-                                    return super.toString();
-                                }
-                            };
-                    }
+                public void onSubjectClick(View view) {
+                    final int position = binding.rvSubjects.getChildAdapterPosition(view);
+                    final String baseUrl = getInitialUrl();
+                    final String subjectFilter = popularSubjects.get(position).filter;
+                    final Map<String, String> queryParams = new HashMap<>();
+                    queryParams.put(QUERY_PARAM_SUBJECT, subjectFilter);
+                    String subjectFilterUrl = buildQuery(baseUrl, logger, queryParams);
+                    loadUrl(subjectFilterUrl);
+                    ViewAnimationUtil.animateViewFading(binding.llSubjectContent, View.GONE);
+                    environment.getAnalyticsRegistry().trackSubjectClicked(subjectFilter);
                 }
 
                 @Override
-                public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-                    switch (getItemViewType(position)) {
-                        case 1:
-                            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    environment.getRouter().showSubjectsActivityForResult(WebViewDiscoverCoursesFragment.this,
-                                            VIEW_SUBJECTS_REQUEST_CODE);
-                                    environment.getAnalyticsRegistry().trackSubjectClicked(Analytics.Values.VIEW_ALL_SUBJECTS);
-                                }
-                            });
-                            break;
-                        default:
-                            final SubjectModel model = popularSubjects.get(position);
-                            subjectItemBinding = DataBindingUtil.bind(holder.itemView);
-                            subjectItemBinding.tvSubjectName.setText(model.name);
-                            @DrawableRes final int imageRes = UiUtil.getDrawable(getContext(), model.imageName);
-                            ImageUtils.setRoundedCornerImage(subjectItemBinding.ivSubjectLogo, imageRes);
-
-                            subjectItemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    final String baseUrl = getInitialUrl();
-                                    final String subjectFilter = popularSubjects.get(position).filter;
-                                    final Map<String, String> queryParams = new HashMap<>();
-                                    queryParams.put(QUERY_PARAM_SUBJECT, subjectFilter);
-                                    String subjectFilterUrl = buildQuery(baseUrl, logger, queryParams);
-                                    loadUrl(subjectFilterUrl);
-                                    ViewAnimationUtil.animateViewFading(binding.llSubjectContent, View.GONE);
-                                    environment.getAnalyticsRegistry().trackSubjectClicked(subjectFilter);
-                                }
-                            });
-                            break;
-                    }
+                public void onViewAllSubjectsClick() {
+                    environment.getRouter().showSubjectsActivityForResult(WebViewDiscoverCoursesFragment.this,
+                            VIEW_SUBJECTS_REQUEST_CODE);
+                    environment.getAnalyticsRegistry().trackSubjectClicked(Analytics.Values.VIEW_ALL_SUBJECTS);
                 }
-
-                @Override
-                public int getItemCount() {
-                    return popularSubjects.size() + 1;
-                }
-
-                @Override
-                public int getItemViewType(int position) {
-                    return position == getItemCount() - 1 ? 1 : 0;
-                }
-            };
+            });
 
             final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                     LinearLayoutManager.HORIZONTAL, false);
