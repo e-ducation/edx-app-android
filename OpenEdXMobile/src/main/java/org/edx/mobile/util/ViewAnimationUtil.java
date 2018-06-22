@@ -84,9 +84,9 @@ public class ViewAnimationUtil {
             animationNeeded = view.getVisibility() != View.GONE;
             alpha = 0;
         } else {
+            animationNeeded = view.getVisibility() != View.VISIBLE;
             // Necessary for the animation to be visible
             view.setVisibility(visibility);
-            animationNeeded = view.getVisibility() != View.VISIBLE;
             alpha = 1;
         }
 
