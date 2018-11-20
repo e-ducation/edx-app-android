@@ -273,7 +273,7 @@ android {
     flavorDimensions "default"
 
     defaultConfig {
-        applicationId "org.edx.mobile"
+        applicationId "cn.elitemba.android"
         // minimum version is Android 4.1
         minSdkVersion MIN_SDK_VERSION
         targetSdkVersion TARGET_SDK_VERSION
