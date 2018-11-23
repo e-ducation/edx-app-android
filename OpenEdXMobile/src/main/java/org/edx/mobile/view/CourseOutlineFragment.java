@@ -175,6 +175,7 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
             courseData = (EnrolledCoursesResponse) bundle.getSerializable(Router.EXTRA_COURSE_DATA);
             courseComponentId = bundle.getString(Router.EXTRA_COURSE_COMPONENT_ID);
             isVideoMode = savedInstanceState.getBoolean(Router.EXTRA_IS_VIDEOS_MODE);
+            isSingleVideoDownload = savedInstanceState.getBoolean("isSingleVideoDownload");
             if (savedInstanceState.containsKey(Router.EXTRA_IS_ON_COURSE_OUTLINE)) {
                 isOnCourseOutline = savedInstanceState.getBoolean(Router.EXTRA_IS_ON_COURSE_OUTLINE);
             } else {
@@ -307,7 +308,8 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (((IconImageView) view.findViewById(R.id.bulk_download)).getIcon() == FontAwesomeIcons.fa_check) {
+                final IconImageView bulkDownloadIcon = (IconImageView) view.findViewById(R.id.bulk_download);
+                if (bulkDownloadIcon != null && bulkDownloadIcon.getIcon() == FontAwesomeIcons.fa_check) {
                     ((AppCompatActivity) getActivity()).startSupportActionMode(deleteModelCallback);
                     listView.setItemChecked(position, true);
                     return true;
@@ -367,8 +369,10 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
         if (isSingleVideoDownload) {
             downloadEntry = null;
         } else {
-            downloadEntries.clear();
-            downloadEntries = null;
+            if (downloadEntries != null) {
+                downloadEntries.clear();
+                downloadEntries = null;
+            }
         }
     }
 
@@ -487,7 +491,7 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
      */
     private void loadData(@NonNull CourseComponent courseComponent) {
         courseComponentId = courseComponent.getId();
-        if (courseData == null)
+        if (courseData == null || getActivity() == null)
             return;
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().registerSticky(this);
@@ -539,6 +543,7 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
             bundle.putString(Router.EXTRA_COURSE_COMPONENT_ID, courseComponentId);
         outState.putBundle(Router.EXTRA_BUNDLE, bundle);
         outState.putBoolean(Router.EXTRA_IS_VIDEOS_MODE, isVideoMode);
+        outState.putBoolean("isSingleVideoDownload", isSingleVideoDownload);
         outState.putBoolean(Router.EXTRA_IS_ON_COURSE_OUTLINE, isOnCourseOutline);
     }
 
