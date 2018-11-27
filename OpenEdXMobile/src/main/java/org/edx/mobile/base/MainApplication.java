@@ -22,6 +22,7 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
+import com.lbz.login.config.ThirdPartyInit;
 import com.livefront.bridge.Bridge;
 import com.livefront.bridge.SavedStateHandler;
 import com.newrelic.agent.android.NewRelic;
@@ -41,6 +42,7 @@ import org.edx.mobile.module.analytics.SegmentAnalytics;
 import org.edx.mobile.module.prefs.PrefManager;
 import org.edx.mobile.module.storage.IStorage;
 import org.edx.mobile.receivers.NetworkConnectivityReceiver;
+import org.edx.mobile.social.ThirdPartyLoginConstants;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.NotificationUtil;
@@ -186,6 +188,8 @@ public abstract class MainApplication extends MultiDexApplication {
                 StateSaver.restoreInstanceState(target, state);
             }
         });
+        //第三方登录框架初始化
+        initThirdPartyLogin();
     }
 
     private void checkIfAppVersionUpgraded(Context context) {
@@ -239,5 +243,14 @@ public abstract class MainApplication extends MultiDexApplication {
     @NonNull
     public static IEdxEnvironment getEnvironment(@NonNull Context context) {
         return RoboGuice.getInjector(context.getApplicationContext()).getInstance(IEdxEnvironment.class);
+    }
+
+    private void initThirdPartyLogin() {
+        ThirdPartyInit.Builder builder = new ThirdPartyInit.Builder()
+                .setQqAppId(ThirdPartyLoginConstants.QQ_APP_ID)
+                .setWxAppId(ThirdPartyLoginConstants.WECHAT_APP_ID, ThirdPartyLoginConstants.WECHAT_SECRETID)
+                .setWbAppId(ThirdPartyLoginConstants.WEIBO_APP_ID, ThirdPartyLoginConstants.WEIBO_REDIRECTURL)
+                .build();
+        ThirdPartyInit.init(getApplicationContext(), builder);
     }
 }

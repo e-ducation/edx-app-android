@@ -13,6 +13,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.google.inject.Inject;
+import com.lbz.login.auth.AuthManager;
+import com.lbz.login.callback.ThirdPartyAuthCallback;
+import com.lbz.login.config.ThirdPartyConfigManager;
+import com.lbz.login.entities.AuthResult;
 
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
@@ -28,6 +32,7 @@ import org.edx.mobile.module.analytics.Analytics;
 import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.social.SocialFactory;
 import org.edx.mobile.social.SocialLoginDelegate;
+import org.edx.mobile.social.ThirdPartyLoginConstants;
 import org.edx.mobile.task.Task;
 import org.edx.mobile.util.AppStoreUtils;
 import org.edx.mobile.util.Config;
@@ -75,6 +80,29 @@ public class LoginActivity
         activityLoginBinding.socialAuth.googleButton.getRoot().setOnClickListener(
                 socialLoginDelegate.createSocialButtonClickHandler(
                         SocialFactory.SOCIAL_SOURCE_TYPE.TYPE_GOOGLE));
+        /**
+         * 第三方按钮监听事件
+         */
+        findViewById(R.id.weibo_btn).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthManager.getInstance().authWeiBo(LoginActivity.this, mSocialAuthCallback);
+            }
+        });
+
+        findViewById(R.id.wechat_btn).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthManager.getInstance().authWeChat(LoginActivity.this, mSocialAuthCallback);
+            }
+        });
+
+        findViewById(R.id.qq_btn).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthManager.getInstance().authQQ(LoginActivity.this, mSocialAuthCallback);
+            }
+        });
 
         activityLoginBinding.loginButtonLayout.setOnClickListener(new OnClickListener() {
             @Override
@@ -177,6 +205,7 @@ public class LoginActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        ThirdPartyConfigManager.onActivityResult(requestCode, resultCode, data);
         tryToSetUIInteraction(true);
         socialLoginDelegate.onActivityResult(requestCode, resultCode, data);
 
@@ -334,4 +363,26 @@ public class LoginActivity
 
         return true;
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        ThirdPartyConfigManager.onNewIntent(intent);
+        super.onNewIntent(intent);
+    }
+
+    private ThirdPartyAuthCallback mSocialAuthCallback = new ThirdPartyAuthCallback() {
+        @Override
+        public void success(AuthResult authResult) {
+            socialLoginDelegate.onSocialLoginSuccess(authResult.getCode(), ThirdPartyLoginConstants.getBackendByType(mSocialAuthCallback.getType()));
+        }
+
+        @Override
+        public void fail(int errorCode, String defaultMsg) {
+        }
+
+        @Override
+        public void cancel() {
+        }
+    };
+
 }

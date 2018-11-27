@@ -49,7 +49,9 @@
                     android:layout_marginBottom="@dimen/social_auth_bottom_margin"
                     android:text="@string/register_with" />
 
-                <include layout="@layout/panel_social_auth" />
+                <include layout="@layout/panel_social_auth" android:visibility="gone"/>
+
+                <include layout="@layout/panel_third_party_auth"/>
 
                 <org.edx.mobile.view.custom.DividerWithTextView
                     android:id="@+id/or_signup_with_email_title"

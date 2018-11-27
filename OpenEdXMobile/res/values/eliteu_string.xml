@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="error_account_not_linked_desc_weibo" tools:ignore="MissingTranslation">This WeiBo account is not linked with any {platform_name} account. Please register.</string>
+    <string name="error_account_not_linked_desc_qq" tools:ignore="MissingTranslation">This QQ account is not linked with any {platform_name} account. Please register.</string>
+    <string name="error_account_not_linked_desc_weixin" tools:ignore="MissingTranslation">This WeChat account is not linked with any {platform_name} account. Please register.</string>
+    <string name="error_account_not_linked_title_weibo">WeiBo account not associated with {platform_name} account</string>
+    <string name="error_account_not_linked_title_qq">QQ account not associated with {platform_name} account</string>
+    <string name="error_account_not_linked_title_weixin">WeChat account not associated with {platform_name} account</string>
+    <string name="sign_up_with_weixin_ok">You’ve successfully signed in with WeChat.</string>
+    <string name="sign_up_with_qq_ok">You’ve successfully signed in with QQ.</string>
+    <string name="sign_up_with_weibo_ok">You’ve successfully signed in with WeiBo.</string>
+    <string name="qq_text">QQ</string>
+    <string name="weixin_text">WeChat</string>
+    <string name="weibo_text">WeiBo</string>
+</resources>

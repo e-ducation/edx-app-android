@@ -203,7 +203,27 @@ public class SocialLoginDelegate {
                 } catch (LoginAPI.AccountNotLinkedException e) {
                     throw new LoginException(makeLoginErrorMessage(e));
                 }
-            } else {
+            }
+            else if (backend.equalsIgnoreCase(PrefManager.Value.BACKEND_WEIBO)){
+                try {
+                    auth = loginAPI.logInUsingWeibo(accessToken);
+                } catch (LoginAPI.AccountNotLinkedException e) {
+                    throw new LoginException(makeLoginErrorMessage(e));
+                }
+            }else if (backend.equalsIgnoreCase(PrefManager.Value.BACKEND_WECHAT)){
+                try {
+                    auth = loginAPI.logInUsingWeChat(accessToken);
+                } catch (LoginAPI.AccountNotLinkedException e) {
+                    throw new LoginException(makeLoginErrorMessage(e));
+                }
+            }else if (backend.equalsIgnoreCase(PrefManager.Value.BACKEND_QQ)){
+                try {
+                    auth = loginAPI.logInUsingQQ(accessToken);
+                } catch (LoginAPI.AccountNotLinkedException e) {
+                    throw new LoginException(makeLoginErrorMessage(e));
+                }
+            }
+            else {
                 throw new IllegalArgumentException("Unknown backend: " + backend);
             }
             return auth.profile;
@@ -214,18 +234,18 @@ public class SocialLoginDelegate {
             if (feature == Feature.SIGN_IN && e.getResponseCode() ==  HttpURLConnection.HTTP_BAD_REQUEST) {
                 final String title =  activity.getResources().getString(R.string.login_error);
                 final CharSequence desc = ResourceUtil.getFormattedString(context.getResources(),
-                        isFacebook ? R.string.error_account_not_linked_desc_fb_2 : R.string.error_account_not_linked_desc_google_2,
+                        getErrorAccountNotLinkedDescResourceId(backend),
                         "platform_name", environment.getConfig().getPlatformName());
                 throw new LoginException(new LoginErrorMessage(title, desc.toString()));
             }
             final CharSequence title = ResourceUtil.getFormattedString(context.getResources(),
-                    isFacebook ? R.string.error_account_not_linked_title_fb : R.string.error_account_not_linked_title_google,
+                    getErrorAccountNotLinkedTitleResourceId(backend),
                     "platform_name", environment.getConfig().getPlatformName());
             final HashMap<String, CharSequence> descParamsDesc = new HashMap<>();
             descParamsDesc.put("platform_name", environment.getConfig().getPlatformName());
             descParamsDesc.put("platform_destination", environment.getConfig().getPlatformDestinationName());
             final CharSequence desc = ResourceUtil.getFormattedString(context.getResources(),
-                    isFacebook ? R.string.error_account_not_linked_desc_fb : R.string.error_account_not_linked_desc_google,
+                    getErrorAccountNotLinkedDescResourceId(backend),
                     descParamsDesc);
             return new LoginErrorMessage(title.toString(), desc.toString());
         }
@@ -288,6 +308,40 @@ public class SocialLoginDelegate {
 
     public interface SocialUserInfoCallback {
         void setSocialUserInfo(String email, String name);
+    }
+
+    public int getErrorAccountNotLinkedTitleResourceId(String backend){
+        switch (backend){
+            case PrefManager.Value.BACKEND_FACEBOOK:
+                return R.string.error_account_not_linked_title_fb;
+            case PrefManager.Value.BACKEND_GOOGLE:
+                return R.string.error_account_not_linked_title_google;
+            case PrefManager.Value.BACKEND_QQ:
+                return R.string.error_account_not_linked_title_qq;
+            case PrefManager.Value.BACKEND_WECHAT:
+                return R.string.error_account_not_linked_title_weixin;
+            case PrefManager.Value.BACKEND_WEIBO:
+                return R.string.error_account_not_linked_title_weibo;
+            default:
+                return 0;
+        }
+    }
+
+    public int getErrorAccountNotLinkedDescResourceId(String backend){
+        switch (backend){
+            case PrefManager.Value.BACKEND_FACEBOOK:
+                return R.string.error_account_not_linked_desc_fb_2;
+            case PrefManager.Value.BACKEND_GOOGLE:
+                return R.string.error_account_not_linked_desc_google_2;
+            case PrefManager.Value.BACKEND_QQ:
+                return R.string.error_account_not_linked_desc_qq;
+            case PrefManager.Value.BACKEND_WECHAT:
+                return R.string.error_account_not_linked_desc_weixin;
+            case PrefManager.Value.BACKEND_WEIBO:
+                return R.string.error_account_not_linked_desc_weibo;
+            default:
+                return 0;
+        }
     }
 
 }

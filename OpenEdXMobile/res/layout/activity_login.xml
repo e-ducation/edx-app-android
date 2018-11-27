@@ -143,8 +143,14 @@
                             android:text="@string/or_sign_in_with" />
 
                         <include
+                            android:visibility="gone"
                             android:id="@+id/social_auth"
                             layout="@layout/panel_social_auth" />
+
+                        <include
+                            android:id="@+id/third_party_auth"
+                            layout="@layout/panel_third_party_auth" />
+
                     </LinearLayout>
 
                     <TextView

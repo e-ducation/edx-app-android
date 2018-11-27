@@ -62,6 +62,15 @@ public class ApiConstants {
             case GOOGLE: {
                 return PrefManager.Value.BACKEND_GOOGLE;
             }
+            case WEIBO:{
+                return PrefManager.Value.BACKEND_WEIBO;
+            }
+            case WECHAT:{
+                return PrefManager.Value.BACKEND_WECHAT;
+            }
+            case QQ:{
+                return PrefManager.Value.BACKEND_QQ;
+            }
             default: {
                 throw new IllegalArgumentException(authBackend.name());
             }

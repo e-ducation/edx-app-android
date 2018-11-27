@@ -5,6 +5,8 @@ allprojects {
         jcenter()
         maven { url 'https://dl.bintray.com/guardian/android' }
         maven { url "https://jitpack.io" }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+        maven { url 'https://dl.bintray.com/laibinzhi/maven/' }
     }
     project.apply from: "${rootDir}/constants.gradle"
 }

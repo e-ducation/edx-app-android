@@ -23,6 +23,10 @@ import android.widget.TextView;
 import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
+import com.lbz.login.auth.AuthManager;
+import com.lbz.login.callback.ThirdPartyAuthCallback;
+import com.lbz.login.config.ThirdPartyConfigManager;
+import com.lbz.login.entities.AuthResult;
 
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
@@ -47,6 +51,7 @@ import org.edx.mobile.module.registration.view.RegistrationEditTextView;
 import org.edx.mobile.module.registration.view.RegistrationSelectView;
 import org.edx.mobile.social.SocialFactory;
 import org.edx.mobile.social.SocialLoginDelegate;
+import org.edx.mobile.social.ThirdPartyLoginConstants;
 import org.edx.mobile.task.RegisterTask;
 import org.edx.mobile.task.Task;
 import org.edx.mobile.util.AppStoreUtils;
@@ -174,6 +179,26 @@ public class RegisterActivity extends BaseFragmentActivity
 
         hideSoftKeypad();
         tryToSetUIInteraction(true);
+        findViewById(R.id.weibo_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthManager.getInstance().authWeiBo(RegisterActivity.this, mSocialAuthCallback);
+            }
+        });
+
+        findViewById(R.id.wechat_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthManager.getInstance().authWeChat(RegisterActivity.this, mSocialAuthCallback);
+            }
+        });
+
+        findViewById(R.id.qq_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthManager.getInstance().authQQ(RegisterActivity.this, mSocialAuthCallback);
+            }
+        });
     }
 
     private void showErrorMessage(String errorMsg, @NonNull Icon errorIcon) {
@@ -424,7 +449,18 @@ public class RegisterActivity extends BaseFragmentActivity
         if (socialType == SocialFactory.SOCIAL_SOURCE_TYPE.TYPE_FACEBOOK) {
             socialTypeString = getString(R.string.facebook_text);
             signUpSuccessString = getString(R.string.sign_up_with_facebook_ok);
-        } else {  //google
+        }
+        else if (socialType == SocialFactory.SOCIAL_SOURCE_TYPE.TYPE_WEIBO){
+            socialTypeString = getString(R.string.weibo_text);
+            signUpSuccessString = getString(R.string.sign_up_with_weibo_ok);
+        }else if (socialType == SocialFactory.SOCIAL_SOURCE_TYPE.TYPE_WECHAT){
+            socialTypeString = getString(R.string.weixin_text);
+            signUpSuccessString = getString(R.string.sign_up_with_weixin_ok);
+        }else if (socialType == SocialFactory.SOCIAL_SOURCE_TYPE.TYPE_QQ){
+            socialTypeString = getString(R.string.qq_text);
+            signUpSuccessString = getString(R.string.sign_up_with_qq_ok);
+        }
+        else {  //google
             socialTypeString = getString(R.string.google_text);
             signUpSuccessString = getString(R.string.sign_up_with_google_ok);
         }
@@ -445,6 +481,8 @@ public class RegisterActivity extends BaseFragmentActivity
         signupWith.setVisibility(View.GONE);
         View socialPanel = findViewById(R.id.panel_social_layout);
         socialPanel.setVisibility(View.GONE);
+        View thirdPartyPanel = findViewById(R.id.panel_third_party_layout);
+        thirdPartyPanel.setVisibility(View.GONE);
         DividerWithTextView signupWithEmailTitle = (DividerWithTextView) findViewById(R.id.or_signup_with_email_title);
         signupWithEmailTitle.setText(getString(R.string.complete_registration));
         //help method
@@ -527,6 +565,7 @@ public class RegisterActivity extends BaseFragmentActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        ThirdPartyConfigManager.onActivityResult(requestCode, resultCode, data);
         socialLoginDelegate.onActivityResult(requestCode, resultCode, data);
         tryToSetUIInteraction(true);
     }
@@ -648,5 +687,26 @@ public class RegisterActivity extends BaseFragmentActivity
     @Override
     public void onSpinnerFocused() {
         SoftKeyboardUtil.hide(this);
+    }
+
+    private ThirdPartyAuthCallback mSocialAuthCallback = new ThirdPartyAuthCallback() {
+        @Override
+        public void success(AuthResult authResult) {
+            socialLoginDelegate.onSocialLoginSuccess(authResult.getCode(), ThirdPartyLoginConstants.getBackendByType(mSocialAuthCallback.getType()));
+        }
+
+        @Override
+        public void fail(int errorCode, String defaultMsg) {
+        }
+
+        @Override
+        public void cancel() {
+        }
+    };
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        ThirdPartyConfigManager.onNewIntent(intent);
+        super.onNewIntent(intent);
     }
 }

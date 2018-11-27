@@ -99,6 +99,21 @@ public class LoginAPI {
     }
 
     @NonNull
+    public AuthResponse logInUsingWeibo(String accessToken) throws Exception {
+        return finishSocialLogIn(accessToken, LoginPrefs.AuthBackend.WEIBO);
+    }
+
+    @NonNull
+    public AuthResponse logInUsingWeChat(String accessToken) throws Exception {
+        return finishSocialLogIn(accessToken, LoginPrefs.AuthBackend.WECHAT);
+    }
+
+    @NonNull
+    public AuthResponse logInUsingQQ(String accessToken) throws Exception {
+        return finishSocialLogIn(accessToken, LoginPrefs.AuthBackend.QQ);
+    }
+
+    @NonNull
     private AuthResponse finishSocialLogIn(@NonNull String accessToken, @NonNull LoginPrefs.AuthBackend authBackend) throws Exception {
         final String backend = ApiConstants.getOAuthGroupIdForAuthBackend(authBackend);
         final Response<AuthResponse> response = loginService.exchangeAccessToken(accessToken, config.getOAuthClientId(), backend).execute();
@@ -165,6 +180,24 @@ public class LoginAPI {
     public AuthResponse registerUsingFacebook(@NonNull Bundle parameters, @NonNull String accessToken) throws Exception {
         register(parameters);
         return logInUsingFacebook(accessToken);
+    }
+
+    @NonNull
+    public AuthResponse registerUsingWeiBo(@NonNull Bundle parameters, @NonNull String accessToken) throws Exception {
+        register(parameters);
+        return logInUsingWeibo(accessToken);
+    }
+
+    @NonNull
+    public AuthResponse registerUsingWeChat(@NonNull Bundle parameters, @NonNull String accessToken) throws Exception {
+        register(parameters);
+        return logInUsingWeChat(accessToken);
+    }
+
+    @NonNull
+    public AuthResponse registerUsingQQ(@NonNull Bundle parameters, @NonNull String accessToken) throws Exception {
+        register(parameters);
+        return logInUsingQQ(accessToken);
     }
 
     @NonNull

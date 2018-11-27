@@ -308,6 +308,9 @@ public class PrefManager {
          */
         public static final String BACKEND_FACEBOOK = "facebook";
         public static final String BACKEND_GOOGLE = "google-oauth2";
+        public static final String BACKEND_WEIBO = "weibo";
+        public static final String BACKEND_WECHAT = "weixin";
+        public static final String BACKEND_QQ = "qq";
     }
 
     /**
