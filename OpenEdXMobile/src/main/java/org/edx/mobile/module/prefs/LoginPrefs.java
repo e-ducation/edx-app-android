@@ -23,7 +23,10 @@ public class LoginPrefs {
     public enum AuthBackend {
         PASSWORD,
         FACEBOOK,
-        GOOGLE
+        GOOGLE,
+        WEIBO,
+        WECHAT,
+        QQ
     }
 
     @NonNull
@@ -173,6 +176,12 @@ public class LoginPrefs {
                 return Analytics.Values.FACEBOOK;
             case GOOGLE:
                 return Analytics.Values.GOOGLE;
+            case WEIBO:
+                return Analytics.Values.WEIBO;
+            case QQ:
+                return Analytics.Values.QQ;
+            case WECHAT:
+                return Analytics.Values.WEIXIN;
             default:
                 throw new IllegalArgumentException(backend.name());
         }

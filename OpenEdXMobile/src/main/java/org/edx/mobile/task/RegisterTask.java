@@ -33,6 +33,12 @@ public abstract class RegisterTask extends Task<AuthResponse> {
                 return loginAPI.registerUsingGoogle(parameters, accessToken);
             case TYPE_FACEBOOK:
                 return loginAPI.registerUsingFacebook(parameters, accessToken);
+            case TYPE_WEIBO:
+                return loginAPI.registerUsingWeiBo(parameters,accessToken);
+            case TYPE_WECHAT:
+                return loginAPI.registerUsingWeChat(parameters,accessToken);
+            case TYPE_QQ:
+                return loginAPI.registerUsingQQ(parameters,accessToken);
             default: // normal email address login
                 return loginAPI.registerUsingEmail(parameters);
         }

@@ -235,6 +235,11 @@ dependencies {
     androidTestImplementation ('org.mockito:mockito-core:1.10.19'){
         exclude group: 'org.hamcrest'
     }
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    //第三方登录
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.1.4'
+    implementation  'com.sina.weibo.sdk:core:4.3.4:openDefaultRelease@aar'
+    implementation 'com.lbz.login:third_party_login:1.1.2'
 }
 
 configurations {
