@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- vip页面item的圆角 -->
+    <dimen name="vip_item_radius">3dp</dimen>
+    <dimen name="dp24">24dp</dimen>
+</resources>

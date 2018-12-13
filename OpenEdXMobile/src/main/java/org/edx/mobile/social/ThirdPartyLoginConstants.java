@@ -14,8 +14,10 @@ public class ThirdPartyLoginConstants {
 
     public static String WEIBO_REDIRECTURL = "";
 
-    public static String getBackendByType(int type){
-        switch (type){
+    public static String VIP_URL = "/vip?device=android";
+
+    public static String getBackendByType(int type) {
+        switch (type) {
             case IThirdPartyConfig.TYPE_QQ:
                 return "qq";
             case IThirdPartyConfig.TYPE_WX:

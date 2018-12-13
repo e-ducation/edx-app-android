@@ -19,6 +19,11 @@
             android:splitMotionEvents="false">
 
             <TextView
+                android:id="@+id/vip_btn"
+                style="@style/account_option"
+                android:text="@string/vip_page_title" />
+
+            <TextView
                 android:id="@+id/profile_btn"
                 style="@style/account_option"
                 android:text="@string/profile_title" />

@@ -15,16 +15,19 @@ import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 
 import org.edx.mobile.R;
+import org.edx.mobile.eliteu.vip.ui.WebViewVipFragment;
 import org.edx.mobile.event.AccountDataLoadedEvent;
 import org.edx.mobile.event.ProfilePhotoUpdatedEvent;
 import org.edx.mobile.model.FragmentItemModel;
 import org.edx.mobile.model.api.ProfileModel;
 import org.edx.mobile.module.analytics.Analytics;
 import org.edx.mobile.module.prefs.LoginPrefs;
+import org.edx.mobile.social.ThirdPartyLoginConstants;
 import org.edx.mobile.user.Account;
 import org.edx.mobile.user.ProfileImage;
 import org.edx.mobile.user.UserAPI;
 import org.edx.mobile.user.UserService;
+import org.edx.mobile.util.Config;
 import org.edx.mobile.util.UserProfileUtils;
 import org.edx.mobile.view.dialog.NativeFindCoursesFragment;
 
@@ -50,6 +53,9 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
 
     @Inject
     private UserService userService;
+
+    @Inject
+    private Config config;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -140,6 +146,18 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
                         }
                     }));
         }
+
+        //订阅制
+        items.add(new FragmentItemModel(WebViewVipFragment.class,
+                getResources().getString(R.string.label_my_vip), FontAwesomeIcons.fa_university,
+                WebViewVipFragment.makeArguments(config.getApiHostURL() + ThirdPartyLoginConstants.VIP_URL,
+                        "javascript", true),
+                new FragmentItemModel.FragmentStateListener() {
+                    @Override
+                    public void onFragmentSelected() {
+
+                    }
+                }));
 
         if (environment.getConfig().getCourseDiscoveryConfig().isCourseDiscoveryEnabled()) {
             items.add(new FragmentItemModel(

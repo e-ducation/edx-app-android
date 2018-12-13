@@ -11,6 +11,7 @@ import org.edx.mobile.util.Config;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public interface RetrofitProvider extends Provider<Retrofit> {
@@ -60,6 +61,7 @@ public interface RetrofitProvider extends Provider<Retrofit> {
                         .client(client)
                         .baseUrl(config.getApiHostURL())
                         .addConverterFactory(GsonConverterFactory.create(gson))
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .build();
                 retrofits[index] = retrofit;
             }
