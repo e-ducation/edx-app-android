@@ -8,9 +8,12 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 
 import org.edx.mobile.core.IEdxEnvironment;
+import org.edx.mobile.eliteu.util.CourseUtil;
+import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.model.api.CourseEntry;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.util.images.CourseCardUtils;
+import org.edx.mobile.view.Router;
 
 
 public abstract class MyCoursesAdapter extends BaseListAdapter<EnrolledCoursesResponse> {
@@ -40,6 +43,7 @@ public abstract class MyCoursesAdapter extends BaseListAdapter<EnrolledCoursesRe
         } else {
             holder.setDetails(CourseCardUtils.getFormattedDate(getContext(), courseData));
         }
+        holder.setVipExpiredLayoutVisable(CourseUtil.courseCanView(enrollment) ? false : true);
     }
 
     @Override
@@ -55,6 +59,12 @@ public abstract class MyCoursesAdapter extends BaseListAdapter<EnrolledCoursesRe
         if (currentTime - lastClickTime > MIN_CLICK_INTERVAL) {
             lastClickTime = currentTime;
             EnrolledCoursesResponse model = (EnrolledCoursesResponse)adapterView.getItemAtPosition(position);
+            if (!CourseUtil.courseCanView(model)){
+//                Intent vipIntent =  VipActivity.newIntent(getContext(),VipActivity.VIP_SELECT_ID);
+//                getContext().startActivity(vipIntent);
+                new Router().showVip(getContext(), VipActivity.VIP_SELECT_ID);
+                return;
+            }
             if (model != null) onItemClicked(model);
         }
     }

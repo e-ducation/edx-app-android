@@ -23,6 +23,8 @@ public class CourseCardViewHolder extends BaseListAdapter.BaseViewHolder {
     private final TextView courseTitle;
     private final TextView courseDetails;
     private final View newCourseContent;
+    private final View vipExpiredLayout;
+    private final View vipExpiredButton;
 
     public CourseCardViewHolder(View convertView) {
         this.courseTitle = (TextView) convertView
@@ -33,6 +35,8 @@ public class CourseCardViewHolder extends BaseListAdapter.BaseViewHolder {
                 .findViewById(R.id.course_image);
         this.newCourseContent = convertView
                 .findViewById(R.id.new_course_content_layout);
+        this.vipExpiredLayout = convertView.findViewById(R.id.vip_expired_layout);
+        this.vipExpiredButton = convertView.findViewById(R.id.vip_expired_btn);
     }
 
     public void setCourseTitle(@NonNull String title) {
@@ -61,5 +65,9 @@ public class CourseCardViewHolder extends BaseListAdapter.BaseViewHolder {
         newCourseContent.setVisibility(View.GONE);
         courseDetails.setVisibility(View.VISIBLE);
         courseDetails.setText(date);
+    }
+
+    public void setVipExpiredLayoutVisable(boolean show) {
+        vipExpiredLayout.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 }

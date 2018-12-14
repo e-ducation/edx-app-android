@@ -26,6 +26,8 @@
     <string name="wechat_pay_tv">微信支付</string>
     <string name="alipay_tv">支付宝支付</string>
     <string name="pay_submit_lable">交学费</string>
+    <string name="my_course_item_vip_expired">订阅期满请及时续费</string>
+
     <!--TODO 待定-->
     <string name="share_vip_message">我刚在 {platform_name} 上购买了vip！看一看：{vip_url}</string>
     <string name="wechat_not_install">请先安装微信或者选择其他支付方式</string>
