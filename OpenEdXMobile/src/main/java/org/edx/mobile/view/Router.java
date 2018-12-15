@@ -21,6 +21,7 @@ import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.discussion.DiscussionComment;
 import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
+import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.event.LogoutEvent;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.module.analytics.AnalyticsRegistry;
@@ -380,5 +381,15 @@ public class Router {
                 .append(NEW_LINE).append(NEW_LINE)
                 .append(activity.getString(R.string.insert_feedback));
         EmailUtil.openEmailClient(activity, to, subject, body.toString(), config);
+    }
+
+    /**
+     * 打开vip套餐页面
+     * @param context
+     * @param id
+     */
+    public void showVip(@NonNull Context context, @NonNull String id) {
+        Intent vipIntent = VipActivity.newIntent(context, id);
+        context.startActivity(vipIntent);
     }
 }

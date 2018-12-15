@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@color/qianhui1">
+
+            <TextView
+                android:id="@+id/tv_show_course_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/chose_pay_way"
+                android:textColor="#2e313c"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="30dp"
+                android:textColor="#fa7f2b"
+                android:textSize="18dp"
+                tools:text="100.00" />
+
+            <TextView
+                android:id="@+id/price_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/price"
+                android:text="@string/tuition"
+                android:textColor="#747d8c"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/radio_group_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/paytype_of_wechat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/icon_wechat"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/pay_way_wechat"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/icon_wechat"
+                    android:text="@string/wechat_pay_tv"
+                    android:textColor="#2e313c"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/paytype_of_wechat_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/pay_way_radiobtn_bg"
+                    android:button="@null"
+                    android:checked="true"
+                    android:focusable="false" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/paytype_of_alipay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/icon_alipay"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/pay_way_alipay"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/icon_alipay"
+                    android:text="@string/alipay_tv"
+                    android:textColor="#2e313c"
+                    android:textSize="18dp" />
+
+                <RadioButton
+                    android:id="@+id/paytype_of_alipay_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/pay_way_radiobtn_bg"
+                    android:button="@null"
+                    android:focusable="false" />
+            </RelativeLayout>
+
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/pay"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/pay_btn"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/pay_submit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/pay_submit_lable"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+            <include
+                android:id="@+id/progress"
+                layout="@layout/button_progress_indicator" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

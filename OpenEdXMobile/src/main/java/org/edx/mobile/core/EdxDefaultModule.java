@@ -13,6 +13,7 @@ import org.edx.mobile.authentication.LoginService;
 import org.edx.mobile.course.CourseService;
 import org.edx.mobile.discussion.DiscussionService;
 import org.edx.mobile.discussion.DiscussionTextUtils;
+import org.edx.mobile.eliteu.api.EliteService;
 import org.edx.mobile.http.provider.RetrofitProvider;
 import org.edx.mobile.http.util.CallUtil;
 import org.edx.mobile.http.provider.OkHttpClientProvider;
@@ -83,6 +84,7 @@ public class EdxDefaultModule extends AbstractModule {
         bind(CourseService.class).toProvider(CourseService.Provider.class).in(Singleton.class);
         bind(DiscussionService.class).toProvider(DiscussionService.Provider.class).in(Singleton.class);
         bind(UserService.class).toProvider(UserService.Provider.class).in(Singleton.class);
+        bind(EliteService.class).toProvider(EliteService.Provider.class).in(Singleton.class);
 
         bind(IStorage.class).to(Storage.class);
 

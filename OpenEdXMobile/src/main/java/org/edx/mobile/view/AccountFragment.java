@@ -13,6 +13,7 @@ import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragment;
 import org.edx.mobile.core.IEdxEnvironment;
 import org.edx.mobile.databinding.FragmentAccountBinding;
+import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.util.Config;
 
@@ -29,10 +30,20 @@ public class AccountFragment extends BaseFragment {
     @Inject
     private LoginPrefs loginPrefs;
 
+    @Inject
+    private Router router;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false);
+
+        binding.vipBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                router.showVip(getContext(),VipActivity.VIP_SELECT_ID);
+            }
+        });
 
         if (config.isUserProfilesEnabled()) {
             binding.profileBtn.setOnClickListener(new View.OnClickListener() {

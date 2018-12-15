@@ -35,6 +35,11 @@ import org.edx.mobile.core.IEdxEnvironment;
 import org.edx.mobile.course.CourseAPI;
 import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.course.CourseService;
+import org.edx.mobile.eliteu.event.BuyVipSuccessEvent;
+import org.edx.mobile.eliteu.util.CourseUtil;
+import org.edx.mobile.eliteu.util.RxBus;
+import org.edx.mobile.eliteu.vip.ui.VipActivity;
+import org.edx.mobile.eliteu.vip.ui.VipTipsDialog;
 import org.edx.mobile.http.callback.CallTrigger;
 import org.edx.mobile.http.callback.ErrorHandlingCallback;
 import org.edx.mobile.logger.Logger;
@@ -47,9 +52,11 @@ import org.edx.mobile.view.common.TaskMessageCallback;
 import org.edx.mobile.view.common.TaskProgressCallback;
 import org.edx.mobile.view.custom.EdxWebView;
 import org.edx.mobile.view.custom.URLInterceptorWebViewClient;
+import org.edx.mobile.view.dialog.IDialogCallback;
 
 import java.util.List;
 
+import io.reactivex.functions.Consumer;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import roboguice.inject.InjectExtra;
@@ -97,6 +104,11 @@ public class CourseDetailFragment extends BaseFragment {
 
     @Inject
     IEdxEnvironment environment;
+
+    private VipTipsDialog mVipTipsDialog;
+
+    @Inject
+    Router router;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -156,7 +168,7 @@ public class CourseDetailFragment extends BaseFragment {
 
         // Enrollment Button
         mEnrollButton = (Button) child.findViewById(R.id.button_enroll_now);
-        configureEnrollButton();
+//        configureEnrollButton();
 
         // Course Detail Fields - Each field will be created manually.
 
@@ -182,6 +194,7 @@ public class CourseDetailFragment extends BaseFragment {
         setCourseCardText();
         mShortDescription.setText(courseDetail.short_description);
         populateAboutThisCourse();
+        initBecomeVipResultCallBack();
     }
 
     private void setCourseCardText() {
@@ -228,6 +241,8 @@ public class CourseDetailFragment extends BaseFragment {
                 pCallback, mCallback, CallTrigger.LOADING_CACHED) {
             @Override
             protected void onResponse(@NonNull final CourseDetail courseDetail) {
+                CourseDetailFragment.this.courseDetail =courseDetail;
+                configureEnrollButtonWithVip();
                 if (courseDetail.overview != null && !courseDetail.overview.isEmpty()) {
                     populateAboutThisCourse(courseDetail.overview);
                 } else {
@@ -326,6 +341,30 @@ public class CourseDetailFragment extends BaseFragment {
         });
     }
 
+    private void configureEnrollButtonWithVip() {
+        mEnrollButton.setText(CourseUtil.getEnrollButtonString(courseDetail, getActivity()));
+        mEnrollButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int event = CourseUtil.getEnrollButtonOnClickEvent(courseDetail);
+                switch (event) {
+                    case CourseUtil.CLICK_OPEN_COURSE:
+                        openCourseDashboard();
+                        break;
+                    case CourseUtil.CLICK_NORMAL_ENROLL:
+                        normalEnroll();
+                        break;
+                    case CourseUtil.CLICK_VIP_ENROLL:
+                        vipEnroll();
+                        break;
+                    case CourseUtil.CLICK_VIP_DIALOG:
+                        showVipTipsDialog();
+                        break;
+                }
+            }
+        });
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -394,5 +433,52 @@ public class CourseDetailFragment extends BaseFragment {
             Toast.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void showVipTipsDialog() {
+        mVipTipsDialog = VipTipsDialog.getInstance(new IDialogCallback() {
+            @Override
+            public void onPositiveClicked() {
+                router.showVip(getActivity(), VipActivity.VIP_SELECT_ID);
+                hideVipTipsDialog();
+            }
+
+            @Override
+            public void onNegativeClicked() {
+                normalEnroll();
+                hideVipTipsDialog();
+            }
+        });
+        mVipTipsDialog.show(getFragmentManager(), "show");
+    }
+
+    private void hideVipTipsDialog() {
+        if (mVipTipsDialog != null) {
+            mVipTipsDialog.dismiss();
+        }
+    }
+
+    /**
+     * 单课购买流程
+     */
+    private void normalEnroll() {
+        Toast.makeText(getActivity(), R.string.single_class_buy_not_supported, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * vip购买流程
+     */
+    private void vipEnroll() {
+        enrollInCourse();
+    }
+
+    private void initBecomeVipResultCallBack() {
+         RxBus.getDefault().toObservable(BuyVipSuccessEvent.class)
+                .subscribe(new Consumer<BuyVipSuccessEvent>() {
+                    @Override
+                    public void accept(BuyVipSuccessEvent buyVipSuccessEvent) throws Exception {
+                        courseDetail.is_vip = true;
+                    }
+                });
     }
 }

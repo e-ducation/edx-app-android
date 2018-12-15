@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="82dp"
+    android:layout_margin="15dp"
+    android:background="@drawable/vip_item_unselect_border">
+
+    <ImageView
+        android:id="@+id/is_recommend"
+        android:layout_width="45dp"
+        android:layout_height="41dp"
+        android:src="@drawable/vip_recommend"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_member_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#2e313c"
+        android:textSize="18dp"
+        tools:text="一年会员" />
+
+    <TextView
+        android:id="@+id/tv_original_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="25dp"
+        android:textColor="#656d78"
+        android:textSize="14dp"
+        tools:text="1000.00" />
+
+    <TextView
+        android:id="@+id/tv_current_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="25dp"
+        android:textColor="@color/vip_current_price_unselecct_color"
+        android:textSize="24dp"
+        tools:text="¥00.00" />
+
+
+</RelativeLayout>
+
+

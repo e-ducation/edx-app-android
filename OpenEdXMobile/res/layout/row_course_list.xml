@@ -15,6 +15,28 @@
 
         <include layout="@layout/course_card" />
 
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/vip_expired_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#91000000">
+
+            <TextView
+                android:id="@+id/vip_expired_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/course_vip_expired_btn_bg"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:text="@string/my_course_item_vip_expired"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/edx_large" />
+        </RelativeLayout>
+
     </FrameLayout>
 
 </FrameLayout>

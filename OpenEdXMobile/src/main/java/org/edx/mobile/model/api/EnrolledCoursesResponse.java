@@ -12,12 +12,14 @@ public class EnrolledCoursesResponse implements SectionItemInterface {
     private boolean is_active;
     private CourseEntry course;
     private boolean isDiscussionBlackedOut = false;
-    
+
     private CertificateModel certificate;
 
     // derived fields (doesn't come in server response)
     public int videoCount;
     public long size;
+    public boolean is_vip;//是否是vip
+    public boolean is_normal_enroll;//是否单课购买
 
     public String getCreated() {
         return created;
@@ -100,5 +102,21 @@ public class EnrolledCoursesResponse implements SectionItemInterface {
 
     public void setDiscussionBlackedOut(boolean discussionBlackedOut) {
         isDiscussionBlackedOut = discussionBlackedOut;
+    }
+
+    public boolean isIs_vip() {
+        return is_vip;
+    }
+
+    public void setIs_vip(boolean is_vip) {
+        this.is_vip = is_vip;
+    }
+
+    public boolean isIs_normal_enroll() {
+        return is_normal_enroll;
+    }
+
+    public void setIs_normal_enroll(boolean is_normal_enroll) {
+        this.is_normal_enroll = is_normal_enroll;
     }
 }

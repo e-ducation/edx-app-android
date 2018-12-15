@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:minWidth="256dp"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/elite_vip_dialog_image"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tips_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:layout_marginLeft="31dp"
+            android:layout_marginRight="31dp"
+            android:layout_marginTop="22dp"
+            android:lineSpacingMultiplier="1.5"
+            android:textColor="#6e6e6e"
+            android:textSize="16dp"
+            tools:text="@string/vip_tips_text" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#efefef" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/not_yet_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:paddingBottom="11dp"
+                android:paddingTop="11dp"
+                android:text="@string/vip_not_yet_text"
+                android:textColor="#b6b6b6"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/become_vip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#4788c7"
+                android:gravity="center"
+                android:paddingBottom="11dp"
+                android:paddingTop="11dp"
+                android:text="@string/become_vip"
+                android:textColor="@android:color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

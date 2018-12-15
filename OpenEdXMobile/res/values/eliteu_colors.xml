@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- vip页面未选中item背景的solid填充色 -->
+    <color name="vip_item_unselect_border_solid">#F7FBFE</color>
+    <!-- vip页面未选中item背景的stroke描边色 -->
+    <color name="vip_item_unselect_border_stroke">#99cfff</color>
+
+    <!-- vip页面选中item背景的solid填充色 -->
+    <color name="vip_item_select_border_solid">#FFFAF6</color>
+    <!-- vip页面选中item背景的stroke描边色 -->
+    <color name="vip_item_select_border_stroke">#ffd6ba</color>
+
+    <!-- vip页面未选中item价格颜色 -->
+    <color name="vip_current_price_unselecct_color">#4788c7</color>
+    <!-- vip页面选中item价格颜色 -->
+    <color name="vip_current_price_selecct_color">#fa7f2b</color>
+
+    <color name="qianhui1">#f5f7fa</color>
+    <color name="pay_btn">#FC9753</color>
+
+</resources>

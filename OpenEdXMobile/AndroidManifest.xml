@@ -333,13 +333,21 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/edx_brand_primary_accent" />
 
-        <!-- 微信 -->
+        <!-- 微信认证 -->
         <activity
             android:name="cn.elitemba.android.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!-- 微信支付 -->
+        <activity
+            android:name="cn.elitemba.android.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoDisplay" />
 
         <!-- QQ -->
         <activity
@@ -360,6 +368,13 @@
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!-- vip -->
+        <activity
+            android:name="org.edx.mobile.eliteu.vip.ui.VipActivity"
+            android:label="@string/vip_page_title"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"
+            android:screenOrientation="portrait"/>
 
     </application>
 

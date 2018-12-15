@@ -24,6 +24,11 @@ public class CourseDetail implements Parcelable {
     public String effort;
     public String overview;
     public Boolean invitation_only;
+    public Boolean is_vip;
+    public Boolean has_cert;
+    public Boolean is_enroll;
+    public Boolean is_normal_enroll;
+    public Boolean is_subscribe_pay;
 
     public static class Media implements Parcelable {
         public Image course_image;
@@ -143,6 +148,11 @@ public class CourseDetail implements Parcelable {
         effort = in.readString();
         overview = in.readString();
         invitation_only = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        is_vip = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        has_cert = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        is_enroll = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        is_normal_enroll = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        is_subscribe_pay = (Boolean) in.readValue(Boolean.class.getClassLoader());
     }
 
     @Override
@@ -168,6 +178,11 @@ public class CourseDetail implements Parcelable {
         dest.writeString(effort);
         dest.writeString(overview);
         dest.writeValue(invitation_only);
+        dest.writeValue(is_vip);
+        dest.writeValue(has_cert);
+        dest.writeValue(is_enroll);
+        dest.writeValue(is_normal_enroll);
+        dest.writeValue(is_subscribe_pay);
     }
 
     @SuppressWarnings("unused")

@@ -3,6 +3,7 @@ package org.edx.mobile.view.custom;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -38,6 +39,8 @@ import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.services.EdxCookieManager;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.WebViewUtil;
+import org.edx.mobile.view.NativeFindCoursesActivity;
+import org.edx.mobile.view.Router;
 
 import de.greenrobot.event.EventBus;
 import roboguice.RoboGuice;
@@ -54,6 +57,9 @@ public class AuthenticatedWebView extends FrameLayout implements RefreshListener
 
     @Inject
     private LoginPrefs loginPrefs;
+
+    @Inject
+    private Router router;
 
     @InjectView(R.id.loading_indicator)
     private ProgressBar progressWheel;
@@ -379,6 +385,34 @@ public class AuthenticatedWebView extends FrameLayout implements RefreshListener
                         }
                 );
             }
+        }
+
+        @JavascriptInterface
+        public void openFindCoursePage() {
+            webView.post(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            //在h5页面点击按钮打开android中我的课程
+                            final Intent findCoursesIntent = NativeFindCoursesActivity.newIntent(getContext());
+                            findCoursesIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            getContext().startActivity(findCoursesIntent);
+                        }
+                    }
+            );
+        }
+
+        @JavascriptInterface
+        public void openVipPage(final String id) {
+            webView.post(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            //在h5页面点击按钮打开android的vip页
+                            router.showVip(getContext(),id);
+                        }
+                    }
+            );
         }
     }
 

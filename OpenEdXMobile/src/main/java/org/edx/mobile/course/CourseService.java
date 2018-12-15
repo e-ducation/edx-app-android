@@ -76,14 +76,16 @@ public interface CourseService {
      *                 want to see. The username is not required only if the API is
      *                 requested by an Anonymous user.
      */
-    @GET("/api/courses/v1/courses/{course_id}")
+//    @GET("/api/courses/v1/courses/{course_id}")
+    @GET("/api/v1/mobile/courses/{course_id}")
     Call<CourseDetail> getCourseDetail(@Path("course_id") final String courseId,
                                        @Query("username") final String username);
 
     /**
      * @return Enrolled courses of given user.
      */
-    @GET("/api/mobile/v0.5/users/{username}/course_enrollments")
+//    @GET("/api/mobile/v0.5/users/{username}/course_enrollments")
+    @GET("/api/v1/mobile/users/{username}/course_enrollments")
     Call<List<EnrolledCoursesResponse>> getEnrolledCourses(@Path("username") final String username,
                                                            @Query("org") final String org);
 
@@ -91,7 +93,8 @@ public interface CourseService {
      * @return Enrolled courses of given user, only from the cache.
      */
     @Headers("Cache-Control: only-if-cached, max-stale")
-    @GET("/api/mobile/v0.5/users/{username}/course_enrollments")
+//    @GET("/api/mobile/v0.5/users/{username}/course_enrollments")
+    @GET("/api/v1/mobile/users/{username}/course_enrollments")
     Call<List<EnrolledCoursesResponse>> getEnrolledCoursesFromCache(
             @Path("username") final String username,
             @Query("org") final String org);
