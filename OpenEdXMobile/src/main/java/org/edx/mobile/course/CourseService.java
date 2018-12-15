@@ -76,7 +76,8 @@ public interface CourseService {
      *                 want to see. The username is not required only if the API is
      *                 requested by an Anonymous user.
      */
-    @GET("/api/courses/v1/courses/{course_id}")
+//    @GET("/api/courses/v1/courses/{course_id}")
+    @GET("/api/v1/mobile/courses/{course_id}")
     Call<CourseDetail> getCourseDetail(@Path("course_id") final String courseId,
                                        @Query("username") final String username);
 

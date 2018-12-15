@@ -1,5 +1,9 @@
 package org.edx.mobile.eliteu.util;
 
+import android.content.Context;
+
+import org.edx.mobile.R;
+import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 
 public class CourseUtil {
@@ -34,6 +38,64 @@ public class CourseUtil {
             }
         }
 
+    }
+
+    public static String getEnrollButtonString(CourseDetail courseDetail, Context context) {
+        String enrollButtonStr;
+        if (courseDetail.has_cert) {
+            enrollButtonStr = context.getString(R.string.view_course_button_text);
+        } else {
+            if (courseDetail.is_enroll) {
+                if (courseDetail.is_normal_enroll) {
+                    enrollButtonStr = context.getString(R.string.view_course_button_text);
+                } else {
+                    if (courseDetail.is_vip) {
+                        enrollButtonStr = context.getString(R.string.view_course_button_text);
+                    } else {
+                        enrollButtonStr = context.getString(R.string.enroll_now_button_text);
+                    }
+                }
+            } else {
+                enrollButtonStr = context.getString(R.string.enroll_now_button_text);
+            }
+        }
+
+        return enrollButtonStr;
+    }
+
+    public static final int CLICK_OPEN_COURSE = 1001;//查看课程
+    public static final int CLICK_VIP_ENROLL = 1002;//vip购买
+    public static final int CLICK_NORMAL_ENROLL = 1003;//单课购买
+    public static final int CLICK_VIP_DIALOG = 1004;//VIP课程但是is_vip为false
+
+    public static int getEnrollButtonOnClickEvent(CourseDetail courseDetail) {
+        int event = 0;
+        if (courseDetail.has_cert) {
+            event = CLICK_OPEN_COURSE;
+        } else {
+            if (courseDetail.is_enroll) {
+                if (courseDetail.is_normal_enroll) {
+                    event = CLICK_OPEN_COURSE;
+                } else {
+                    if (courseDetail.is_vip) {
+                        event = CLICK_OPEN_COURSE;
+                    } else {
+                        event = CLICK_VIP_DIALOG;
+                    }
+                }
+            } else {
+                if (!courseDetail.is_subscribe_pay) {
+                    if (courseDetail.is_vip) {
+                        event = CLICK_VIP_ENROLL;
+                    } else {
+                        event = CLICK_VIP_DIALOG;
+                    }
+                } else {
+                    event = CLICK_NORMAL_ENROLL;
+                }
+            }
+        }
+        return event;
     }
 
 }

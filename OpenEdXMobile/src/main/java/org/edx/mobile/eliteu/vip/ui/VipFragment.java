@@ -35,6 +35,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragmentActivity;
+import org.edx.mobile.eliteu.event.BuyVipSuccessEvent;
 import org.edx.mobile.eliteu.util.DeviceProgramDetectionUtil;
 import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.eliteu.vip.bean.WeChatReqBean;
@@ -512,6 +513,8 @@ public class VipFragment extends OfflineSupportBaseFragment {
                             orderReqDisposable.dispose();
                             hideCheckOrderStatusLoadingDialog();
                             showPaySuccessDialog();
+                            //通知课程详情页开通vip成功
+                            RxBus.getDefault().post(new BuyVipSuccessEvent());
                         } else {
                             mRequestTimes++;
                             if (mRequestTimes == REPEAT_TIMES) {

@@ -27,6 +27,9 @@
     <string name="alipay_tv">支付宝支付</string>
     <string name="pay_submit_lable">交学费</string>
     <string name="my_course_item_vip_expired">订阅期满请及时续费</string>
+    <string name="vip_tips_text"><![CDATA[该门课程属于<font color="#3288cc">英荔商学院</font>的专属课程，成为会员可以在有效期内<font color="#3288cc">免费学习</font>]]></string>
+    <string name="vip_not_yet_text">暂不加入</string>
+    <string name="become_vip">加入会员</string>
 
     <!--TODO 待定-->
     <string name="share_vip_message">我刚在 {platform_name} 上购买了vip！看一看：{vip_url}</string>
@@ -37,5 +40,6 @@
     <string name="pay_confirming">支付确认中</string>
     <string name="pay_cancle">支付取消</string>
     <string name="vip_order_check_success">Vip购买成功</string>
+    <string name="single_class_buy_not_supported">单课购买暂不支持</string>
 
 </resources>
