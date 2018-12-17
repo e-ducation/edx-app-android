@@ -56,6 +56,13 @@ public class AccountFragment extends BaseFragment {
             binding.profileBtn.setVisibility(View.GONE);
         }
 
+        binding.bindMobileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                environment.getRouter().showBindMobile(getActivity());
+            }
+        });
+
         binding.settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

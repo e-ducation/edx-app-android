@@ -16,6 +16,8 @@ import org.edx.mobile.module.prefs.UserPrefs;
 import org.edx.mobile.util.Config;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 
 
 @Singleton
@@ -74,6 +76,20 @@ public class EliteApi {
      */
     public Observable<BaseHttpResult<VipOrderStatusBean>> getVipOrderStstus(String id) {
         return eliteService.getVipOrderStstus(id);
+    }
+
+    /**
+     * @return 绑定手机发送验证码
+     */
+    public Call<ResponseBody> sendCodeBindingPhone(String phone) {
+        return eliteService.sendCodeBindingPhone(phone);
+    }
+
+    /**
+     * @return 绑定手机验证验证码
+     */
+    public Call<ResponseBody> bindingPhone(String phone, String code) {
+        return eliteService.bindingPhone(phone, code);
     }
 
 }
