@@ -30,6 +30,18 @@
     <string name="vip_tips_text"><![CDATA[该门课程属于<font color="#3288cc">英荔商学院</font>的专属课程，成为会员可以在有效期内<font color="#3288cc">免费学习</font>]]></string>
     <string name="vip_not_yet_text">暂不加入</string>
     <string name="become_vip">加入会员</string>
+    <string name="mobile_hint_str">请输入手机号</string>
+    <string name="verification_code_hint_str">请输入验证码</string>
+    <string name="verification_code_btn_str">获取验证码</string>
+    <string name="verification_code_has_send">验证码已发送</string>
+    <string name="binding_success">绑定成功</string>
+    <string name="binding_fail">绑定失败</string>
+    <string name="bind_mobie_dialog_title">提示</string>
+    <string name="bind_mobie_dialog_message">应国家法规对于账号实名的要求，请您在进行下一步操作前，先完成手机绑定。</string>
+    <string name="bind_mobie_dialog_negativeText">下次再说</string>
+    <string name="bind_mobie_dialog_positiveText">绑定手机</string>
+    <string name="not_bind_mobile">未绑定手机号</string>
+    <string name="already_bind_mobile">已绑定手机号</string>
 
     <!--TODO 待定-->
     <string name="share_vip_message">我刚在 {platform_name} 上购买了vip！看一看：{vip_url}</string>
@@ -41,5 +53,8 @@
     <string name="pay_cancle">支付取消</string>
     <string name="vip_order_check_success">Vip购买成功</string>
     <string name="single_class_buy_not_supported">单课购买暂不支持</string>
+    <string name="bind_mobile">绑定手机</string>
+    <string name="phone_number_format_not_correct">手机号格式不正确</string>
+    <string name="get_verification_code_error">获取验证码失败</string>
 
 </resources>

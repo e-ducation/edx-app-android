@@ -14,6 +14,8 @@ import org.edx.mobile.http.provider.RetrofitProvider;
 import org.edx.mobile.model.Page;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -50,5 +52,15 @@ public interface EliteService {
 
     @GET("/api/v1/vip/order/{id}")
     Observable<BaseHttpResult<VipOrderStatusBean>> getVipOrderStstus(@Path("id") String id);
+
+    @NonNull
+    @FormUrlEncoded
+    @POST("/api/user/v1/accounts/send_code_binding_phone/")
+    Call<ResponseBody> sendCodeBindingPhone(@Field("phone") String phone);
+
+    @NonNull
+    @FormUrlEncoded
+    @POST("/api/user/v1/accounts/binding_phone/")
+    Call<ResponseBody> bindingPhone(@Field("phone") String phone, @Field("code") String code);
 
 }

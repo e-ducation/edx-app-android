@@ -11,8 +11,10 @@ import com.google.inject.Inject;
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragment;
+import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.core.IEdxEnvironment;
 import org.edx.mobile.databinding.FragmentAccountBinding;
+import org.edx.mobile.eliteu.bindmobile.BindMobileUtil;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.util.Config;
@@ -55,6 +57,14 @@ public class AccountFragment extends BaseFragment {
         } else {
             binding.profileBtn.setVisibility(View.GONE);
         }
+
+        BindMobileUtil.getInstance().initBindMobileButton((BaseFragmentActivity) getActivity(),binding.bindMobileBtn);
+        binding.bindMobileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                environment.getRouter().showBindMobile(getActivity());
+            }
+        });
 
         binding.settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override

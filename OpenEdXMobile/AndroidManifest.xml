@@ -376,6 +376,12 @@
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name="org.edx.mobile.eliteu.bindmobile.BindMobileActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
     </application>
 
 </manifest>

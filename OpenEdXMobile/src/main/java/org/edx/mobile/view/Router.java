@@ -21,6 +21,7 @@ import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.discussion.DiscussionComment;
 import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
+import org.edx.mobile.eliteu.bindmobile.BindMobileActivity;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.event.LogoutEvent;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
@@ -391,5 +392,14 @@ public class Router {
     public void showVip(@NonNull Context context, @NonNull String id) {
         Intent vipIntent = VipActivity.newIntent(context, id);
         context.startActivity(vipIntent);
+    }
+
+    /**
+     * 打开绑定手机页面
+     * @param sourceActivity
+     */
+    public void showBindMobile(@NonNull Activity sourceActivity) {
+        Intent bindMobileIntent = new Intent(sourceActivity, BindMobileActivity.class);
+        sourceActivity.startActivity(bindMobileIntent);
     }
 }

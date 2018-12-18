@@ -227,4 +227,17 @@ public class Account {
         @SerializedName("all_users")
         ALL_USERS
     }
+
+    @SerializedName("phone")
+    @Nullable // Nullability not specified by API
+    private String phone;
+
+    @Nullable
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(@Nullable String phone) {
+        this.phone = phone;
+    }
 }

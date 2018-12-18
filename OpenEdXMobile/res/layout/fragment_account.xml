@@ -29,6 +29,11 @@
                 android:text="@string/profile_title" />
 
             <TextView
+                android:id="@+id/bind_mobile_btn"
+                style="@style/account_option"
+                tools:text="@string/not_bind_mobile" />
+
+            <TextView
                 android:id="@+id/settings_btn"
                 style="@style/account_option"
                 android:text="@string/label_settings" />
