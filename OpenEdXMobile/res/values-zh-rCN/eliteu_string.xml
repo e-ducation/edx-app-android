@@ -36,6 +36,12 @@
     <string name="verification_code_has_send">验证码已发送</string>
     <string name="binding_success">绑定成功</string>
     <string name="binding_fail">绑定失败</string>
+    <string name="bind_mobie_dialog_title">提示</string>
+    <string name="bind_mobie_dialog_message">应国家法规对于账号实名的要求，请您在进行下一步操作前，先完成手机绑定。</string>
+    <string name="bind_mobie_dialog_negativeText">下次再说</string>
+    <string name="bind_mobie_dialog_positiveText">绑定手机</string>
+    <string name="not_bind_mobile">未绑定手机号</string>
+    <string name="already_bind_mobile">已绑定手机号</string>
 
     <!--TODO 待定-->
     <string name="share_vip_message">我刚在 {platform_name} 上购买了vip！看一看：{vip_url}</string>

@@ -45,6 +45,8 @@ public class MainDashboardActivity extends OfflineSupportBaseActivity
     @Inject
     private LoginPrefs loginPrefs;
 
+    public boolean showWhatsNew = false;
+
     public static Intent newIntent() {
         // These flags will make it so we only have a single instance of this activity,
         // but that instance will not be restarted if it is already running
@@ -86,6 +88,7 @@ public class MainDashboardActivity extends OfflineSupportBaseActivity
             }
             if (shouldShowWhatsNew) {
                 environment.getRouter().showWhatsNewActivity(this);
+                showWhatsNew =true;
             }
         }
     }

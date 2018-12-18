@@ -15,6 +15,9 @@ import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 
 import org.edx.mobile.R;
+import org.edx.mobile.base.BaseFragmentActivity;
+import org.edx.mobile.eliteu.bindmobile.BindMobileUtil;
+import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.vip.ui.WebViewVipFragment;
 import org.edx.mobile.event.AccountDataLoadedEvent;
 import org.edx.mobile.event.ProfilePhotoUpdatedEvent;
@@ -52,6 +55,9 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
     private LoginPrefs loginPrefs;
 
     @Inject
+    private AccountPrefs accountPrefs;
+
+    @Inject
     private UserService userService;
 
     @Inject
@@ -74,6 +80,16 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
         }
         if (!isUserProfileEnabled) {
             toolbarCallbacks.getProfileView().setVisibility(View.GONE);
+        }
+    }
+
+
+    @Override
+    protected void onRevisit() {
+        super.onRevisit();
+        MainDashboardActivity mainDashboardActivity = (MainDashboardActivity) getActivity();
+        if (mainDashboardActivity.showWhatsNew){
+            BindMobileUtil.getInstance().checkAccountMobile((BaseFragmentActivity) getActivity());
         }
     }
 
@@ -197,6 +213,10 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
             if (profileImage != null) {
                 loadProfileImage(account.getProfileImage(), profileImage);
             }
+            //保存account到sp
+            accountPrefs.storeAccount(account);
+            BindMobileUtil.getInstance().checkAccountMobile(account,(BaseFragmentActivity) getActivity());
+
         }
     }
 

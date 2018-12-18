@@ -31,7 +31,7 @@
             <TextView
                 android:id="@+id/bind_mobile_btn"
                 style="@style/account_option"
-                android:text="@string/bind_mobile" />
+                tools:text="@string/not_bind_mobile" />
 
             <TextView
                 android:id="@+id/settings_btn"

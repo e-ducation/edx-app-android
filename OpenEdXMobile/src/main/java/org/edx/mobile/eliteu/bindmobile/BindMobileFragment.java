@@ -19,9 +19,13 @@ import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragment;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.eliteu.api.EliteApi;
+import org.edx.mobile.eliteu.event.BindMobileSuccessEvent;
+import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.util.CannotCancelDialogFragment;
 import org.edx.mobile.eliteu.util.InputValidationUtil;
+import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.http.HttpStatus;
+import org.edx.mobile.user.Account;
 import org.edx.mobile.util.NetworkUtil;
 
 import java.io.IOException;
@@ -93,7 +97,7 @@ public class BindMobileFragment extends BaseFragment {
         Observable.combineLatest(RxTextView.textChanges(mobileEt), RxTextView.textChanges(verificationEt), new BiFunction<CharSequence, CharSequence, Boolean>() {
             @Override
             public Boolean apply(@NonNull CharSequence phone, @NonNull CharSequence verification) throws Exception {
-                return InputValidationUtil.isValidPhone(phone.toString()) && verification.length() > 0;
+                return InputValidationUtil.isValidPhone(phone.toString()) && verification.length() == 6;
             }
         }).subscribe(new Consumer<Boolean>() {
             @Override
@@ -183,7 +187,7 @@ public class BindMobileFragment extends BaseFragment {
      * @param mobile
      * @param verificationCode
      */
-    private void requestServerBindingMobile(String mobile, String verificationCode) {
+    private void requestServerBindingMobile(final String mobile, String verificationCode) {
         if (!NetworkUtil.isConnected(getActivity())) {
             showAlertDialog(getString(R.string.reset_no_network_message));
             return;
@@ -202,6 +206,11 @@ public class BindMobileFragment extends BaseFragment {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     getActivity().finish();
                                     //TODO 通知前一个页面绑定成功
+                                    final AccountPrefs accountPrefs = new AccountPrefs(getActivity());
+                                    Account account = accountPrefs.getAccount();
+                                    account.setPhone(mobile);
+                                    accountPrefs.storeAccount(account);
+                                    RxBus.getDefault().post(new BindMobileSuccessEvent(mobile));
                                 }
                             });
                         } else {
