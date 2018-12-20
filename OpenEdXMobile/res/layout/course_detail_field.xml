@@ -5,6 +5,8 @@
     android:id="@+id/course_detail_field"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/common_course_display_margin_side"
+    android:paddingRight="@dimen/common_course_display_margin_side"
     android:orientation="vertical">
 
     <LinearLayout

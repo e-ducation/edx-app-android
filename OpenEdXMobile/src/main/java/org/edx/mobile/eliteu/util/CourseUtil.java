@@ -102,4 +102,17 @@ public class CourseUtil {
         return event;
     }
 
+    public static String getCourseDetailVipInfo(CourseDetail courseDetail, Context context) {
+        int month = courseDetail.recommended_package.month;
+        if (month == 12) {
+            return context.getString(R.string.course_detail_vip_info) + " ¥" + courseDetail.recommended_package.price + "/" + context.getString(R.string.year);
+        } else if (month == 6) {
+            return context.getString(R.string.course_detail_vip_info) + " ¥" + courseDetail.recommended_package.price + "/" + context.getString(R.string.semi_annual);
+        } else if (month == 3) {
+            return context.getString(R.string.course_detail_vip_info) + " ¥" + courseDetail.recommended_package.price + "/" + context.getString(R.string.quarter);
+        } else {
+            return context.getString(R.string.course_detail_vip_info) + " ¥" + courseDetail.recommended_package.price + "/" + context.getString(R.string.month);
+        }
+    }
+
 }
