@@ -6,11 +6,11 @@
               android:layout_height="match_parent"
               android:background="@color/white"
               android:orientation="vertical"
-              android:paddingLeft="@dimen/common_course_display_margin_side"
-              android:paddingRight="@dimen/common_course_display_margin_side"
     >
 
     <TextView
+        android:layout_marginLeft="@dimen/common_course_display_margin_side"
+        android:layout_marginRight="@dimen/common_course_display_margin_side"
         android:id="@+id/course_detail_short_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +21,8 @@
         tools:text="Bacon ipsum dolor amet bresaola bacon shoulder chicken beef ribs rump andouille turkey pig frankfurter tail sausage leberkas fatback."/>
 
     <Button
+        android:layout_marginLeft="@dimen/common_course_display_margin_side"
+        android:layout_marginRight="@dimen/common_course_display_margin_side"
         android:id="@+id/button_enroll_now"
         style="@style/edX.Widget.EnrollButton"
         android:layout_width="match_parent"
@@ -36,8 +38,47 @@
         android:orientation="vertical"
         android:showDividers="middle">
 
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/vip_layout"
+            android:layout_marginTop="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ddecfa"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/vip_info_tv"
+                android:layout_marginLeft="@dimen/common_course_display_margin_side"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                tools:text="订阅会员课程 ¥1199/年"
+                android:textColor="#346ca3"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/view_vip_detail_tv"
+                android:layout_marginRight="@dimen/common_course_display_margin_side"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/course_detail_vip_detail_border"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:text="@string/course_detail_vip_view_detail"
+                android:textColor="#346ca3"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
 
         <FrameLayout
+            android:layout_marginLeft="@dimen/common_course_display_margin_side"
+            android:layout_marginRight="@dimen/common_course_display_margin_side"
             android:id="@+id/course_detail_course_about"
 
             android:layout_width="match_parent"

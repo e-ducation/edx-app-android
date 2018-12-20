@@ -44,7 +44,12 @@
     <string name="already_bind_mobile">已绑定手机号</string>
     <string name="bind_mobile">绑定手机</string>
 
-    <!--TODO 待定-->
+    <string name="course_detail_vip_info">订阅会员课程</string>
+    <string name="course_detail_vip_view_detail">查看详情</string>
+    <string name="year">年</string>
+    <string name="quarter">季度</string>
+    <string name="semi_annual">半年</string>
+    <string name="month">月</string>
     <string name="share_vip_message">我已率先成为 {platform_name} 会员，MBA在线课程每月学费不过百！你也赶快加入吧！入口：{vip_url}</string>
     <string name="wechat_not_install">请先安装微信或者选择其他支付方式</string>
     <string name="progress_dialog_message">加载中</string>

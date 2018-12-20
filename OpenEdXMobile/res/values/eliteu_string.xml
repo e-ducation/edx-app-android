@@ -28,8 +28,8 @@
     <string name="pay_submit_lable">Submit Payment</string>
     <string name="my_course_item_vip_expired">Renew Your VIP Membership</string>
     <string name="vip_tips_text"><![CDATA[The course you have chosen belongs to <font color="#3288cc">EliteMBA</font>.Become a VIP member and <font color="#3288cc">learn your course for free</font>.]]></string>
-    <string name="vip_not_yet_text">Not Now</string>
-    <string name="become_vip">Join VIP</string>
+    <string name="vip_not_yet_text">No</string>
+    <string name="become_vip">Yes</string>
     <string name="mobile_hint_str">Please enter cellphone number</string>
     <string name="verification_code_hint_str">Please enter verification code</string>
     <string name="verification_code_btn_str">Verification</string>
@@ -44,7 +44,12 @@
     <string name="already_bind_mobile">Bound cellphone</string>
     <string name="bind_mobile">Bind Phone</string>
 
-    <!--TODO 待定-->
+    <string name="course_detail_vip_info">Subscribe VIP</string>
+    <string name="course_detail_vip_view_detail">Details</string>
+    <string name="year">Year</string>
+    <string name="quarter">Quarter</string>
+    <string name="semi_annual">Semi-Annual</string>
+    <string name="month">Month</string>
     <string name="share_vip_message">I’ve become an {platform_name} VIP, enjoying high-value online MBA courses with only ￥99.8 per month. Join in now! Check it out! {vip_url}</string>
     <string name="wechat_not_install">Please install Wechat or choose other payment methods.</string>
     <string name="progress_dialog_message">Loading...</string>

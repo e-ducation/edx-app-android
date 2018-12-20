@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -115,6 +116,9 @@ public class CourseDetailFragment extends BaseFragment {
     Router router;
 
     public static final String RETRY_EXCEPTION_MESSAGE = "Unsatisfiable Request (only-if-cached)";
+    private TextView mVipInfoTv;
+    private TextView mViewVipDetailTv;
+    private RelativeLayout mVipLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -189,6 +193,11 @@ public class CourseDetailFragment extends BaseFragment {
         //  About this Course
         courseAbout = (FrameLayout) view.findViewById(R.id.course_detail_course_about);
         courseAboutWebView = (EdxWebView) courseAbout.findViewById(R.id.course_detail_course_about_webview);
+
+        //vip Layout
+        mVipLayout = view.findViewById(R.id.vip_layout);
+        mVipInfoTv = mVipLayout.findViewById(R.id.vip_info_tv);
+        mViewVipDetailTv = mVipLayout.findViewById(R.id.view_vip_detail_tv);
     }
 
     @Override
@@ -249,6 +258,7 @@ public class CourseDetailFragment extends BaseFragment {
             protected void onResponse(@NonNull final CourseDetail courseDetail) {
                 CourseDetailFragment.this.courseDetail = courseDetail;
                 configureEnrollButtonWithVip();
+                initVipLayout(courseDetail);
                 if (courseDetail.overview != null && !courseDetail.overview.isEmpty()) {
                     populateAboutThisCourse(courseDetail.overview);
                 } else {
@@ -524,5 +534,24 @@ public class CourseDetailFragment extends BaseFragment {
                 Toast.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initVipLayout(final CourseDetail courseDetail){
+        if (courseDetail.recommended_package != null) {
+            mVipLayout.setVisibility(View.VISIBLE);
+            mVipInfoTv.setText(CourseUtil.getCourseDetailVipInfo(courseDetail,getActivity()));
+            mViewVipDetailTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (null == environment.getLoginPrefs().getUsername()) {
+                        startActivityForResult(environment.getRouter().getRegisterIntent(), LOG_IN_REQUEST_CODE);
+                        return;
+                    }
+                    router.showVip(getActivity(),String.valueOf(courseDetail.recommended_package.id));
+                }
+            });
+        } else {
+            mVipLayout.setVisibility(View.GONE);
+        }
     }
 }

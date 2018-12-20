@@ -29,6 +29,52 @@ public class CourseDetail implements Parcelable {
     public Boolean is_enroll;
     public Boolean is_normal_enroll;
     public Boolean is_subscribe_pay;
+    public VipRecommendedPackage recommended_package;
+
+    public static class VipRecommendedPackage implements Parcelable{
+        public int id;
+        public String name;
+        public int month;
+        public String price;
+        public String suggested_price;
+        public boolean is_recommended;
+        protected VipRecommendedPackage(Parcel in) {
+            id =  in.readInt();
+            name = in.readString();
+            month = in.readInt();
+            price = in.readString();
+            suggested_price = in.readString();
+            is_recommended = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeString(name);
+            dest.writeInt(month);
+            dest.writeString(price);
+            dest.writeString(suggested_price);
+            dest.writeValue(is_recommended);
+        }
+
+        @SuppressWarnings("unused")
+        public static final Parcelable.Creator<VipRecommendedPackage> CREATOR = new Parcelable.Creator<VipRecommendedPackage>() {
+            @Override
+            public VipRecommendedPackage createFromParcel(Parcel in) {
+                return new VipRecommendedPackage(in);
+            }
+
+            @Override
+            public VipRecommendedPackage[] newArray(int size) {
+                return new VipRecommendedPackage[size];
+            }
+        };
+    }
 
     public static class Media implements Parcelable {
         public Image course_image;
@@ -153,6 +199,7 @@ public class CourseDetail implements Parcelable {
         is_enroll = (Boolean) in.readValue(Boolean.class.getClassLoader());
         is_normal_enroll = (Boolean) in.readValue(Boolean.class.getClassLoader());
         is_subscribe_pay = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        recommended_package = (VipRecommendedPackage) in.readValue(VipRecommendedPackage.class.getClassLoader());
     }
 
     @Override
@@ -183,6 +230,7 @@ public class CourseDetail implements Parcelable {
         dest.writeValue(is_enroll);
         dest.writeValue(is_normal_enroll);
         dest.writeValue(is_subscribe_pay);
+        dest.writeValue(recommended_package);
     }
 
     @SuppressWarnings("unused")
