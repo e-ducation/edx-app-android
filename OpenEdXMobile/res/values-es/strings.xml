@@ -81,7 +81,7 @@
   <!--Label for End User License Agreement-->
   <string name="licensing_agreement">{platform_name} Acuerdo de Licencia de Usuario Final</string>
   <!--Label for Terms of Service and Honor Code-->
-  <string name="tos_and_honor_code">{platform_name} Términos de Servicio y Código de Honor</string>
+  <string name="tos_and_honor_code">{platform_name} Disclaimer</string>
   <!--Label for Privacy Policy-->
   <string name="privacy_policy">Política de Privacidad</string>
   <string name="login_title">iniciar sesión</string>
@@ -148,7 +148,7 @@ Si no lo recibe en algunos minutos, asegúrese de revisar su carpeta de spam.</s
   <string name="end_user_title">Acuerdo de Licencia del Usuario</string>
   <!--Title of privacy policy users must accept to use the app-->
   <!--Title of terms of service & honor code users must accept to use the app-->
-  <string name="terms_of_service_title">Términos de Servicio</string>
+  <string name="terms_of_service_title">Disclaimer</string>
   <!--My Courses-->
   <!--Row of course on dashboard screen-->
   <string name="courseware_title">Curso</string>

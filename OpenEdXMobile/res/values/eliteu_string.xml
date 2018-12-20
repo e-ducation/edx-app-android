@@ -19,7 +19,7 @@
     <string name="vip_data_of_expiry">Expire on: %1$s</string>
     <string name="vip_remainint_time">Opened for %1$s day(s) %2$s day(s) left</string>
     <string name="vip_data_of_last_open">Last Opened on: %1$s</string>
-    <string name="vip_expired_time">VIP expired %1$s</string>
+    <string name="vip_expired_time">VIP expired %1$s day(s)</string>
     <string name="vip_page_title">VIP</string>
     <string name="chose_pay_way">Choose payment method</string>
     <string name="tuition">Payment: </string>
@@ -28,8 +28,8 @@
     <string name="pay_submit_lable">Submit Payment</string>
     <string name="my_course_item_vip_expired">Renew Your VIP Membership</string>
     <string name="vip_tips_text"><![CDATA[The course you have chosen belongs to <font color="#3288cc">EliteMBA</font>.Become a VIP member and <font color="#3288cc">learn your course for free</font>.]]></string>
-    <string name="vip_not_yet_text">Not Now</string>
-    <string name="become_vip">Join VIP</string>
+    <string name="vip_not_yet_text">No</string>
+    <string name="become_vip">Yes</string>
     <string name="mobile_hint_str">Please enter cellphone number</string>
     <string name="verification_code_hint_str">Please enter verification code</string>
     <string name="verification_code_btn_str">Verification</string>
