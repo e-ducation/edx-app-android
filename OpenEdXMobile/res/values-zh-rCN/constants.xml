@@ -1,0 +1,4 @@
+<resources>
+    <string name="privacy_file_link">file:///android_asset/privacy_policy_zh.html</string>
+    <string name="terms_file_link">file:///android_asset/terms_of_services_zh.html</string>
+</resources>
