@@ -36,25 +36,25 @@
     <string name="verification_code_has_send">验证码已发送</string>
     <string name="binding_success">绑定成功</string>
     <string name="binding_fail">绑定失败</string>
-    <string name="bind_mobie_dialog_title">提示</string>
+    <string name="bind_mobie_dialog_title">系统提示</string>
     <string name="bind_mobie_dialog_message">应国家法规对于账号实名的要求，请您在进行下一步操作前，先完成手机绑定。</string>
     <string name="bind_mobie_dialog_negativeText">下次再说</string>
     <string name="bind_mobie_dialog_positiveText">绑定手机</string>
     <string name="not_bind_mobile">未绑定手机号</string>
     <string name="already_bind_mobile">已绑定手机号</string>
+    <string name="bind_mobile">绑定手机</string>
 
     <!--TODO 待定-->
-    <string name="share_vip_message">我刚在 {platform_name} 上购买了vip！看一看：{vip_url}</string>
+    <string name="share_vip_message">我已率先成为 {platform_name} 会员，MBA在线课程每月学费不过百！你也赶快加入吧！入口：{vip_url}</string>
     <string name="wechat_not_install">请先安装微信或者选择其他支付方式</string>
     <string name="progress_dialog_message">加载中</string>
-    <string name="check_order_fail">查询订单失败</string>
-    <string name="pay_fail">支付失败</string>
-    <string name="pay_confirming">支付确认中</string>
-    <string name="pay_cancle">支付取消</string>
-    <string name="vip_order_check_success">Vip购买成功</string>
-    <string name="single_class_buy_not_supported">单课购买暂不支持</string>
-    <string name="bind_mobile">绑定手机</string>
-    <string name="phone_number_format_not_correct">手机号格式不正确</string>
-    <string name="get_verification_code_error">获取验证码失败</string>
+    <string name="check_order_fail">查询失败，请稍后重试</string>
+    <string name="pay_fail">支付失败，请稍后重试</string>
+    <string name="pay_confirming">正在确认中...</string>
+    <string name="pay_cancle">支付已取消</string>
+    <string name="vip_order_check_success">恭喜您已成功加入EliteMBA会员</string>
+    <string name="single_class_buy_not_supported">移动端暂不支持，请至PC端完成购买</string>
+    <string name="phone_number_format_not_correct">请输入正确的手机号码</string>
+    <string name="get_verification_code_error">获取验证码失败，请稍后重试</string>
 
 </resources>

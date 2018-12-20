@@ -53,4 +53,28 @@ public class AuthPanelUtils {
             rootView.setVisibility(View.GONE);
         }
     }
+
+    public static void reConfigureAuthPanel(@NonNull final View rootView, @NonNull final IEdxEnvironment environment, final CourseDetailFragment courseDetailFragment) {
+        boolean visible = shouldAuthPanelBeVisible(environment);
+        View logInButton = rootView.findViewById(R.id.log_in);
+        View signUpButton = rootView.findViewById(R.id.sign_up);
+        if (visible) {
+            rootView.setVisibility(View.VISIBLE);
+            logInButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    courseDetailFragment.startActivityForResult(environment.getRouter().getLogInIntent(), CourseDetailFragment.LOG_IN_REQUEST_CODE);
+                }
+            });
+            signUpButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    environment.getAnalyticsRegistry().trackUserSignUpForAccount();
+                    courseDetailFragment.startActivityForResult(environment.getRouter().getRegisterIntent(), CourseDetailFragment.LOG_IN_REQUEST_CODE);
+                }
+            });
+        } else {
+            rootView.setVisibility(View.GONE);
+        }
+    }
 }

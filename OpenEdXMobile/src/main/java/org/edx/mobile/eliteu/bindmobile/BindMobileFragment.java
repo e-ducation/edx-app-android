@@ -205,7 +205,6 @@ public class BindMobileFragment extends BaseFragment {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     getActivity().finish();
-                                    //TODO 通知前一个页面绑定成功
                                     final AccountPrefs accountPrefs = new AccountPrefs(getActivity());
                                     Account account = accountPrefs.getAccount();
                                     account.setPhone(mobile);
