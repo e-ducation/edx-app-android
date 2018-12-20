@@ -19,22 +19,9 @@ import org.edx.mobile.view.dialog.IDialogCallback;
 @SuppressLint("ValidFragment")
 public class VipTipsDialog extends DialogFragment implements View.OnClickListener {
 
-    private static volatile VipTipsDialog instance = null;
-
     @SuppressLint("ValidFragment")
-    private VipTipsDialog(IDialogCallback callback) {
+    public VipTipsDialog(IDialogCallback callback) {
         this.callback = callback;
-    }
-
-    public static VipTipsDialog getInstance(IDialogCallback callback) {
-        if (instance == null) {
-            synchronized (VipTipsDialog.class) {
-                if (instance == null) {
-                    instance = new VipTipsDialog(callback);
-                }
-            }
-        }
-        return instance;
     }
 
     private IDialogCallback callback;

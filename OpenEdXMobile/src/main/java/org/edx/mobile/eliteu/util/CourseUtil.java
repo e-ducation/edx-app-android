@@ -5,6 +5,7 @@ import android.content.Context;
 import org.edx.mobile.R;
 import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
+import org.edx.mobile.module.prefs.LoginPrefs;
 
 public class CourseUtil {
 
@@ -40,7 +41,10 @@ public class CourseUtil {
 
     }
 
-    public static String getEnrollButtonString(CourseDetail courseDetail, Context context) {
+    public static String getEnrollButtonString(CourseDetail courseDetail, Context context, LoginPrefs loginPrefs) {
+        if (null == loginPrefs.getUsername()) {
+            return context.getString(R.string.enroll_now_button_text);
+        }
         String enrollButtonStr;
         if (courseDetail.has_cert) {
             enrollButtonStr = context.getString(R.string.view_course_button_text);

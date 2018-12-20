@@ -12,4 +12,49 @@
     <string name="qq_text">QQ</string>
     <string name="weixin_text">WeChat</string>
     <string name="weibo_text">WeiBo</string>
+    <string name="label_my_vip" tools:ignore="MissingTranslation">EliteMBA</string>
+    <string name="vip_header_label">EliteMBA VIP membership</string>
+    <string name="vip_nonactivated_header_tip">Become a VIP member and watch all EliteMBA courses for free.</string>
+    <string name="vip_data_of_begin">Opened on: %1$s</string>
+    <string name="vip_data_of_expiry">Expire on: %1$s</string>
+    <string name="vip_remainint_time">Opened for %1$s day(s) %2$s day(s) left</string>
+    <string name="vip_data_of_last_open">Last Opened on: %1$s</string>
+    <string name="vip_expired_time">VIP expired %1$s</string>
+    <string name="vip_page_title">VIP</string>
+    <string name="chose_pay_way">Choose payment method</string>
+    <string name="tuition">Payment: </string>
+    <string name="wechat_pay_tv">WeChat</string>
+    <string name="alipay_tv">Alipay</string>
+    <string name="pay_submit_lable">Submit Payment</string>
+    <string name="my_course_item_vip_expired">Renew Your VIP Membership</string>
+    <string name="vip_tips_text"><![CDATA[The course you have chosen belongs to <font color="#3288cc">EliteMBA</font>.Become a VIP member and <font color="#3288cc">learn your course for free</font>.]]></string>
+    <string name="vip_not_yet_text">Not Now</string>
+    <string name="become_vip">Join VIP</string>
+    <string name="mobile_hint_str">Please enter cellphone number</string>
+    <string name="verification_code_hint_str">Please enter verification code</string>
+    <string name="verification_code_btn_str">Verification</string>
+    <string name="verification_code_has_send">Verification sent</string>
+    <string name="binding_success">Binding Succeed!</string>
+    <string name="binding_fail">Binding Failed!</string>
+    <string name="bind_mobie_dialog_title">System Reminder</string>
+    <string name="bind_mobie_dialog_message">In response to national regulations on the real-name requirement of the account, please complete the phone binding before proceeding.</string>
+    <string name="bind_mobie_dialog_negativeText">No</string>
+    <string name="bind_mobie_dialog_positiveText">Bind Phone</string>
+    <string name="not_bind_mobile">Unbound cellphone</string>
+    <string name="already_bind_mobile">Bound cellphone</string>
+    <string name="bind_mobile">Bind Phone</string>
+
+    <!--TODO 待定-->
+    <string name="share_vip_message">I’ve become an {platform_name} VIP, enjoying high-value online MBA courses with only ￥99.8 per month. Join in now! Check it out! {vip_url}</string>
+    <string name="wechat_not_install">Please install Wechat or choose other payment methods.</string>
+    <string name="progress_dialog_message">Loading...</string>
+    <string name="check_order_fail">Failed. Please try again later.</string>
+    <string name="pay_fail">Failed. Please try again later.</string>
+    <string name="pay_confirming">Payment processing...</string>
+    <string name="pay_cancle">Payment cancelled.</string>
+    <string name="vip_order_check_success">Congratulations! You’ve become an EliteMBA VIP.</string>
+    <string name="single_class_buy_not_supported">Sorry, purchase is currently unavailable in App. Please proceed on PC.</string>
+    <string name="phone_number_format_not_correct">Wrong mobile format.</string>
+    <string name="get_verification_code_error">Failed to get verification code, please try again later.</string>
+
 </resources>

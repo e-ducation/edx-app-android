@@ -24,7 +24,7 @@ public class BindMobileUtil {
 
     private static volatile BindMobileUtil instance = null;
 
-    public static final String TIME_FORMAT = "yyyy-MM-dd HH:mm";
+    public static final String TIME_FORMAT = "yyyy-MM-dd";
 
     public static final String BIND_MOBILE_SP_KEY = "bind_mobile_dialog_last_show_time";
 

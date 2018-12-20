@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,10 @@ import org.edx.mobile.eliteu.util.CourseUtil;
 import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.eliteu.vip.ui.VipTipsDialog;
+import org.edx.mobile.http.HttpStatus;
+import org.edx.mobile.http.HttpStatusException;
 import org.edx.mobile.http.callback.CallTrigger;
+import org.edx.mobile.http.callback.Callback;
 import org.edx.mobile.http.callback.ErrorHandlingCallback;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
@@ -65,7 +69,7 @@ import static org.edx.mobile.http.util.CallUtil.executeStrict;
 
 public class CourseDetailFragment extends BaseFragment {
 
-    private static final int LOG_IN_REQUEST_CODE = 42;
+    public static final int LOG_IN_REQUEST_CODE = 42;
 
     @Nullable
     private Call<CourseDetail> getCourseDetailCall;
@@ -109,6 +113,8 @@ public class CourseDetailFragment extends BaseFragment {
 
     @Inject
     Router router;
+
+    public static final String RETRY_EXCEPTION_MESSAGE = "Unsatisfiable Request (only-if-cached)";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -241,7 +247,7 @@ public class CourseDetailFragment extends BaseFragment {
                 pCallback, mCallback, CallTrigger.LOADING_CACHED) {
             @Override
             protected void onResponse(@NonNull final CourseDetail courseDetail) {
-                CourseDetailFragment.this.courseDetail =courseDetail;
+                CourseDetailFragment.this.courseDetail = courseDetail;
                 configureEnrollButtonWithVip();
                 if (courseDetail.overview != null && !courseDetail.overview.isEmpty()) {
                     populateAboutThisCourse(courseDetail.overview);
@@ -342,10 +348,14 @@ public class CourseDetailFragment extends BaseFragment {
     }
 
     private void configureEnrollButtonWithVip() {
-        mEnrollButton.setText(CourseUtil.getEnrollButtonString(courseDetail, getActivity()));
+        mEnrollButton.setText(CourseUtil.getEnrollButtonString(courseDetail, getActivity(), environment.getLoginPrefs()));
         mEnrollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (null == environment.getLoginPrefs().getUsername()) {
+                    startActivityForResult(environment.getRouter().getRegisterIntent(), LOG_IN_REQUEST_CODE);
+                    return;
+                }
                 int event = CourseUtil.getEnrollButtonOnClickEvent(courseDetail);
                 switch (event) {
                     case CourseUtil.CLICK_OPEN_COURSE:
@@ -369,7 +379,8 @@ public class CourseDetailFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOG_IN_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            enrollInCourse();
+//            enrollInCourse();
+            populateAboutThisCourse();
         }
     }
 
@@ -428,6 +439,12 @@ public class CourseDetailFragment extends BaseFragment {
                     environment.getRouter().showCourseDashboardTabs(getActivity(), course, false);
                 }
             }
+        } catch (HttpStatusException exception) {
+            int code = exception.getResponse().code();
+            String message = exception.getResponse().message();
+            if (code == HttpStatus.GATEWAY_TIMEOUT && TextUtils.equals(RETRY_EXCEPTION_MESSAGE, message)) {
+                openCourseDashboardReTry();
+            }
         } catch (Exception exception) {
             logger.debug(exception.toString());
             Toast.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
@@ -436,7 +453,7 @@ public class CourseDetailFragment extends BaseFragment {
     }
 
     private void showVipTipsDialog() {
-        mVipTipsDialog = VipTipsDialog.getInstance(new IDialogCallback() {
+        mVipTipsDialog = new VipTipsDialog(new IDialogCallback() {
             @Override
             public void onPositiveClicked() {
                 router.showVip(getActivity(), VipActivity.VIP_SELECT_ID);
@@ -473,12 +490,39 @@ public class CourseDetailFragment extends BaseFragment {
     }
 
     private void initBecomeVipResultCallBack() {
-         RxBus.getDefault().toObservable(BuyVipSuccessEvent.class)
+        RxBus.getDefault().toObservable(BuyVipSuccessEvent.class)
                 .subscribe(new Consumer<BuyVipSuccessEvent>() {
                     @Override
                     public void accept(BuyVipSuccessEvent buyVipSuccessEvent) throws Exception {
                         courseDetail.is_vip = true;
                     }
                 });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AuthPanelUtils.reConfigureAuthPanel(getActivity().findViewById(R.id.auth_panel), environment, this);
+    }
+
+    private void openCourseDashboardReTry() {
+        courseApi.getEnrolledCourses().enqueue(new Callback<List<EnrolledCoursesResponse>>() {
+            @Override
+            protected void onResponse(@NonNull List<EnrolledCoursesResponse> enrolledCoursesResponse) {
+                for (EnrolledCoursesResponse course : enrolledCoursesResponse) {
+                    if (course.getCourse().getId().equals(courseDetail.course_id)) {
+                        environment.getRouter().showMainDashboard(getActivity());
+                        environment.getRouter().showCourseDashboardTabs(getActivity(), course, false);
+                    }
+                }
+            }
+
+            @Override
+            protected void onFailure(@NonNull Throwable error) {
+                super.onFailure(error);
+                logger.debug(error.toString());
+                Toast.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

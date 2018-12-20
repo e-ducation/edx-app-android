@@ -16,6 +16,8 @@ public class ThirdPartyLoginConstants {
 
     public static String VIP_URL = "/vip?device=android";
 
+    public static String VIP_SHARE_URL = "/vip";
+
     public static String getBackendByType(int type) {
         switch (type) {
             case IThirdPartyConfig.TYPE_QQ:

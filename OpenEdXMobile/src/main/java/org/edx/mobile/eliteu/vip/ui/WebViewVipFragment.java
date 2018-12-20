@@ -17,12 +17,14 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.google.inject.Inject;
 import com.jakewharton.rxbinding3.view.RxView;
 
 import org.edx.mobile.R;
 import org.edx.mobile.event.EnrolledInCourseEvent;
 import org.edx.mobile.event.NetworkConnectivityChangeEvent;
 import org.edx.mobile.social.ThirdPartyLoginConstants;
+import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.ResourceUtil;
 import org.edx.mobile.util.UiUtil;
@@ -50,6 +52,9 @@ public class WebViewVipFragment extends AuthenticatedWebViewFragment {
     private ViewTreeObserver.OnScrollChangedListener onScrollChangedListener;
 
     private boolean refreshOnResume = false;
+
+    @Inject
+    Config config;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -226,7 +231,7 @@ public class WebViewVipFragment extends AuthenticatedWebViewFragment {
     private void shareVip() {
         final Map<String, CharSequence> shareTextParams = new HashMap<>();
         shareTextParams.put("platform_name", getString(R.string.platform_name));
-        shareTextParams.put("vip_url", ThirdPartyLoginConstants.VIP_URL);
+        shareTextParams.put("vip_url", config.getApiHostURL() + ThirdPartyLoginConstants.VIP_SHARE_URL);
         final String shareText = ResourceUtil.getFormattedString(getResources(), R.string.share_vip_message, shareTextParams).toString();
         ShareUtils.showShareMenu(getActivity(), ShareUtils.newShareIntent(shareText), getActivity().findViewById(R.id.menu_item_account), new ShareUtils.ShareMenuItemListener() {
             @Override
