@@ -543,4 +543,9 @@
     <style name="edX.Widget.TextInputLayout.HintTextAppearance" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textColor">@color/edx_brand_primary_base</item>
     </style>
+
+    <style name="WxPayStyle" parent="@android:style/Theme.NoDisplay">
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
 </resources>
