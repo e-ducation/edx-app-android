@@ -11,10 +11,12 @@ import android.support.v7.app.ActionBar;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.lbz.login.auth.AuthManager;
 import com.lbz.login.callback.ThirdPartyAuthCallback;
+import com.lbz.login.config.IThirdPartyConfig;
 import com.lbz.login.config.ThirdPartyConfigManager;
 import com.lbz.login.entities.AuthResult;
 
@@ -378,6 +380,9 @@ public class LoginActivity
 
         @Override
         public void fail(int errorCode, String defaultMsg) {
+            if (errorCode == IThirdPartyConfig.ErrorCode.ERROR_NOT_INSTALLED) {
+                Toast.makeText(LoginActivity.this, defaultMsg, Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
