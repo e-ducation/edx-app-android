@@ -19,12 +19,14 @@ import android.view.accessibility.AccessibilityEvent;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 import com.lbz.login.auth.AuthManager;
 import com.lbz.login.callback.ThirdPartyAuthCallback;
+import com.lbz.login.config.IThirdPartyConfig;
 import com.lbz.login.config.ThirdPartyConfigManager;
 import com.lbz.login.entities.AuthResult;
 
@@ -697,6 +699,9 @@ public class RegisterActivity extends BaseFragmentActivity
 
         @Override
         public void fail(int errorCode, String defaultMsg) {
+            if (errorCode == IThirdPartyConfig.ErrorCode.ERROR_NOT_INSTALLED) {
+                Toast.makeText(RegisterActivity.this, defaultMsg, Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
