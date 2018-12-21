@@ -27,7 +27,7 @@
     <string name="alipay_tv">支付宝支付</string>
     <string name="pay_submit_lable">去支付</string>
     <string name="my_course_item_vip_expired">订阅期满请及时续费</string>
-    <string name="vip_tips_text"><![CDATA[该门课程属于<font color="#3288cc">英荔商学院</font>的专属课程，成为会员可以在有效期内<font color="#3288cc">免费学习</font>]]></string>
+    <string name="vip_tips_text"><![CDATA[你选择的该门课程是属于<font color="#3288cc">英荔商学院</font>的课程，成为会员可以在有效期内<font color="#3288cc">免费学习</font>]]></string>
     <string name="vip_not_yet_text">暂不加入</string>
     <string name="become_vip">加入会员</string>
     <string name="mobile_hint_str">请输入手机号</string>

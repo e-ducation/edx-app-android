@@ -27,7 +27,7 @@
     <string name="alipay_tv">Alipay</string>
     <string name="pay_submit_lable">Submit Payment</string>
     <string name="my_course_item_vip_expired">Renew Your VIP Membership</string>
-    <string name="vip_tips_text"><![CDATA[The course you have chosen belongs to <font color="#3288cc">EliteMBA</font>.Become a VIP member and <font color="#3288cc">learn your course for free</font>.]]></string>
+    <string name="vip_tips_text"><![CDATA[The course you have chosen belongs to <font color="#3288cc">EliteMBA</font>.Become a VIP member and learn your course <font color="#3288cc">for free</font>.]]></string>
     <string name="vip_not_yet_text">No</string>
     <string name="become_vip">Yes</string>
     <string name="mobile_hint_str">Please enter cellphone number</string>
