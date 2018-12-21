@@ -266,10 +266,10 @@ if (firebaseEnabled?: false) {
 android {
     signingConfigs {
         releasekey {
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file('C:/Elitemc Work/Key store/eliteu.jks')
+            storePassword 'eliteu'
+            keyAlias 'eliteu'
+            keyPassword 'eliteu'
         }
     }
 
@@ -382,6 +382,7 @@ android {
             }
         }
         testOptions.unitTests.includeAndroidResources = true
+        signingConfig signingConfigs.releasekey
     }
     sourceSets {
         main {
@@ -421,7 +422,7 @@ android {
     }
 
     lintOptions {
-        abortOnError true
+        abortOnError false
         showAll true
         warning 'TypographyQuotes', 'InvalidPackage'
         error 'StopShip', 'ContentDescription'
@@ -446,6 +447,7 @@ android {
             testCoverageEnabled true
             pseudoLocalesEnabled true // Set device language to "en_XA" to test glyphs, or "ar_XB" to test RTL support
             manifestPlaceholders = [ supportsRtl:"true"]
+            signingConfig signingConfigs.releasekey
         }
         debuggable.initWith(buildTypes.debug)
         debuggable {
