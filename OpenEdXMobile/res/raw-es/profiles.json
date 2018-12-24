@@ -8,7 +8,7 @@
               "options" : {
                 "values" : [
                             { "name" : "Perfil Completo", "value" : "all_users" },
-                            { "name" : "Perfil Limitado",  "value" : "privado" }
+                            { "name" : "Perfil Limitado",  "value" : "private" }
                  ]
               },
               "instructions" : "Un perfil limitado comunica solo tu nombre de usuario y tu foto.  ",

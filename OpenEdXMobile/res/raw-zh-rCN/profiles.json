@@ -8,7 +8,7 @@
               "options" : {
                 "values" : [
                             { "name" : "完整档案", "value" : "all_users" },
-                            { "name" : "有限档案",  "value" : "私人的" }
+                            { "name" : "有限档案",  "value" : "private" }
                  ]
               },
               "instructions" : "有限档案仅分享你的用户名和档案照片。",
