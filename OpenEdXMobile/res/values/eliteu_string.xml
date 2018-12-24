@@ -42,7 +42,7 @@
     <string name="bind_mobie_dialog_positiveText">Bind Phone</string>
     <string name="not_bind_mobile">Unbound cellphone</string>
     <string name="already_bind_mobile">Bound cellphone</string>
-    <string name="bind_mobile">Bind Phone</string>
+    <string name="bind_mobile">Binding Your Cellphone</string>
 
     <string name="course_detail_vip_info">Subscribe VIP</string>
     <string name="course_detail_vip_view_detail">Details</string>
