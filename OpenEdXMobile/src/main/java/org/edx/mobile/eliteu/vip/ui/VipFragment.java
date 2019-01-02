@@ -242,7 +242,7 @@ public class VipFragment extends OfflineSupportBaseFragment {
                 String remaining_time = String.format(getResources().getString(R.string.vip_remainint_time), has_passed_day, remain_days);
 
                 int pixelSize = getResources().getDimensionPixelSize(R.dimen.dp24);
-                int index = remaining_time.indexOf(String.valueOf(remain_days));
+                int index = remaining_time.lastIndexOf(String.valueOf(remain_days));
                 ColorStateList colors = ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.vip_current_price_unselecct_color));
                 TextAppearanceSpan textAppearanceSpan = new TextAppearanceSpan(null, 0, pixelSize, colors, null);
                 SpannableStringBuilder spanBuilder = new SpannableStringBuilder(remaining_time);
