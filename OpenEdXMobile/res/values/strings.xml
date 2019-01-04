@@ -54,6 +54,11 @@
     <!-- Label explaining what wifi only means in detail -->
     <string name="settings_wifi_bottom">Only download content when Wi-Fi is turned on</string>
 
+    <!-- Label for the Download to sd-card setting -->
+    <string name="settings_download_to_sdcard_title" tools:ignore="MissingTranslation">Download Video to SD Card</string>
+    <!-- Label explaining the download location setting in detail -->
+    <string name="settings_download_to_sdcard_subtitle" tools:ignore="MissingTranslation">Videos will be downloaded to the SD Card if available</string>
+
     <!-- Certificate Page -->
     <!-- Description of button that will open the certificate sharing menu -->
     <string name="share_certificate_button">Share your certificate</string>
@@ -213,6 +218,15 @@
     <string name="label_ended">Ended {date}</string>
     <!-- Label for date when course is ending -->
     <string name="label_ending">Ending {date}</string>
+
+    <!-- Label for date when course is expiring in a specific time frame like in 2 days -->
+    <string name="label_expires" tools:ignore="MissingTranslation">Course access expires {date}</string>
+    <!-- Label for date when course is expiring on a specific date like on December 5 -->
+    <string name="label_expires_on" tools:ignore="MissingTranslation">Course access expires on {date}</string>
+    <!-- Label for date when course expired a specific time ago like 2 days ago -->
+    <string name="label_expired" tools:ignore="MissingTranslation">Course access expired {date}</string>
+    <!-- Label for date when course expired on a specific date like on November 5 -->
+    <string name="label_expired_on" tools:ignore="MissingTranslation">Course access expired on {date}</string>
 
     <!-- Course Details -->
     <!-- Accessible content description of label for course content -->

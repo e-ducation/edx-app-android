@@ -7,6 +7,7 @@ import org.edx.mobile.interfaces.SectionItemInterface;
 @SuppressWarnings("serial")
 public class EnrolledCoursesResponse implements SectionItemInterface {
 
+    private String auditAccessExpires;
     private String created;
     private String mode;
     private boolean is_active;
@@ -20,6 +21,14 @@ public class EnrolledCoursesResponse implements SectionItemInterface {
     public long size;
     public boolean is_vip;//是否是vip
     public boolean is_normal_enroll;//是否单课购买
+
+    public String getAuditAccessExpires() {
+        return auditAccessExpires;
+    }
+
+    public void setAuditAccessExpires(String auditAccessExpires) {
+        this.auditAccessExpires = auditAccessExpires;
+    }
 
     public String getCreated() {
         return created;
