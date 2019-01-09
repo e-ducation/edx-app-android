@@ -468,7 +468,7 @@ Si no lo recibe en algunos minutos, asegúrese de revisar su carpeta de spam.</s
   <!--Button leading user to log in screen-->
   <string name="launch_login">Iniciar sesión</string>
   <!--Introduction text on the launch screen-->
-  <string name="launch_text">Cursos gratuitos de las mejores universidades del mundo en tu bolsillo.</string>
+  <string name="launch_text">Enjoy high-value MBA curriculum with ￥99.84 monthly payment!</string>
   <!--Search view leading user to Find Courses screen from the launch screen upon searching some text-->
   <string name="launch_search_courses">Buscar cursos</string>
   <!--Registration Screen-->

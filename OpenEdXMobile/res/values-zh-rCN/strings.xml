@@ -13,7 +13,7 @@
   <!--Invitation Only button text-->
   <string name="invitation_only_button_text">仅限受邀</string>
   <!--Effort field name-->
-  <string name="effort_field_name">付出：</string>
+  <string name="effort_field_name">预计课时：</string>
   <!--When discovering courses, some courses have an externally hosted video that describes it.
     In that case, a play icon is shown on top of the course image. This is the content description.-->
   <string name="go_to_video">跳转视频</string>
@@ -40,6 +40,10 @@
   <string name="settings_wifi_top">仅在 Wi-Fi 下下载</string>
   <!--Label explaining what wifi only means in detail-->
   <string name="settings_wifi_bottom">仅在 Wi-Fi 开启时下载内容</string>
+  <!--Label for the Download to sd-card setting-->
+  <string name="settings_download_to_sdcard_title" tools:ignore="MissingTranslation">下载视频到 SD 卡</string>
+  <!--Label explaining the download location setting in detail-->
+  <string name="settings_download_to_sdcard_subtitle" tools:ignore="MissingTranslation">视频可用时会被下载到 SD 卡</string>
   <!--Certificate Page-->
   <!--Description of button that will open the certificate sharing menu-->
   <string name="share_certificate_button">分享您的证书</string>
@@ -77,7 +81,7 @@
   <!--Create account agreement. Followed by list of agreement names like "End User License Agreement"-->
   <string name="by_creating_account">创建账号即表明您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
   <!--Sign In agreement. Followed by list of agreement names like "End User License Agreement"-->
-  <string name="by_signing_in">注册此App即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
+  <string name="by_signing_in">注册此 App 即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
   <!--Label for End User License Agreement-->
   <string name="licensing_agreement">{platform_name}终端用户许可协议</string>
   <!--Label for Terms of Service and Honor Code-->
@@ -93,7 +97,7 @@
   <!--Button text to show user current downloads screen-->
   <string name="label_current_downloads">查看当前下载</string>
   <!--Content description for edit profile button-->
-  <string name="open_profile_button">打开你的档案</string>
+  <string name="open_profile_button">打开您的档案</string>
   <!--Title of user's course list screen-->
   <string name="label_my_courses">课程</string>
   <!--Title of user's program list screen-->
@@ -135,7 +139,7 @@
   <!--Password reset dialog prompt-->
   <string name="confirm_dialog_message_help">输入您帐户的电子邮件地址，我们将发送重置密码的说明。</string>
   <!--Label explaining toggle for cellular data access-->
-  <string name="wifi_dialog_message_help">允许你的设备在 Wi-Fi 不可用时，通过手机的数据流量下载视频。可能会产生数据费用。</string>
+  <string name="wifi_dialog_message_help">允许您的设备在 Wi-Fi 不可用时，通过手机的数据流量下载视频。可能会产生数据费用。</string>
   <!--Info message text for to let use know how many videos were deleted-->
   <plurals name="delete_video_snackbar_msg">
     <item quantity="other">%s 个视频已删除</item>
@@ -190,6 +194,14 @@
   <string name="label_ended">已于{date}结束</string>
   <!--Label for date when course is ending-->
   <string name="label_ending">即将于{date}结束</string>
+  <!--Label for date when course is expiring in a specific time frame like in 2 days-->
+  <string name="label_expires" tools:ignore="MissingTranslation">课程截止日期 {date}</string>
+  <!--Label for date when course is expiring on a specific date like on December 5-->
+  <string name="label_expires_on" tools:ignore="MissingTranslation">课程截止日期 {date}</string>
+  <!--Label for date when course expired a specific time ago like 2 days ago-->
+  <string name="label_expired" tools:ignore="MissingTranslation">课程截止日期 {date}</string>
+  <!--Label for date when course expired on a specific date like on November 5-->
+  <string name="label_expired_on" tools:ignore="MissingTranslation">课程截止日期 {date}</string>
   <!--Course Details-->
   <!--Accessible content description of label for course content-->
   <string name="course_content">课程内容</string>
@@ -212,7 +224,7 @@
   <!--Title of the screen where user can delete videos-->
   <string name="delete_videos_title">删除视频</string>
   <!--Label for a course item's due date for same day-->
-  <string name="due_date_today">截止日期到 {due_date}</string>
+  <string name="due_date_today">截止日期为 {due_date}</string>
   <!--Label for a course item's due date-->
   <string name="due_date_past_future">截止 {due_date}</string>
   <!--Discussion Topics-->
@@ -464,7 +476,7 @@
   <!--Button leading user to log in screen-->
   <string name="launch_login">登录</string>
   <!--Introduction text on the launch screen-->
-  <string name="launch_text">价值数十万的MBA课程体系，最低月均99.8元全年畅学</string>
+  <string name="launch_text">价值数十万的MBA课程体系，最低月均99.84元全年畅学！</string>
   <!--Search view leading user to Find Courses screen from the launch screen upon searching some text-->
   <string name="launch_search_courses">搜索课程</string>
   <!--Registration Screen-->
@@ -483,21 +495,21 @@
   <!--Text for successful registration with social token-->
   <string name="sign_up_with_facebook_ok">您已成功使用 Facebook 登录。</string>
   <string name="sign_up_with_google_ok">您已成功使用 Google 登录。</string>
-  <string name="sign_up_with_social_ok">在您开始通过 {platform_name} 学习之前，我们还需要一点其他信息。</string>
+  <string name="sign_up_with_social_ok">您只需再多提供一点信息就可以开始在 {platform_name} 学习了。</string>
   <!--Continue registration after social login-->
   <string name="complete_registration">完成您的注册</string>
   <!--Message shown when enrolling in a course fails-->
-  <string name="enrollment_failure">我们目前无法将你加入到这门课程。</string>
+  <string name="enrollment_failure">我们目前无法将您加入到这门课程。</string>
   <!--Alert dialog button allowing user to repeat their attempted action-->
   <string name="try_again">请重试</string>
   <!--Registration error-->
   <string name="registration_error_title">注册错误</string>
-  <string name="registration_error_message">更新高亮区域并重试</string>
+  <string name="registration_error_message">更新标注区域并重试</string>
   <!--data charges may apply dialog text-->
   <!--Alert dialog title shown for users whose in app data is zero rated, when they follow a link outside the app-->
   <string name="open_external_url_title">可能会产生数据流量费用</string>
   <!--Alert dialog content shown for users whose in app data is zero rated, when they follow a link outside the app-->
-  <string name="open_external_url_desc">此链接将在你的浏览器中打开，这可能产生额外的数据费用。</string>
+  <string name="open_external_url_desc">此链接将在您的浏览器中打开，这可能产生额外的数据费用。</string>
   <string name="android">Android</string>
   <!--Email subject line when user attempts to submit feedback about the app-->
   <string name="email_subject">用户反馈</string>
@@ -524,7 +536,7 @@
   <string name="forum_no_results_for_following">您还没有关注任何发帖。</string>
   <string name="forum_no_results_for_filtered_following">过滤结果不包含任何关注的帖子。</string>
   <string name="forum_no_results_in_category">在此讨论类别中尚无发帖。</string>
-  <string name="forum_no_results_with_filter">尝试移除你的帖子过滤器。</string>
+  <string name="forum_no_results_with_filter">尝试移除您的帖子过滤器。</string>
   <string name="forum_post_i_am_following">我关注的帖子</string>
   <string name="forum_follow">关注</string>
   <string name="forum_unfollow">取消关注</string>
@@ -592,11 +604,11 @@
   <!--Text that pre-populates your post/email/SMS when sharing certificate-->
   <string name="share_accomplishment_message">我刚在 {platform_name} 上获得了一个勋章！看一看：{badge_url}</string>
   <!--Question on the app rating dialog-->
-  <string name="rating_dialog_message">你怎样评价此应用？</string>
+  <string name="rating_dialog_message">您怎样评价此应用？</string>
   <!--Dialog title for positive app review-->
   <string name="rate_app_dialog_title">评价应用</string>
   <!--Dialog message for positive app review-->
-  <string name="rate_app_dialog_message">随手评论一下，让他人了解你对 {platform_name} 应用的看法</string>
+  <string name="rate_app_dialog_message">撰写快速评论，让他人了解您对 {platform_name} 应用软件的看法</string>
   <!--Dialog title for negative app review-->
   <string name="feedback_dialog_title">反馈一下？</string>
   <!--Dialog message for negative app review-->
@@ -606,5 +618,5 @@
   <!--accessibility label for rating selection on rating bar-->
   <string name="rating_bar_selection">{rating} / {num_of_stars}</string>
   <!--Title of the Whats New screen e.g. Version 2.8.1 New Features-->
-  <string name="whats_new_title">版本 {version_number} 的新特性</string>
+  <string name="whats_new_title">{version_number} 版本新特性</string>
 </resources>

@@ -28,11 +28,11 @@
   <!--Alert dialog submit button-->
   <string name="label_submit">提交</string>
   <!--Alert dialog send feedback button-->
-  <string name="label_send_feedback">反馈</string>
+  <string name="label_send_feedback">发送反馈</string>
   <!--Alert dialog maybe later button-->
-  <string name="label_maybe_later">再议</string>
+  <string name="label_maybe_later">以后再说</string>
   <!--Alert dialog rate the app button-->
-  <string name="label_rate_the_app">评分</string>
+  <string name="label_rate_the_app">给 App 评分</string>
   <!--Alert dialog and snackbar button for opening an app store to update the app to the latest version-->
   <string name="label_update">更新</string>
   <!--Done button label-->
