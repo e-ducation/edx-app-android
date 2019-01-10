@@ -32,18 +32,18 @@
   <string name="search_subjects">搜索科目</string>
   <!--Course Sharing-->
   <!--Description of button that will open the share course menu-->
-  <string name="share_course_button">分享您的课程</string>
+  <string name="share_course_button">分享课程</string>
   <!--Share course-->
   <string name="share_course_message">我正在 {platform_name} 上学习课程！看一看：</string>
   <!--Settings Page-->
   <!--Label for wifi only switch-->
-  <string name="settings_wifi_top">仅在 Wi-Fi 下下载</string>
+  <string name="settings_wifi_top">仅在Wi-Fi下载</string>
   <!--Label explaining what wifi only means in detail-->
-  <string name="settings_wifi_bottom">仅在 Wi-Fi 开启时下载内容</string>
+  <string name="settings_wifi_bottom">仅在Wi-Fi开启时下载内容</string>
   <!--Label for the Download to sd-card setting-->
-  <string name="settings_download_to_sdcard_title" tools:ignore="MissingTranslation">下载视频到 SD 卡</string>
+  <string name="settings_download_to_sdcard_title" tools:ignore="MissingTranslation">下载视频到SD卡</string>
   <!--Label explaining the download location setting in detail-->
-  <string name="settings_download_to_sdcard_subtitle" tools:ignore="MissingTranslation">视频可用时会被下载到 SD 卡</string>
+  <string name="settings_download_to_sdcard_subtitle" tools:ignore="MissingTranslation">视频可用时会被下载到SD卡</string>
   <!--Certificate Page-->
   <!--Description of button that will open the certificate sharing menu-->
   <string name="share_certificate_button">分享您的证书</string>
@@ -58,7 +58,7 @@
   <!--Hint text for login field-->
   <string name="email_username">用户名或邮箱</string>
   <!--Hint text for email address field in reset password dialog-->
-  <string name="email">邮箱地址</string>
+  <string name="email">电子邮件地址</string>
   <!--Hint text for password field-->
   <string name="password">密码</string>
   <!--Button text allowing user to reset their password-->
@@ -76,12 +76,12 @@
   <!--Generic error during log in-->
   <string name="error_heading">登录时出现以下错误</string>
   <!--Error during log in.-->
-  <string name="login_failed">请确保用户名/邮箱与密码正确，再重试。</string>
+  <string name="login_failed">请确保输入正确的户名/邮箱与密码，再重试。</string>
   <!--License Agreement related string on Login and Regiser screens-->
   <!--Create account agreement. Followed by list of agreement names like "End User License Agreement"-->
-  <string name="by_creating_account">创建账号即表明您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
+  <string name="by_creating_account">创建账号即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
   <!--Sign In agreement. Followed by list of agreement names like "End User License Agreement"-->
-  <string name="by_signing_in">注册此 App 即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
+  <string name="by_signing_in">登录此App即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
   <!--Label for End User License Agreement-->
   <string name="licensing_agreement">{platform_name}终端用户许可协议</string>
   <!--Label for Terms of Service and Honor Code-->
@@ -126,7 +126,7 @@
   <string name="title_account">账户</string>
   <!--Help Dialog Place Holder messages-->
   <!--Reset password alert dialog title-->
-  <string name="confirm_dialog_title_help">密码重置</string>
+  <string name="confirm_dialog_title_help">重置密码</string>
   <!--Reset password alert dialog message-->
   <string name="success_dialog_title_help">已发送密码重置邮件</string>
   <!--Reset password alert dialog title-->
@@ -134,20 +134,20 @@
   <!--Label for switch controlling whether users permit downloading using cellular data or only wifi-->
   <string name="wifi_dialog_title_help">允许通过数据流量下载</string>
   <!--Password reset sent succesfully alert-->
-  <string name="success_dialog_message_help">我们已经发送了一封含有密码重置信息的邮件到您的电子邮件地址。
-如果您在几分钟之后还未查看到，请注意检查您的垃圾邮件。</string>
+  <string name="success_dialog_message_help">我们已经发送了一封含有密码重置信息的邮件到您的邮箱。
+如果您在几分钟之后还未收到，请注意检查您的垃圾邮件。</string>
   <!--Password reset dialog prompt-->
-  <string name="confirm_dialog_message_help">输入您帐户的电子邮件地址，我们将发送重置密码的说明。</string>
+  <string name="confirm_dialog_message_help">请输入您帐号的邮件地址，我们将发送重置密码的邮件。</string>
   <!--Label explaining toggle for cellular data access-->
-  <string name="wifi_dialog_message_help">允许您的设备在 Wi-Fi 不可用时，通过手机的数据流量下载视频。可能会产生数据费用。</string>
+  <string name="wifi_dialog_message_help">允许您的设备在Wi-Fi不可用时，通过手机数据流量下载视频，可能会产生数据费用。</string>
   <!--Info message text for to let use know how many videos were deleted-->
   <plurals name="delete_video_snackbar_msg">
-    <item quantity="other">%s 个视频已删除</item>
+    <item quantity="other">已删除%s个视频</item>
   </plurals>
   <!--Alert dialog title for users with zero rated data-->
   <string name="leaving_app_data_title">离开 {platform_name} 应用</string>
   <!--Alert dialog content for users with zero rated data-->
-  <string name="leaving_app_data_message">如果离开本应用，您将无法再查看免费的 {platform_name}  内容。可能会收取数据费用。</string>
+  <string name="leaving_app_data_message">如果离开本应用，您将无法再查看免费的{platform_name}内容。可能会收取数据费用。</string>
   <!--Title of agreement users must accept to use the app-->
   <string name="end_user_title">最终用户许可协议</string>
   <!--Title of privacy policy users must accept to use the app-->
@@ -191,9 +191,9 @@
   <!--Label for date when course starts-->
   <string name="label_starting">即将于{date}开始</string>
   <!--Label for course that has ended-->
-  <string name="label_ended">已于{date}结束</string>
+  <string name="label_ended">{date}已结束</string>
   <!--Label for date when course is ending-->
-  <string name="label_ending">即将于{date}结束</string>
+  <string name="label_ending">将于{date}结束</string>
   <!--Label for date when course is expiring in a specific time frame like in 2 days-->
   <string name="label_expires" tools:ignore="MissingTranslation">课程截止日期 {date}</string>
   <!--Label for date when course is expiring on a specific date like on December 5-->
@@ -214,7 +214,7 @@
   <!--Label shown when no mobile-friendly videos are available in a course-->
   <string name="no_videos_text">此课程没有任何视频。</string>
   <!--Label shown when user is enrolled in no courses-->
-  <string name="no_courses_to_display">您好像还没有注册任何课程</string>
+  <string name="no_courses_to_display">您还没有加入任何课程</string>
   <!--Label shown when no announcements are available for a course-->
   <string name="no_announcements_to_display">本课程现在尚无任何通告。</string>
   <!--Label shown when no handouts are available for a course-->
@@ -226,7 +226,7 @@
   <!--Label for a course item's due date for same day-->
   <string name="due_date_today">截止日期为 {due_date}</string>
   <!--Label for a course item's due date-->
-  <string name="due_date_past_future">截止 {due_date}</string>
+  <string name="due_date_past_future">{due_date} 截止</string>
   <!--Discussion Topics-->
   <!--Label for the discussion topics page-->
   <string name="discussion_topics_title">讨论话题</string>
@@ -236,9 +236,9 @@
   <!--Title for discussion post search results-->
   <string name="discussion_posts_search_title">搜索结果</string>
   <!--Label for the the filter and sort options for refining the thread list-->
-  <string name="discussion_posts_refine">缩小范围：</string>
+  <string name="discussion_posts_refine">筛选：</string>
   <!--Label for creating a new post-->
-  <string name="discussion_post_create_new_post">创建一个帖子</string>
+  <string name="discussion_post_create_new_post">创建新帖子</string>
   <!--Label for creating a new comment-->
   <!--Discussion posts filter options-->
   <!--Discussion posts filter for all posts-->
@@ -278,11 +278,11 @@
   <!--Label for adding a discussion response-->
   <!--Label for number of discussion responses-->
   <plurals name="number_responses_or_comments_responses_label">
-    <item quantity="other">%s 个回复</item>
+    <item quantity="other">%s 回复</item>
   </plurals>
   <!--Label for number of discussion comments-->
   <plurals name="number_responses_or_comments_comments_label">
-    <item quantity="other">%s 条评论</item>
+    <item quantity="other">%s 评论</item>
   </plurals>
   <!--Label for adding a new comment-->
   <!--Label for indicating that a response is an answer-->
@@ -298,29 +298,29 @@
   <!--Discussion Responses Action Bar-->
   <!--Label to indicate number of votes-->
   <plurals name="discussion_responses_action_bar_vote_text">
-    <item quantity="other">{quantity} 票</item>
+    <item quantity="other">{quantity}票</item>
   </plurals>
   <!--Label to indicate discussion response is not marked as inappropriate-->
   <string name="discussion_responses_report_label">举报</string>
   <!--Label for discussion response that has been marked as inappropriate-->
   <string name="discussion_responses_reported_label">取消举报</string>
   <!--Title in adding a new comment-->
-  <string name="discussion_add_comment_title">增加评论</string>
+  <string name="discussion_add_comment_title">添加评论</string>
   <!--Title when adding a new comment is disabled-->
-  <string name="discussion_add_comment_disabled_title">此条回复不接受评论</string>
+  <string name="discussion_add_comment_disabled_title">此回复不接受评论</string>
   <!--Title in showing list of comments-->
   <string name="discussion_comments">评论</string>
   <!--Add comment button title in adding a new comment-->
-  <string name="discussion_add_comment_button_label">增加评论</string>
+  <string name="discussion_add_comment_button_label">添加评论</string>
   <!--Add comment button description for accessibility in adding a new comment-->
   <string name="discussion_add_comment_button_description">“增加评论”按钮</string>
   <!--Add your comment placeholder in adding a new comment-->
   <!--Title in adding a new response-->
-  <string name="discussion_add_response_title">增加回复</string>
+  <string name="discussion_add_response_title">回复</string>
   <!--Title when adding a new response is disabled-->
   <string name="discussion_add_response_disabled_title">已关闭此发帖的回复</string>
   <!--Add response button title in adding a new response-->
-  <string name="discussion_add_response_button_label">增加回复</string>
+  <string name="discussion_add_response_button_label">回复</string>
   <!--Add response button description for accessibility in adding a new response-->
   <string name="discussion_add_response_button_description">“增加回复”按钮</string>
   <!--Add your response placeholder in adding a new response-->
@@ -346,7 +346,7 @@
   <!--Label showing previous unit in a sub-section on assessment navigation bar-->
   <string name="assessment_previous">上一个</string>
   <!--Label showing assessment only available on website-->
-  <string name="assessment_not_available">此交互式组件在手机上不可用。</string>
+  <string name="assessment_not_available">此组件在手机上不可用。</string>
   <!--Label showing assessment only available on website-->
   <string name="assessment_explore_on_web">请浏览此课程的其他部分或在网页中观看。</string>
   <!--Button to show wiew on web for assessment-->
@@ -409,11 +409,11 @@
   <!--Title for bulk videos download view when in downloaded state-->
   <string name="download_complete">已下载所有视频</string>
   <!--Accessibility label of bulk download switch, when its state is OFF and no download is happening-->
-  <string name="switch_off_no_downloading">拨动开关至打开，将会下载这门课程的所有视频。</string>
+  <string name="switch_off_no_downloading">滑动开关，您将下载所有课程视频。</string>
   <!--Accessibility label of bulk download switch, when its state is ON and all videos are downloading-->
-  <string name="switch_on_all_downloading">拨动开关至关闭，将会取消下载所有视频并将删除这门课程已经下载过的视频。</string>
+  <string name="switch_on_all_downloading">关闭开关，将取消您下载的所有视频和删除已下载视频。</string>
   <!--Accessibility label of bulk download switch, when its state is ON and all videos have been downloaded-->
-  <string name="switch_on_all_downloaded">拨动开关至关闭，将删除这门课所有已下载的视频。</string>
+  <string name="switch_on_all_downloaded">关闭开关，将删除您的已下载视频。</string>
   <!--Accessibility label of full bulk download view when videos are being downloaded-->
   <string name="view_downloads">双击查看当前下载</string>
   <!--Wifi New Message-->
@@ -433,13 +433,13 @@
   <!--Accessibility Label for Play button of Video Player-->
   <string name="video_player_play">播放</string>
   <!--Accessibility Label for Pause button of Video Player-->
-  <string name="video_player_next">下一曲</string>
+  <string name="video_player_next">下一节</string>
   <!--Accessibility Label for Previous button of Video Player-->
-  <string name="video_player_previous">上一曲</string>
+  <string name="video_player_previous">上一节</string>
   <!--Accessibility Label for Pause button of Video Player-->
   <string name="video_player_pause">暂停</string>
   <!--Accessibility Label for Rewind button on Video Player bottom bar-->
-  <string name="video_player_rewind">后退 30 秒</string>
+  <string name="video_player_rewind">后退30秒</string>
   <!--Accessibility Label for Settings button on Video Player bottom bar-->
   <string name="video_player_settings">设置</string>
   <!--Accessibility Label for Entering Fullscreen button on Video Player bottom bar-->
@@ -459,7 +459,7 @@
   <!--Prompt allowing user to choose email program-->
   <string name="email_chooser_header">选择发邮件的应用...</string>
   <!--Error shown when user attempts to send email, but has no email app-->
-  <string name="email_client_not_present">未安装任何e-mail客户端</string>
+  <string name="email_client_not_present">未安装任何邮箱客户端</string>
   <!--Search for a course prompt-->
   <string name="search_for_courses">搜索课程</string>
   <!--Landing Activity text-->
@@ -493,9 +493,9 @@
   <!--Registration screen title-->
   <string name="register_title">注册</string>
   <!--Text for successful registration with social token-->
-  <string name="sign_up_with_facebook_ok">您已成功使用 Facebook 登录。</string>
-  <string name="sign_up_with_google_ok">您已成功使用 Google 登录。</string>
-  <string name="sign_up_with_social_ok">您只需再多提供一点信息就可以开始在 {platform_name} 学习了。</string>
+  <string name="sign_up_with_facebook_ok">您已成功授权Facebook登录。</string>
+  <string name="sign_up_with_google_ok">您已成功授权Google登录。</string>
+  <string name="sign_up_with_social_ok">您只需再多提供一点信息就可以在{platform_name}学习了。</string>
   <!--Continue registration after social login-->
   <string name="complete_registration">完成您的注册</string>
   <!--Message shown when enrolling in a course fails-->
@@ -510,7 +510,7 @@
   <string name="open_external_url_title">可能会产生数据流量费用</string>
   <!--Alert dialog content shown for users whose in app data is zero rated, when they follow a link outside the app-->
   <string name="open_external_url_desc">此链接将在您的浏览器中打开，这可能产生额外的数据费用。</string>
-  <string name="android">Android</string>
+  <string name="android">安卓</string>
   <!--Email subject line when user attempts to submit feedback about the app-->
   <string name="email_subject">用户反馈</string>
   <!--Email subject line when a user attempts to submit a review using the app review workflow-->
@@ -518,7 +518,7 @@
   <!--Submit Feedback app version text-->
   <string name="app_version">应用版本：</string>
   <!--Submit Feedback android version text-->
-  <string name="android_os_version">Android 操作系统： </string>
+  <string name="android_os_version">安卓操作系统： </string>
   <!--Submit Feedback android model text-->
   <string name="android_device_model">设备型号：</string>
   <!--Submit Feedback feedback text-->
@@ -531,7 +531,7 @@
   <!--Title for default channel notifications-->
   <string name="default_notification_channel_title">常规通知</string>
   <!--Discussion/Forum-->
-  <string name="forum_no_results_for_search_query">未找到“{search_query}”的结果。请尝试其他搜索词或选择一个讨论类别以浏览。</string>
+  <string name="forum_no_results_for_search_query">未找到“{search_query}”。请尝试其他搜索词或选择一个讨论类别以浏览。</string>
   <string name="forum_no_results_for_all_posts">此课程讨论中没有发帖。</string>
   <string name="forum_no_results_for_following">您还没有关注任何发帖。</string>
   <string name="forum_no_results_for_filtered_following">过滤结果不包含任何关注的帖子。</string>
@@ -542,7 +542,7 @@
   <string name="forum_unfollow">取消关注</string>
   <!--User Profiles-->
   <!--Window title for the user profile screen-->
-  <string name="profile_title">用户资料</string>
+  <string name="profile_title">个人资料</string>
   <!--The accessibility description for the username section-->
   <string name="profile_username_description">用户名：{username}</string>
   <!--The accessibility description for the language section-->
@@ -558,7 +558,7 @@
   <!--Shown when viewing another user's profile and that user is not sharing a full profile-->
   <string name="profile_sharing_limited_by_other_user">此人当前正在分享受限的档案</string>
   <!--Shown when viewing your own profile until you have confirmed you are over the age of consent (13 years old)-->
-  <string name="profile_consent_needed_explanation">您必须年满 13 岁才能分享完整档案。</string>
+  <string name="profile_consent_needed_explanation">您必须年满13岁才能分享完整档案。</string>
   <!--Shown as button below the explanation for age of consent; it launches the edit profile screen-->
   <string name="profile_consent_needed_edit_button">帐户设置</string>
   <!--Shown when viewing your own incomplete profile-->
@@ -604,7 +604,7 @@
   <!--Text that pre-populates your post/email/SMS when sharing certificate-->
   <string name="share_accomplishment_message">我刚在 {platform_name} 上获得了一个勋章！看一看：{badge_url}</string>
   <!--Question on the app rating dialog-->
-  <string name="rating_dialog_message">您怎样评价此应用？</string>
+  <string name="rating_dialog_message">您如何评价此应用？</string>
   <!--Dialog title for positive app review-->
   <string name="rate_app_dialog_title">评价应用</string>
   <!--Dialog message for positive app review-->
@@ -618,5 +618,5 @@
   <!--accessibility label for rating selection on rating bar-->
   <string name="rating_bar_selection">{rating} / {num_of_stars}</string>
   <!--Title of the Whats New screen e.g. Version 2.8.1 New Features-->
-  <string name="whats_new_title">{version_number} 版本新特性</string>
+  <string name="whats_new_title">{version_number}版本，新功能</string>
 </resources>

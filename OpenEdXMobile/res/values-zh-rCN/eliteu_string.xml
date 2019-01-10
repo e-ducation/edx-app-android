@@ -3,9 +3,9 @@
     <string name="error_account_not_linked_desc_weibo" tools:ignore="MissingTranslation">此微博账号未与任何{platform_name}账号相关联，请先注册。</string>
     <string name="error_account_not_linked_desc_qq" tools:ignore="MissingTranslation">此QQ账号未与任何{platform_name}账号相关联，请先注册。</string>
     <string name="error_account_not_linked_desc_weixin" tools:ignore="MissingTranslation">此微信账号未与任何{platform_name}账号相关联，请先注册。</string>
-    <string name="error_account_not_linked_title_weibo">微博帐户与 {platform_name} 帐户不匹配</string>
-    <string name="error_account_not_linked_title_qq">QQ帐户与 {platform_name} 帐户不匹配</string>
-    <string name="error_account_not_linked_title_weixin">微信帐户与 {platform_name} 帐户不匹配</string>
+    <string name="error_account_not_linked_title_weibo">微博帐户与{platform_name}帐户不匹配</string>
+    <string name="error_account_not_linked_title_qq">QQ帐户与{platform_name}帐户不匹配</string>
+    <string name="error_account_not_linked_title_weixin">微信帐户与{platform_name}帐户不匹配</string>
     <string name="sign_up_with_weixin_ok">您已成功授权微信登录。</string>
     <string name="sign_up_with_qq_ok">您已成功授权QQ登录。</string>
     <string name="sign_up_with_weibo_ok">您已成功授权微博登录。</string>
