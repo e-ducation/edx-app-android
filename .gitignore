@@ -63,3 +63,6 @@ gradle.properties
 
 # reports directory
 /artifacts
+
+#newrelic
+OpenEdXMobile/newrelic.properties

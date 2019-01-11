@@ -20,6 +20,7 @@ import org.edx.mobile.eliteu.bindmobile.BindMobileUtil;
 import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.vip.ui.WebViewVipFragment;
 import org.edx.mobile.event.AccountDataLoadedEvent;
+import org.edx.mobile.event.MoveToDiscoveryTabEvent;
 import org.edx.mobile.event.ProfilePhotoUpdatedEvent;
 import org.edx.mobile.model.FragmentItemModel;
 import org.edx.mobile.model.api.ProfileModel;
@@ -46,7 +47,7 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
 
     private ProfileModel profile;
 
-    private MainDashboardToolbarCallbacks toolbarCallbacks;
+    private ToolbarCallbacks toolbarCallbacks;
 
     @Nullable
     private Call<Account> getAccountCall;
@@ -77,8 +78,8 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
         if (isUserProfileEnabled) {
             profile = loginPrefs.getCurrentUserProfile();
             sendGetUpdatedAccountCall();
-        }
-        if (!isUserProfileEnabled) {
+            toolbarCallbacks.getProfileView().setVisibility(View.VISIBLE);
+        } else {
             toolbarCallbacks.getProfileView().setVisibility(View.GONE);
         }
     }
@@ -120,7 +121,7 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        toolbarCallbacks = (MainDashboardToolbarCallbacks) getActivity();
+        toolbarCallbacks = (ToolbarCallbacks) getActivity();
     }
 
     public void sendGetUpdatedAccountCall() {
@@ -189,6 +190,16 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
         }
 
         return items;
+    }
+
+    @SuppressWarnings("unused")
+    public void onEventMainThread(@NonNull MoveToDiscoveryTabEvent event) {
+        if (!environment.getConfig().getCourseDiscoveryConfig().isCourseDiscoveryEnabled()) {
+            return;
+        }
+        if (binding != null) {
+            binding.viewPager.setCurrentItem(binding.viewPager.getAdapter().getCount() - 1, true);
+        }
     }
 
     @SuppressWarnings("unused")

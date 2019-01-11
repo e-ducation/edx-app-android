@@ -3,12 +3,12 @@
     <string name="error_account_not_linked_desc_weibo" tools:ignore="MissingTranslation">此微博账号未与任何{platform_name}账号相关联，请先注册。</string>
     <string name="error_account_not_linked_desc_qq" tools:ignore="MissingTranslation">此QQ账号未与任何{platform_name}账号相关联，请先注册。</string>
     <string name="error_account_not_linked_desc_weixin" tools:ignore="MissingTranslation">此微信账号未与任何{platform_name}账号相关联，请先注册。</string>
-    <string name="error_account_not_linked_title_weibo">微博帐户与 {platform_name} 帐户不匹配</string>
-    <string name="error_account_not_linked_title_qq">QQ帐户与 {platform_name} 帐户不匹配</string>
-    <string name="error_account_not_linked_title_weixin">微信帐户与 {platform_name} 帐户不匹配</string>
-    <string name="sign_up_with_weixin_ok">您已成功使用 微信 登录。</string>
-    <string name="sign_up_with_qq_ok">您已成功使用 QQ 登录。</string>
-    <string name="sign_up_with_weibo_ok">您已成功使用 微博 登录。</string>
+    <string name="error_account_not_linked_title_weibo">微博帐户与{platform_name}帐户不匹配</string>
+    <string name="error_account_not_linked_title_qq">QQ帐户与{platform_name}帐户不匹配</string>
+    <string name="error_account_not_linked_title_weixin">微信帐户与{platform_name}帐户不匹配</string>
+    <string name="sign_up_with_weixin_ok">您已成功授权微信登录。</string>
+    <string name="sign_up_with_qq_ok">您已成功授权QQ登录。</string>
+    <string name="sign_up_with_weibo_ok">您已成功授权微博登录。</string>
     <string name="qq_text">QQ</string>
     <string name="weixin_text">微信</string>
     <string name="weibo_text">微博</string>
@@ -27,7 +27,7 @@
     <string name="alipay_tv">支付宝支付</string>
     <string name="pay_submit_lable">去支付</string>
     <string name="my_course_item_vip_expired">订阅期满请及时续费</string>
-    <string name="vip_tips_text"><![CDATA[你选择的该门课程是属于<font color="#3288cc">英荔商学院</font>的课程，成为会员可以在有效期内<font color="#3288cc">免费学习</font>]]></string>
+    <string name="vip_tips_text"><![CDATA[您选择的该门课程是属于<font color="#3288cc">英荔商学院</font>的课程，成为会员可以在有效期内<font color="#3288cc">免费学习</font>]]></string>
     <string name="vip_not_yet_text">暂不加入</string>
     <string name="become_vip">加入会员</string>
     <string name="mobile_hint_str">请输入手机号</string>
@@ -50,7 +50,7 @@
     <string name="quarter">季度</string>
     <string name="semi_annual">半年</string>
     <string name="month">月</string>
-    <string name="share_vip_message">我已率先成为 {platform_name} 会员，MBA在线课程每月学费不过百！你也赶快加入吧！入口：{vip_url}</string>
+    <string name="share_vip_message">我已率先成为 {platform_name} 会员，MBA在线课程每月学费不过百！您也赶快加入吧！入口：{vip_url}</string>
     <string name="wechat_not_install">请先安装微信或者选择其他支付方式</string>
     <string name="progress_dialog_message">加载中</string>
     <string name="check_order_fail">查询失败，请稍后重试</string>
