@@ -24,6 +24,7 @@ public enum  BlockType {
     HTML{ @Override public boolean isContainer() {return false;} },
     PROBLEM{ @Override public boolean isContainer() {return false;} },
     DISCUSSION{ @Override public boolean isContainer() {return false;} },
+    LIBRARY_CONTENT{ @Override public boolean isContainer() {return false;} },
     OTHERS{ @Override public boolean isContainer() {return false;} };
 
     abstract boolean isContainer();
