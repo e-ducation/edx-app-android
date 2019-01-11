@@ -27,6 +27,7 @@ import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.http.HttpStatus;
 import org.edx.mobile.user.Account;
 import org.edx.mobile.util.NetworkUtil;
+import org.edx.mobile.util.SoftKeyboardUtil;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -150,21 +151,22 @@ public class BindMobileFragment extends BaseFragment {
             return;
         }
         verificationBtn.setEnabled(false);
+        SoftKeyboardUtil.hide(getActivity());
         eliteApi.sendCodeBindingPhone(phone)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if (response.isSuccessful()) {
                             startCountDown();
-                            Toast.makeText(getActivity(), R.string.verification_code_has_send, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.verification_code_has_send, Toast.LENGTH_LONG).show();
                         } else {
                             verificationBtn.setEnabled(true);
                             try {
                                 String errorMsg = response.errorBody().string().replace("\"", "");
                                 if (response.code() == HttpStatus.BAD_REQUEST) {
-                                    Toast.makeText(getActivity(), errorMsg, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), errorMsg, Toast.LENGTH_LONG).show();
                                 } else {
-                                    Toast.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_LONG).show();
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -176,7 +178,7 @@ public class BindMobileFragment extends BaseFragment {
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         t.printStackTrace();
                         verificationBtn.setEnabled(true);
-                        Toast.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -193,7 +195,7 @@ public class BindMobileFragment extends BaseFragment {
             return;
         }
         showSubmitProgress();
-
+        SoftKeyboardUtil.hide(getActivity());
         eliteApi.bindingPhone(mobile, verificationCode)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
