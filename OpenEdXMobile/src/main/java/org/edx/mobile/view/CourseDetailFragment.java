@@ -33,6 +33,7 @@ import com.joanzapata.iconify.widget.IconImageView;
 
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragment;
+import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.core.IEdxEnvironment;
 import org.edx.mobile.course.CourseAPI;
 import org.edx.mobile.course.CourseDetail;
@@ -489,7 +490,9 @@ public class CourseDetailFragment extends BaseFragment {
      * 单课购买流程
      */
     private void normalEnroll() {
-        Toast.makeText(getActivity(), R.string.single_class_buy_not_supported, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), R.string.single_class_buy_not_supported, Toast.LENGTH_SHORT).show();
+        BaseFragmentActivity fragmentActivity = (BaseFragmentActivity) getActivity();
+        fragmentActivity.showAlertDialog(getString(R.string.bind_mobie_dialog_title), getString(R.string.single_class_buy_not_supported));
     }
 
     /**
