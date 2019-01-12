@@ -262,14 +262,14 @@ public class CourseOutlineAdapter extends BaseAdapter {
                         if (isVideoMode && child.getVideos().size() == 0)
                             continue;
                         SectionRow row = new SectionRow(SectionRow.ITEM, false, child);
-                        if (row.component.getType() == BlockType.LIBRARY_CONTENT){
+                        if (row.component.getType() == BlockType.LIBRARY_CONTENT) {
                             continue;
                         }
                         adapterData.add(row);
                     }
                 } else {
                     SectionRow row = new SectionRow(SectionRow.ITEM, true, comp);
-                    if (row.component.getType() == BlockType.LIBRARY_CONTENT){
+                    if (row.component.getType() == BlockType.LIBRARY_CONTENT) {
                         continue;
                     }
                     adapterData.add(row);
@@ -664,7 +664,14 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 .into(headerImageView);
 
         courseTextName.setText(courseData.getCourse().getName());
-        courseTextDetails.setText(CourseCardUtils.getFormattedDate(context, courseData));
+        String courseTextDetailsStr = CourseCardUtils.getFormattedDate(context, courseData);
+        if (TextUtils.isEmpty(courseTextDetailsStr)) {
+            courseTextDetails.setVisibility(View.GONE);
+        } else {
+            courseTextDetails.setVisibility(View.VISIBLE);
+            courseTextDetails.setText(courseTextDetailsStr);
+        }
+//        courseTextDetails.setText(CourseCardUtils.getFormattedDate(context, courseData));
 
         return view;
     }

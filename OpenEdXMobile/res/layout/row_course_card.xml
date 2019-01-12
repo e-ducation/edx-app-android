@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/course_card_height"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:showIn="@layout/fragment_course_dashboard">
 
-    <ImageView
-        android:id="@+id/header_image_view"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@null"
-        android:scaleType="fitXY"
-        tools:src="@drawable/placeholder_course_card_image" />
+        android:layout_height="@dimen/course_card_height">
+
+        <ImageView
+            android:id="@+id/header_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            tools:src="@drawable/placeholder_course_card_image" />
+
+        <ImageView
+            android:id="@+id/header_play_icon"
+            android:layout_width="@dimen/course_card_play_icon_size"
+            android:layout_height="@dimen/course_card_play_icon_size"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:contentDescription="@string/go_to_video"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_media_play_inactive"
+            android:tint="@color/black"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,9 +45,10 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="@dimen/widget_margin">
 
@@ -56,20 +79,4 @@
             android:visibility="invisible"
             tools:visibility="visible" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/header_play_icon"
-        android:layout_width="@dimen/course_card_play_icon_size"
-        android:layout_height="@dimen/course_card_play_icon_size"
-        android:layout_gravity="center"
-        android:clickable="false"
-        android:contentDescription="@string/go_to_video"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_media_play_inactive"
-        android:tint="@color/black"
-        android:visibility="invisible"
-        tools:visibility="visible" />
-
-</FrameLayout>
+</LinearLayout>

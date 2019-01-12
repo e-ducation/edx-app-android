@@ -3,6 +3,7 @@ package org.edx.mobile.view.adapters;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,8 +64,12 @@ public class CourseCardViewHolder extends BaseListAdapter.BaseViewHolder {
 
     public void setDetails(@NonNull String date) {
         newCourseContent.setVisibility(View.GONE);
-        courseDetails.setVisibility(View.VISIBLE);
-        courseDetails.setText(date);
+        if (TextUtils.isEmpty(date)) {
+            courseDetails.setVisibility(View.GONE);
+        } else {
+            courseDetails.setVisibility(View.VISIBLE);
+            courseDetails.setText(date);
+        }
     }
 
     public void setVipExpiredLayoutVisable(boolean show) {
