@@ -1,7 +1,9 @@
 package org.edx.mobile.eliteu.wight;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -209,6 +211,27 @@ public class SelectPayPopupWindow extends PopupWindow implements View.OnClickLis
             return selectPayPopupWindow;
         }
 
+    }
+
+    @Override
+    public void showAsDropDown(View anchor, int xoff, int yoff) {
+        //7.0以上无法正常显示，需要做兼容
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Rect rect = new Rect();
+            anchor.getGlobalVisibleRect(rect);
+            View view = new View(mContext);
+            view.setLayoutParams(anchor.getLayoutParams());
+            int h = getViewHeight(view) - rect.bottom;//如果直接测量anchor，会导致anchor的属性改变，所以需要new个新view
+            setHeight(h);
+        }
+        super.showAsDropDown(anchor, xoff, yoff);
+    }
+
+    public int getViewHeight(View view) {
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        view.measure(w, h);
+        return view.getMeasuredHeight();
     }
 
 }
