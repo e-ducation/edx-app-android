@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fl_course_card_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
-    android:duplicateParentState="true">
+    android:duplicateParentState="true"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/course_image"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/transparent_white_85"
+        android:gravity="center_vertical"
         android:minHeight="@dimen/course_detail_card_height"
         android:orientation="vertical"
         android:paddingBottom="@dimen/widget_margin"
@@ -77,4 +79,4 @@
         </LinearLayout>
 
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

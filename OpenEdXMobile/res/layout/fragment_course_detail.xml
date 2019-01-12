@@ -93,7 +93,7 @@
             <org.edx.mobile.view.custom.EdxWebView
                 android:id="@+id/course_detail_course_about_webview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:scrollbars="none"
                 android:background="@color/grey_act_background"/>
 

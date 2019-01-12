@@ -220,7 +220,14 @@ public class CourseDetailFragment extends BaseFragment {
                 courseDetail.end,
                 courseDetail.start_type,
                 courseDetail.start_display);
-        mCourseTextDetails.setText(CourseCardUtils.getDescription(courseDetail.org, courseDetail.number, formattedDate));
+        String courseTextDetailStr = CourseCardUtils.getDescription(courseDetail.org, courseDetail.number, formattedDate);
+        if (TextUtils.isEmpty(courseTextDetailStr)) {
+            mCourseTextDetails.setVisibility(View.GONE);
+        } else {
+            mCourseTextDetails.setVisibility(View.VISIBLE);
+            mCourseTextDetails.setText(courseTextDetailStr);
+        }
+//        mCourseTextDetails.setText(CourseCardUtils.getDescription(courseDetail.org, courseDetail.number, formattedDate));
         mCourseTextName.setText(courseDetail.name);
     }
 
@@ -285,6 +292,8 @@ public class CourseDetailFragment extends BaseFragment {
         buff.append("<body>");
         buff.append("<div class=\"header\">");
         buff.append(overview);
+        String courseStyle = "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://oss.elitemba.cn/web_static/css/overview.css\" /><script src=\"http://oss.elitemba.cn/web_static/js/overview.js\"></script>";
+        buff.append(courseStyle);
         buff.append("</div>");
         buff.append("</body>");
 
