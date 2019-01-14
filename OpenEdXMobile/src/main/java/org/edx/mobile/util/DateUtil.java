@@ -72,7 +72,8 @@ public class DateUtil {
     @Nullable
     public static String formatDateWithNoYear(long millis) {
         try {
-            return new SimpleDateFormat("MMMM d").format(millis);
+//            return new SimpleDateFormat("MMMM d").format(millis);
+            return new SimpleDateFormat("yyyy-MM-dd").format(millis);
         } catch (IllegalArgumentException e) {
             logger.error(e);
             return null;
