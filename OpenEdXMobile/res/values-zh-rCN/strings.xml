@@ -76,7 +76,7 @@
   <!--Generic error during log in-->
   <string name="error_heading">登录时出现以下错误</string>
   <!--Error during log in.-->
-  <string name="login_failed">请确保输入正确的户名/邮箱与密码，再重试。</string>
+  <string name="login_failed">请确保输入正确的用户名/邮箱与密码，再重试。</string>
   <!--License Agreement related string on Login and Regiser screens-->
   <!--Create account agreement. Followed by list of agreement names like "End User License Agreement"-->
   <string name="by_creating_account">创建账号即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
