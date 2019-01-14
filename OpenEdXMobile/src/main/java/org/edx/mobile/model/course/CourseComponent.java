@@ -312,14 +312,15 @@ public class CourseComponent implements IBlock, IPathNode {
      * just add it to list
      * @param leaves
      */
-    public void fetchAllLeafComponents(List<CourseComponent> leaves, EnumSet<BlockType> types){
-         if ( !isContainer() && types.contains(type)){
-             leaves.add(this);
-         } else {
-             for( CourseComponent comp : children ){
-                 comp.fetchAllLeafComponents(leaves, types);
-             }
-         }
+    public void fetchAllLeafComponents(List<CourseComponent> leaves, EnumSet<BlockType> types) {
+//         if ( !isContainer() && types.contains(type)){
+        if (!isContainer() && types.contains(type) && type != BlockType.LIBRARY_CONTENT) {
+            leaves.add(this);
+        } else {
+            for (CourseComponent comp : children) {
+                comp.fetchAllLeafComponents(leaves, types);
+            }
+        }
     }
 
     /**
@@ -459,7 +460,6 @@ public class CourseComponent implements IBlock, IPathNode {
         }
         return null;
     }
-
 
 
 }
