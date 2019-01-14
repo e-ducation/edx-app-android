@@ -11,18 +11,18 @@
                             { "name" : "部分资料",  "value" : "private" }
                  ]
               },
-              "instructions" : "有限资料仅显示您的用户名和照片。",
+              "instructions" : "有限资料仅显示您的用户名和头像。",
               "accessibility_hint" : "变更可与其他人分享的信息。"
     },
     {
               "name" : "year_of_birth",
-              "label" : "出生年",
+              "label" : "出生年份",
               "type" : "select",
               "options" : {
                 "range_min" : 1896,
                 "range_max" : 2015,
                 "allows_none" : true,
-                "none_label" : "没有出生年"
+                "none_label" : "没有出生年份"
               },
               "instructions" : "在分享您的完整资料之前，您必须填写您的出生年份。",
               "sub_instructions" : "此信息不会被公开显示"

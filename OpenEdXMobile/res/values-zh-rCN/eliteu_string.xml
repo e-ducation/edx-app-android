@@ -64,7 +64,7 @@
     <string name="pay_fail">支付失败，请稍后重试</string>
     <string name="pay_confirming">正在确认中...</string>
     <string name="pay_cancle">支付已取消</string>
-    <string name="vip_order_check_success">恭喜您已成功加入EliteMBA会员</string>
+    <string name="vip_order_check_success">恭喜您已经成功加入英荔商学院VIP</string>
     <string name="single_class_buy_not_supported">移动端暂不支持，请至PC端完成购买</string>
     <string name="phone_number_format_not_correct">请输入正确的手机号码</string>
     <string name="get_verification_code_error">获取验证码失败，请稍后重试</string>
