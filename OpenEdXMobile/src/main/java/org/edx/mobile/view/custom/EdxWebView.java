@@ -2,6 +2,7 @@ package org.edx.mobile.view.custom;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -20,6 +21,9 @@ public class EdxWebView extends WebView {
         settings.setSupportZoom(true);
         settings.setLoadsImagesAutomatically(true);
         settings.setDomStorageEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
         settings.setUserAgentString(
                 settings.getUserAgentString() + " " +
                         context.getString(R.string.app_name) + "/" +
