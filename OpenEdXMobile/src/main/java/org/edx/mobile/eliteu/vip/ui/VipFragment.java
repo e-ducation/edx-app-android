@@ -235,11 +235,12 @@ public class VipFragment extends OfflineSupportBaseFragment {
                 tv_date_of_expiry.setText(String.format(getResources().getString(R.string.vip_data_of_expiry), DateUtil.formatVipInfoDate(vipPersonInfo.getExpired_at())));
                 //开通时间
                 tv_begin_time.setText(String.format(getResources().getString(R.string.vip_data_of_begin), DateUtil.formatVipInfoDate(vipPersonInfo.getStart_at())));
-                //已经开通天数
-                String has_passed_day = String.valueOf(vipPersonInfo.getVip_pass_days());
                 //剩余天数
                 String remain_days = String.valueOf(vipPersonInfo.getVip_remain_days());
-                String remaining_time = String.format(getResources().getString(R.string.vip_remainint_time), has_passed_day, remain_days);
+
+                int remain_days_int = Integer.parseInt(remain_days);
+
+                String remaining_time = String.format(getResources().getQuantityString(R.plurals.vip_remainint_time,remain_days_int,remain_days_int),remain_days);
 
                 int pixelSize = getResources().getDimensionPixelSize(R.dimen.dp24);
                 int index = remaining_time.lastIndexOf(String.valueOf(remain_days));
@@ -264,16 +265,17 @@ public class VipFragment extends OfflineSupportBaseFragment {
                     TextView tv_date_of_expiry = expired_header.findViewById(R.id.tv_date_of_expiry);
 
                     //过期时间
-                    tv_date_of_expiry.setText(String.format(getResources().getString(R.string.vip_data_of_expiry), DateUtil.formatVipInfoDate(vipPersonInfo.getStart_at())));
+                    tv_date_of_expiry.setText(String.format(getResources().getString(R.string.vip_data_of_expiry2), DateUtil.formatVipInfoDate(vipPersonInfo.getStart_at())));
                     //上次开通时间
                     tv_last_opening_time.setText(String.format(getResources().getString(R.string.vip_data_of_last_open), DateUtil.formatVipInfoDate(vipPersonInfo.getExpired_at())));
 
                     //过期时间
                     String expired_time = vipPersonInfo.getVip_expired_days();
-                    String remaining_time = String.format(getResources().getString(R.string.vip_expired_time), expired_time);
+                    int expired_time_int = Integer.parseInt(expired_time);
+                    String remaining_time =  String.format(getResources().getQuantityString(R.plurals.vip_expired_time,expired_time_int,expired_time_int), expired_time);
 
                     int pixelSize = getResources().getDimensionPixelSize(R.dimen.dp24);
-                    int index = remaining_time.indexOf(String.valueOf(expired_time));
+                    int index = remaining_time.lastIndexOf(String.valueOf(expired_time));
                     ColorStateList colors = ColorStateList.valueOf(ContextCompat.getColor(getActivity(), R.color.vip_current_price_selecct_color));
                     TextAppearanceSpan textAppearanceSpan = new TextAppearanceSpan(null, 0, pixelSize, colors, null);
                     SpannableStringBuilder spanBuilder = new SpannableStringBuilder(remaining_time);

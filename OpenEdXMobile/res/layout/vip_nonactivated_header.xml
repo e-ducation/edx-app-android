@@ -5,6 +5,7 @@
     android:background="@drawable/vip_header_bg"
     android:paddingLeft="12dp"
     android:paddingRight="12dp"
+    android:paddingBottom="10dp"
     android:paddingTop="10dp">
 
     <LinearLayout
