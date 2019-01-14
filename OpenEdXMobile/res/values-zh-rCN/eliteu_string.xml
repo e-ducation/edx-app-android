@@ -17,9 +17,16 @@
     <string name="vip_nonactivated_header_tip">开通VIP会员，可免费观看英荔商学院全部课程。</string>
     <string name="vip_data_of_begin">开通日期：%1$s</string>
     <string name="vip_data_of_expiry">到期日期：%1$s</string>
-    <string name="vip_remainint_time">已开通%1$s天 剩余%2$s天</string>
+    <string name="vip_data_of_expiry2">过期日期：%1$s</string>
+    <plurals name="vip_remainint_time">
+        <item quantity="one">会员身份将在%1$s天后过期</item>
+        <item quantity="other">会员身份将在%1$s天后过期</item>
+    </plurals>
     <string name="vip_data_of_last_open">上次开通日期：%1$s</string>
-    <string name="vip_expired_time">会员已过期%1$s天</string>
+    <plurals name="vip_expired_time">
+        <item quantity="one">会员身份已在%1$s天前过期</item>
+        <item quantity="other">会员身份已在%1$s天前过期</item>
+    </plurals>
     <string name="vip_page_title">VIP</string>
     <string name="chose_pay_way">选择支付方式</string>
     <string name="tuition">学费：</string>

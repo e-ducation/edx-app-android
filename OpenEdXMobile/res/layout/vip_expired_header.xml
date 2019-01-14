@@ -6,6 +6,7 @@
     android:background="@drawable/vip_header_bg"
     android:paddingLeft="12dp"
     android:paddingRight="12dp"
+    android:paddingBottom="10dp"
     android:paddingTop="10dp">
 
     <LinearLayout
@@ -34,8 +35,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:textColor="#656d78"
-                android:textSize="14dp"
-                tools:text="@string/vip_expired_time" />
+                android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                     android:maxLines="1"
                     android:textColor="#aab2bd"
                     android:textSize="12dp"
-                    tools:text="@string/vip_data_of_expiry" />
+                    tools:text="@string/vip_data_of_expiry2" />
             </RelativeLayout>
 
         </RelativeLayout>

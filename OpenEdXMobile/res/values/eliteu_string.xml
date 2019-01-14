@@ -13,13 +13,20 @@
     <string name="weixin_text">WeChat</string>
     <string name="weibo_text">WeiBo</string>
     <string name="label_my_vip" tools:ignore="MissingTranslation">EliteMBA</string>
-    <string name="vip_header_label">EliteMBA VIP membership</string>
-    <string name="vip_nonactivated_header_tip">Become a VIP member and watch all EliteMBA courses for free.</string>
-    <string name="vip_data_of_begin">Opened on: %1$s</string>
-    <string name="vip_data_of_expiry">Expire on: %1$s</string>
-    <string name="vip_remainint_time">Opened for %1$s day(s) %2$s day(s) left</string>
-    <string name="vip_data_of_last_open">Last Opened on: %1$s</string>
-    <string name="vip_expired_time">VIP expired %1$s day(s)</string>
+    <string name="vip_header_label">EliteMBA VIP Membership</string>
+    <string name="vip_nonactivated_header_tip">Join VIP, view all EliteMBA courses for free.</string>
+    <string name="vip_data_of_begin">Open date: %1$s</string>
+    <string name="vip_data_of_expiry">Expire: %1$s</string>
+    <string name="vip_data_of_expiry2">Expire: %1$s</string>
+    <plurals name="vip_remainint_time">
+        <item quantity="one">VIP membership will expire in %1$s day</item>
+        <item quantity="other">VIP membership will expire in %1$s days</item>
+    </plurals>
+    <string name="vip_data_of_last_open">Last open date: %1$s</string>
+    <plurals name="vip_expired_time">
+        <item quantity="one">VIP membership has expired in %1$s day</item>
+        <item quantity="other">VIP membership has expired in %1$s days</item>
+    </plurals>
     <string name="vip_page_title">VIP</string>
     <string name="chose_pay_way">Choose payment method</string>
     <string name="tuition">Payment: </string>
