@@ -10,6 +10,7 @@ package org.edx.mobile.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -297,6 +298,9 @@ public class CourseDetailFragment extends BaseFragment {
         buff.append("</div>");
         buff.append("</body>");
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            courseAboutWebView.setWebContentsDebuggingEnabled(true);
+        }
         courseAboutWebView.clearCache(true);
         courseAboutWebView.loadDataWithBaseURL(environment.getConfig().getApiHostURL(), buff.toString(), "text/html", StandardCharsets.UTF_8.name(), null);
     }
