@@ -265,9 +265,9 @@ public class VipFragment extends OfflineSupportBaseFragment {
                     TextView tv_date_of_expiry = expired_header.findViewById(R.id.tv_date_of_expiry);
 
                     //过期时间
-                    tv_date_of_expiry.setText(String.format(getResources().getString(R.string.vip_data_of_expiry2), DateUtil.formatVipInfoDate(vipPersonInfo.getStart_at())));
+                    tv_date_of_expiry.setText(String.format(getResources().getString(R.string.vip_data_of_expiry2), DateUtil.formatVipInfoDate(vipPersonInfo.getExpired_at())));
                     //上次开通时间
-                    tv_last_opening_time.setText(String.format(getResources().getString(R.string.vip_data_of_last_open), DateUtil.formatVipInfoDate(vipPersonInfo.getExpired_at())));
+                    tv_last_opening_time.setText(String.format(getResources().getString(R.string.vip_data_of_last_open), DateUtil.formatVipInfoDate(vipPersonInfo.getLast_start_at())));
 
                     //过期时间
                     String expired_time = vipPersonInfo.getVip_expired_days();

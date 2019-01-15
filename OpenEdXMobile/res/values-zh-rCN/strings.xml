@@ -398,7 +398,7 @@
   <string name="download_to_device">下载至设备中</string>
   <!--Subtitle for bulk videos download view when in new or partial videos' download state-->
   <plurals name="download_total">
-    <item quantity="other">{total_videos_count}个视频，总共{total_videos_size}MB</item>
+    <item quantity="other">{total_videos_count}个视频，总共{total_videos_size}</item>
   </plurals>
   <!--Title for bulk videos download view when download is starting-->
   <string name="download_starting">正在开始下载...</string>
