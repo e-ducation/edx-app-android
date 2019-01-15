@@ -9,6 +9,7 @@ import com.google.inject.Singleton;
 
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
+import org.edx.mobile.http.interceptor.AcceptLanguageHeaderInterceptor;
 import org.edx.mobile.http.interceptor.CustomCacheQueryInterceptor;
 import org.edx.mobile.http.interceptor.JsonMergePatchInterceptor;
 import org.edx.mobile.http.interceptor.NewVersionBroadcastInterceptor;
@@ -93,6 +94,7 @@ public interface OkHttpClientProvider extends Provider<OkHttpClient> {
                     interceptors.add(new OauthHeaderRequestInterceptor(context));
                 }
                 interceptors.add(new NewVersionBroadcastInterceptor());
+                interceptors.add(new AcceptLanguageHeaderInterceptor());
                 if (BuildConfig.DEBUG) {
                     HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
                     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

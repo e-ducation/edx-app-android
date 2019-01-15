@@ -103,7 +103,7 @@
   <!--Title of user's program list screen-->
   <string name="label_my_programs" tools:ignore="MissingTranslation">学习计划</string>
   <!--Title of native Find Courses Screen-->
-  <string name="label_find_courses">查找课程</string>
+  <string name="label_find_courses">发现课程</string>
   <!--Title of webview based Find Courses Screen-->
   <string name="label_discover">探索</string>
   <!--Title of Find Courses tab on Main Dashboard screen-->
@@ -398,14 +398,14 @@
   <string name="download_to_device">下载至设备中</string>
   <!--Subtitle for bulk videos download view when in new or partial videos' download state-->
   <plurals name="download_total">
-    <item quantity="other">{total_videos_count}个视频，总共{total_videos_size}MB</item>
+    <item quantity="other">{total_videos_count}个视频，总共{total_videos_size}</item>
   </plurals>
   <!--Title for bulk videos download view when download is starting-->
   <string name="download_starting">正在开始下载...</string>
   <!--Title for bulk videos download view when in downloading state-->
   <string name="downloading_videos">正在下载视频...</string>
   <!--Subtitle for bulk videos download view when in downloading state-->
-  <string name="download_remaining">剩余{remaining_videos_count}个视频，总共{remaining_videos_size}MB</string>
+  <string name="download_remaining">剩余{remaining_videos_count}个视频，总共{remaining_videos_size}</string>
   <!--Title for bulk videos download view when in downloaded state-->
   <string name="download_complete">已下载所有视频</string>
   <!--Accessibility label of bulk download switch, when its state is OFF and no download is happening-->
@@ -449,7 +449,7 @@
   <!--Button label to bring up course finder-->
   <string name="find_course_text">寻找新的挑战？</string>
   <!--Button label to bring up course finder-->
-  <string name="find_course_btn_text">查找课程</string>
+  <string name="find_course_btn_text">发现课程</string>
   <!--Message between sign in button and social login buttons-->
   <string name="or_sign_in_with">或者通过以下方式登录</string>
   <!--Facebook login method-->
