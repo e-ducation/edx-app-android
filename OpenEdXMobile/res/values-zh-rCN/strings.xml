@@ -83,7 +83,7 @@
   <!--Sign In agreement. Followed by list of agreement names like "End User License Agreement"-->
   <string name="by_signing_in">登录此App即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
   <!--Label for End User License Agreement-->
-  <string name="licensing_agreement">{platform_name}终端用户许可协议</string>
+  <string name="licensing_agreement">{platform_name}用户协议</string>
   <!--Label for Terms of Service and Honor Code-->
   <string name="tos_and_honor_code">{platform_name}免责声明</string>
   <!--Label for Privacy Policy-->
@@ -103,7 +103,7 @@
   <!--Title of user's program list screen-->
   <string name="label_my_programs" tools:ignore="MissingTranslation">学习计划</string>
   <!--Title of native Find Courses Screen-->
-  <string name="label_find_courses">查找课程</string>
+  <string name="label_find_courses">发现课程</string>
   <!--Title of webview based Find Courses Screen-->
   <string name="label_discover">探索</string>
   <!--Title of Find Courses tab on Main Dashboard screen-->
@@ -123,7 +123,7 @@
   <!--Button text to show user Settings screen-->
   <string name="label_settings">设置</string>
   <!--Title of Account screen-->
-  <string name="title_account">账户</string>
+  <string name="title_account">账号</string>
   <!--Help Dialog Place Holder messages-->
   <!--Reset password alert dialog title-->
   <string name="confirm_dialog_title_help">重置密码</string>
@@ -137,7 +137,7 @@
   <string name="success_dialog_message_help">我们已经发送了一封含有密码重置信息的邮件到您的邮箱。
 如果您在几分钟之后还未收到，请注意检查您的垃圾邮件。</string>
   <!--Password reset dialog prompt-->
-  <string name="confirm_dialog_message_help">请输入您帐号的邮件地址，我们将发送重置密码的邮件。</string>
+  <string name="confirm_dialog_message_help">请输入您账号的邮件地址，我们将发送重置密码的邮件。</string>
   <!--Label explaining toggle for cellular data access-->
   <string name="wifi_dialog_message_help">允许您的设备在Wi-Fi不可用时，通过手机数据流量下载视频，可能会产生数据费用。</string>
   <!--Info message text for to let use know how many videos were deleted-->
@@ -149,7 +149,7 @@
   <!--Alert dialog content for users with zero rated data-->
   <string name="leaving_app_data_message">如果离开本应用，您将无法再查看免费的{platform_name}内容。可能会收取数据费用。</string>
   <!--Title of agreement users must accept to use the app-->
-  <string name="end_user_title">最终用户许可协议</string>
+  <string name="end_user_title">用户协议</string>
   <!--Title of privacy policy users must accept to use the app-->
   <!--Title of terms of service & honor code users must accept to use the app-->
   <string name="terms_of_service_title">免责声明</string>
@@ -405,7 +405,7 @@
   <!--Title for bulk videos download view when in downloading state-->
   <string name="downloading_videos">正在下载视频...</string>
   <!--Subtitle for bulk videos download view when in downloading state-->
-  <string name="download_remaining">剩余{remaining_videos_count}个视频，总共{remaining_videos_size}MB</string>
+  <string name="download_remaining">剩余{remaining_videos_count}个视频，总共{remaining_videos_size}</string>
   <!--Title for bulk videos download view when in downloaded state-->
   <string name="download_complete">已下载所有视频</string>
   <!--Accessibility label of bulk download switch, when its state is OFF and no download is happening-->
@@ -449,7 +449,7 @@
   <!--Button label to bring up course finder-->
   <string name="find_course_text">寻找新的挑战？</string>
   <!--Button label to bring up course finder-->
-  <string name="find_course_btn_text">查找课程</string>
+  <string name="find_course_btn_text">发现课程</string>
   <!--Message between sign in button and social login buttons-->
   <string name="or_sign_in_with">或者通过以下方式登录</string>
   <!--Facebook login method-->
@@ -464,7 +464,7 @@
   <string name="search_for_courses">搜索课程</string>
   <!--Landing Activity text-->
   <!--Prompt leading user to sign in screen-->
-  <string name="already_have_an_account">已有账户？登录</string>
+  <string name="already_have_an_account">已有账号？登录</string>
   <!--Prompt leading user to create account screen-->
   <string name="sign_up_and_learn">注册并开始学习</string>
   <!--In Register screen-->
@@ -485,11 +485,11 @@
   <!--Button text allowing user to hide visible optional registration fields-->
   <string name="hide_optional_text">隐藏可选信息</string>
   <!--Button text allowing user create an account-->
-  <string name="create_account_text">创建我的账户</string>
+  <string name="create_account_text">创建我的账号</string>
   <!--Accessible content description of create account button on Registration screen-->
-  <string name="create_account_btn">“创建我的帐户”按钮</string>
+  <string name="create_account_btn">“创建我的账号”按钮</string>
   <!--Text shown while waiting for registration request-->
-  <string name="creating_account_text">创建账户...</string>
+  <string name="creating_account_text">创建账号...</string>
   <!--Registration screen title-->
   <string name="register_title">注册</string>
   <!--Text for successful registration with social token-->
@@ -560,7 +560,7 @@
   <!--Shown when viewing your own profile until you have confirmed you are over the age of consent (13 years old)-->
   <string name="profile_consent_needed_explanation">您必须年满13岁才能分享完整的用户资料。</string>
   <!--Shown as button below the explanation for age of consent; it launches the edit profile screen-->
-  <string name="profile_consent_needed_edit_button">帐户设置</string>
+  <string name="profile_consent_needed_edit_button">账号设置</string>
   <!--Shown when viewing your own incomplete profile-->
   <string name="profile_incomplete_explanation">您的资料似乎不完整。我们来帮助您完善资料。</string>
   <!--Shown as button below the explanation for incomplete profile; it launches the edit profile screen-->
