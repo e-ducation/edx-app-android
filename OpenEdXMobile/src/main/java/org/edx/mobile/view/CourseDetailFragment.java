@@ -292,7 +292,7 @@ public class CourseDetailFragment extends BaseFragment {
         buff.append("<body>");
         buff.append("<div class=\"header\">");
         buff.append(overview);
-        String courseStyle = "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://oss.elitemba.cn/web_static/css/overview.css\" /><script src=\"http://oss.elitemba.cn/web_static/js/overview.js\"></script>";
+        String courseStyle = "<link rel=\"stylesheet\" type=\"text/css\" href=\"//oss.elitemba.cn/web_static/css/overview.css\" /><script src=\"//oss.elitemba.cn/web_static/js/overview.js\"></script>";
         buff.append(courseStyle);
         buff.append("</div>");
         buff.append("</body>");
