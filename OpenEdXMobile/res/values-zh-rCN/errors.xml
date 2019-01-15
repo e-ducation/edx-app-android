@@ -36,7 +36,7 @@
   <!--Title of alert shown during login when user attempts login via Facebook without having linked their account-->
   <string name="error_account_not_linked_title_fb">Facebook账号与{platform_name}账号不匹配</string>
   <!--Content of alert shown during login when user attempts login via Facebook without having linked their account-->
-  <string name="error_account_not_linked_desc_fb">请确保您的Facebook账号与您{platform_destination}上的 {platform_name}账号匹配。</string>
+  <string name="error_account_not_linked_desc_fb">请确保您的Facebook账号与您{platform_destination}上的{platform_name}账号匹配。</string>
   <!--Content of alert shown during login when user attempts login via Facebook without having linked their account-->
   <string name="error_account_not_linked_desc_fb_2">此Facebook账号尚未与任何{platform_name}账号相关联，请先注册。</string>
   <!--Title of alert shown during login when user attempts login via Google without having linked their account-->
