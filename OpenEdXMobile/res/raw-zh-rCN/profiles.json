@@ -11,7 +11,7 @@
                             { "name" : "部分资料",  "value" : "private" }
                  ]
               },
-              "instructions" : "有限资料仅显示您的用户名和头像。",
+              "instructions" : "部分资料仅显示您的用户名和头像。",
               "accessibility_hint" : "变更可与其他人分享的信息。"
     },
     {
