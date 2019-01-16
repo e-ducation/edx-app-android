@@ -2,7 +2,7 @@
     "fields":[
     {
               "name" : "account_privacy",
-              "label" : "其它学员可以看到我的：",
+              "label" : "其他学员可以看到我的：",
               "type" : "switch",
               "data_type" : "boolean",
               "options" : {
