@@ -50,12 +50,14 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:layout_toLeftOf="@+id/view_vip_detail_tv"
+                android:layout_alignParentLeft="true"
                 android:id="@+id/vip_info_tv"
                 android:layout_marginLeft="@dimen/common_course_display_margin_side"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                tools:text="订阅会员课程 ¥1199/年"
+                tools:text="@string/course_detail_vip_info_text"
                 android:textColor="#346ca3"
                 android:textSize="14dp" />
 

@@ -34,7 +34,7 @@
   <!--Description of button that will open the share course menu-->
   <string name="share_course_button">分享课程</string>
   <!--Share course-->
-  <string name="share_course_message">我正在 {platform_name} 上学习课程！看一看：</string>
+  <string name="share_course_message">我正在{platform_name}上学习课程！看一看：</string>
   <!--Settings Page-->
   <!--Label for wifi only switch-->
   <string name="settings_wifi_top">仅在Wi-Fi下载</string>
@@ -48,7 +48,7 @@
   <!--Description of button that will open the certificate sharing menu-->
   <string name="share_certificate_button">分享您的证书</string>
   <!--Text that pre-populates your post/email/SMS when sharing certificate-->
-  <string name="share_certificate_message">我刚在 {platform_name} 上获得了一个证书！看一看：{certificate_url}</string>
+  <string name="share_certificate_message">我刚在{platform_name}上获得了一个证书！看一看：{certificate_url}</string>
   <!--Tab of tab for certicate for finished course-->
   <string name="tab_label_certificate">证书</string>
   <!--Data Usage Dialog-->
@@ -602,7 +602,7 @@
   <!--Button that will initiate sharing one of a user's accomplishments-->
   <string name="share_accomplishment_button">分享您的成就</string>
   <!--Text that pre-populates your post/email/SMS when sharing certificate-->
-  <string name="share_accomplishment_message">我刚在 {platform_name} 上获得了一个勋章！看一看：{badge_url}</string>
+  <string name="share_accomplishment_message">我刚在{platform_name}上获得了一个勋章！看一看：{badge_url}</string>
   <!--Question on the app rating dialog-->
   <string name="rating_dialog_message">您如何评价此应用？</string>
   <!--Dialog title for positive app review-->
