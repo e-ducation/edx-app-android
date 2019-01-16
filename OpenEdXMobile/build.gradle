@@ -14,7 +14,7 @@ buildscript {
         classpath 'org.yaml:snakeyaml:1.14'
 
         //Included for NewRelic
-        classpath "com.newrelic.agent.android:agent-gradle-plugin:5.4.1"
+        classpath "com.newrelic.agent.android:agent-gradle-plugin:5.+"
 
         classpath 'com.facebook.testing.screenshot:plugin:0.8.0'
         classpath 'com.google.gms:google-services:4.0.1'
@@ -187,7 +187,7 @@ dependencies {
     }
 
     //New Relic Integration
-    implementation 'com.newrelic.agent.android:android-agent:5.4.1'
+    implementation 'com.newrelic.agent.android:android-agent:5.+'
 
     //Include DI framework
     implementation 'org.roboguice:roboguice:3.0.1'

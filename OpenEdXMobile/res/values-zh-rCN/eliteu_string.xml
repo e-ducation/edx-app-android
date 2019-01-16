@@ -52,6 +52,7 @@
     <string name="bind_mobile">绑定手机</string>
 
     <string name="course_detail_vip_info">订阅会员课程</string>
+    <string name="course_detail_vip_info_text">月均99.84元，畅享在线MBA体系化学习！</string>
     <string name="course_detail_vip_view_detail">查看详情</string>
     <string name="year">年</string>
     <string name="quarter">季度</string>

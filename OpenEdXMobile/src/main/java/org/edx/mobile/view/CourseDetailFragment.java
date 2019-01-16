@@ -552,22 +552,22 @@ public class CourseDetailFragment extends BaseFragment {
         });
     }
 
-    private void initVipLayout(final CourseDetail courseDetail){
-        if (courseDetail.recommended_package != null) {
-            mVipLayout.setVisibility(View.VISIBLE);
-            mVipInfoTv.setText(CourseUtil.getCourseDetailVipInfo(courseDetail,getActivity()));
-            mViewVipDetailTv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (null == environment.getLoginPrefs().getUsername()) {
-                        startActivityForResult(environment.getRouter().getRegisterIntent(), LOG_IN_REQUEST_CODE);
-                        return;
-                    }
-                    router.showVip(getActivity(),String.valueOf(courseDetail.recommended_package.id));
+    private void initVipLayout(final CourseDetail courseDetail) {
+        mVipLayout.setVisibility(View.VISIBLE);
+        mVipInfoTv.setText(R.string.course_detail_vip_info_text);
+        mViewVipDetailTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (null == environment.getLoginPrefs().getUsername()) {
+                    startActivityForResult(environment.getRouter().getRegisterIntent(), LOG_IN_REQUEST_CODE);
+                    return;
                 }
-            });
-        } else {
-            mVipLayout.setVisibility(View.GONE);
-        }
+                if (courseDetail.recommended_package != null) {
+                    router.showVip(getActivity(), String.valueOf(courseDetail.recommended_package.id));
+                } else {
+                    router.showVip(getActivity(), VipActivity.VIP_SELECT_ID);
+                }
+            }
+        });
     }
 }

@@ -52,6 +52,7 @@
     <string name="bind_mobile">Binding Your Cellphone</string>
 
     <string name="course_detail_vip_info">Subscribe VIP</string>
+    <string name="course_detail_vip_info_text">Enjoy MBA-like curriculum online with only ¥99.84/month!</string>
     <string name="course_detail_vip_view_detail">Details</string>
     <string name="year">Year</string>
     <string name="quarter">Quarter</string>
