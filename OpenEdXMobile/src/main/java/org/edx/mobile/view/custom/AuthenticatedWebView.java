@@ -37,6 +37,8 @@ import org.edx.mobile.interfaces.RefreshListener;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.services.EdxCookieManager;
+import org.edx.mobile.social.ThirdPartyLoginConstants;
+import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.WebViewUtil;
 import org.edx.mobile.view.NativeFindCoursesActivity;
@@ -141,6 +143,9 @@ public class AuthenticatedWebView extends FrameLayout implements RefreshListener
                         case HttpStatus.FORBIDDEN:
                         case HttpStatus.UNAUTHORIZED:
                         case HttpStatus.NOT_FOUND:
+                            if (filterLogin()) {
+                                return;
+                            }
                             EdxCookieManager.getSharedInstance(getContext())
                                     .tryToRefreshSessionCookie();
                             break;
@@ -237,6 +242,11 @@ public class AuthenticatedWebView extends FrameLayout implements RefreshListener
         showLoadingProgress();
 
         if (!TextUtils.isEmpty(url)) {
+            if (filterLogin()) {
+                didReceiveError = false;
+                webView.loadUrl(url);
+                return;
+            }
             // Requery the session cookie if unavailable or expired.
             final EdxCookieManager cookieManager = EdxCookieManager.getSharedInstance(getContext());
             if (cookieManager.isSessionCookieMissingOrExpired()) {
@@ -418,5 +428,12 @@ public class AuthenticatedWebView extends FrameLayout implements RefreshListener
 
     public boolean isShowingError() {
         return fullScreenErrorNotification != null && fullScreenErrorNotification.isShowing();
+    }
+
+    /**
+     * 过滤vip url，避免加载vip页面把网页端挤下去
+     */
+    public boolean filterLogin() {
+        return url.equalsIgnoreCase(new Config(getContext()).getApiHostURL() + ThirdPartyLoginConstants.VIP_URL);
     }
 }
