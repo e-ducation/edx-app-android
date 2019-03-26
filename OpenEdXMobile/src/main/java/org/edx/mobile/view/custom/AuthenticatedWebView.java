@@ -41,7 +41,8 @@ import org.edx.mobile.social.ThirdPartyLoginConstants;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.WebViewUtil;
-import org.edx.mobile.view.NativeFindCoursesActivity;
+import org.edx.mobile.view.DiscoveryActivity;
+
 import org.edx.mobile.view.Router;
 
 import de.greenrobot.event.EventBus;
@@ -404,7 +405,7 @@ public class AuthenticatedWebView extends FrameLayout implements RefreshListener
                         @Override
                         public void run() {
                             //在h5页面点击按钮打开android中我的课程
-                            final Intent findCoursesIntent = NativeFindCoursesActivity.newIntent(getContext());
+                            final Intent findCoursesIntent = DiscoveryActivity.newIntent(getContext());
                             findCoursesIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                             getContext().startActivity(findCoursesIntent);
                         }

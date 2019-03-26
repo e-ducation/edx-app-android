@@ -125,7 +125,9 @@
     <!-- Title of native Find Courses Screen -->
     <string name="label_find_courses">Find Courses</string>
     <!-- Title of webview based Find Courses Screen -->
-    <string name="label_discover">Discover</string>
+    <string name="label_discover">@string/label_find_courses</string>
+    <!-- Title of Degrees tab on Discovery screen -->
+    <string name="label_degrees" tools:ignore="MissingTranslation">Degrees</string>
     <!-- Title of Find Courses tab on Main Dashboard screen -->
     <string name="label_discovery">Discovery</string>
     <!-- Button allowing users to send an email for feedback -->
@@ -514,6 +516,10 @@
     <string name="email_client_not_present">No e-mail clients installed</string>
     <!-- Search for a course prompt -->
     <string name="search_for_courses">Search for courses</string>
+    <!-- Search for a program prompt -->
+    <string name="search_for_programs" tools:ignore="MissingTranslation">Search for programs</string>
+    <!-- Search for a degree prompt -->
+    <string name="search_for_degrees" tools:ignore="MissingTranslation">Search for degrees</string>
 
     <!-- Landing Activity text -->
     <!-- Prompt leading user to sign in screen -->

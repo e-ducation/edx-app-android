@@ -543,6 +543,7 @@ public interface Analytics {
 
     interface Screens {
         String COURSE_INFO_SCREEN = "Course Info";
+        String PROGRAM_INFO_SCREEN = "Program Info";
         String LAUNCH_ACTIVITY = "Launch";
         String REGISTER = "Register";
         String LOGIN = "Login";
@@ -556,6 +557,8 @@ public interface Analytics {
         String CERTIFICATE = "View Certificate";
         String DOWNLOADS = "Downloads";
         String FIND_COURSES = "Find Courses";
+        String FIND_PROGRAMS = "Find Programs";
+        String FIND_DEGREES = "Find Degrees";
         String MY_COURSES = "My Courses";
         String SETTINGS = "Settings";
         String FORUM_VIEW_TOPICS = "Forum: View Topics";
