@@ -18,6 +18,7 @@ import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.authentication.LoginAPI;
 import org.edx.mobile.course.CourseDetail;
+import org.edx.mobile.deeplink.ScreenDef;
 import org.edx.mobile.discussion.DiscussionComment;
 import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
@@ -57,6 +58,7 @@ public class Router {
     public static final String EXTRA_IS_ON_COURSE_OUTLINE = "is_on_course_outline";
     public static final String EXTRA_SUBJECT_FILTER = "subject_filter";
     public static final String EXTRA_PATH_ID = "path_id";
+    public static final String EXTRA_SCREEN_NAME = "screen_name";
 
     @Inject
     Config config;
@@ -67,6 +69,13 @@ public class Router {
     private LoginPrefs loginPrefs;
     @Inject
     private IStorage storage;
+
+    public Router() {
+    }
+
+    public Router(Config config) {
+        this.config = config;
+    }
 
     public void showDownloads(Activity sourceActivity) {
         Intent downloadIntent = new Intent(sourceActivity, DownloadListActivity.class);
@@ -123,13 +132,30 @@ public class Router {
         return RegisterActivity.newIntent();
     }
 
-    public void showMainDashboard(Activity sourceActivity) {
-        sourceActivity.startActivity(MainDashboardActivity.newIntent());
+    public void showMainDashboard(@NonNull Activity sourceActivity) {
+        showMainDashboard(sourceActivity, null);
     }
 
-    public void showCourseDashboardTabs(Activity activity, EnrolledCoursesResponse model,
+    public void showMainDashboard(@NonNull Activity sourceActivity, @Nullable @ScreenDef String screenName) {
+        showMainDashboard(sourceActivity, screenName, null);
+    }
+
+    public void showMainDashboard(@NonNull Activity sourceActivity, @Nullable @ScreenDef String screenName,
+                                  @Nullable String pathId) {
+        sourceActivity.startActivity(MainDashboardActivity.newIntent(screenName, pathId));
+    }
+
+    public void showCourseDashboardTabs(@NonNull Activity activity,
+                                        @Nullable EnrolledCoursesResponse model,
                                         boolean announcements) {
-        activity.startActivity(CourseTabsDashboardActivity.newIntent(activity, model, announcements));
+        showCourseDashboardTabs(activity, model, null, announcements, null);
+    }
+
+    public void showCourseDashboardTabs(@NonNull Activity activity,
+                                        @Nullable EnrolledCoursesResponse model,
+                                        @Nullable String courseId, boolean announcements,
+                                        @Nullable @ScreenDef String screenName) {
+        activity.startActivity(CourseTabsDashboardActivity.newIntent(activity, model, courseId, announcements, screenName));
     }
 
     /**
@@ -334,6 +360,15 @@ public class Router {
     }
 
     public void showFindCourses(@NonNull Context context, @Nullable String searchQuery) {
+        showFindCourses(context, searchQuery, null, null);
+    }
+
+    public void showFindCourses(@NonNull Context context, @ScreenDef @Nullable String screenName, @Nullable String pathId) {
+        showFindCourses(context, null, screenName, pathId);
+    }
+
+    public void showFindCourses(@NonNull Context context, @Nullable String searchQuery,
+                                @ScreenDef @Nullable String screenName, @Nullable String pathId) {
         if (!config.getDiscoveryConfig().getCourseDiscoveryConfig().isDiscoveryEnabled()) {
             throw new RuntimeException("Course discovery is not enabled");
         }
@@ -341,6 +376,8 @@ public class Router {
         if (searchQuery != null) {
             discoveryIntent.putExtra(Router.EXTRA_SEARCH_QUERY, searchQuery);
         }
+        discoveryIntent.putExtra(EXTRA_SCREEN_NAME, screenName);
+        discoveryIntent.putExtra(Router.EXTRA_PATH_ID, pathId);
         //Add this flag as multiple activities need to be created
         discoveryIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(discoveryIntent);

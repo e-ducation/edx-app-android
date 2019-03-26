@@ -79,7 +79,7 @@
   <!--Error message shown when a course hasn't started yet-->
   <string name="course_not_started">本课程尚未开始。</string>
   <!--Error message shown when a user's access has expired for a course-->
-  <string name="course_access_expired" tools:ignore="MissingTranslation">您的访问权限已过期。</string>
+  <string name="course_access_expired">您的访问权限已过期。</string>
   <!--Error message shown when a user can't perform an action on e.g. add a post/response/comment in forums-->
   <string name="action_not_completed">您的操作无法完成。</string>
   <!--Error dialog message shown when the user try to log in in app with un-supported version-->

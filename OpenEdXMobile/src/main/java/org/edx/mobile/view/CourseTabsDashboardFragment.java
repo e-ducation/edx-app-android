@@ -14,12 +14,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.google.inject.Inject;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 
 import org.edx.mobile.R;
+import org.edx.mobile.course.CourseAPI;
 import org.edx.mobile.databinding.FragmentDashboardErrorLayoutBinding;
+import org.edx.mobile.deeplink.ScreenDef;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.FragmentItemModel;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
@@ -35,7 +38,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static android.widget.FrameLayout.LayoutParams;
+
 public class CourseTabsDashboardFragment extends TabsBaseFragment {
+    private static final String ARG_COURSE_NOT_FOUND = "ARG_COURSE_NOT_FOUND";
     protected final Logger logger = new Logger(getClass().getName());
 
     @Nullable
@@ -46,28 +52,24 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
     @Inject
     private AnalyticsRegistry analyticsRegistry;
 
+    @Inject
+    private CourseAPI courseApi;
+
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable updateDownloadProgressRunnable;
     private MenuItem downloadsMenuItem;
-    private boolean wasDownloadItemVisibleBeforeStopping = false;
 
     @NonNull
-    public static CourseTabsDashboardFragment newInstance(EnrolledCoursesResponse courseData) {
+    public static CourseTabsDashboardFragment newInstance(
+            @Nullable EnrolledCoursesResponse courseData, @Nullable String courseId,
+            @Nullable @ScreenDef String screenName) {
         final CourseTabsDashboardFragment fragment = new CourseTabsDashboardFragment();
         final Bundle bundle = new Bundle();
         bundle.putSerializable(Router.EXTRA_COURSE_DATA, courseData);
+        bundle.putSerializable(Router.EXTRA_COURSE_ID, courseId);
+        bundle.putSerializable(Router.EXTRA_SCREEN_NAME, screenName);
         fragment.setArguments(bundle);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        courseData = (EnrolledCoursesResponse) getArguments().getSerializable(Router.EXTRA_COURSE_DATA);
-        getActivity().setTitle(courseData.getCourse().getName());
-        setHasOptionsMenu(courseData.getCourse().getCoursewareAccess().hasAccess());
-        environment.getAnalyticsRegistry().trackScreenView(
-                Analytics.Screens.COURSE_DASHBOARD, courseData.getCourse().getId(), null);
     }
 
     @Override
@@ -84,17 +86,62 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        courseData = (EnrolledCoursesResponse) getArguments().getSerializable(Router.EXTRA_COURSE_DATA);
+        if (courseData != null) {
+            // The case where we have valid course data
+            getActivity().setTitle(courseData.getCourse().getName());
+            setHasOptionsMenu(courseData.getCourse().getCoursewareAccess().hasAccess());
+            environment.getAnalyticsRegistry().trackScreenView(
+                    Analytics.Screens.COURSE_DASHBOARD, courseData.getCourse().getId(), null);
 
-        if (!courseData.getCourse().getCoursewareAccess().hasAccess()) {
-            final boolean auditAccessExpired = courseData.getAuditAccessExpires() != null &&
-                    new Date().after(DateUtil.convertToDate(courseData.getAuditAccessExpires()));
-
+            if (!courseData.getCourse().getCoursewareAccess().hasAccess()) {
+                final boolean auditAccessExpired = courseData.getAuditAccessExpires() != null &&
+                        new Date().after(DateUtil.convertToDate(courseData.getAuditAccessExpires()));
+                errorLayoutBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard_error_layout, container, false);
+                errorLayoutBinding.errorMsg.setText(auditAccessExpired ? R.string.course_access_expired : R.string.course_not_started);
+                return errorLayoutBinding.getRoot();
+            } else {
+                return super.onCreateView(inflater, container, savedInstanceState);
+            }
+        } else if (getArguments().getBoolean(ARG_COURSE_NOT_FOUND)) {
+            // The case where we have invalid course data
             errorLayoutBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard_error_layout, container, false);
-            errorLayoutBinding.errorMsg.setText(auditAccessExpired ? R.string.course_access_expired : R.string.course_not_started);
+            errorLayoutBinding.errorMsg.setText(R.string.cannot_show_dashboard);
             return errorLayoutBinding.getRoot();
         } else {
-            return super.onCreateView(inflater, container, savedInstanceState);
+            // The case where we need to fetch course's data based on its courseId
+            fetchCourseById();
+            final FrameLayout frameLayout = new FrameLayout(getActivity());
+            frameLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+            frameLayout.addView(inflater.inflate(R.layout.loading_indicator, container, false));
+            return frameLayout;
         }
+    }
+
+    private void fetchCourseById() {
+        final String courseId = getArguments().getString(Router.EXTRA_COURSE_ID);
+        courseApi.getEnrolledCourses().enqueue(new CourseAPI.GetCourseByIdCallback(getActivity(), courseId) {
+            @Override
+            protected void onResponse(@NonNull final EnrolledCoursesResponse course) {
+                if (getActivity() != null) {
+                    getArguments().putSerializable(Router.EXTRA_COURSE_DATA, course);
+                    getFragmentManager().beginTransaction()
+                            .detach(CourseTabsDashboardFragment.this)
+                            .attach(CourseTabsDashboardFragment.this).commitAllowingStateLoss();
+                }
+            }
+
+            @Override
+            protected void onFailure(@NonNull final Throwable error) {
+                if (getActivity() != null) {
+                    getArguments().putBoolean(ARG_COURSE_NOT_FOUND, true);
+                    getFragmentManager().beginTransaction()
+                            .detach(CourseTabsDashboardFragment.this)
+                            .attach(CourseTabsDashboardFragment.this).commitAllowingStateLoss();
+                    logger.error(new Exception("Invalid Course ID provided via deeplink: " + courseId), true);
+                }
+            }
+        });
     }
 
     @Override
@@ -112,8 +159,7 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        // Only re-run the runnable if it was previously running when onStop was called which stopped it
-        if (updateDownloadProgressRunnable != null && wasDownloadItemVisibleBeforeStopping) {
+        if (updateDownloadProgressRunnable != null) {
             updateDownloadProgressRunnable.run();
         }
     }
@@ -123,7 +169,17 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
         super.onStop();
         if (updateDownloadProgressRunnable != null) {
             handler.removeCallbacks(updateDownloadProgressRunnable);
-            wasDownloadItemVisibleBeforeStopping = downloadsMenuItem.isVisible();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (updateDownloadProgressRunnable != null) {
+            handler.removeCallbacks(updateDownloadProgressRunnable);
+            /* Assigning null here so that when this fragment is destroyed (e.g. due to orientation
+             * change) the runnable is recreated and the download progress is updated properly.
+             */
             updateDownloadProgressRunnable = null;
         }
     }
@@ -148,6 +204,7 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
                     if (!NetworkUtil.isConnected(getContext()) ||
                             !environment.getDatabase().isAnyVideoDownloading(null)) {
                         downloadsMenuItem.setVisible(false);
+                        progressWheel.setProgressPercent(0);
                     } else {
                         downloadsMenuItem.setVisible(true);
                         environment.getStorage().getAverageDownloadProgress(
@@ -212,6 +269,7 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
                 !TextUtils.isEmpty(courseData.getCourse().getDiscussionUrl())) {
             items.add(new FragmentItemModel(CourseDiscussionTopicsFragment.class,
                     getResources().getString(R.string.discussion_title), FontAwesomeIcons.fa_comments_o,
+                    CourseDiscussionTopicsFragment.makeArguments(courseData),
                     new FragmentItemModel.FragmentStateListener() {
                         @Override
                         public void onFragmentSelected() {
@@ -239,6 +297,7 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
         items.add(new FragmentItemModel(ResourcesFragment.class,
                 getResources().getString(R.string.resources_title),
                 FontAwesomeIcons.fa_ellipsis_h,
+                ResourcesFragment.makeArguments(courseData),
                 new FragmentItemModel.FragmentStateListener() {
                     @Override
                     public void onFragmentSelected() {
