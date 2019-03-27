@@ -105,7 +105,8 @@
   <!--Title of native Find Courses Screen-->
   <string name="label_find_courses">发现课程</string>
   <!--Title of webview based Find Courses Screen-->
-  <string name="label_discover">探索</string>
+  <string name="label_discover">@string/label_find_courses</string>
+  <!--Title of Degrees tab on Discovery screen-->
   <!--Title of Find Courses tab on Main Dashboard screen-->
   <string name="label_discovery">发现课程</string>
   <!--Button allowing users to send an email for feedback-->
@@ -424,8 +425,8 @@
   <!--Player Settings-->
   <!--Label for closed captions in video player-->
   <string name="lbl_closed_caption">字幕</string>
-  <!--Label for no closed captions selected-->
-  <string name="lbl_cc_cancel">无</string>
+  <!--Label for video playback speed in video player-->
+  <!--Label for None captions selected-->
   <!--Accessibility Label for Video Player-->
   <string name="video_player">视频播放器</string>
   <!--Accessibility Label for View on Web button on Video Player top bar-->
@@ -462,6 +463,8 @@
   <string name="email_client_not_present">未安装任何邮箱客户端</string>
   <!--Search for a course prompt-->
   <string name="search_for_courses">搜索课程</string>
+  <!--Search for a program prompt-->
+  <!--Search for a degree prompt-->
   <!--Landing Activity text-->
   <!--Prompt leading user to sign in screen-->
   <string name="already_have_an_account">已有账号？登录</string>
@@ -469,7 +472,7 @@
   <string name="sign_up_and_learn">注册并开始学习</string>
   <!--In Register screen-->
   <string name="register_with">注册</string>
-  <string name="or_register_with_email">或用电子邮件注册</string>
+  <string name="or_register_with_email">或用邮箱注册</string>
   <!--New Logistration Launch screen text-->
   <!--Button leading user to create account screen-->
   <string name="launch_register">创建账号</string>

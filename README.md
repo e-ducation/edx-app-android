@@ -26,11 +26,13 @@ This project is meant to be built using Android Studio. It can also be built fro
 
         git clone https://github.com/edx/edx-app-android
 
-2. Open Android Studio and choose **Open an Existing Android Studio Project**
+2. Setup the Android Studio. The latest tested Android Studio version is v3.1.3, you can download it from [the previous versions archive](https://developer.android.com/studio/archive).
 
-3. Choose `edx-app-android`.
+3. Open Android Studio and choose **Open an Existing Android Studio Project**
 
-4. Click the **Run** button.
+4. Choose `edx-app-android`.
+
+5. Click the **Run** button.
 
 Configuration
 =============
@@ -64,7 +66,7 @@ To use a custom configuration in place of the default configuration, you will ne
 
 
 The full set of known keys can be found in the
-`org/edx/mobile/util/Config.java` file or see [additional documentation](<https://openedx.atlassian.net/wiki/display/MA/App+Configuration+Flags>).
+`org/edx/mobile/util/Config.java` file or see [additional documentation](<https://openedx.atlassian.net/wiki/spaces/LEARNER/pages/48792067/App+Configuration+Flags>).
 
 
 Build Variants
@@ -74,7 +76,7 @@ There are 3 Build Variants in this project:
 
 - **prodDebug**: Uses prod flavor for debug builds.
 - **prodDebuggable**: Uses prod flavor for debug builds with debugging enabled.
-- **prodRelease**: Uses prod flavor for release builds that'll work on devices with Android 4.1.x (Jelly Bean) and above.
+- **prodRelease**: Uses prod flavor for release builds that'll work on devices with Android 4.4.x (KitKat) and above.
 
 Building For Release
 --------------------

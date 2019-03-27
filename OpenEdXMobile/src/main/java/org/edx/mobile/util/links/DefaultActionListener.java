@@ -114,6 +114,15 @@ public class DefaultActionListener implements URLInterceptorWebViewClient.Action
                 }
                 break;
             }
+            case PROGRAM_INFO: {
+                final String pathId = helper.params.get(WebViewLink.Param.PATH_ID);
+                if (!TextUtils.isEmpty(pathId)) {
+                    logger.debug("PathId" + pathId);
+                    // Program info coming soon
+                    environment.getRouter().showProgramInfo(activity, pathId);
+                }
+                break;
+            }
             case ENROLL: {
                 final String courseId = helper.params.get(WebViewLink.Param.COURSE_ID);
                 final String emailOptIn = helper.params.get(WebViewLink.Param.EMAIL_OPT);

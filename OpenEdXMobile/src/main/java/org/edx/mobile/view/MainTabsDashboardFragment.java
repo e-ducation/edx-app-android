@@ -20,6 +20,7 @@ import org.edx.mobile.eliteu.bindmobile.BindMobileUtil;
 import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.vip.ui.WebViewVipFragment;
 import org.edx.mobile.event.AccountDataLoadedEvent;
+import org.edx.mobile.event.DiscoveryTabSelectedEvent;
 import org.edx.mobile.event.MoveToDiscoveryTabEvent;
 import org.edx.mobile.event.ProfilePhotoUpdatedEvent;
 import org.edx.mobile.model.FragmentItemModel;
@@ -33,7 +34,6 @@ import org.edx.mobile.user.UserAPI;
 import org.edx.mobile.user.UserService;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.UserProfileUtils;
-import org.edx.mobile.view.dialog.NativeFindCoursesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,17 +176,19 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
                     }
                 }));
 
-        if (environment.getConfig().getCourseDiscoveryConfig().isCourseDiscoveryEnabled()) {
-            items.add(new FragmentItemModel(
-                    environment.getConfig().getCourseDiscoveryConfig().isWebviewCourseDiscoveryEnabled()
-                            ? WebViewDiscoverCoursesFragment.class : NativeFindCoursesFragment.class,
+        final Config.ProgramDiscoveryConfig programDiscoveryConfig = environment.getConfig().getDiscoveryConfig().getProgramDiscoveryConfig();
+        final Config.CourseDiscoveryConfig courseDiscoveryConfig = environment.getConfig().getDiscoveryConfig().getCourseDiscoveryConfig();
+        if ((courseDiscoveryConfig != null && courseDiscoveryConfig.isDiscoveryEnabled()) ||
+                (programDiscoveryConfig != null && programDiscoveryConfig.isDiscoveryEnabled(environment))) {
+            items.add(new FragmentItemModel(MainDiscoveryFragment.class,
                     getResources().getString(R.string.label_discovery), FontAwesomeIcons.fa_search,
                     new FragmentItemModel.FragmentStateListener() {
                         @Override
                         public void onFragmentSelected() {
-                            environment.getAnalyticsRegistry().trackScreenView(Analytics.Screens.FIND_COURSES);
+                            EventBus.getDefault().post(new DiscoveryTabSelectedEvent());
                         }
-                    }));
+                    }
+            ));
         }
 
         return items;
@@ -194,7 +196,7 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
 
     @SuppressWarnings("unused")
     public void onEventMainThread(@NonNull MoveToDiscoveryTabEvent event) {
-        if (!environment.getConfig().getCourseDiscoveryConfig().isCourseDiscoveryEnabled()) {
+        if (!environment.getConfig().getDiscoveryConfig().getCourseDiscoveryConfig().isDiscoveryEnabled()) {
             return;
         }
         if (binding != null) {
