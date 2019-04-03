@@ -116,7 +116,7 @@
   <!--Toggle switch off state label-->
   <string name="toggle_turn_off">关</string>
   <!--Logout button label-->
-  <string name="logout">退出</string>
+  <string name="logout">退出登录</string>
   <!--Settings screen title-->
   <string name="settings_txt">设置</string>
   <!--Settings screen version-->

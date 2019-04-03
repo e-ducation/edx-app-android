@@ -82,7 +82,8 @@
     <string name="new_password_different">新密码不统一</string>
     <string name="old_password_error">原密码不正确</string>
     <string name="reset_password_error">密码重置失败</string>
-    <string name="password_format_error">密码至少6位字符</string>
+    <string name="password_format_tips">密码至少6个字符</string>
+    <string name="password_format_error">新密码和邮箱或用户名太相似</string>
     <string name="vip_not_buy">未购买</string>
     <string name="vip_expired">已过期</string>
     <plurals name="vip_time_day">

@@ -82,7 +82,8 @@
     <string name="new_password_different"> New passwords do not match.</string>
     <string name="old_password_error">Old password is incorrect.</string>
     <string name="reset_password_error">Password reset failed.</string>
-    <string name="password_format_error">Password must be at least 6 characters.</string>
+    <string name="password_format_tips">Password must be at least 6 characters.</string>
+    <string name="password_format_error">New password is too similar to the email address or the username.</string>
     <string name="vip_not_buy">Not Purchased</string>
     <string name="vip_expired"> Expired</string>
     <plurals name="vip_time_day">

@@ -27,10 +27,11 @@
 
                 <ImageView
                     android:id="@+id/icon_vip"
-                    android:layout_width="20dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/account_icon_vip"
                     tools:ignore="ContentDescription" />
 
@@ -60,10 +61,11 @@
 
                 <ImageView
                     android:id="@+id/icon_mobile"
-                    android:layout_width="20dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/account_icon_mobile"
                     tools:ignore="ContentDescription" />
 
@@ -92,10 +94,11 @@
 
                 <ImageView
                     android:id="@+id/icon_password"
-                    android:layout_width="20dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/account_icon_password"
                     tools:ignore="ContentDescription" />
 
@@ -118,10 +121,11 @@
 
                 <ImageView
                     android:id="@+id/icon_feedback"
-                    android:layout_width="20dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/account_icon_feedback"
                     tools:ignore="ContentDescription" />
 
@@ -144,10 +148,11 @@
 
                 <ImageView
                     android:id="@+id/icon_setting"
-                    android:layout_width="20dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/account_icon_setting"
                     tools:ignore="ContentDescription" />
 
