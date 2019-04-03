@@ -15,6 +15,7 @@ import org.edx.mobile.R;
 import org.edx.mobile.core.IEdxEnvironment;
 import org.edx.mobile.databinding.FragmentMyCoursesListBinding;
 import org.edx.mobile.databinding.PanelFindCourseBinding;
+import org.edx.mobile.eliteu.harvard.HarvardStatusUtil;
 import org.edx.mobile.event.MoveToDiscoveryTabEvent;
 import org.edx.mobile.event.EnrolledInCourseEvent;
 import org.edx.mobile.event.MainDashboardRefreshEvent;
@@ -30,6 +31,7 @@ import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.module.db.DataCallback;
 import org.edx.mobile.module.prefs.LoginPrefs;
+import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.UiUtil;
 import org.edx.mobile.view.adapters.MyCoursesAdapter;
@@ -57,6 +59,9 @@ public class MyCoursesListFragment extends OfflineSupportBaseFragment
 
     @Inject
     private LoginPrefs loginPrefs;
+
+    @Inject
+    private Config config;
 
     private FullScreenErrorNotification errorNotification;
 
@@ -251,6 +256,7 @@ public class MyCoursesListFragment extends OfflineSupportBaseFragment
             final PanelFindCourseBinding footer = DataBindingUtil.inflate(LayoutInflater.from(getActivity()),
                     R.layout.panel_find_course, binding.myCourseList, false);
             binding.myCourseList.addFooterView(footer.getRoot(), null, false);
+            HarvardStatusUtil.initButton(this,footer,config);
             footer.courseBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

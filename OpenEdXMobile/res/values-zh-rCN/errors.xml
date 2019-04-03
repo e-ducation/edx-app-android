@@ -28,7 +28,7 @@
   <string name="network_service_unavailable">服务不可用。请稍后重试。</string>
   <!--Login error messages-->
   <!--Error shown during login when user attempts login without entering a username or e-mail-->
-  <string name="error_enter_email">请输入您的用户名或邮箱，并重试。</string>
+  <string name="error_enter_email">请输入您的账号，并重试。</string>
   <!--Error shown during login when user enters an invalid email address-->
   <string name="error_invalid_email">请确保您的邮箱格式正确，并重试。</string>
   <!--Error shown during login when user attempts login without entering a password-->
@@ -73,9 +73,9 @@
   <!--Error prompt shown during registration to indicate a field missing a selection. Argument is a field name-->
   <string name="error_select_field">请选择您的%1$s。</string>
   <!--Error prompt shown during registration when a field entry is too short. Arguments are 1) a field name, 2) a number-->
-  <string name="error_min_length">%1$s 至少包含 %2$d 个字符。</string>
+  <string name="error_min_length">%1$s至少包含%2$d个字符。</string>
   <!--Error prompt shown during registration when a field entry is too long. Arguments are 1) a field name, 2) a number-->
-  <string name="error_max_length">%1$s 不能超过 %2$d 个字符。</string>
+  <string name="error_max_length">%1$s不能超过%2$d个字符。</string>
   <!--Error message shown when a course hasn't started yet-->
   <string name="course_not_started">本课程尚未开始。</string>
   <!--Error message shown when a user's access has expired for a course-->

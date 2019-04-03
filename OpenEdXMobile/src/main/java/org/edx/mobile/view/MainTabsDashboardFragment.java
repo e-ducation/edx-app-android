@@ -100,7 +100,7 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
         inflater.inflate(R.menu.my_courses, menu);
         menu.findItem(R.id.menu_item_account).setVisible(true);
         menu.findItem(R.id.menu_item_account).setIcon(
-                new IconDrawable(getContext(), FontAwesomeIcons.fa_gear)
+                new IconDrawable(getContext(), FontAwesomeIcons.fa_ellipsis_v)
                         .colorRes(getContext(), R.color.toolbar_controls_color)
                         .actionBarSize(getContext()));
     }

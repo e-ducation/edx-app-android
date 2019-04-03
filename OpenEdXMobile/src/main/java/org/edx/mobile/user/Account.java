@@ -240,4 +240,56 @@ public class Account {
     public void setPhone(@Nullable String phone) {
         this.phone = phone;
     }
+
+    @SerializedName("vip_status")
+    @Nullable // Nullability not specified by API
+    private int vip_status;
+
+    @SerializedName("vip_remain_days")
+    @Nullable // Nullability not specified by API
+    private int vip_remain_days;
+
+    @SerializedName("hmm_remaining_days")
+    @Nullable // Nullability not specified by API
+    private int hmm_remaining_days;
+
+    @SerializedName("hmm_expiry_date")
+    @Nullable // Nullability not specified by API
+    private String hmm_expiry_date;
+
+    @Nullable
+    public int getVip_status() {
+        return vip_status;
+    }
+
+    public void setVip_status(@Nullable int vip_status) {
+        this.vip_status = vip_status;
+    }
+
+    @Nullable
+    public int getVip_remain_days() {
+        return vip_remain_days;
+    }
+
+    public void setVip_remain_days(@Nullable int vip_remain_days) {
+        this.vip_remain_days = vip_remain_days;
+    }
+
+    @Nullable
+    public int getHmm_remaining_days() {
+        return hmm_remaining_days;
+    }
+
+    public void setHmm_remaining_days(@Nullable int hmm_remaining_days) {
+        this.hmm_remaining_days = hmm_remaining_days;
+    }
+
+    @Nullable
+    public String getHmm_expiry_date() {
+        return hmm_expiry_date;
+    }
+
+    public void setHmm_expiry_date(@Nullable String hmm_expiry_date) {
+        this.hmm_expiry_date = hmm_expiry_date;
+    }
 }

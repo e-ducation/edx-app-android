@@ -36,6 +36,8 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.eliteu.event.BuyVipSuccessEvent;
+import org.edx.mobile.eliteu.event.VipRemainDayUpdateEvent;
+import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.util.DeviceProgramDetectionUtil;
 import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.eliteu.vip.bean.WeChatReqBean;
@@ -52,6 +54,7 @@ import org.edx.mobile.eliteu.vip.bean.VipPersonInfo;
 import org.edx.mobile.eliteu.wight.SelectPayPopupWindow;
 import org.edx.mobile.http.notifications.FullScreenErrorNotification;
 import org.edx.mobile.model.Page;
+import org.edx.mobile.user.Account;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.view.OfflineSupportBaseFragment;
 import org.edx.mobile.view.custom.IconProgressBar;
@@ -81,6 +84,8 @@ public class VipFragment extends OfflineSupportBaseFragment {
     private String mOrderId;
     @Inject
     private EliteApi eliteApi;
+    @Inject
+    private AccountPrefs accountPrefs;
 
     public static Fragment newInstance(String vip_select_id) {
         final VipFragment fragment = new VipFragment();
@@ -240,7 +245,9 @@ public class VipFragment extends OfflineSupportBaseFragment {
 
                 int remain_days_int = Integer.parseInt(remain_days);
 
-                String remaining_time = String.format(getResources().getQuantityString(R.plurals.vip_remainint_time,remain_days_int,remain_days_int),remain_days);
+                ifNeedNotifyRemainDayUpdate(remain_days_int);
+
+                String remaining_time = String.format(getResources().getQuantityString(R.plurals.vip_remainint_time, remain_days_int, remain_days_int), remain_days);
 
                 int pixelSize = getResources().getDimensionPixelSize(R.dimen.dp24);
                 int index = remaining_time.lastIndexOf(String.valueOf(remain_days));
@@ -272,7 +279,7 @@ public class VipFragment extends OfflineSupportBaseFragment {
                     //过期时间
                     String expired_time = vipPersonInfo.getVip_expired_days();
                     int expired_time_int = Integer.parseInt(expired_time);
-                    String remaining_time =  String.format(getResources().getQuantityString(R.plurals.vip_expired_time,expired_time_int,expired_time_int), expired_time);
+                    String remaining_time = String.format(getResources().getQuantityString(R.plurals.vip_expired_time, expired_time_int, expired_time_int), expired_time);
 
                     int pixelSize = getResources().getDimensionPixelSize(R.dimen.dp24);
                     int index = remaining_time.lastIndexOf(String.valueOf(expired_time));
@@ -286,6 +293,17 @@ public class VipFragment extends OfflineSupportBaseFragment {
             }
         }
 
+    }
+
+    private void ifNeedNotifyRemainDayUpdate(int remain_days_int) {
+        boolean statusTheSameAsSp = accountPrefs.getAccount().getVip_status() == 2 && accountPrefs.getAccount().getVip_remain_days() == remain_days_int;
+        if (!statusTheSameAsSp) {
+            Account account = new Account();
+            account.setVip_status(2);
+            account.setVip_remain_days(remain_days_int);
+            accountPrefs.storeAccount(account);
+            RxBus.getDefault().post(new VipRemainDayUpdateEvent(remain_days_int));
+        }
     }
 
     private void showNetwordisNotConnected() {

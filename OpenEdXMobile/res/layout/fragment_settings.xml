@@ -92,6 +92,12 @@
                 style="@style/edX.Widget.Switch"
                 android:checked="true" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/logout_btn"
+            style="@style/account_option"
+            android:text="@string/logout" />
+
     </LinearLayout>
 
 </ScrollView>

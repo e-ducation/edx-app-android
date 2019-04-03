@@ -63,4 +63,9 @@ public interface EliteService {
     @POST("/api/user/v1/accounts/binding_phone/")
     Call<ResponseBody> bindingPhone(@Field("phone") String phone, @Field("code") String code);
 
+    @NonNull
+    @FormUrlEncoded
+    @POST("/api/user/v1/accounts/elite_password_reset/")
+    Call<HttpResponseBean> resetPassword(@Field("old_password") String old_password, @Field("new_password1") String new_password1, @Field("new_password2") String new_password2);
+
 }

@@ -85,14 +85,14 @@ public class BindMobileUtil {
     public void initBindMobileButton(final BaseFragmentActivity activity, final TextView textView) {
         final AccountPrefs accountPrefs = new AccountPrefs(activity);
         if (TextUtils.isEmpty(accountPrefs.getAccount().getPhone())) {
-            textView.setText(R.string.not_bind_mobile);
+            textView.setText(R.string.not_bind_mobile_2);
         } else {
-            textView.setText(activity.getString(R.string.already_bind_mobile) + " " + accountPrefs.getAccount().getPhone());
+            textView.setText(accountPrefs.getAccount().getPhone());
         }
         RxBus.getDefault().toObservable(BindMobileSuccessEvent.class).subscribe(new Consumer<BindMobileSuccessEvent>() {
             @Override
             public void accept(BindMobileSuccessEvent bindMobileSuccessEvent) throws Exception {
-                textView.setText(activity.getString(R.string.already_bind_mobile) + " " + bindMobileSuccessEvent.getPhone());
+                textView.setText(bindMobileSuccessEvent.getPhone());
             }
         });
     }

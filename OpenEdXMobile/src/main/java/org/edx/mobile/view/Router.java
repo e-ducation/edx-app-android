@@ -23,6 +23,7 @@ import org.edx.mobile.discussion.DiscussionComment;
 import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
 import org.edx.mobile.eliteu.bindmobile.BindMobileActivity;
+import org.edx.mobile.eliteu.resetpassword.ResetPasswordActivity;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.event.LogoutEvent;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
@@ -436,5 +437,14 @@ public class Router {
     public void showBindMobile(@NonNull Activity sourceActivity) {
         Intent bindMobileIntent = new Intent(sourceActivity, BindMobileActivity.class);
         sourceActivity.startActivity(bindMobileIntent);
+    }
+
+    /**
+     * 打开重置密码页面
+     * @param sourceActivity
+     */
+    public void showResetPassword(@NonNull Activity sourceActivity) {
+        Intent resetPasswordIntent = new Intent(sourceActivity, ResetPasswordActivity.class);
+        sourceActivity.startActivity(resetPasswordIntent);
     }
 }
