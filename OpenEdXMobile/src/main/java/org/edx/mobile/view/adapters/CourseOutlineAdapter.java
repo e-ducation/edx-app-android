@@ -27,6 +27,7 @@ import com.joanzapata.iconify.widget.IconImageView;
 import org.edx.mobile.R;
 import org.edx.mobile.base.RoboAppCompatActivity;
 import org.edx.mobile.core.IEdxEnvironment;
+import org.edx.mobile.eliteu.wight.GlidePlaceholderDrawable;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.model.course.BlockPath;
@@ -657,7 +658,8 @@ public class CourseOutlineAdapter extends BaseAdapter {
         final String headerImageUrl = courseData.getCourse().getCourse_image(environment.getConfig().getApiHostURL());
         Glide.with(context)
                 .load(headerImageUrl)
-                .placeholder(R.drawable.placeholder_course_card_image)
+//                .placeholder(R.drawable.placeholder_course_card_image)
+                .placeholder(new GlidePlaceholderDrawable(context.getResources(),R.drawable.placeholder_course_card_image))
                 .transform(new TopAnchorFillWidthTransformation(context))
                 .into(headerImageView);
 

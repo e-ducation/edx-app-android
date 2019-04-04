@@ -257,6 +257,10 @@ public class Account {
     @Nullable // Nullability not specified by API
     private String hmm_expiry_date;
 
+    @SerializedName("hmm_entry_url")
+    @Nullable // Nullability not specified by API
+    private String hmm_entry_url;
+
     @Nullable
     public int getVip_status() {
         return vip_status;
@@ -291,5 +295,14 @@ public class Account {
 
     public void setHmm_expiry_date(@Nullable String hmm_expiry_date) {
         this.hmm_expiry_date = hmm_expiry_date;
+    }
+
+    @Nullable
+    public String getHmm_entry_url() {
+        return hmm_entry_url;
+    }
+
+    public void setHmm_entry_url(@Nullable String hmm_entry_url) {
+        this.hmm_entry_url = hmm_entry_url;
     }
 }

@@ -12,9 +12,9 @@
         android:id="@+id/course_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/course_placeholder_color"
         android:contentDescription="@null"
         android:minHeight="@dimen/course_card_height"
-        android:adjustViewBounds="true"
         android:scaleType="fitXY"
         tools:background="@color/edx_brand_primary_base" />
 

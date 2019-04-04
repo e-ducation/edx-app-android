@@ -1,11 +1,11 @@
 package org.edx.mobile.eliteu.harvard;
 
+import android.text.TextUtils;
 import android.view.View;
 
 import org.edx.mobile.R;
 import org.edx.mobile.databinding.PanelFindCourseBinding;
 import org.edx.mobile.eliteu.util.AccountPrefs;
-import org.edx.mobile.social.ThirdPartyLoginConstants;
 import org.edx.mobile.user.Account;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.view.MyCoursesListFragment;
@@ -26,9 +26,11 @@ public class HarvardStatusUtil {
             footer.harvardBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String url = config.getApiHostURL() + ThirdPartyLoginConstants.HARVARD_URL;
-                    Router router = new Router(config);
-                    router.showAuthenticatedWebviewActivity(fragment.getActivity(), url, fragment.getString(R.string.harvard));
+                    if (!TextUtils.isEmpty(account.getHmm_entry_url())) {
+                        String url = config.getApiHostURL() + account.getHmm_entry_url();
+                        Router router = new Router(config);
+                        router.showAuthenticatedWebviewActivity(fragment.getActivity(), url, fragment.getString(R.string.harvard));
+                    }
                 }
             });
         } else {

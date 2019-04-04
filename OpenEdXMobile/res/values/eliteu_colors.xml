@@ -17,5 +17,6 @@
 
     <color name="qianhui1">#f5f7fa</color>
     <color name="pay_btn">#FC9753</color>
+    <color name="course_placeholder_color">#F2F3F7</color>
 
 </resources>

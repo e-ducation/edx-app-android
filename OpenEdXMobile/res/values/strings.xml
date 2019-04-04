@@ -73,7 +73,7 @@
 
     <!-- Login Activity Place Holders -->
     <!-- Hint text for login field -->
-    <string name="email_username">E-mail address or mobile</string>
+    <string name="email_username">Email or mobile</string>
     <!-- Hint text for email address field in reset password dialog -->
     <string name="email">E-mail address</string>
     <!-- Hint text for password field -->

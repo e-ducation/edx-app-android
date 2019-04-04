@@ -44,6 +44,7 @@ import org.edx.mobile.eliteu.util.CourseUtil;
 import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.eliteu.vip.ui.VipTipsDialog;
+import org.edx.mobile.eliteu.wight.GlidePlaceholderDrawable;
 import org.edx.mobile.http.HttpStatus;
 import org.edx.mobile.http.HttpStatusException;
 import org.edx.mobile.http.callback.CallTrigger;
@@ -236,7 +237,8 @@ public class CourseDetailFragment extends BaseFragment {
         final String headerImageUrl = courseDetail.media.course_image.getUri(environment.getConfig().getApiHostURL());
         Glide.with(CourseDetailFragment.this)
                 .load(headerImageUrl)
-                .placeholder(R.drawable.placeholder_course_card_image)
+//                .placeholder(R.drawable.placeholder_course_card_image)
+                .placeholder(new GlidePlaceholderDrawable(getResources(),R.drawable.placeholder_course_card_image))
                 .transform(new TopAnchorFillWidthTransformation(getActivity()))
                 .into(mHeaderImageView);
     }

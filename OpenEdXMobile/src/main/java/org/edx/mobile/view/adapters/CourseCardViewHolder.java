@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import org.edx.mobile.R;
+import org.edx.mobile.eliteu.wight.GlidePlaceholderDrawable;
 import org.edx.mobile.model.api.CourseEntry;
 import org.edx.mobile.util.images.ImageUtils;
 import org.edx.mobile.util.images.TopAnchorFillWidthTransformation;
@@ -55,7 +56,8 @@ public class CourseCardViewHolder extends BaseListAdapter.BaseViewHolder {
         if (ImageUtils.isValidContextForGlide(context)) {
             Glide.with(context)
                     .load(imageUrl)
-                    .placeholder(R.drawable.placeholder_course_card_image)
+//                    .placeholder(R.drawable.placeholder_course_card_image)
+                    .placeholder(new GlidePlaceholderDrawable(context.getResources(),R.drawable.placeholder_course_card_image))
                     .transform(new TopAnchorFillWidthTransformation(context))
                     .into(courseImage);
         }
