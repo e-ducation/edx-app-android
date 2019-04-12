@@ -32,7 +32,7 @@
 
     <!-- Login error messages -->
     <!-- Error shown during login when user attempts login without entering a username or e-mail -->
-    <string name="error_enter_email">Please enter your user name or e-mail address and try again.</string>
+    <string name="error_enter_email">Please enter your account and try again.</string>
     <!-- Error shown during login when user enters an invalid email address -->
     <string name="error_invalid_email">Please make sure your e-mail address is formatted correctly and try again.</string>
     <!-- Error shown during login when user attempts login without entering a password -->

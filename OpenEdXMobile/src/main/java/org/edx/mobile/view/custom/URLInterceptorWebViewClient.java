@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import org.edx.mobile.base.MainApplication;
+import org.edx.mobile.eliteu.harvard.HarvardStatusUtil;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.util.BrowserUtil;
 import org.edx.mobile.util.Config;
@@ -153,6 +154,10 @@ public class URLInterceptorWebViewClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (HarvardStatusUtil.isHarvardUrl(url)) {
+            view.loadUrl(url);
+            return true;
+        }
         if (actionListener == null) {
             logger.warn("you have not set IActionLister to this WebViewClient, " +
                     "you might miss some event");

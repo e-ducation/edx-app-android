@@ -56,7 +56,7 @@
   <string name="need_data">本功能需要有效的网络连接。</string>
   <!--Login Activity Place Holders-->
   <!--Hint text for login field-->
-  <string name="email_username">用户名或邮箱</string>
+  <string name="email_username">邮箱或手机号</string>
   <!--Hint text for email address field in reset password dialog-->
   <string name="email">邮箱</string>
   <!--Hint text for password field-->
@@ -76,7 +76,7 @@
   <!--Generic error during log in-->
   <string name="error_heading">登录时出现以下错误</string>
   <!--Error during log in.-->
-  <string name="login_failed">请确保输入正确的用户名/邮箱与密码，再重试。</string>
+  <string name="login_failed">请确保输入正确的账号与密码，再重试。</string>
   <!--License Agreement related string on Login and Regiser screens-->
   <!--Create account agreement. Followed by list of agreement names like "End User License Agreement"-->
   <string name="by_creating_account">创建账号即表示您同意{license}、{tos_and_honor_code}和{privacy_policy}</string>
@@ -116,7 +116,7 @@
   <!--Toggle switch off state label-->
   <string name="toggle_turn_off">关</string>
   <!--Logout button label-->
-  <string name="logout">退出</string>
+  <string name="logout">退出登录</string>
   <!--Settings screen title-->
   <string name="settings_txt">设置</string>
   <!--Settings screen version-->

@@ -92,4 +92,10 @@ public class EliteApi {
         return eliteService.bindingPhone(phone, code);
     }
 
+    /**
+     * @return 重置密码
+     */
+    public Call<HttpResponseBean> resetPassword(String oldpassword, String newpassword, String doublenewpassword) {
+        return eliteService.resetPassword(oldpassword, newpassword,doublenewpassword);
+    }
 }

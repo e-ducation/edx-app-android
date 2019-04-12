@@ -18,6 +18,8 @@ public class ThirdPartyLoginConstants {
 
     public static String VIP_SHARE_URL = "/vip";
 
+    public static String HARVARD_URL = "/elitemba/hmm/";
+
     public static String getBackendByType(int type) {
         switch (type) {
             case IThirdPartyConfig.TYPE_QQ:

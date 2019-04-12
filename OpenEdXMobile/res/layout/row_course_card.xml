@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@null"
+            android:background="@color/course_placeholder_color"
             android:scaleType="fitXY"
             tools:src="@drawable/placeholder_course_card_image" />
 

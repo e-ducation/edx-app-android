@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:divider="@drawable/eliteu_divider"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/widget_margin"
+            android:showDividers="middle|end|beginning"
+            android:splitMotionEvents="false">
+
+            <RelativeLayout
+                android:id="@+id/layout_vip"
+                style="@style/eliteu_account_item_layout_style">
+
+                <ImageView
+                    android:id="@+id/icon_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/account_icon_vip"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/eliteu_account_item_tv_style"
+                    android:layout_toRightOf="@id/icon_vip"
+                    android:text="@string/membership" />
+
+                <org.edx.mobile.view.custom.IconImageViewXml
+                    android:id="@+id/icon_1"
+                    style="@style/eliteu_account_item_right_icon_style"
+                    app:iconColor="#ccd1d9"
+                    app:iconName="fa-angle-right" />
+
+                <TextView
+                    android:id="@+id/vip_tv"
+                    style="@style/eliteu_account_item_sub_text_style"
+                    android:layout_toLeftOf="@+id/icon_1"
+                    tools:text="300天" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_mobile"
+                style="@style/eliteu_account_item_layout_style"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/icon_mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/account_icon_mobile"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/eliteu_account_item_tv_style"
+                    android:layout_toRightOf="@id/icon_mobile"
+                    android:text="@string/phone_number" />
+
+                <org.edx.mobile.view.custom.IconImageViewXml
+                    android:id="@+id/icon_2"
+                    style="@style/eliteu_account_item_right_icon_style"
+                    app:iconColor="#ccd1d9"
+                    app:iconName="fa-angle-right" />
+
+                <TextView
+                    android:id="@+id/binding_mobile_tv"
+                    style="@style/eliteu_account_item_sub_text_style"
+                    android:layout_toLeftOf="@+id/icon_2"
+                    tools:text="13700000000" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_password"
+                style="@style/eliteu_account_item_layout_style">
+
+                <ImageView
+                    android:id="@+id/icon_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/account_icon_password"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/eliteu_account_item_tv_style"
+                    android:layout_toRightOf="@id/icon_password"
+                    android:text="@string/reset_password" />
+
+                <org.edx.mobile.view.custom.IconImageViewXml
+                    style="@style/eliteu_account_item_right_icon_style"
+                    app:iconColor="#ccd1d9"
+                    app:iconName="fa-angle-right" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_feedback"
+                style="@style/eliteu_account_item_layout_style">
+
+                <ImageView
+                    android:id="@+id/icon_feedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/account_icon_feedback"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/eliteu_account_item_tv_style"
+                    android:layout_toRightOf="@id/icon_feedback"
+                    android:text="@string/label_submit_feedback" />
+
+                <org.edx.mobile.view.custom.IconImageViewXml
+                    style="@style/eliteu_account_item_right_icon_style"
+                    app:iconColor="#ccd1d9"
+                    app:iconName="fa-angle-right" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_setting"
+                style="@style/eliteu_account_item_layout_style"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/icon_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/account_icon_setting"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/eliteu_account_item_tv_style"
+                    android:layout_toRightOf="@id/icon_setting"
+                    android:text="@string/settings_txt" />
+
+                <org.edx.mobile.view.custom.IconImageViewXml
+                    style="@style/eliteu_account_item_right_icon_style"
+                    app:iconColor="#ccd1d9"
+                    app:iconName="fa-angle-right" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_version_no"
+            style="@style/regular_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/edx_margin"
+            android:gravity="center_horizontal"
+            android:textColor="#bfc1c9"
+            android:textSize="@dimen/drawer_app_version_text"
+            tools:text="Version Major.Minor.Patch" />
+    </LinearLayout>
+</layout>

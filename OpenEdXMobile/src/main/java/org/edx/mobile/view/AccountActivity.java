@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import org.edx.mobile.base.BaseSingleFragmentActivity;
+import org.edx.mobile.eliteu.account.EliteUAccountFragment;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.util.Config;
 
@@ -22,6 +23,7 @@ public class AccountActivity extends BaseSingleFragmentActivity {
 
     @Override
     public Fragment getFirstFragment() {
-        return new AccountFragment();
+//        return new AccountFragment();
+        return new EliteUAccountFragment();
     }
 }

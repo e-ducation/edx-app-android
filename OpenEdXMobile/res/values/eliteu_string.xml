@@ -27,7 +27,7 @@
         <item quantity="one">VIP membership has expired in %1$s day</item>
         <item quantity="other">VIP membership has expired in %1$s days</item>
     </plurals>
-    <string name="vip_page_title">VIP</string>
+    <string name="vip_page_title">Membership</string>
     <string name="chose_pay_way">Choose payment method</string>
     <string name="tuition">Payment: </string>
     <string name="wechat_pay_tv">WeChat</string>
@@ -48,6 +48,7 @@
     <string name="bind_mobie_dialog_negativeText">No</string>
     <string name="bind_mobie_dialog_positiveText">Bind Phone</string>
     <string name="not_bind_mobile">Unbound cellphone</string>
+    <string name="not_bind_mobile_2">Not Linked</string>
     <string name="already_bind_mobile">Bound cellphone</string>
     <string name="bind_mobile">Binding Your Cellphone</string>
 
@@ -69,5 +70,27 @@
     <string name="single_class_buy_not_supported">Sorry, purchase is currently unavailable in App. Please proceed on PC.</string>
     <string name="phone_number_format_not_correct">Wrong mobile format.</string>
     <string name="get_verification_code_error">Failed to get verification code, please try again later.</string>
+
+    <string name="membership">Membership</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="reset_password">Password Reset</string>
+    <string name="reset_password_title">Password Reset</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password">New password</string>
+    <string name="double_new_password">Confirm password</string>
+    <string name="password_reset_success">Password modified successfully.</string>
+    <string name="new_password_different"> New passwords do not match.</string>
+    <string name="old_password_error">Old password is incorrect.</string>
+    <string name="reset_password_error">Password reset failed.</string>
+    <string name="password_format_tips">Password must be at least 6 characters.</string>
+    <string name="password_format_error">New password is too similar to the email address or the username.</string>
+    <string name="vip_not_buy">Not Purchased</string>
+    <string name="vip_expired"> Expired</string>
+    <plurals name="vip_time_day">
+        <item quantity="one">%1$s Day</item>
+        <item quantity="other">%1$s Days</item>
+    </plurals>
+    <string name="harvard_btn_string">Harvard Learning Camp \n Date of Expiry:%1$s</string>
+    <string name="harvard">Harvard Learning Camp</string>
 
 </resources>

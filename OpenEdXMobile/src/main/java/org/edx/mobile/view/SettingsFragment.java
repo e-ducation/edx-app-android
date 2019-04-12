@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.google.inject.Inject;
 
@@ -40,6 +41,7 @@ public class SettingsFragment extends BaseFragment {
     private Switch wifiSwitch;
     private Switch sdCardSwitch;
     private LinearLayout sdCardSettingsLayout;
+    private TextView logoutTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,14 @@ public class SettingsFragment extends BaseFragment {
         sdCardSettingsLayout = (LinearLayout) layout.findViewById(R.id.sd_card_setting_layout);
         updateWifiSwitch();
         updateSDCardSwitch();
+        logoutTextView = layout.findViewById(R.id.logout_btn);
+        logoutTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                environment.getRouter().performManualLogout(getActivity(),
+                        environment.getAnalyticsRegistry(), environment.getNotificationDelegate());
+            }
+        });
         final LinearLayout settingsLayout = (LinearLayout) layout.findViewById(R.id.settings_layout);
         for (SettingsExtension extension : extensionRegistry.forType(SettingsExtension.class)) {
             extension.onCreateSettingsView(settingsLayout);
