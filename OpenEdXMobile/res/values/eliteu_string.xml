@@ -92,9 +92,9 @@
     </plurals>
     <string name="harvard_btn_string">Harvard Managementor \n Date of Expiry:%1$s</string>
     <string name="harvard">Harvard Managementor</string>
-    <string name="harvard_time_7_30">您加入的哈商学习营，不到一个月就结束了，抓紧时间学习吧！</string>
-    <string name="harvard_time_less_than_7">您加入的哈商学习营，即将结束，抓紧时间学习吧！</string>
-    <string name="harvard_dialog_ok">知道了</string>
+    <string name="harvard_time_7_30">Harvard ManageMentor will be ended in less than a month. Go and study!</string>
+    <string name="harvard_time_less_than_7">Harvard ManageMentor will be ended soon. Go and study!</string>
+    <string name="harvard_dialog_ok">OK</string>
     <string name="support_recycler_more_not">这个是底线</string>
     <string name="article_title">文章</string>
     <string name="newest">最新</string>
