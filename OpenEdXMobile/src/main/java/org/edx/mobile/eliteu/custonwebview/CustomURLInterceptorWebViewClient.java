@@ -16,6 +16,7 @@ import android.webkit.WebViewClient;
 
 import org.edx.mobile.base.MainApplication;
 import org.edx.mobile.logger.Logger;
+import org.edx.mobile.util.BrowserUtil;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.ConfigUtil;
 import org.edx.mobile.util.NetworkUtil;
@@ -152,8 +153,13 @@ public class CustomURLInterceptorWebViewClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        view.loadUrl(url);
-        return true;
+        if (url.contains("/courses?search_query=")) {
+            BrowserUtil.open(activity, url);
+            return true;
+        } else {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
     public void setAllLinksAsExternal(boolean isAllLinksExternal) {

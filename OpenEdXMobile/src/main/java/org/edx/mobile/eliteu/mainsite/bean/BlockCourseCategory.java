@@ -8,12 +8,22 @@ public class BlockCourseCategory implements Serializable {
 
     private List<CategorieslistBean> categorieslist;
 
+    private String title;
+
     public List<CategorieslistBean> getCategorieslist() {
         return categorieslist;
     }
 
     public void setCategorieslist(List<CategorieslistBean> categorieslist) {
         this.categorieslist = categorieslist;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public static class CategorieslistBean {

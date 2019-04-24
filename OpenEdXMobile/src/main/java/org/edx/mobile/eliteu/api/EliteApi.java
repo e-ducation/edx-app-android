@@ -123,7 +123,7 @@ public class EliteApi {
     }
 
     /**
-     * @return 获取教授列表
+     * @return 获取文章列表
      */
     public Observable<PageHttpResult<ArticleBean>> getArticleList(int page, String order, String tags) {
         String fields = "tags,author_image,article_datetime,article_cover_app,liked_count,description,author_name";
@@ -136,7 +136,7 @@ public class EliteApi {
     }
 
     /**
-     * @return 获取教授详情
+     * @return 获取文章标签
      */
     public Observable<ArticleTagBean> getArticleTags() {
         String fields = "_,name";

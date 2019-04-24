@@ -90,20 +90,18 @@
         <item quantity="one">%1$s天</item>
         <item quantity="other">%1$s天</item>
     </plurals>
-    <string name="harvard_btn_string">哈佛学习营 \n 有效期至：%1$s</string>
-    <string name="harvard">哈佛学习营</string>
+    <string name="harvard_btn_string">哈佛管理导师 \n 有效期至：%1$s</string>
+    <string name="harvard">哈佛管理导师</string>
+    <string name="harvard_time_7_30">您加入的哈商学习营，不到一个月就结束了，抓紧时间学习吧！</string>
+    <string name="harvard_time_less_than_7">您加入的哈商学习营，即将结束，抓紧时间学习吧！</string>
+    <string name="harvard_dialog_ok">知道了</string>
     <string name="support_recycler_more_not">这个是底线</string>
-    <string name="article_title">文章列表</string>
+    <string name="article_title">文章</string>
     <string name="newest">最新</string>
     <string name="hotest">最热</string>
     <string name="webview_title">详情</string>
-    <string name="course_category">课程分类</string>
-    <string name="suitable_course">找到适合您的课</string>
-    <string name="tuijian_course">推荐课程</string>
     <string name="all_course">全部课程</string>
-    <string name="tuijian_professor">推荐教授</string>
     <string name="all_professor">全部教授</string>
-    <string name="user_story">用户故事</string>
     <string name="all_story">全部文章</string>
     <string name="professor_list_title">教授</string>
 

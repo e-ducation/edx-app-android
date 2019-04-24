@@ -33,7 +33,7 @@
         android:layout_below="@+id/card_view"
         android:layout_marginTop="10dp"
         android:ellipsize="end"
-        android:maxLines="2"
+        android:maxLines="1"
         android:textColor="#2e313c"
         android:textSize="14dp"
         tools:text="运营管理" />

@@ -42,6 +42,7 @@ import org.edx.mobile.eliteu.util.AndroidSizeUtil;
 import org.edx.mobile.eliteu.wight.CourseGridLayoutManager;
 import org.edx.mobile.eliteu.wight.GridSectionAverageGapItemDecoration;
 import org.edx.mobile.eliteu.wight.SpaceOrientationItemDecoration;
+import org.edx.mobile.event.MoveToDiscoveryTabEvent;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.view.Router;
 import org.json.JSONObject;
@@ -50,8 +51,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.functions.Consumer;
-import kotlin.Unit;
+import de.greenrobot.event.EventBus;
 
 public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -151,7 +151,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<CategorieslistBean> mCategoryList = blockCourseCategory.getCategorieslist();
                 RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) holder;
                 CourseCategoryAdapter courseCategoryAdapter = new CourseCategoryAdapter(mCategoryList, mContext, router);
-                recyclerViewHolder.mText.setText(R.string.course_category);
+                recyclerViewHolder.mText.setText(blockCourseCategory.getTitle());
                 recyclerViewHolder.mRecyclerView.setAdapter(courseCategoryAdapter);
                 break;
             case BLOCK_TYPE_SUITABLE_COURSE:
@@ -160,7 +160,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<MainSiteCourseBean> seriesList = blockSeriesCourse.getSeries();
                 RecyclerViewHolder recyclerViewHolder1 = (RecyclerViewHolder) holder;
                 MainSiteCourseAdapter mainSiteCourseAdapter = MainSiteCourseAdapter.builder().conetxt(mContext).config(config).router(router).type(MainSiteCourseAdapter.TYPE_URL).build();
-                recyclerViewHolder1.mText.setText(R.string.suitable_course);
+                recyclerViewHolder1.mText.setText(blockSeriesCourse.getTitle());
                 mainSiteCourseAdapter.setData(seriesList);
                 recyclerViewHolder1.mRecyclerView.setAdapter(mainSiteCourseAdapter);
                 recyclerViewHolder1.divider.setVisibility(View.VISIBLE);
@@ -171,12 +171,13 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<MainSiteCourseBean> list = blockRecommendCourse.getCourses();
                 GlidViewViewHolder viewViewHolder = (GlidViewViewHolder) holder;
                 MainSiteCourseAdapter mainSiteCourseAdapter1 = MainSiteCourseAdapter.builder().layout(R.layout.main_site_course_griview_vertical_item).conetxt(mContext).config(config).type(MainSiteCourseAdapter.TYPE_COURSE).router(router).eliteapi(eliteApi).username(username).build();
-                viewViewHolder.mText.setText(R.string.tuijian_course);
+                viewViewHolder.mText.setText(blockRecommendCourse.getTitle());
                 viewViewHolder.mRightLayout.setVisibility(View.VISIBLE);
                 viewViewHolder.mText2.setText(R.string.all_course);
                 mainSiteCourseAdapter1.setData(list);
                 viewViewHolder.mRecyclerView.setAdapter(mainSiteCourseAdapter1);
                 viewViewHolder.divider.setVisibility(View.VISIBLE);
+                RxView.clicks(viewViewHolder.mRightLayout).throttleFirst(1,TimeUnit.SECONDS).subscribe(unit -> EventBus.getDefault().post(new MoveToDiscoveryTabEvent()));
                 break;
             case BLOCK_TYPE_RECOMMEND_PROFESSOR:
                 BlockProfessor blockProfessor = gson.fromJson(JSONObject.wrap(baseMainSiteBlockBean.getValue()).toString(), new TypeToken<BlockProfessor>() {
@@ -185,7 +186,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                 RecyclerViewHolder recyclerViewHolder2 = (RecyclerViewHolder) holder;
                 MainSiteProfessorAdapter professorAdapter = new MainSiteProfessorAdapter(mContext, config, router);
-                recyclerViewHolder2.mText.setText(R.string.tuijian_professor);
+                recyclerViewHolder2.mText.setText(blockProfessor.getTitle());
                 recyclerViewHolder2.mRightLayout.setVisibility(View.VISIBLE);
                 recyclerViewHolder2.mText2.setText(R.string.all_professor);
                 professorAdapter.setData(list1);
@@ -200,7 +201,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<BlockStory.StoryBean> list2 = blockStory.getStory();
                 StoryRecyclerViewHolder viewHolder = (StoryRecyclerViewHolder) holder;
                 MainSiteStoryAdapter mainSiteStoryAdapter = new MainSiteStoryAdapter(mContext, config, router);
-                viewHolder.mText.setText(R.string.user_story);
+                viewHolder.mText.setText(blockStory.getTitle());
                 viewHolder.mRightLayout.setVisibility(View.VISIBLE);
                 viewHolder.mText2.setText(R.string.all_story);
                 mainSiteStoryAdapter.setData(list2);
