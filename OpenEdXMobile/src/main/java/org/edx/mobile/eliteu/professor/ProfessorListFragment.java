@@ -104,11 +104,11 @@ public class ProfessorListFragment extends OfflineSupportBaseFragment {
     private OnItemClickListener mItemClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(View itemView, int position) {
-//            Intent intent = new Intent(getActivity(), ProfessorDetailActivity.class);
-//            intent.putExtra("professor_name", mDataList.get(position).getName());
-//            intent.putExtra("professor_id", mDataList.get(position).getId());
-//            startActivity(intent);
-            router.showCustomWebviewActivity(getActivity(),config.getApiHostURL()+"/professors/"+mDataList.get(position).getId()+"/",getString(R.string.webview_title));
+            Intent intent = new Intent(getActivity(), ProfessorDetailActivity.class);
+            intent.putExtra("professor_name", getString(R.string.webview_title));
+            intent.putExtra("professor_id", mDataList.get(position).getId());
+            startActivity(intent);
+//            router.showCustomWebviewActivity(getActivity(),config.getApiHostURL()+"/professors/"+mDataList.get(position).getId()+"/",getString(R.string.webview_title));
         }
     };
 

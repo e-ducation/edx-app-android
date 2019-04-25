@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,9 @@ import com.jakewharton.rxbinding3.view.RxView;
 
 import org.edx.mobile.R;
 import org.edx.mobile.eliteu.mainsite.bean.BlockCourseCategory.CategorieslistBean;
+import org.edx.mobile.util.Config;
 import org.edx.mobile.view.Router;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -29,27 +30,15 @@ public class CourseCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private List<CategorieslistBean> mDataList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private List<Integer> mIconList;
     private Router router;
+    private Config config;
 
-    public CourseCategoryAdapter(List<CategorieslistBean> list, Context context, Router router) {
+    public CourseCategoryAdapter(List<CategorieslistBean> list, Context context, Router router, Config config) {
         this.mDataList = list;
         this.mContext = context;
         this.router = router;
+        this.config = config;
         this.mLayoutInflater = LayoutInflater.from(context);
-        mIconList = new ArrayList<>();
-        initIconList();
-    }
-
-    private void initIconList() {
-        if (mIconList != null) {
-            mIconList.clear();
-            mIconList.add(R.drawable.course_category_icon_1);
-            mIconList.add(R.drawable.course_category_icon_2);
-            mIconList.add(R.drawable.course_category_icon_3);
-            mIconList.add(R.drawable.course_category_icon_4);
-            mIconList.add(R.drawable.course_category_icon_5);
-        }
     }
 
     @NonNull
@@ -62,7 +51,11 @@ public class CourseCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ItemViewHolder) {
             ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-            Glide.with(mContext).load(mIconList.get(position)).placeholder(R.drawable.course_category_default_img).error(R.drawable.course_category_default_img).into(itemViewHolder.imageView);
+            if (!TextUtils.isEmpty(mDataList.get(position).getImg_for_app())) {
+                Glide.with(mContext).load(config.getApiHostURL() + mDataList.get(position).getImg_for_app()).placeholder(R.drawable.course_category_default_img).error(R.drawable.course_category_default_img).into(itemViewHolder.imageView);
+            } else {
+                Glide.with(mContext).load(R.drawable.course_category_default_img).placeholder(R.drawable.course_category_default_img).error(R.drawable.course_category_default_img).into(itemViewHolder.imageView);
+            }
             itemViewHolder.textView.setText(mDataList.get(position).getCategories_name());
             RxView.clicks(itemViewHolder.rootView).throttleFirst(1, TimeUnit.SECONDS).subscribe(new Consumer<Unit>() {
                 @Override

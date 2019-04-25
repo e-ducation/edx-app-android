@@ -150,7 +150,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }.getType());
                 List<CategorieslistBean> mCategoryList = blockCourseCategory.getCategorieslist();
                 RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) holder;
-                CourseCategoryAdapter courseCategoryAdapter = new CourseCategoryAdapter(mCategoryList, mContext, router);
+                CourseCategoryAdapter courseCategoryAdapter = new CourseCategoryAdapter(mCategoryList, mContext, router,config);
                 recyclerViewHolder.mText.setText(blockCourseCategory.getTitle());
                 recyclerViewHolder.mRecyclerView.setAdapter(courseCategoryAdapter);
                 break;

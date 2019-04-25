@@ -34,6 +34,7 @@ public class BlockCourseCategory implements Serializable {
 
         private String categories_link;
         private String categories_name;
+        private String img_for_app;
 
         public String getCategories_link() {
             return categories_link;
@@ -49,6 +50,14 @@ public class BlockCourseCategory implements Serializable {
 
         public void setCategories_name(String categories_name) {
             this.categories_name = categories_name;
+        }
+
+        public String getImg_for_app() {
+            return img_for_app;
+        }
+
+        public void setImg_for_app(String img_for_app) {
+            this.img_for_app = img_for_app;
         }
     }
 }
