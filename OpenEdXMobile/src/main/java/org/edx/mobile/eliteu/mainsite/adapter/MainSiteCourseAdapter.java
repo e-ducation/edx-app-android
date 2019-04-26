@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,26 +68,29 @@ public class MainSiteCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                             if (mBuilder.type == MainSiteCourseAdapter.TYPE_URL) {
                                 mBuilder.router.showCustomWebviewActivity((FragmentActivity) mBuilder.mContext, mDataList.get(position).getLink(), mBuilder.mContext.getString(R.string.webview_title));
                             } else if (mBuilder.type == MainSiteCourseAdapter.TYPE_COURSE) {
-                                itemViewHolder.whole_item_layout.setEnabled(false);
-                                mBuilder.eliteApi.getCourseDetail(mDataList.get(position).getLink(), mBuilder.username).enqueue(new Callback<CourseDetail>() {
-                                    @Override
-                                    protected void onResponse(@NonNull CourseDetail responseBody) {
-                                        if (responseBody != null) {
-                                            mBuilder.router.showCourseDetail(mBuilder.mContext, responseBody);
-                                        } else {
-                                            Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                if (!TextUtils.isEmpty(mDataList.get(position).getLink())) {
+                                    itemViewHolder.whole_item_layout.setEnabled(false);
+                                    mBuilder.eliteApi.getCourseDetail(mDataList.get(position).getLink(), mBuilder.username).enqueue(new Callback<CourseDetail>() {
+                                        @Override
+                                        protected void onResponse(@NonNull CourseDetail responseBody) {
+                                            if (responseBody != null) {
+                                                mBuilder.router.showCourseDetail(mBuilder.mContext, responseBody);
+                                            } else {
+                                                Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                            }
+                                            itemViewHolder.whole_item_layout.setEnabled(true);
                                         }
-                                        itemViewHolder.whole_item_layout.setEnabled(true);
-                                    }
 
-                                    @Override
-                                    protected void onFailure(@NonNull Throwable error) {
-                                        super.onFailure(error);
-                                        error.printStackTrace();
-                                        Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
-                                        itemViewHolder.whole_item_layout.setEnabled(true);
-                                    }
-                                });
+                                        @Override
+                                        protected void onFailure(@NonNull Throwable error) {
+                                            super.onFailure(error);
+                                            error.printStackTrace();
+                                            Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                            itemViewHolder.whole_item_layout.setEnabled(true);
+                                        }
+                                    });
+                                }
+
                             }
 
                         }

@@ -92,14 +92,15 @@
     </plurals>
     <string name="harvard_btn_string">哈佛管理导师 \n 有效期至：%1$s</string>
     <string name="harvard">哈佛管理导师</string>
-    <string name="harvard_time_7_30">您加入的哈商学习营，不到一个月就结束了，抓紧时间学习吧！</string>
-    <string name="harvard_time_less_than_7">您加入的哈商学习营，即将结束，抓紧时间学习吧！</string>
+    <string name="harvard_time_7_30">您加入的哈佛管理导师，不到一个月就结束了，抓紧时间学习吧！</string>
+    <string name="harvard_time_less_than_7">您加入的哈佛管理导师，即将结束，抓紧时间学习吧！</string>
     <string name="harvard_dialog_ok">知道了</string>
     <string name="support_recycler_more_not">这个是底线</string>
     <string name="article_title">文章</string>
     <string name="newest">最新</string>
     <string name="hotest">最热</string>
     <string name="webview_title">详情</string>
+    <string name="professor_detail">教授详情</string>
     <string name="all_course">全部课程</string>
     <string name="all_professor">全部教授</string>
     <string name="all_story">全部文章</string>

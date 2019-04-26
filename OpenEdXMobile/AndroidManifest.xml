@@ -83,6 +83,7 @@
 
         <activity
             android:name="org.edx.mobile.view.MainDashboardActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
 
         <activity

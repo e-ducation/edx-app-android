@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,11 +84,17 @@ public class MainSiteProfessorAdapter extends RecyclerView.Adapter<MainSiteProfe
             RxView.clicks(this.rootView).
                     throttleFirst(1, TimeUnit.SECONDS)
                     .subscribe(unit -> {
-                        String professor_id = professorBean.getProfessor_link().substring(professorBean.getProfessor_link().lastIndexOf("/professors/") + "/professors/".length(), professorBean.getProfessor_link().lastIndexOf("/"));
-                        Intent intent = new Intent(context, ProfessorDetailActivity.class);
-                        intent.putExtra("professor_name", context.getString(R.string.webview_title));
-                        intent.putExtra("professor_id", Integer.parseInt(professor_id));
-                        context.startActivity(intent);
+                        if (!TextUtils.isEmpty(professorBean.getProfessor_link())) {
+                            if (professorBean.getProfessor_link().contains("/professors/")) {
+                                String professor_id = professorBean.getProfessor_link().substring(professorBean.getProfessor_link().lastIndexOf("/professors/") + "/professors/".length(), professorBean.getProfessor_link().lastIndexOf("/"));
+                                if (!TextUtils.isEmpty(professor_id)) {
+                                    Intent intent = new Intent(context, ProfessorDetailActivity.class);
+                                    intent.putExtra("professor_name", context.getString(R.string.webview_title));
+                                    intent.putExtra("professor_id", Integer.parseInt(professor_id));
+                                    context.startActivity(intent);
+                                }
+                            }
+                        }
                     });
         }
     }
