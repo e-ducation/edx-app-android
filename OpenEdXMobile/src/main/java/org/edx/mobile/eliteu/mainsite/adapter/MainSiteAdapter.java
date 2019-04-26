@@ -112,7 +112,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else if (viewType == TYPE_RECOMMEND_PROFESSOR) {
             return new RecyclerViewHolder(mLayoutInflater.inflate(R.layout.main_site_template_recycler_view_with_title, null, false), LinearLayoutManager.VERTICAL, 50, SpaceOrientationItemDecoration.VERTICAL);
         } else if (viewType == TYPE_USER_STORY) {
-            return new StoryRecyclerViewHolder(mLayoutInflater.inflate(R.layout.main_site_template_recycler_view_with_title, null, false));
+            return new StoryRecyclerViewHolder(mLayoutInflater.inflate(R.layout.main_site_template_recycler_view_with_title_no_margin, null, false));
         } else if (viewType == TYPE_IMAGE) {
             return new ImageViewHolder(mLayoutInflater.inflate(R.layout.main_site_img_layout, parent, false));
         } else if (viewType == TYPE_UNKNOW) {
@@ -141,7 +141,6 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         .setImageLoader(new GlideImageLoader())
                         .setOnBannerListener(position1 -> {
                             router.showCustomWebviewActivity(fragmentActivity, bannersList.get(position1).getLink(), mContext.getString(R.string.webview_title));
-
                         })
                         .start();
                 break;
@@ -150,7 +149,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }.getType());
                 List<CategorieslistBean> mCategoryList = blockCourseCategory.getCategorieslist();
                 RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) holder;
-                CourseCategoryAdapter courseCategoryAdapter = new CourseCategoryAdapter(mCategoryList, mContext, router,config);
+                CourseCategoryAdapter courseCategoryAdapter = new CourseCategoryAdapter(mCategoryList, mContext, router, config);
                 recyclerViewHolder.mText.setText(blockCourseCategory.getTitle());
                 recyclerViewHolder.mRecyclerView.setAdapter(courseCategoryAdapter);
                 break;
@@ -177,7 +176,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 mainSiteCourseAdapter1.setData(list);
                 viewViewHolder.mRecyclerView.setAdapter(mainSiteCourseAdapter1);
                 viewViewHolder.divider.setVisibility(View.VISIBLE);
-                RxView.clicks(viewViewHolder.mRightLayout).throttleFirst(1,TimeUnit.SECONDS).subscribe(unit -> EventBus.getDefault().post(new MoveToDiscoveryTabEvent()));
+                RxView.clicks(viewViewHolder.mRightLayout).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> EventBus.getDefault().post(new MoveToDiscoveryTabEvent()));
                 break;
             case BLOCK_TYPE_RECOMMEND_PROFESSOR:
                 BlockProfessor blockProfessor = gson.fromJson(JSONObject.wrap(baseMainSiteBlockBean.getValue()).toString(), new TypeToken<BlockProfessor>() {
