@@ -105,5 +105,6 @@
     <string name="all_professor">全部教授</string>
     <string name="all_story">全部文章</string>
     <string name="professor_list_title">教授</string>
+    <!--播放速度-->
 
 </resources>

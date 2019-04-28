@@ -423,6 +423,11 @@
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
 
+        <activity
+            android:name="org.edx.mobile.eliteu.vip.ui.WebViewVipActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
     </application>
 
 </manifest>
