@@ -351,7 +351,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         private void initRecyclerView() {
             CourseGridLayoutManager layoutManager = new CourseGridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false);
             mRecyclerView.setLayoutManager(layoutManager);
-            int leftRight = AndroidSizeUtil.dp2Px(mContext, 5);
+            int leftRight = AndroidSizeUtil.dp2Px(mContext, 3);
             int topBottom = AndroidSizeUtil.dp2Px(mContext, 5);
             mRecyclerView.addItemDecoration(new GridSectionAverageGapItemDecoration(leftRight, topBottom, 0, 0));
             mRecyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);

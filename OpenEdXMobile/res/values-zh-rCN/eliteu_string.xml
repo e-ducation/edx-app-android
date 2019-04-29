@@ -106,5 +106,6 @@
     <string name="all_story">全部文章</string>
     <string name="professor_list_title">教授</string>
     <string name="lbl_video_speed">播放速度</string>
+    <string name="lbl_cc_none">无</string>
 
 </resources>
