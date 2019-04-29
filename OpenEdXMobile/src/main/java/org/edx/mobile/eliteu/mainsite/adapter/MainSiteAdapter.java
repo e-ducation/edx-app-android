@@ -106,7 +106,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else if (viewType == TYPE_COURSE_CATEGORY) {
             return new RecyclerViewHolder(mLayoutInflater.inflate(R.layout.main_site_template_recycler_view_with_title, null, false), LinearLayoutManager.HORIZONTAL, 10, SpaceOrientationItemDecoration.HORIZONTAL);
         } else if (viewType == TYPE_SUITABLE_COURSE) {
-            return new RecyclerViewHolder(mLayoutInflater.inflate(R.layout.main_site_template_recycler_view_with_title, null, false), LinearLayoutManager.HORIZONTAL, 30, SpaceOrientationItemDecoration.HORIZONTAL);
+            return new RecyclerViewHolder(mLayoutInflater.inflate(R.layout.main_site_template_recycler_view_with_title, null, false), LinearLayoutManager.HORIZONTAL, 20, SpaceOrientationItemDecoration.HORIZONTAL);
         } else if (viewType == TYPE_RECOMMEND_COURSE) {
             return new GlidViewViewHolder(mLayoutInflater.inflate(R.layout.main_site_template_recycler_view_with_title, null, false));
         } else if (viewType == TYPE_RECOMMEND_PROFESSOR) {

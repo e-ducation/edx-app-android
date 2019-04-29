@@ -2,7 +2,6 @@ package org.edx.mobile.eliteu.article;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -17,6 +16,7 @@ import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.eliteu.api.EliteApi;
+import org.edx.mobile.eliteu.wight.EqualizationTabLayout;
 import org.edx.mobile.http.notifications.FullScreenErrorNotification;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.view.custom.IconProgressBar;
@@ -31,7 +31,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ArticleActivity extends BaseFragmentActivity {
 
-    private TabLayout mTabLayout;
+    private EqualizationTabLayout mTabLayout;
     private ViewPager mViewPager;
     private FullScreenErrorNotification errorNotification;
     private IconProgressBar mIconProgressBar;

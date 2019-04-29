@@ -16,6 +16,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -122,6 +123,9 @@ public class EliteuCustomWebView extends FrameLayout implements RefreshListener 
         this.isManuallyReloadable = isManuallyReloadable;
         webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        if (Build.VERSION.SDK_INT >= 21) {
+            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW );
+        }
         webViewClient = new CustomURLInterceptorWebViewClient(fragmentActivity, webView) {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
