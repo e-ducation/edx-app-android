@@ -18,5 +18,6 @@
     <color name="qianhui1">#f5f7fa</color>
     <color name="pay_btn">#FC9753</color>
     <color name="course_placeholder_color">#F2F3F7</color>
-
+    <color name="mian_site_divider_color">#f5f5f5</color>
+    <color name="cardview_shadow">#0a000000</color>
 </resources>

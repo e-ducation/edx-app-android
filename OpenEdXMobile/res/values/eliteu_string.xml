@@ -90,7 +90,22 @@
         <item quantity="one">%1$s Day</item>
         <item quantity="other">%1$s Days</item>
     </plurals>
-    <string name="harvard_btn_string">Harvard Learning Camp \n Date of Expiry:%1$s</string>
-    <string name="harvard">Harvard Learning Camp</string>
+    <string name="harvard_btn_string">Harvard Managementor \n Date of Expiry: %1$s</string>
+    <string name="harvard">Harvard Managementor</string>
+    <string name="harvard_time_7_30">Harvard ManageMentor will be ended in less than a month. Go and study!</string>
+    <string name="harvard_time_less_than_7">Harvard ManageMentor will be ended soon. Go and study!</string>
+    <string name="harvard_dialog_ok">OK</string>
+    <string name="support_recycler_more_not">这个是底线</string>
+    <string name="article_title">文章</string>
+    <string name="newest">最新</string>
+    <string name="hotest">最热</string>
+    <string name="webview_title">详情</string>
+    <string name="professor_detail">教授详情</string>
+    <string name="all_course">全部课程</string>
+    <string name="all_professor">全部教授</string>
+    <string name="all_story">全部文章</string>
+    <string name="professor_list_title">教授</string>
+    <!--播放速度-->
+    <!--字幕-->
 
 </resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="112dp"
+    android:background="@android:color/white"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/article_image_bg"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:layout_alignParentRight="true"
+        app:cardCornerRadius="4dip"
+        app:cardElevation="0px">
+
+        <ImageView
+            android:id="@+id/story_photo"
+            android:layout_width="130dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/main_site_story_single_default_img" />
+
+    </android.support.v7.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/article_image_bg"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/story_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#2e313c"
+            android:textSize="16dp"
+            tools:text="学习分享：快速找到你的学习路径" />
+
+        <RelativeLayout
+            android:id="@+id/article_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/story_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#aab2bd"
+                android:textSize="12dp"
+                tools:text="通过学习经济学，可以了解市场经济的发展与趋势，可以在市场不稳定时，给公司提供合理的建议，度过瓶颈期。" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

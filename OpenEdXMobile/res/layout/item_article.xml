@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="122dp"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/article_image_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        app:cardCornerRadius="4dip"
+        app:cardElevation="0px">
+
+        <ImageView
+            android:id="@+id/article_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/article_default_img" />
+
+    </android.support.v7.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/article_image_bg"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/article_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="#2e313c"
+            android:textSize="16dp"
+            tools:text="学习分享：快速找到你的学习路径" />
+
+        <RelativeLayout
+            android:id="@+id/article_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/article_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#aab2bd"
+                android:textSize="12dp"
+                tools:text="2019-1-12  12:12" />
+
+            <ImageView
+                android:id="@+id/like_icon"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/article_time"
+                android:src="@drawable/like_icon"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/article_like_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/like_icon"
+                android:textColor="#aab2bd"
+                android:textSize="12dp"
+                tools:text="35" />
+
+
+            <TextView
+                android:id="@+id/article_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/article_like_num"
+                android:ellipsize="end"
+                android:gravity="right"
+                android:maxLines="1"
+                android:textColor="#aab2bd"
+                android:textSize="12dp"
+                tools:text="英荔 资讯" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
