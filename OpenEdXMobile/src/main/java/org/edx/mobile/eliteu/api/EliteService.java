@@ -4,6 +4,13 @@ import android.support.annotation.NonNull;
 
 import com.google.inject.Inject;
 
+import org.edx.mobile.course.CourseDetail;
+import org.edx.mobile.eliteu.article.ArticleBean;
+import org.edx.mobile.eliteu.article.ArticleTagBean;
+import org.edx.mobile.eliteu.mainsite.bean.MainSiteBlockHttpResponse;
+import org.edx.mobile.eliteu.professor.ProfessorBean;
+import org.edx.mobile.eliteu.professor.ProfessorsDetailBean;
+import org.edx.mobile.eliteu.mainsite.bean.PageHttpResult;
 import org.edx.mobile.eliteu.util.BaseHttpResult;
 import org.edx.mobile.eliteu.vip.bean.AliPayReqBean;
 import org.edx.mobile.eliteu.vip.bean.WeChatReqBean;
@@ -21,6 +28,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface EliteService {
 
@@ -68,4 +76,36 @@ public interface EliteService {
     @POST("/api/user/v1/accounts/elite_password_reset/")
     Call<HttpResponseBean> resetPassword(@Field("old_password") String old_password, @Field("new_password1") String new_password1, @Field("new_password2") String new_password2);
 
+    @GET("/api/v1/professors/")
+    Observable<PageHttpResult<ProfessorBean>> getProfessorList(@Query("page_size") int page_size, @Query("page") int page);
+
+    @GET("/api/v1/professors/{professor_id}")
+    Observable<ProfessorsDetailBean> getProfessorDetail(@Path("professor_id") int professor_id);
+
+    @GET("/api/v2/app/")
+    Observable<PageHttpResult<ArticleBean>> getArticleListWithTags(@Query("fields") String fields,
+                                                           @Query("page") int page,
+                                                           @Query("page_size") int page_size,
+                                                           @Query("type") String type,
+                                                           @Query("order") String order,
+                                                           @Query("tags") String tags
+    );
+    @GET("/api/v2/app/")
+    Observable<PageHttpResult<ArticleBean>> getArticleListWithOutTags(@Query("fields") String fields,
+                                                                   @Query("page") int page,
+                                                                   @Query("page_size") int page_size,
+                                                                   @Query("type") String type,
+                                                                   @Query("order") String order
+
+    );
+
+    @GET("/api/v2/tags/")
+    Observable<ArticleTagBean> getArticleTags(@Query("fields") String fields);
+
+    @GET("/api/v2/pages/find/")
+    Observable<MainSiteBlockHttpResponse> getMainSiteBlock(@Query("html_path") String html_path);
+
+    @GET("/api/v1/mobile/courses/{course_id}")
+    Call<CourseDetail> getCourseDetail(@Path("course_id") final String courseId,
+                                       @Query("username") final String username);
 }

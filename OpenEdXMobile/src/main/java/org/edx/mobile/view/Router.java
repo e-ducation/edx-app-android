@@ -24,7 +24,9 @@ import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
 import org.edx.mobile.eliteu.bindmobile.BindMobileActivity;
 import org.edx.mobile.eliteu.resetpassword.ResetPasswordActivity;
+import org.edx.mobile.eliteu.custonwebview.CustomWebViewActivity;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
+import org.edx.mobile.eliteu.vip.ui.WebViewVipActivity;
 import org.edx.mobile.event.LogoutEvent;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.module.analytics.AnalyticsRegistry;
@@ -446,5 +448,16 @@ public class Router {
     public void showResetPassword(@NonNull Activity sourceActivity) {
         Intent resetPasswordIntent = new Intent(sourceActivity, ResetPasswordActivity.class);
         sourceActivity.startActivity(resetPasswordIntent);
+    }
+
+    /**
+     * 打开自定义WebViewActivity
+     */
+    public void showCustomWebviewActivity(@NonNull Activity activity, @NonNull String url, @NonNull String title) {
+        if (url.endsWith("/vip")) {
+            activity.startActivity(new Intent(activity, WebViewVipActivity.class));
+        } else {
+            activity.startActivity(CustomWebViewActivity.newIntent(activity, url + "?device=android", title));
+        }
     }
 }

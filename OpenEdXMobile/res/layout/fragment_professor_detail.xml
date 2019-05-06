@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <org.edx.mobile.view.custom.EdxWebView
+        android:id="@+id/professor_detail_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:background="@color/grey_act_background"/>
+
+    <include layout="@layout/content_error" />
+
+    <include layout="@layout/loading_indicator" />
+
+</FrameLayout>
+

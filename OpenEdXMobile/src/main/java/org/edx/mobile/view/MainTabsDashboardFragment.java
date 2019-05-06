@@ -17,6 +17,7 @@ import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.eliteu.bindmobile.BindMobileUtil;
+import org.edx.mobile.eliteu.mainsite.ui.MainSiteFragment;
 import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.vip.ui.WebViewVipFragment;
 import org.edx.mobile.event.AccountDataLoadedEvent;
@@ -164,11 +165,21 @@ public class MainTabsDashboardFragment extends TabsBaseFragment {
                     }));
         }
 
-        //订阅制
-        items.add(new FragmentItemModel(WebViewVipFragment.class,
+//        //订阅制
+//        items.add(new FragmentItemModel(WebViewVipFragment.class,
+//                getResources().getString(R.string.label_my_vip), FontAwesomeIcons.fa_university,
+//                WebViewVipFragment.makeArguments(config.getApiHostURL() + ThirdPartyLoginConstants.VIP_URL,
+//                        "javascript", true),
+//                new FragmentItemModel.FragmentStateListener() {
+//                    @Override
+//                    public void onFragmentSelected() {
+//
+//                    }
+//                }));
+
+        //主站
+        items.add(new FragmentItemModel(MainSiteFragment.class,
                 getResources().getString(R.string.label_my_vip), FontAwesomeIcons.fa_university,
-                WebViewVipFragment.makeArguments(config.getApiHostURL() + ThirdPartyLoginConstants.VIP_URL,
-                        "javascript", true),
                 new FragmentItemModel.FragmentStateListener() {
                     @Override
                     public void onFragmentSelected() {

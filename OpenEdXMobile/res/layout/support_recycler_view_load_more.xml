@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@android:style/Widget.Holo.ProgressBar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:visibility="gone"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tv_load_more_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/support_recycler_color_text_gray"
+        android:visibility="gone"
+        tools:text="Loading..."
+        tools:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/tv_load_more_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <View
+
+            android:layout_width="30dp"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/tv_load_more_message2"
+            android:background="#ccd1d9" />
+
+        <TextView
+            android:id="@+id/tv_load_more_message2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:text="@string/support_recycler_more_not"
+            android:textColor="#ccd1d9"
+            android:textSize="12dp" />
+
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_load_more_message2"
+            android:background="#ccd1d9" />
+    </RelativeLayout>
+
+
+</merge>
