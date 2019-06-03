@@ -10,12 +10,11 @@ import com.google.inject.Singleton;
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.http.interceptor.AcceptLanguageHeaderInterceptor;
+import org.edx.mobile.http.authenticator.OauthRefreshTokenAuthenticator;
 import org.edx.mobile.http.interceptor.CustomCacheQueryInterceptor;
-import org.edx.mobile.http.interceptor.JsonMergePatchInterceptor;
 import org.edx.mobile.http.interceptor.NewVersionBroadcastInterceptor;
 import org.edx.mobile.http.interceptor.NoCacheHeaderStrippingInterceptor;
 import org.edx.mobile.http.interceptor.OauthHeaderRequestInterceptor;
-import org.edx.mobile.http.authenticator.OauthRefreshTokenAuthenticator;
 import org.edx.mobile.http.interceptor.StaleIfErrorHandlingInterceptor;
 import org.edx.mobile.http.interceptor.StaleIfErrorInterceptor;
 import org.edx.mobile.http.interceptor.UserAgentInterceptor;
@@ -84,7 +83,6 @@ public interface OkHttpClientProvider extends Provider<OkHttpClient> {
                     interceptors.add(new CustomCacheQueryInterceptor(context));
                     builder.networkInterceptors().add(new NoCacheHeaderStrippingInterceptor());
                 }
-                interceptors.add(new JsonMergePatchInterceptor());
                 interceptors.add(new UserAgentInterceptor(
                         System.getProperty("http.agent") + " " +
                                 context.getString(R.string.user_agent_app_name) + "/" +

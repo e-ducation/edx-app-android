@@ -16,6 +16,8 @@ buildscript {
         //Included for NewRelic
         classpath "com.newrelic.agent.android:agent-gradle-plugin:5.+"
 
+//        TODO : Need to update when available, ( In order to resolve "variant.getConnectedInstrumentTest()" warning)
+//        Reference : https://github.com/facebook/screenshot-tests-for-android/issues/210
         classpath 'com.facebook.testing.screenshot:plugin:0.8.0'
         classpath 'com.google.gms:google-services:4.2.0'
     }
@@ -131,17 +133,21 @@ dependencies {
     // For the optional Nullable annotation
     implementation "com.android.support:support-annotations:${SUPPORT_LIBRARY_VERSION}"
 
+    // NOTE: Always update the version of google-services and firebase libraries using the ones
+    // provided in this link: https://developers.google.com/android/guides/releases
     implementation "com.google.android.gms:play-services-plus:16.0.0"
-    implementation "com.google.android.gms:play-services-analytics:16.0.6"
+    implementation "com.google.android.gms:play-services-analytics:16.0.8"
     implementation "com.google.android.gms:play-services-auth:16.0.1"
     // Google Firebase
-    implementation "com.google.firebase:firebase-core:16.0.6"
-    implementation "com.google.firebase:firebase-messaging:17.3.4"
+    implementation "com.google.firebase:firebase-core:16.0.9"
+    implementation "com.google.firebase:firebase-messaging:18.0.0"
+    // Add the dependency for the Performance Monitoring library
+    implementation 'com.google.firebase:firebase-perf:17.0.0'
 
 //    Exo Player
     implementation 'com.google.android.exoplayer:exoplayer:2.9.2'
 
-    implementation 'com.facebook.android:facebook-login:4.36.0'
+    implementation 'com.facebook.android:facebook-login:4.41.0'
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'de.greenrobot:eventbus:2.4.1'
     implementation 'com.squareup.phrase:phrase:1.1.0'
@@ -170,7 +176,9 @@ dependencies {
 
     // Segment Library
     implementation 'com.segment.analytics.android:analytics:4.2.6'
-
+    // Segment's Firebase integration
+    implementation 'com.segment.analytics.android.integrations:firebase:1.2.0'
+    // Segment's GA integration
     implementation('com.segment.analytics.android.integrations:google-analytics:1.0.0') {
         exclude module: 'play-services-analytics'
         transitive = true
@@ -262,12 +270,14 @@ def firebase = config.get('FIREBASE')
 def firebaseEnabled = firebase?.get('ENABLED')
 if (firebaseEnabled?: false) {
     apply plugin: 'com.google.gms.google-services'
+    // Apply the Performance Monitoring plugin to enable instrumentation
+    apply plugin: 'com.google.firebase.firebase-perf'
 }
 
 android {
     signingConfigs {
         releasekey {
-            storeFile file('C:/Elitemc Work/Key store/eliteu.jks')
+            storeFile file('/Users/laibinzhi/EliteuWork/keystore/eliteu')
             storePassword 'eliteu'
             keyAlias 'eliteu'
             keyPassword 'eliteu'

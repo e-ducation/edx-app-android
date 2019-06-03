@@ -63,11 +63,15 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
     public static CourseTabsDashboardFragment newInstance(
             @Nullable EnrolledCoursesResponse courseData, @Nullable String courseId,
             @Nullable @ScreenDef String screenName) {
-        final CourseTabsDashboardFragment fragment = new CourseTabsDashboardFragment();
         final Bundle bundle = new Bundle();
         bundle.putSerializable(Router.EXTRA_COURSE_DATA, courseData);
         bundle.putSerializable(Router.EXTRA_COURSE_ID, courseId);
         bundle.putSerializable(Router.EXTRA_SCREEN_NAME, screenName);
+        return newInstance(bundle);
+    }
+
+    public static CourseTabsDashboardFragment newInstance(@NonNull Bundle bundle) {
+        final CourseTabsDashboardFragment fragment = new CourseTabsDashboardFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -237,6 +241,11 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
 
     @Override
     public List<FragmentItemModel> getFragmentItems() {
+        final Bundle arguments = getArguments();
+        @ScreenDef String screenName = null;
+        if (arguments != null) {
+            screenName = arguments.getString(Router.EXTRA_SCREEN_NAME);
+        }
         ArrayList<FragmentItemModel> items = new ArrayList<>();
         // Add course outline tab
         items.add(new FragmentItemModel(CourseOutlineFragment.class, courseData.getCourse().getName(),
@@ -269,7 +278,7 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
                 !TextUtils.isEmpty(courseData.getCourse().getDiscussionUrl())) {
             items.add(new FragmentItemModel(CourseDiscussionTopicsFragment.class,
                     getResources().getString(R.string.discussion_title), FontAwesomeIcons.fa_comments_o,
-                    CourseDiscussionTopicsFragment.makeArguments(courseData),
+                    getArguments(),
                     new FragmentItemModel.FragmentStateListener() {
                         @Override
                         public void onFragmentSelected() {
@@ -297,7 +306,7 @@ public class CourseTabsDashboardFragment extends TabsBaseFragment {
         items.add(new FragmentItemModel(ResourcesFragment.class,
                 getResources().getString(R.string.resources_title),
                 FontAwesomeIcons.fa_ellipsis_h,
-                ResourcesFragment.makeArguments(courseData),
+                ResourcesFragment.makeArguments(courseData, screenName),
                 new FragmentItemModel.FragmentStateListener() {
                     @Override
                     public void onFragmentSelected() {

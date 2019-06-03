@@ -3,7 +3,6 @@ package org.edx.mobile.view.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -46,7 +44,6 @@ import org.edx.mobile.util.DateUtil;
 import org.edx.mobile.util.MemoryUtil;
 import org.edx.mobile.util.ResourceUtil;
 import org.edx.mobile.util.TimeZoneUtils;
-import org.edx.mobile.util.UiUtil;
 import org.edx.mobile.util.VideoUtil;
 import org.edx.mobile.util.images.CourseCardUtils;
 import org.edx.mobile.util.images.TopAnchorFillWidthTransformation;
@@ -188,16 +185,18 @@ public class CourseOutlineAdapter extends BaseAdapter {
                     break;
                 }
                 case SectionRow.BULK_DOWNLOAD: {
+                    convertView = inflater.inflate(R.layout.row_bulk_download_container, parent, false);
                     final Activity activity = parentFragment.getActivity();
                     if (activity != null && ((RoboAppCompatActivity) activity).isInForeground()) {
-                        final FrameLayout layout = new FrameLayout(parentFragment.getContext());
-                        final int id = UiUtil.generateViewId();
-                        layout.setId(id);
-
                         final BulkDownloadFragment fragment = new BulkDownloadFragment(downloadListener, environment);
-                        parentFragment.getChildFragmentManager().
-                                beginTransaction().replace(id, fragment).commit();
-                        convertView = layout;
+                        final View finalConvertView = convertView;
+                        // Wait until the convertView has attached with the parent view.
+                        // Using commitNowAllowingStateLoss() method here because there is
+                        // chance transaction could have happened even the fragments state
+                        // is saved.
+                        convertView.post(() -> parentFragment.getChildFragmentManager().
+                                beginTransaction().replace(finalConvertView.getId(), fragment).
+                                commitNowAllowingStateLoss());
                         convertView.setTag(fragment);
                     }
                     break;
@@ -225,11 +224,14 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 return getLastAccessedView(position, convertView);
             }
             case SectionRow.BULK_DOWNLOAD: {
-                if (rootComponent != null && convertView != null) {
-                    final BulkDownloadFragment fragment = (BulkDownloadFragment) convertView.getTag();
-                    fragment.populateViewHolder(
-                            isOnCourseOutline ? rootComponent.getCourseId() : rootComponent.getId(),
-                            rootComponent.getVideos(true));
+                if (rootComponent != null) {
+                    final Object tag = convertView.getTag();
+                    if (tag instanceof BulkDownloadFragment) {
+                        final BulkDownloadFragment fragment = (BulkDownloadFragment) tag;
+                        fragment.populateViewHolder(
+                                isOnCourseOutline ? rootComponent.getCourseId() : rootComponent.getId(),
+                                rootComponent.getVideos(true));
+                    }
                 }
                 return convertView;
             }

@@ -178,18 +178,24 @@ public class MainDiscoveryFragment extends BaseFragment {
         if (fragment == null || !fragment.isHidden()) {
             return;
         }
+        // Use commitNow() method to perform the FragmentManager transaction synchronously
+        // instated of commit(), otherwise program discovery screen is not visible to the guest user
+        // in case of deep linking.
         getChildFragmentManager().beginTransaction()
                 .show(fragment)
-                .commit();
+                .commitNow();
     }
 
     private void hideFragment(@Nullable Fragment fragment) {
         if (fragment == null || fragment.isHidden()) {
             return;
         }
+        // Use commitNow() method to perform the FragmentManager transaction synchronously
+        // instated of commit(), otherwise program discovery screen is not visible to the guest user
+        // in case of deep linking.
         getChildFragmentManager().beginTransaction()
                 .hide(fragment)
-                .commit();
+                .commitNow();
     }
 
     private void addTabItem(@IdRes int id, @StringRes int label) {
@@ -240,14 +246,33 @@ public class MainDiscoveryFragment extends BaseFragment {
 
         final String pathId = bundle.getString(EXTRA_PATH_ID);
         if (!TextUtils.isEmpty(pathId)) {
-            environment.getRouter().showCourseInfo(getActivity(), pathId);
+            switch (screenName) {
+                case Screen.PROGRAM:
+                    environment.getRouter().showAuthenticatedWebviewActivity(getActivity(),
+                            environment, pathId, getActivity().getString(R.string.label_my_programs));
+                    break;
+                case Screen.COURSE_DISCOVERY:
+                    environment.getRouter().showCourseInfo(getActivity(), pathId);
+                    break;
+                case Screen.PROGRAM_DISCOVERY:
+                case Screen.DEGREE_DISCOVERY:
+                    environment.getRouter().showProgramInfo(getActivity(), pathId);
+                    break;
+            }
         }
+        // Setting this to null, so that upon recreation of the fragment, relevant activity
+        // shouldn't be auto created again.
+        bundle.putString(Router.EXTRA_SCREEN_NAME, null);
     }
 
     private int getBtnIdAgainstScreeName(@NonNull @ScreenDef String screeName) {
         switch (screeName) {
             case Screen.COURSE_DISCOVERY:
                 return R.id.option_courses;
+            case Screen.PROGRAM_DISCOVERY:
+                return R.id.option_programs;
+            case Screen.DEGREE_DISCOVERY:
+                return R.id.option_degrees;
             default:
                 return -1;
         }
