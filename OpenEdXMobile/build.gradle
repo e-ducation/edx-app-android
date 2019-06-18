@@ -277,7 +277,7 @@ if (firebaseEnabled?: false) {
 android {
     signingConfigs {
         releasekey {
-            storeFile file('/Users/laibinzhi/EliteuWork/keystore/eliteu')
+            storeFile file('/Users/laibinzhi/EliteuWork/keystore/eliteu.jks')
             storePassword 'eliteu'
             keyAlias 'eliteu'
             keyPassword 'eliteu'
