@@ -23,6 +23,8 @@
   <string name="you_are_now_enrolled">您已成功加入这门课程。</string>
   <!--Error message shown when dashboard cannot be shown from course detail view-->
   <string name="cannot_show_dashboard">无法显示仪表板。</string>
+  <!--Error message shown when browser cannot handle request for given web url-->
+  <string name="cannot_open_url" tools:ignore="MissingTranslation">无法打开网页</string>
   <!--Subjects Discovery-->
   <!--Label for browsing courses by a subject-->
   <string name="browse_by_subject">按科目浏览</string>
@@ -107,6 +109,7 @@
   <!--Title of webview based Find Courses Screen-->
   <string name="label_discover">@string/label_find_courses</string>
   <!--Title of Degrees tab on Discovery screen-->
+  <string name="label_degrees" tools:ignore="MissingTranslation">学位</string>
   <!--Title of Find Courses tab on Main Dashboard screen-->
   <string name="label_discovery">发现课程</string>
   <!--Button allowing users to send an email for feedback-->
@@ -426,7 +429,9 @@
   <!--Label for closed captions in video player-->
   <string name="lbl_closed_caption">字幕</string>
   <!--Label for video playback speed in video player-->
+  <string name="lbl_video_speed" tools:ignore="MissingTranslation">视频速度</string>
   <!--Label for None captions selected-->
+  <string name="lbl_cc_none">无</string>
   <!--Accessibility Label for Video Player-->
   <string name="video_player">视频播放器</string>
   <!--Accessibility Label for View on Web button on Video Player top bar-->
@@ -464,7 +469,9 @@
   <!--Search for a course prompt-->
   <string name="search_for_courses">搜索课程</string>
   <!--Search for a program prompt-->
+  <string name="search_for_programs" tools:ignore="MissingTranslation">查询专项</string>
   <!--Search for a degree prompt-->
+  <string name="search_for_degrees" tools:ignore="MissingTranslation">查询学位</string>
   <!--Landing Activity text-->
   <!--Prompt leading user to sign in screen-->
   <string name="already_have_an_account">已有账号？登录</string>
