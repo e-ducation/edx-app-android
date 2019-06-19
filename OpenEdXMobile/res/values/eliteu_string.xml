@@ -90,8 +90,8 @@
         <item quantity="one">%1$s Day</item>
         <item quantity="other">%1$s Days</item>
     </plurals>
-    <string name="harvard_btn_string">Harvard Managementor \n Date of Expiry: %1$s</string>
-    <string name="harvard">Harvard Managementor</string>
+    <string name="harvard_btn_string">Harvard ManageMentor \n Date of Expiry: %1$s</string>
+    <string name="harvard">Harvard ManageMentor</string>
     <string name="harvard_time_7_30">Harvard ManageMentor will be ended in less than a month. Go and study!</string>
     <string name="harvard_time_less_than_7">Harvard ManageMentor will be ended soon. Go and study!</string>
     <string name="harvard_dialog_ok">OK</string>
