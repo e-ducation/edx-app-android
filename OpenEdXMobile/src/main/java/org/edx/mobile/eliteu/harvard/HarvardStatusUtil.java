@@ -24,6 +24,9 @@ public class HarvardStatusUtil {
     public static void initButton(final MyCoursesListFragment fragment, final PanelFindCourseBinding footer, final Config config) {
         AccountPrefs accountPrefs = new AccountPrefs(fragment.getContext());
         Account account = accountPrefs.getAccount();
+        if (account == null) {
+            return;
+        }
         int hmm_remaining_days = account.getHmm_remaining_days();
         if (hmm_remaining_days > 0) {
             //哈佛有效期
