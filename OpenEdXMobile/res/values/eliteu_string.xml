@@ -28,7 +28,7 @@
         <item quantity="other">VIP membership has expired in %1$s days</item>
     </plurals>
     <string name="vip_page_title">Membership</string>
-    <string name="chose_pay_way">Choose payment method</string>
+    <string name="chose_pay_way">Payment Method</string>
     <string name="tuition">Payment: </string>
     <string name="wechat_pay_tv">WeChat</string>
     <string name="alipay_tv">Alipay</string>
