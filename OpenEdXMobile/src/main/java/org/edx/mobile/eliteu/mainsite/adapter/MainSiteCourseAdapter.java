@@ -20,6 +20,7 @@ import org.edx.mobile.R;
 import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.eliteu.api.EliteApi;
 import org.edx.mobile.eliteu.mainsite.bean.MainSiteCourseBean;
+import org.edx.mobile.eliteu.mainsite.ui.CannotClickWebViewActivity;
 import org.edx.mobile.http.callback.Callback;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.view.Router;
@@ -68,28 +69,33 @@ public class MainSiteCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                             if (mBuilder.type == MainSiteCourseAdapter.TYPE_URL) {
                                 mBuilder.router.showCustomWebviewActivity((FragmentActivity) mBuilder.mContext, mDataList.get(position).getLink(), mBuilder.mContext.getString(R.string.webview_title));
                             } else if (mBuilder.type == MainSiteCourseAdapter.TYPE_COURSE) {
-                                if (!TextUtils.isEmpty(mDataList.get(position).getLink())) {
-                                    itemViewHolder.whole_item_layout.setEnabled(false);
-                                    mBuilder.eliteApi.getCourseDetail(mDataList.get(position).getLink(), mBuilder.username).enqueue(new Callback<CourseDetail>() {
-                                        @Override
-                                        protected void onResponse(@NonNull CourseDetail responseBody) {
-                                            if (responseBody != null) {
-                                                mBuilder.router.showCourseDetail(mBuilder.mContext, responseBody);
-                                            } else {
-                                                Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                if (!TextUtils.isEmpty(mDataList.get(position).getPublicity_page_url())) {
+                                    mBuilder.mContext.startActivity(CannotClickWebViewActivity.newIntent(mBuilder.mContext, "https://www.elitemba.cn/", mBuilder.mContext.getString(R.string.webview_title), mDataList.get(position).getLink()));
+                                } else {
+                                    if (!TextUtils.isEmpty(mDataList.get(position).getLink())) {
+                                        itemViewHolder.whole_item_layout.setEnabled(false);
+                                        mBuilder.eliteApi.getCourseDetail(mDataList.get(position).getLink(), mBuilder.username).enqueue(new Callback<CourseDetail>() {
+                                            @Override
+                                            protected void onResponse(@NonNull CourseDetail responseBody) {
+                                                if (responseBody != null) {
+                                                    mBuilder.router.showCourseDetail(mBuilder.mContext, responseBody);
+                                                } else {
+                                                    Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                                }
+                                                itemViewHolder.whole_item_layout.setEnabled(true);
                                             }
-                                            itemViewHolder.whole_item_layout.setEnabled(true);
-                                        }
 
-                                        @Override
-                                        protected void onFailure(@NonNull Throwable error) {
-                                            super.onFailure(error);
-                                            error.printStackTrace();
-                                            Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
-                                            itemViewHolder.whole_item_layout.setEnabled(true);
-                                        }
-                                    });
+                                            @Override
+                                            protected void onFailure(@NonNull Throwable error) {
+                                                super.onFailure(error);
+                                                error.printStackTrace();
+                                                Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                                itemViewHolder.whole_item_layout.setEnabled(true);
+                                            }
+                                        });
+                                    }
                                 }
+
 
                             }
 

@@ -20,6 +20,8 @@ public class ThirdPartyLoginConstants {
 
     public static String HARVARD_URL = "/elitemba/hmm/";
 
+    public static String UMENG_APP_KEY = "";
+
     public static String getBackendByType(int type) {
         switch (type) {
             case IThirdPartyConfig.TYPE_QQ:

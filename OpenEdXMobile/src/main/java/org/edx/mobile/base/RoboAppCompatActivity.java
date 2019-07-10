@@ -23,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.google.inject.Inject;
 import com.google.inject.Key;
+import com.umeng.analytics.MobclickAgent;
 
 import org.edx.mobile.util.Config;
 
@@ -93,6 +94,7 @@ public class RoboAppCompatActivity extends AppCompatActivity implements RoboCont
         super.onResume();
         isInForeground = true;
         eventManager.fire(new OnResumeEvent(this));
+        MobclickAgent.onResume(this);
     }
 
     @Override
@@ -100,6 +102,7 @@ public class RoboAppCompatActivity extends AppCompatActivity implements RoboCont
         super.onPause();
         isInForeground = false;
         eventManager.fire(new OnPauseEvent(this));
+        MobclickAgent.onPause(this);
     }
 
     @Override

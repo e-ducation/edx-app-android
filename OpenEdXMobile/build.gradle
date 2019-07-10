@@ -265,6 +265,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'design'
     }
     implementation 'com.zyp.cardview:cardview:1.0.1'
+    implementation  'com.umeng.umsdk:analytics:8.0.0'
+    implementation  'com.umeng.umsdk:common:2.0.0'
 }
 
 configurations {

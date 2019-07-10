@@ -29,6 +29,7 @@ import com.lbz.login.callback.ThirdPartyAuthCallback;
 import com.lbz.login.config.IThirdPartyConfig;
 import com.lbz.login.config.ThirdPartyConfigManager;
 import com.lbz.login.entities.AuthResult;
+import com.umeng.analytics.MobclickAgent;
 
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
@@ -65,7 +66,9 @@ import org.edx.mobile.util.images.ErrorUtils;
 import org.edx.mobile.view.custom.DividerWithTextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -326,6 +329,9 @@ public class RegisterActivity extends BaseFragmentActivity
             public void onSuccess(AuthResponse auth) {
                 environment.getAnalyticsRegistry().trackRegistrationSuccess(appVersion, provider);
                 onUserLoginSuccess(auth.profile);
+                Map regMap = new HashMap();
+                regMap.put("userid", auth.profile.username);
+                MobclickAgent.onEvent(RegisterActivity.this, "__register", regMap);
             }
 
             @Override

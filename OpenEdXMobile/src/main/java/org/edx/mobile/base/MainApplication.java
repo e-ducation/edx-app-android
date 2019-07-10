@@ -23,6 +23,8 @@ import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.lbz.login.config.ThirdPartyInit;
 import com.newrelic.agent.android.NewRelic;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
@@ -184,6 +186,7 @@ public abstract class MainApplication extends MultiDexApplication {
         }
         //第三方登录框架初始化
         initThirdPartyLogin();
+        initUmeng();
         if (PermissionsUtil.checkPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, this)) {
             deleteExtraDownloadedFiles();
         }
@@ -250,6 +253,15 @@ public abstract class MainApplication extends MultiDexApplication {
                 .build();
         ThirdPartyInit.init(getApplicationContext(), builder);
     }
+
+    private void initUmeng() {
+        MobclickAgent.setDebugMode(false);
+        UMConfigure.setLogEnabled(false);
+        UMConfigure.setEncryptEnabled(true);
+        UMConfigure.init(this, ThirdPartyLoginConstants.UMENG_APP_KEY, "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+        MobclickAgent.setScenarioType(getApplicationContext(), MobclickAgent.EScenarioType.E_UM_NORMAL);
+    }
+
 
     /**
      * Utility function to delete the all extra files (unused files e.g user eject SD-card while
