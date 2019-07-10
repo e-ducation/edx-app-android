@@ -70,7 +70,7 @@ public class MainSiteCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                                 mBuilder.router.showCustomWebviewActivity((FragmentActivity) mBuilder.mContext, mDataList.get(position).getLink(), mBuilder.mContext.getString(R.string.webview_title));
                             } else if (mBuilder.type == MainSiteCourseAdapter.TYPE_COURSE) {
                                 if (!TextUtils.isEmpty(mDataList.get(position).getPublicity_page_url())) {
-                                    mBuilder.mContext.startActivity(CannotClickWebViewActivity.newIntent(mBuilder.mContext, mDataList.get(position).getPublicity_page_url(), mDataList.get(position).getTitle(), mDataList.get(position).getLink()));
+                                    mBuilder.mContext.startActivity(CannotClickWebViewActivity.newIntent(mBuilder.mContext, mDataList.get(position).getPublicity_page_url() + "?device=android", mDataList.get(position).getTitle(), mDataList.get(position).getLink()));
                                 } else {
                                     if (!TextUtils.isEmpty(mDataList.get(position).getLink())) {
                                         itemViewHolder.whole_item_layout.setEnabled(false);
