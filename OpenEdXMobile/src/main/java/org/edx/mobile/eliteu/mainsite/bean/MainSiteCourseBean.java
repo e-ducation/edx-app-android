@@ -8,6 +8,7 @@ public class MainSiteCourseBean implements Serializable {
     private String link;
     private String title;
     private String image;
+    private String publicity_page_url;
 
     public String getDescription() {
         return description;
@@ -41,4 +42,11 @@ public class MainSiteCourseBean implements Serializable {
         this.image = image;
     }
 
+    public String getPublicity_page_url() {
+        return publicity_page_url;
+    }
+
+    public void setPublicity_page_url(String publicity_page_url) {
+        this.publicity_page_url = publicity_page_url;
+    }
 }

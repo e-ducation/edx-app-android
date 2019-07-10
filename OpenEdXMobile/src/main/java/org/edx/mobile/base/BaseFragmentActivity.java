@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
+import com.umeng.analytics.MobclickAgent;
 
 import org.edx.mobile.R;
 import org.edx.mobile.core.IEdxEnvironment;
@@ -155,6 +156,7 @@ public abstract class BaseFragmentActivity extends BaseAppActivity
     protected void onResume() {
         super.onResume();
         EventBus.getDefault().registerSticky(this);
+        MobclickAgent.onResume(this);
     }
 
     @Override
@@ -167,6 +169,7 @@ public abstract class BaseFragmentActivity extends BaseAppActivity
     protected void onPause() {
         EventBus.getDefault().unregister(this);
         super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override
