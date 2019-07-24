@@ -574,4 +574,28 @@
         <item name="android:textSize">14dp</item>
     </style>
 
+    <style name="find_course_tablayout_tabTextAppearance">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="new_eliteu_account_item_tv_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#2e313c</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="new_eliteu_account_item_sub_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#bfc1c9</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
 </resources>

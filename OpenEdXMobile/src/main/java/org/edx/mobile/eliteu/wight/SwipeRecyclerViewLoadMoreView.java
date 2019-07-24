@@ -70,7 +70,7 @@ public class SwipeRecyclerViewLoadMoreView extends LinearLayout implements Swipe
             } else {
                 mProgressBar.setVisibility(GONE);
                 mTvMessage.setVisibility(GONE);
-                mTvMessage2.setVisibility(VISIBLE);
+                mTvMessage2.setVisibility(GONE);
             }
         } else {
             setVisibility(INVISIBLE);

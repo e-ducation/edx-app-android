@@ -82,6 +82,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     LayoutInflater mLayoutInflater;
     List<BaseMainSiteBlockBean> mBodyList;
 
+    private boolean isFirstLoad = false;
 
     public MainSiteAdapter(Context context, Router router, Config config, EliteApi eliteApi, String username) {
         this.mContext = context;
@@ -92,6 +93,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.eliteApi = eliteApi;
         this.gson = new Gson();
         this.mLayoutInflater = LayoutInflater.from(context);
+        isFirstLoad = true;
     }
 
     public void setData(List<BaseMainSiteBlockBean> bodyBeans) {
@@ -127,22 +129,24 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         BaseMainSiteBlockBean baseMainSiteBlockBean = mBodyList.get(position);
         switch (baseMainSiteBlockBean.getType()) {
             case BLOCK_TYPE_BANNER:
-                BlockBanner blockBanner = gson.fromJson(JSONObject.wrap(baseMainSiteBlockBean.getValue()).toString(), new TypeToken<BlockBanner>() {
-                }.getType());
-                List<BlockBanner.BannersBean> bannersList = blockBanner.getBanners();
-                List<String> images = new ArrayList<>();
-                for (BlockBanner.BannersBean banner : bannersList) {
-                    images.add(config.getApiHostURL() + banner.getMobile_image());
+                if (isFirstLoad) {
+                    BlockBanner blockBanner = gson.fromJson(JSONObject.wrap(baseMainSiteBlockBean.getValue()).toString(), new TypeToken<BlockBanner>() {
+                    }.getType());
+                    List<BlockBanner.BannersBean> bannersList = blockBanner.getBanners();
+                    List<String> images = new ArrayList<>();
+                    for (BlockBanner.BannersBean banner : bannersList) {
+                        images.add(config.getApiHostURL() + banner.getMobile_image());
+                    }
+                    BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
+                    setBanner(bannerViewHolder.banner);
+                    bannerViewHolder.banner.setImages(images)
+                            .setDelayTime(blockBanner.getLoop_time())
+                            .setOnBannerListener(position1 -> {
+                                router.showCustomWebviewActivity(fragmentActivity, bannersList.get(position1).getLink(), mContext.getString(R.string.webview_title));
+                            })
+                            .start();
+                    isFirstLoad = false;
                 }
-                BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
-                setBanner(bannerViewHolder.banner);
-                bannerViewHolder.banner.setImages(images)
-                        .setDelayTime(blockBanner.getLoop_time())
-                        .setImageLoader(new GlideImageLoader())
-                        .setOnBannerListener(position1 -> {
-                            router.showCustomWebviewActivity(fragmentActivity, bannersList.get(position1).getLink(), mContext.getString(R.string.webview_title));
-                        })
-                        .start();
                 break;
             case BLOCK_TYPE_COURSE_CATEGORY:
                 BlockCourseCategory blockCourseCategory = gson.fromJson(JSONObject.wrap(baseMainSiteBlockBean.getValue()).toString(), new TypeToken<BlockCourseCategory>() {
@@ -258,6 +262,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public BannerViewHolder(View itemView) {
             super(itemView);
             banner = itemView.findViewById(R.id.banner);
+            banner.setImageLoader(new GlideImageLoader());
         }
     }
 
@@ -376,6 +381,9 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Banner mBanner;
 
     public void setBanner(Banner banner) {
+        if (this.mBanner != null) {
+            this.mBanner = null;
+        }
         this.mBanner = banner;
     }
 

@@ -24,6 +24,7 @@ import org.edx.mobile.discussion.DiscussionComment;
 import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
 import org.edx.mobile.eliteu.bindmobile.BindMobileActivity;
+import org.edx.mobile.eliteu.bottomnavigation.BottomNavigationMainDashboardActivity;
 import org.edx.mobile.eliteu.resetpassword.ResetPasswordActivity;
 import org.edx.mobile.eliteu.custonwebview.CustomWebViewActivity;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
@@ -149,7 +150,7 @@ public class Router {
 
     public void showMainDashboard(@NonNull Activity sourceActivity, @Nullable @ScreenDef String screenName,
                                   @Nullable String pathId) {
-        sourceActivity.startActivity(MainDashboardActivity.newIntent(screenName, pathId));
+        sourceActivity.startActivity(BottomNavigationMainDashboardActivity.newIntent(screenName, pathId));
     }
 
     public void showCourseDashboardTabs(@NonNull Activity activity,

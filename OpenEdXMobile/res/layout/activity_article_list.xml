@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/main_content"
@@ -25,14 +26,26 @@
             <org.edx.mobile.eliteu.wight.EqualizationTabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
                 android:visibility="gone"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="#0f80bf"
-                app:tabIndicatorHeight="3dp"
+                app:tabIndicatorHeight="0dp"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="#333333"
-                app:tabTextColor="#aab2bd" />
+                app:tabPaddingStart="16dp"
+                app:tabSelectedTextColor="@color/find_course_tablayout_text_color"
+                app:tabTextAppearance="@style/find_course_tablayout_tabTextAppearance"
+                app:tabTextColor="@color/find_course_tablayout_text_color"
+                tools:visibility="visible" />
+
+            <View
+                android:id="@+id/line"
+                tools:visibility="visible"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#33b7dcff" />
 
         </android.support.design.widget.AppBarLayout>
 

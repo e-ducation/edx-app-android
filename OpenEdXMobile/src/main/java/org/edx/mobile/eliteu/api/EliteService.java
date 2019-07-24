@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.eliteu.article.ArticleBean;
 import org.edx.mobile.eliteu.article.ArticleTagBean;
+import org.edx.mobile.eliteu.bottomnavigation.course.CourseSubjectBean;
 import org.edx.mobile.eliteu.mainsite.bean.MainSiteBlockHttpResponse;
 import org.edx.mobile.eliteu.professor.ProfessorBean;
 import org.edx.mobile.eliteu.professor.ProfessorsDetailBean;
@@ -19,6 +20,9 @@ import org.edx.mobile.eliteu.vip.bean.VipOrderStatusBean;
 import org.edx.mobile.eliteu.vip.bean.VipPersonInfo;
 import org.edx.mobile.http.provider.RetrofitProvider;
 import org.edx.mobile.model.Page;
+import org.edx.mobile.model.api.EnrolledCoursesResponse;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
@@ -108,4 +112,22 @@ public interface EliteService {
     @GET("/api/v1/mobile/courses/{course_id}")
     Call<CourseDetail> getCourseDetail(@Path("course_id") final String courseId,
                                        @Query("username") final String username);
+
+    @GET("/elitemba/api/v1/course_types/")
+    Observable<PageHttpResult<CourseSubjectBean>> getCourseSubject();
+
+    @GET("/elitemba/api/v1/courses_search/")
+    Observable<Page<CourseDetail>> getCourseSearchByTypeId(@Query("page_index") final int page_index,
+                                                           @Query("page_size") final int page_size,
+                                                           @Query("course_type_id") final int course_type_id);
+
+    @GET("/elitemba/api/v1/courses_search/")
+    Observable<Page<CourseDetail>> getCourseSearchByKeyWord(@Query("page_index") final int page_index,
+                                                            @Query("page_size") final int page_size,
+                                                            @Query("search_name") final String search_name);
+
+    @GET("/api/v1/mobile/users/{username}/course_enrollments")
+    Observable<List<EnrolledCoursesResponse>> getEnrolledCourses(@Path("username") final String username,
+                                                           @Query("org") final String org);
+
 }

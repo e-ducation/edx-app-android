@@ -20,4 +20,6 @@
     <color name="course_placeholder_color">#F2F3F7</color>
     <color name="mian_site_divider_color">#f5f5f5</color>
     <color name="cardview_shadow">#0a000000</color>
+    <color name="study_cardview_shadow">#14000000</color>
+    <color name="find_course_tablayout_text_color">#2e313c</color>
 </resources>

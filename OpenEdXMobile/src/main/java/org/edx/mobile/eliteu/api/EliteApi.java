@@ -9,6 +9,7 @@ import com.google.inject.Singleton;
 import org.edx.mobile.course.CourseDetail;
 import org.edx.mobile.eliteu.article.ArticleBean;
 import org.edx.mobile.eliteu.article.ArticleTagBean;
+import org.edx.mobile.eliteu.bottomnavigation.course.CourseSubjectBean;
 import org.edx.mobile.eliteu.mainsite.bean.MainSiteBlockHttpResponse;
 import org.edx.mobile.eliteu.professor.ProfessorBean;
 import org.edx.mobile.eliteu.professor.ProfessorsDetailBean;
@@ -20,8 +21,11 @@ import org.edx.mobile.eliteu.vip.bean.VipBean;
 import org.edx.mobile.eliteu.vip.bean.VipOrderStatusBean;
 import org.edx.mobile.eliteu.vip.bean.VipPersonInfo;
 import org.edx.mobile.model.Page;
+import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.module.prefs.UserPrefs;
 import org.edx.mobile.util.Config;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
@@ -156,6 +160,31 @@ public class EliteApi {
      */
     public Call<CourseDetail> getCourseDetail(String courseId, String username) {
         return eliteService.getCourseDetail(courseId, username);
+    }
+
+    /**
+     * @return 发现课程类别列表
+     */
+    public Observable<PageHttpResult<CourseSubjectBean>> getCourseSubject() {
+        return eliteService.getCourseSubject();
+    }
+
+    /**
+     * @return 通过分类id查找课程
+     */
+    public Observable<Page<CourseDetail>> getCourseSearchByTypeId(int pageindex, int course_type_id) {
+        return eliteService.getCourseSearchByTypeId(pageindex, PAGE_SIZE, course_type_id);
+    }
+
+    /**
+     * @return 通过关键字查找课程
+     */
+    public Observable<Page<CourseDetail>> getCourseSearchByKeyWord(String search_name) {
+        return eliteService.getCourseSearchByKeyWord(1, 100, search_name);
+    }
+
+    public Observable<List<EnrolledCoursesResponse>> getEnrolledCourses(String username, String org) {
+        return eliteService.getEnrolledCourses(username,org);
     }
 
 }

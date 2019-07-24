@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/stydu_no_course_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:visibility="visible">
+
+    <TextView
+        android:id="@+id/add_course_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/add_course_border"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="10dp"
+        android:text="@string/add_course"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add_course_btn"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="@string/study_no_course"
+        android:textColor="#aab2bd"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/no_course_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tips"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="TODO"
+        android:src="@drawable/study_no_course"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="122dp"
+    android:background="@android:color/white"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/course_image_bg"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="0px">
+
+        <ImageView
+            android:id="@+id/course_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/placeholder_course_card_image" />
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/course_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/course_image_bg"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="#2e313c"
+        android:textSize="16dp"
+        tools:text="国际商法：美国商业法律制度环境" />
+
+
+    <TextView
+        android:id="@+id/course_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/course_image_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/course_image_bg"
+        android:textColor="#0f80bf"
+        android:textSize="12dp"
+        tools:text="即将于2019-11-01开课" />
+
+    <TextView
+        android:id="@+id/course_professor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/course_status"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@+id/course_image_bg"
+        android:textColor="#656d78"
+        android:textSize="12dp"
+        tools:text="教授：萧柏春" />
+
+</RelativeLayout>

@@ -267,6 +267,8 @@ dependencies {
     implementation 'com.zyp.cardview:cardview:1.0.1'
     implementation  'com.umeng.umsdk:analytics:8.0.0'
     implementation  'com.umeng.umsdk:common:2.0.0'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
 }
 
 configurations {
