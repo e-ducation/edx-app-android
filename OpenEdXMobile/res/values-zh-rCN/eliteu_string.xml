@@ -106,4 +106,26 @@
     <string name="all_story">全部文章</string>
     <string name="professor_list_title">教授</string>
 
+    <string name="index_page" >首页</string>
+    <string name="course">课程</string>
+    <string name="study">学习</string>
+    <string name="mine">我的</string>
+    <string name="professor">教授：</string>
+    <string name="starting_class">正在开课</string>
+    <string name="please_enter">请输入</string>
+    <string name="no_search_data">暂无搜索结果</string>
+    <string name="harvard_time">有效期至：</string>
+    <string name="study_no_course">学习列表暂未有课程，快去添加课程吧~</string>
+    <string name="find_eliteu_no_course">暂无课程</string>
+    <string name="add_course">添加课程</string>
+    <string name="study_progress">学习进度</string>
+    <string name="search_hint">搜索课程名称、导师名</string>
+    <string name="vip_is_expried">订阅期满</string>
+    <string name="edit_profile_info">编辑个人信息</string>
+    <string name="account_manager">账号管理</string>
+    <string name="scan_code_login">扫码登录</string>
+    <string name="feedback">意见反馈</string>
+    <string name="giveuspraise">给我们好评</string>
+    <string name="aboutus">关于我们</string>
+
 </resources>

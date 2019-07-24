@@ -2,13 +2,17 @@ package org.edx.mobile.eliteu.article;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
@@ -36,6 +40,8 @@ public class ArticleActivity extends BaseFragmentActivity {
     private FullScreenErrorNotification errorNotification;
     private IconProgressBar mIconProgressBar;
     private Toolbar mToolbar;
+    private AppBarLayout mAppBarLayout;
+    private View line;
     private CompositeDisposable mCompositeDisposable;
 
     @Inject
@@ -53,8 +59,13 @@ public class ArticleActivity extends BaseFragmentActivity {
     private void initView() {
         mCompositeDisposable = new CompositeDisposable();
         mToolbar = findViewById(R.id.toolbar);
+        mAppBarLayout = findViewById(R.id.appbar);
+        line = findViewById(R.id.line);
         mIconProgressBar = findViewById(R.id.loading_indicator);
         mTabLayout = findViewById(R.id.tabs);
+        setupTablayout(mTabLayout);
+        mAppBarLayout.setTargetElevation(0);
+
         mViewPager = findViewById(R.id.view_pager);
         errorNotification = new FullScreenErrorNotification(mViewPager);
         loadData();
@@ -174,7 +185,38 @@ public class ArticleActivity extends BaseFragmentActivity {
     private void showContent() {
         mTabLayout.setVisibility(View.VISIBLE);
         mViewPager.setVisibility(View.VISIBLE);
+        line.setVisibility(View.VISIBLE);
         mIconProgressBar.setVisibility(View.GONE);
+    }
+
+    private void setupTablayout(EqualizationTabLayout mTabLayout) {
+
+        final View view = LayoutInflater.from(this).inflate(R.layout.eliteu_findcourse_tablayout_item, null);
+
+        TextView txt_title = view.findViewById(R.id.txt_title);
+        View tabIndicatorView = view.findViewById(R.id.tabIndicatorView);
+
+        mTabLayout.getTabAt(0);
+        mTabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                txt_title.setText(tab.getText());
+                txt_title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+                tabIndicatorView.setVisibility(View.VISIBLE);
+                tab.setCustomView(view);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.setCustomView(null);
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
 }

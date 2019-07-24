@@ -144,6 +144,10 @@ public class ArticleListFragment extends BaseLazyLoadFragment {
      * 加载数据。
      */
     private void loadData(boolean isLoadMore) {
+        if (mRecyclerView.getFooterCount()==0){
+            mRecyclerView.addFooterView(mLoadMoreView);
+        }
+
         if (!NetworkUtil.isConnected(getActivity()) && isFirstRequest) {
             showNetwordisNotConnected(isLoadMore);
             return;
@@ -170,6 +174,7 @@ public class ArticleListFragment extends BaseLazyLoadFragment {
                     }
                     if (TextUtils.isEmpty(result.getNext())) {
                         mRecyclerView.loadMoreFinish(false, false);
+                        mRecyclerView.removeFooterView(mLoadMoreView);
                     } else {
                         mRecyclerView.loadMoreFinish(false, true);
                     }
