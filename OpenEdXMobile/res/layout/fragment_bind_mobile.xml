@@ -6,12 +6,23 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/bind_mobile_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="33dp"
+        android:textColor="#aab2bd"
+        android:textSize="16dp"
+        tools:text="当前绑定的手机号：13000000000" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="33dp">
 
         <TextView
             android:id="@+id/mobile_area_code"
@@ -21,13 +32,15 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColor="#2e313c"
-            android:textSize="14dp"
+            android:textSize="16dp"
             tools:text="+86" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#bfc1c9" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ccd1d9" />
 
         <EditText
             android:id="@+id/mobile_et"
@@ -39,8 +52,8 @@
             android:hint="@string/mobile_hint_str"
             android:inputType="number"
             android:textColor="#2e313c"
-            android:textColorHint="#bfc1c9"
-            android:textSize="14dp" />
+            android:textColorHint="#aab2bd"
+            android:textSize="16dp" />
 
     </LinearLayout>
 
@@ -48,17 +61,17 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginRight="33dp"
         android:layout_marginTop="5dp"
-        android:background="#212e313c" />
+        android:layout_marginRight="33dp"
+        android:background="#eff2f6" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="33dp">
 
         <EditText
             android:id="@+id/verification_et"
@@ -72,25 +85,24 @@
             android:maxLength="6"
             android:maxLines="1"
             android:textColor="#2e313c"
-            android:textColorHint="#bfc1c9"
-            android:textSize="14dp" />
+            android:textColorHint="#aab2bd"
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/get_verification_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/get_verification_code_btn_bg"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
             android:minWidth="80dp"
-            android:paddingBottom="5dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
             android:text="@string/verification_code_btn_str"
-            android:textColor="@android:color/white"
-            android:textSize="12dp" />
+            android:textColor="@color/new_bind_mobile_get_code_can_click"
+            android:textSize="16dp" />
 
     </LinearLayout>
 
@@ -98,16 +110,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginRight="33dp"
         android:layout_marginTop="5dp"
-        android:background="#212e313c" />
+        android:layout_marginRight="33dp"
+        android:background="#eff2f6" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginTop="35dp">
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="33dp">
 
         <TextView
             android:id="@+id/submit_btn"
@@ -115,8 +127,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/get_verification_code_btn_bg"
             android:gravity="center"
-            android:paddingBottom="10dp"
             android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="@string/label_submit"
             android:textColor="@android:color/white"
             android:textSize="16dp" />

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/change_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    style="@style/profile_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:civ_border_width="1dp"
+                    tools:src="@drawable/profile_photo_placeholder" />
+
+                <org.edx.mobile.view.custom.IconImageViewXml
+                    android:id="@+id/profile_image_progress"
+                    android:layout_width="@dimen/edx_base"
+                    android:layout_height="@dimen/edx_base"
+                    android:layout_gravity="center"
+                    app:iconColor="@color/edx_brand_primary_accent"
+                    app:iconName="fa-spinner" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom|right"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/change_photo_camera"
+                    tools:ignore="ContentDescription" />
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="25dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="0dp"
+                    android:text="@string/username"
+                    android:textColor="#2e313c"
+                    android:textSize="16dp" />
+
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    tools:text="username"
+                    android:textColor="#aab2bd"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:divider="@drawable/edx_divider"
+                app:showDividers="middle">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:id="@+id/fields"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:orientation="vertical"
+                    app:divider="@drawable/eliteu_edit_profile_divider"
+                    app:showDividers="middle|end|beginning" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+
+        <include layout="@layout/loading_indicator" />
+
+    </FrameLayout>
+
+</ScrollView>

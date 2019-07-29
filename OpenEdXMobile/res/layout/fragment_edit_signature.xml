@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/white"
+        android:gravity="start"
+        android:hint="@string/signature_edittext_hint"
+        android:inputType="text|textMultiLine|textCapSentences|textAutoCorrect"
+        android:maxLength="200"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:textColor="#2e313c"
+        android:textColorHint="#aab2bd"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/text_length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="end"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:text="0/200"
+        android:textColor="#aab2bd"
+        android:textSize="16dp" />
+
+</LinearLayout>

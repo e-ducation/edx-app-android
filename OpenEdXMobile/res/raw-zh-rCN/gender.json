@@ -1,0 +1,5 @@
+[
+  { "value" : "m", "name" : "男" },
+  { "value" : "f", "name" : "女" },
+  { "value" : "o", "name" : "其他/不想说" }
+]

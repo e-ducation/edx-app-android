@@ -1,0 +1,32 @@
+{
+  "fields": [
+    {
+      "name": "gender",
+      "label": "性别",
+      "type": "select",
+      "data_type": "gender",
+      "options": {
+        "reference": "gender",
+        "allows_none": false
+      }
+    },
+
+    {
+      "name": "year_of_birth",
+      "label": "出生年份",
+      "type": "select",
+      "options": {
+        "range_min": 1900,
+        "range_max": 2019,
+        "allows_none": false
+      }
+    },
+
+    {
+      "name": "bio",
+      "label": "个性签名",
+      "type": "textarea",
+      "placeholder": "请填写"
+    }
+  ]
+}

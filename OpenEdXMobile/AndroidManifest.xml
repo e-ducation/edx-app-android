@@ -463,6 +463,23 @@
             android:name="notch.config"
             android:value="portrait|landscape" />
 
+        <activity
+            android:name="org.edx.mobile.eliteu.bottomnavigation.my.accountmanager.AccountManagerActivity"
+            android:label="@string/account_manager"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="org.edx.mobile.eliteu.bottomnavigation.my.AboutUsActivity"
+            android:label="@string/aboutus"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
+        <activity
+            android:name="org.edx.mobile.eliteu.bottomnavigation.my.editprofile.EditProfileInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar" />
+
     </application>
 
 </manifest>

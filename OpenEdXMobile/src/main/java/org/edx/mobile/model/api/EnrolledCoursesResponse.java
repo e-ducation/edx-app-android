@@ -23,7 +23,6 @@ public class EnrolledCoursesResponse implements SectionItemInterface {
     public long size;
     public boolean is_vip;//是否是vip
     public boolean is_normal_enroll;//是否单课购买
-    public Progress progress;
 
     public String getAuditAccessExpires() {
         return auditAccessExpires;
@@ -132,32 +131,4 @@ public class EnrolledCoursesResponse implements SectionItemInterface {
         this.is_normal_enroll = is_normal_enroll;
     }
 
-   public static class Progress implements Serializable{
-        float total_grade;
-        boolean is_pass;
-
-       public float getTotal_grade() {
-           return total_grade;
-       }
-
-       public void setTotal_grade(float total_grade) {
-           this.total_grade = total_grade;
-       }
-
-       public boolean isIs_pass() {
-            return is_pass;
-        }
-
-        public void setIs_pass(boolean is_pass) {
-            this.is_pass = is_pass;
-        }
-    }
-
-    public Progress getProgress() {
-        return progress;
-    }
-
-    public void setProgress(Progress progress) {
-        this.progress = progress;
-    }
 }

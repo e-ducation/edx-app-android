@@ -4,6 +4,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +57,7 @@ public class BindMobileFragment extends BaseFragment {
     private TextView verificationBtn;
     private TextView submitBtn;
     private TextView mobileAreaCodeTv;
+    private TextView bind_mobile_tv;
     private View progress;
 
     //获取验证码按钮倒计时秒数
@@ -63,6 +67,9 @@ public class BindMobileFragment extends BaseFragment {
 
     @Inject
     private EliteApi eliteApi;
+    @Inject
+    AccountPrefs accountPrefs;
+    boolean isChangeBind =false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,12 +80,29 @@ public class BindMobileFragment extends BaseFragment {
     }
 
     private void initView(View view) {
+        bind_mobile_tv = view.findViewById(R.id.bind_mobile_tv);
+        Account account = accountPrefs.getAccount();
+        if (TextUtils.isEmpty(account.getPhone())) {
+            getActivity().setTitle(R.string.bind_mobile);
+            bind_mobile_tv.setVisibility(View.GONE);
+            isChangeBind = false;
+        } else {
+            getActivity().setTitle(R.string.change_bind_mobile);
+            bind_mobile_tv.setVisibility(View.VISIBLE);
+            bind_mobile_tv.setText(getString(R.string.current_bind_mobile)+account.getPhone());
+            isChangeBind = true;
+        }
         mCompositeDisposable = new CompositeDisposable();
         mobileAreaCodeTv = view.findViewById(R.id.mobile_area_code);
         mobileEt = view.findViewById(R.id.mobile_et);
         verificationEt = view.findViewById(R.id.verification_et);
         verificationBtn = view.findViewById(R.id.get_verification_btn);
         submitBtn = view.findViewById(R.id.submit_btn);
+        if (isChangeBind){
+            submitBtn.setText(R.string.change_bind_mobile);
+        }else {
+            submitBtn.setText(R.string.label_submit);
+        }
         progress = view.findViewById(R.id.progress);
         //TODO 手机区号暂固定为+86，应由服务器获取
         mobileAreaCodeTv.setText("+86");
@@ -91,6 +115,7 @@ public class BindMobileFragment extends BaseFragment {
             @Override
             public void accept(Boolean aBoolean) throws Exception {
                 verificationBtn.setEnabled(aBoolean);
+                verificationBtn.setTextColor(aBoolean ? ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_can_click) : ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_cannot_click));
                 initGetVerificationBtn();
             }
         });
@@ -151,6 +176,8 @@ public class BindMobileFragment extends BaseFragment {
             return;
         }
         verificationBtn.setEnabled(false);
+        verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_cannot_click));
+
         SoftKeyboardUtil.hide(getActivity());
         eliteApi.sendCodeBindingPhone(phone)
                 .enqueue(new Callback<ResponseBody>() {
@@ -161,6 +188,8 @@ public class BindMobileFragment extends BaseFragment {
                             Toast.makeText(getActivity(), R.string.verification_code_has_send, Toast.LENGTH_LONG).show();
                         } else {
                             verificationBtn.setEnabled(true);
+                            verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_can_click));
+
                             try {
                                 String errorMsg = response.errorBody().string().replace("\"", "");
                                 if (response.code() == HttpStatus.BAD_REQUEST) {
@@ -178,6 +207,7 @@ public class BindMobileFragment extends BaseFragment {
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         t.printStackTrace();
                         verificationBtn.setEnabled(true);
+                        verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_can_click));
                         Toast.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_LONG).show();
                     }
                 });
@@ -258,8 +288,10 @@ public class BindMobileFragment extends BaseFragment {
                 .doOnNext(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        verificationBtn.setText((COUNT_DOWN_TIME - aLong) + "s");
+                        verificationBtn.setText((COUNT_DOWN_TIME - aLong) + getString(R.string.verification_code_countdown));
                         verificationBtn.setEnabled(false);
+                        verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_cannot_click));
+
                     }
                 })
                 .doOnComplete(new Action() {
@@ -267,6 +299,7 @@ public class BindMobileFragment extends BaseFragment {
                     public void run() throws Exception {
                         //倒计时完毕置为可点击状态
                         verificationBtn.setEnabled(true);
+                        verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_can_click));
                         verificationBtn.setText(R.string.verification_code_btn_str);
                     }
                 })
@@ -278,12 +311,20 @@ public class BindMobileFragment extends BaseFragment {
 
     private void showSubmitProgress() {
         progress.setVisibility(View.VISIBLE);
-        submitBtn.setText(getString(R.string.label_submit) + "...");
+        if (isChangeBind){
+            submitBtn.setText(getString(R.string.change_bind_mobile) + "...");
+        }else {
+            submitBtn.setText(getString(R.string.label_submit) + "...");
+        }
     }
 
     private void hideSubmitProgress() {
         progress.setVisibility(View.GONE);
-        submitBtn.setText(R.string.label_submit);
+        if (isChangeBind){
+            submitBtn.setText(R.string.change_bind_mobile);
+        }else {
+            submitBtn.setText(R.string.label_submit);
+        }
     }
 
     @Override

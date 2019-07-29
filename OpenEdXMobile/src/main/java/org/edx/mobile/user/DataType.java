@@ -9,6 +9,9 @@ public enum DataType {
     @SerializedName("language")
     LANGUAGE,
 
+    @SerializedName("gender")
+    GENDER,
+
     @SerializedName("boolean")
     BOOLEAN
 }
