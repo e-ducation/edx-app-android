@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputEditText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
@@ -33,9 +34,9 @@ import kotlin.Unit;
 
 public class ResetPasswordFragment extends BaseFragment {
 
-    TextInputEditText oldPasswordEt;
-    TextInputEditText newPasswordEt;
-    TextInputEditText doubleNewPasswordEt;
+    EditText oldPasswordEt;
+    EditText newPasswordEt;
+    EditText doubleNewPasswordEt;
     TextView submitBtn;
     View progress;
     @Inject

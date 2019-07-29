@@ -22,4 +22,7 @@
     <color name="cardview_shadow">#0a000000</color>
     <color name="study_cardview_shadow">#14000000</color>
     <color name="find_course_tablayout_text_color">#2e313c</color>
+    <color name="new_bind_mobile_get_code_cannot_click">#ccd1d9</color>
+    <color name="new_bind_mobile_get_code_can_click">#0f80bf</color>
+
 </resources>

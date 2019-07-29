@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import org.edx.mobile.base.BaseSingleFragmentActivity;
+import org.edx.mobile.eliteu.bottomnavigation.my.editprofile.EditSignatureFragment;
 import org.edx.mobile.module.analytics.Analytics;
 import org.edx.mobile.user.DataType;
 import org.edx.mobile.user.FormField;
@@ -47,7 +48,11 @@ public class FormFieldActivity extends BaseSingleFragmentActivity
                 break;
             }
             case TEXTAREA: {
-                fragment = new FormFieldTextAreaFragment();
+                if (field.getName().equalsIgnoreCase("bio")) {
+                    fragment = new EditSignatureFragment();
+                } else {
+                    fragment = new FormFieldTextAreaFragment();
+                }
                 break;
             }
             default: {

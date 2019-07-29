@@ -168,14 +168,14 @@ public class EliteStudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     throttleFirst(1, TimeUnit.SECONDS)
                     .subscribe(unit -> mOnItemClickListener.onItemClick(enrolledCoursesResponse));
 
-            if(enrolledCoursesResponse.getProgress()==null){
+            if(enrolledCoursesResponse.getCourse().getProgress()==null){
                 return;
             }
-            float progress = enrolledCoursesResponse.getProgress().getTotal_grade();
+            float progress = enrolledCoursesResponse.getCourse().getProgress().getTotal_grade();
             int progress_int = (int) (progress * 100);
             progress_tv.setText(progress_int + "%");
             progressBar.setProgress(progress_int);
-            if (enrolledCoursesResponse.getProgress().isIs_pass()) {
+            if (enrolledCoursesResponse.getCourse().getProgress().isIs_pass()) {
                 progressBar.setProgressDrawable(ContextCompat.getDrawable(mContext, R.drawable.study_progress_green_drawable));
             } else {
                 progressBar.setProgressDrawable(ContextCompat.getDrawable(mContext, R.drawable.study_progress_blue_drawable));

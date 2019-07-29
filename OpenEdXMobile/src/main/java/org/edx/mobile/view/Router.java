@@ -25,6 +25,9 @@ import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
 import org.edx.mobile.eliteu.bindmobile.BindMobileActivity;
 import org.edx.mobile.eliteu.bottomnavigation.BottomNavigationMainDashboardActivity;
+import org.edx.mobile.eliteu.bottomnavigation.my.AboutUsActivity;
+import org.edx.mobile.eliteu.bottomnavigation.my.accountmanager.AccountManagerActivity;
+import org.edx.mobile.eliteu.bottomnavigation.my.editprofile.EditProfileInfoActivity;
 import org.edx.mobile.eliteu.resetpassword.ResetPasswordActivity;
 import org.edx.mobile.eliteu.custonwebview.CustomWebViewActivity;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
@@ -511,5 +514,19 @@ public class Router {
         } else {
             activity.startActivity(CustomWebViewActivity.newIntent(activity, url + "?device=android", title));
         }
+    }
+
+    public void showAccountManager(@NonNull Activity sourceActivity) {
+        Intent accountManagerIntent = new Intent(sourceActivity, AccountManagerActivity.class);
+        sourceActivity.startActivity(accountManagerIntent);
+    }
+
+    public void showAboutUs(@NonNull Activity sourceActivity) {
+        Intent aboutUsIntent = new Intent(sourceActivity, AboutUsActivity.class);
+        sourceActivity.startActivity(aboutUsIntent);
+    }
+
+    public void showEditProfileInfo(@NonNull Context context, @NonNull String username) {
+        context.startActivity(EditProfileInfoActivity.newIntent(context, username));
     }
 }

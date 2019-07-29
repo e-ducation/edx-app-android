@@ -28,6 +28,7 @@ import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.user.Account;
 import org.edx.mobile.user.ProfileImage;
 import org.edx.mobile.user.UserAPI;
+import org.edx.mobile.util.AppStoreUtils;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.view.Router;
@@ -115,7 +116,7 @@ public class MyUserCenterFragment extends BaseFragment {
         usernameTv.setText(account.getUsername());
 
         //编辑个人信息布局点击
-        RxView.clicks(editProfileLayout).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showUserProfileEditor(getActivity(), account.getUsername()));
+        RxView.clicks(editProfileLayout).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showEditProfileInfo(getActivity(), account.getUsername()));
 
         //Vip布局点击
         RxView.clicks(layoutVip).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showVip(getActivity(), VipActivity.VIP_SELECT_ID));
@@ -124,6 +125,12 @@ public class MyUserCenterFragment extends BaseFragment {
 
         //设置布局点击
         RxView.clicks(layoutSetting).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showSettings(getActivity()));
+
+        RxView.clicks(layoutAccountManager).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showAccountManager(getActivity()));
+
+        RxView.clicks(layoutGiveUsPraise).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> AppStoreUtils.openAppInAppStore(getActivity()));
+
+        RxView.clicks(layoutAboutus).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showAboutUs(getActivity()));
 
         loadFinish = true;
 

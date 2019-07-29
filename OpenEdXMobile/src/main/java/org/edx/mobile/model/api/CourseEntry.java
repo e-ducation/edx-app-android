@@ -223,4 +223,36 @@ public class CourseEntry implements Serializable {
     public String getCourseSharingUtmParams(@NonNull String sharingPlatformKey) {
         return course_sharing_utm_parameters == null ? null : course_sharing_utm_parameters.get(sharingPlatformKey);
     }
+
+    public static class Progress implements Serializable{
+        float total_grade;
+        boolean is_pass;
+
+        public float getTotal_grade() {
+            return total_grade;
+        }
+
+        public void setTotal_grade(float total_grade) {
+            this.total_grade = total_grade;
+        }
+
+        public boolean isIs_pass() {
+            return is_pass;
+        }
+
+        public void setIs_pass(boolean is_pass) {
+            this.is_pass = is_pass;
+        }
+    }
+
+    public Progress progress;
+
+    public Progress getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Progress progress) {
+        this.progress = progress;
+    }
+
 }

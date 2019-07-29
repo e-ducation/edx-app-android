@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="25dp"
+    android:paddingBottom="25dp">
+
+    <TextView
+        android:id="@+id/key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="0dp"
+        android:textColor="#2e313c"
+        android:textSize="16dp"
+        tools:text="性别" />
+
+    <org.edx.mobile.view.custom.IconImageViewXml
+        android:id="@+id/icon_1"
+        style="@style/eliteu_account_item_right_icon_style"
+        android:layout_marginRight="16dp"
+        app:iconColor="#ccd1d9"
+        app:iconName="fa-angle-right" />
+
+    <TextView
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/icon_1"
+        android:gravity="center"
+        android:textColor="#aab2bd"
+        android:textSize="16dp"
+        tools:text="保密" />
+
+</RelativeLayout>
