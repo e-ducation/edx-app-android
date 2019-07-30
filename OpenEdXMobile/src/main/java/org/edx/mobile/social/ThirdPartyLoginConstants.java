@@ -22,6 +22,16 @@ public class ThirdPartyLoginConstants {
 
     public static String UMENG_APP_KEY = "";
 
+    public static final String ALIYUN_OSS_ACCESS_KEY_ID = "";
+
+    public static final String ALIYUN_OSS_ACCESS_KEY_SECRET = "";
+
+    public static final String ALIYUN_OSS_BUCKET = "";
+
+    public static final String ALIYUN_OSS_CALLBACkURL = "";
+
+    public static final String ALIYUN_OSS_ENDPOINT = "";
+
     public static String getBackendByType(int type) {
         switch (type) {
             case IThirdPartyConfig.TYPE_QQ:

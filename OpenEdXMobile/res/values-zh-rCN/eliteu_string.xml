@@ -144,5 +144,10 @@
     <string name="gender_other">其他/不想说</string>
     <string name="person_info">个人信息</string>
     <string name="age_limit_tips">未满13岁不允许编辑头像，默认年龄为0岁，请注意修改。</string>
+    <string name="edit_feedback_hint">请您详细描述需要反馈的问题和建议...</string>
+    <string name="contact_way">手机号/QQ/邮箱</string>
+    <string name="select_image_tips">图片（选填，提供问题截图）</string>
+    <string name="submit_feedback_success">提交反馈成功</string>
+    <string name="submit_feedback_failed">提交反馈失败</string>
 
 </resources>

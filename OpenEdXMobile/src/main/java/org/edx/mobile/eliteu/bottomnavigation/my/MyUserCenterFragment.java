@@ -132,6 +132,8 @@ public class MyUserCenterFragment extends BaseFragment {
 
         RxView.clicks(layoutAboutus).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showAboutUs(getActivity()));
 
+        RxView.clicks(layoutFeedback).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showFeedback(getActivity(),account.getUsername()));
+
         loadFinish = true;
 
     }

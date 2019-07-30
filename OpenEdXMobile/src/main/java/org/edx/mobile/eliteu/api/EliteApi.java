@@ -187,4 +187,8 @@ public class EliteApi {
         return eliteService.getEnrolledCourses(username,org);
     }
 
+    public Observable<HttpResponseBean>  submitFeedback(String image_url,String username,String content,String contact){
+        return eliteService.submitFeedback(image_url,username,content,contact);
+    }
+
 }
