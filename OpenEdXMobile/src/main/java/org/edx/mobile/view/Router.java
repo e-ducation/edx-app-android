@@ -28,6 +28,7 @@ import org.edx.mobile.eliteu.bottomnavigation.BottomNavigationMainDashboardActiv
 import org.edx.mobile.eliteu.bottomnavigation.my.AboutUsActivity;
 import org.edx.mobile.eliteu.bottomnavigation.my.accountmanager.AccountManagerActivity;
 import org.edx.mobile.eliteu.bottomnavigation.my.editprofile.EditProfileInfoActivity;
+import org.edx.mobile.eliteu.bottomnavigation.my.feedback.FeedbackActivity;
 import org.edx.mobile.eliteu.resetpassword.ResetPasswordActivity;
 import org.edx.mobile.eliteu.custonwebview.CustomWebViewActivity;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
@@ -528,5 +529,9 @@ public class Router {
 
     public void showEditProfileInfo(@NonNull Context context, @NonNull String username) {
         context.startActivity(EditProfileInfoActivity.newIntent(context, username));
+    }
+
+    public void showFeedback(@NonNull Context context, @NonNull String username) {
+        context.startActivity(FeedbackActivity.newIntent(context, username));
     }
 }

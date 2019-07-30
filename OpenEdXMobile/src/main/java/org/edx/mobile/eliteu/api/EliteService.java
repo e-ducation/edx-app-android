@@ -88,18 +88,19 @@ public interface EliteService {
 
     @GET("/api/v2/app/")
     Observable<PageHttpResult<ArticleBean>> getArticleListWithTags(@Query("fields") String fields,
-                                                           @Query("page") int page,
-                                                           @Query("page_size") int page_size,
-                                                           @Query("type") String type,
-                                                           @Query("order") String order,
-                                                           @Query("tags") String tags
-    );
-    @GET("/api/v2/app/")
-    Observable<PageHttpResult<ArticleBean>> getArticleListWithOutTags(@Query("fields") String fields,
                                                                    @Query("page") int page,
                                                                    @Query("page_size") int page_size,
                                                                    @Query("type") String type,
-                                                                   @Query("order") String order
+                                                                   @Query("order") String order,
+                                                                   @Query("tags") String tags
+    );
+
+    @GET("/api/v2/app/")
+    Observable<PageHttpResult<ArticleBean>> getArticleListWithOutTags(@Query("fields") String fields,
+                                                                      @Query("page") int page,
+                                                                      @Query("page_size") int page_size,
+                                                                      @Query("type") String type,
+                                                                      @Query("order") String order
 
     );
 
@@ -128,6 +129,14 @@ public interface EliteService {
 
     @GET("/api/v1/mobile/users/{username}/course_enrollments")
     Observable<List<EnrolledCoursesResponse>> getEnrolledCourses(@Path("username") final String username,
-                                                           @Query("org") final String org);
+                                                                 @Query("org") final String org);
+
+    @NonNull
+    @FormUrlEncoded
+    @POST("/user_feeback/")
+    Observable<HttpResponseBean> submitFeedback(@Field("image_url") String image_url,
+                                      @Field("username") String username,
+                                      @Field("content") String content,
+                                      @Field("contact") String contact);
 
 }
