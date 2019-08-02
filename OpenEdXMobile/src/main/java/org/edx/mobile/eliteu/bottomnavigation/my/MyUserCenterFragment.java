@@ -1,9 +1,13 @@
 package org.edx.mobile.eliteu.bottomnavigation.my;
 
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +18,16 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.inject.Inject;
 import com.jakewharton.rxbinding3.view.RxView;
+import com.king.zxing.Intents;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragment;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.eliteu.api.EliteApi;
+import org.edx.mobile.eliteu.bottomnavigation.BottomNavigationMainDashboardActivity;
+import org.edx.mobile.eliteu.bottomnavigation.my.scan_code_login.ScanCodeLoginActivity;
+import org.edx.mobile.eliteu.bottomnavigation.my.scan_code_login.ScanCodeResultActivity;
 import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.vip.ui.VipActivity;
 import org.edx.mobile.eliteu.vip.util.VipStatusUtil;
@@ -39,6 +48,9 @@ import de.greenrobot.event.EventBus;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class MyUserCenterFragment extends BaseFragment {
@@ -71,6 +83,8 @@ public class MyUserCenterFragment extends BaseFragment {
     @Inject
     UserAPI userAPI;
 
+    public static final int REQUEST_CODE_SCAN = 0X01;
+
 
     @Nullable
     @Override
@@ -97,8 +111,9 @@ public class MyUserCenterFragment extends BaseFragment {
 
         mCompositeDisposable = new CompositeDisposable();
         if (!NetworkUtil.isConnected(getActivity())) {
-            loadData();
+
         }
+        loadData();
     }
 
     public void loadData() {
@@ -132,10 +147,37 @@ public class MyUserCenterFragment extends BaseFragment {
 
         RxView.clicks(layoutAboutus).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showAboutUs(getActivity()));
 
-        RxView.clicks(layoutFeedback).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showFeedback(getActivity(),account.getUsername()));
+        RxView.clicks(layoutFeedback).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showFeedback(getActivity(), account.getUsername()));
+
+        RxView.clicks(layoutScanCodeLogin).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> {
+
+            Account account1 = accountPrefs.getAccount();
+            if (account1 == null) {
+                return;
+            }
+            if (account1.isActive()) {
+                openScanCode();
+            } else {
+                ((BaseFragmentActivity) getActivity()).showAlertDialog("", getString(R.string.active_can_not_scan));
+            }
+        });
 
         loadFinish = true;
 
+    }
+
+    private void openScanCode() {
+        new RxPermissions(getActivity()).request(Manifest.permission.CAMERA)
+                .subscribe(granted -> {
+                    if (granted) {
+                        Intent intent = new Intent(getActivity(), ScanCodeLoginActivity.class);
+
+                        startActivityForResult(intent, REQUEST_CODE_SCAN);
+
+                        ((Activity) BottomNavigationMainDashboardActivity.mContext).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    }
+                });
     }
 
 
@@ -196,6 +238,37 @@ public class MyUserCenterFragment extends BaseFragment {
             Glide.with(this)
                     .load(R.drawable.profile_photo_placeholder)
                     .into(imageView);
+        }
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && data != null) {
+            switch (requestCode) {
+                case REQUEST_CODE_SCAN:
+                    String result = data.getStringExtra(Intents.Scan.RESULT);
+                    if (!TextUtils.isEmpty(result)) {
+//                        eliteApi.requestScanSuccess(config.getApiHostURL() +result)
+//                                .subscribeOn(Schedulers.io())
+//                                .observeOn(AndroidSchedulers.mainThread())
+//                                .subscribe(httpResponseBean -> {
+//                                    if (httpResponseBean.getCode() == 202) {
+//                                        Intent intent = new Intent(getActivity(), ScanCodeResultActivity.class);
+//                                        intent.putExtra("url", config.getApiHostURL()+result);
+//                                        startActivity(intent);
+//                                    }
+//                                }, throwable -> throwable.printStackTrace());
+                        Intent intent = new Intent(getActivity(), ScanCodeResultActivity.class);
+                        intent.putExtra("url", config.getApiHostURL() + result);
+                        startActivity(intent);
+
+                    }
+                    break;
+            }
+
         }
     }
 }

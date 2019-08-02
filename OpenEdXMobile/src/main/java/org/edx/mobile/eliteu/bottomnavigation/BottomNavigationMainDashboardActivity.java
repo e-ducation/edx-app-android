@@ -1,5 +1,6 @@
 package org.edx.mobile.eliteu.bottomnavigation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -82,6 +83,8 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
     @javax.inject.Inject
     private AccountPrefs accountPrefs;
 
+    public static Context mContext;
+
     public static Intent newIntent(@Nullable @ScreenDef String screenName, @Nullable String pathId) {
         // These flags will make it so we only have a single instance of this activity,
         // but that instance will not be restarted if it is already running
@@ -95,6 +98,7 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dashboard_bottom_navigation);
+        mContext = this;
         sendGetUpdatedAccountCall();
         initUi();
         initBottomNavigationBar();

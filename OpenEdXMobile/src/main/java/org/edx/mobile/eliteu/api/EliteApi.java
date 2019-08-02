@@ -191,4 +191,8 @@ public class EliteApi {
         return eliteService.submitFeedback(image_url,username,content,contact);
     }
 
+    public Observable<HttpResponseBean> requestScanSuccess(String url){
+        return eliteService.requestScanSuccess(url);
+    }
+
 }

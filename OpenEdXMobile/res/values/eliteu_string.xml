@@ -130,7 +130,7 @@
 
     <string name="change_bind_mobile">换绑手机号</string>
     <string name="current_bind_mobile">当前绑定的手机号：</string>
-    <string name="verification_code_countdown">s 后发送</string>
+    <string name="verification_code_countdown">s</string>
     <string name="enter_old_password">请输入旧密码</string>
     <string name="enter_new_password">请输入新密码</string>
     <string name="double_enter_new_password">再次确认新密码</string>
@@ -148,5 +148,11 @@
     <string name="select_image_tips">图片（选填，提供问题截图）</string>
     <string name="submit_feedback_success">提交反馈成功</string>
     <string name="submit_feedback_failed">提交反馈失败</string>
+    <string name="tips_scan_code">请将二维码对准至框内，即可自动扫描</string>
+    <string name="scan_result_tips">英荔商学院网页登陆确认</string>
+    <string name="scan_result_confim_login">确认登录</string>
+    <string name="scan_result_cancle_login">取消登录</string>
+    <string name="active_can_not_scan">请先查询激活邮件，激活该账户才可以使用扫码功能</string>
+    <string name="scan_login_success">扫码登录成功</string>
 
 </resources>
