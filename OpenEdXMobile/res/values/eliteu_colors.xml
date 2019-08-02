@@ -24,5 +24,6 @@
     <color name="find_course_tablayout_text_color">#2e313c</color>
     <color name="new_bind_mobile_get_code_cannot_click">#ccd1d9</color>
     <color name="new_bind_mobile_get_code_can_click">#0f80bf</color>
+    <color name="viewfinder_mask_s">@android:color/transparent</color>
 
 </resources>

@@ -33,6 +33,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 public interface EliteService {
 
@@ -138,5 +139,8 @@ public interface EliteService {
                                       @Field("username") String username,
                                       @Field("content") String content,
                                       @Field("contact") String contact);
+
+    @GET
+    Observable<HttpResponseBean> requestScanSuccess(@Url String url);
 
 }
