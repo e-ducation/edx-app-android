@@ -111,15 +111,11 @@ public class MyUserCenterFragment extends BaseFragment {
 
         mCompositeDisposable = new CompositeDisposable();
         if (!NetworkUtil.isConnected(getActivity())) {
-
+            loadData();
         }
-        loadData();
     }
 
     public void loadData() {
-        if (loadFinish == true) {
-            return;
-        }
         Account account = accountPrefs.getAccount();
         if (account == null) {
             return;
@@ -228,6 +224,12 @@ public class MyUserCenterFragment extends BaseFragment {
     }
 
     private void loadProfileImage(@NonNull ProfileImage profileImage, @NonNull ImageView imageView) {
+        if (profileImage == null) {
+            Glide.with(this)
+                    .load(R.drawable.profile_photo_placeholder)
+                    .into(imageView);
+            return;
+        }
         if (profileImage.hasImage()) {
             Glide.with(this)
                     .load(profileImage.getImageUrlMedium())

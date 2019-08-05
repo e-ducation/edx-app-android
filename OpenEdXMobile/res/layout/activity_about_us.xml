@@ -49,7 +49,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
                         android:contentDescription="TODO"
-                        android:src="@mipmap/ic_launcher"
+                        android:src="@drawable/about_us_eliteu_logo"
                         tools:ignore="ContentDescription" />
 
                     <TextView

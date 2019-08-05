@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 
 
-import android.widget.LinearLayout;
+import android.view.ViewTreeObserver;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -58,7 +59,7 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
     @Inject
     NotificationDelegate notificationDelegate;
 
-    LinearLayout rootView;
+    CoordinatorLayout rootView;
 
     private ImmersionBar mImmersionBar;
 
@@ -125,6 +126,16 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(this);
+        mBottomNavigationBar.setAutoHideEnabled(false);
+        ViewTreeObserver vto1 = mBottomNavigationBar.getViewTreeObserver();
+        vto1.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                mBottomNavigationBar.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                int height = mBottomNavigationBar.getMeasuredHeight();
+                mViewPager.setPadding(0,0,0,height);
+            }
+        });
     }
 
 
