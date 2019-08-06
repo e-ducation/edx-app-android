@@ -1,6 +1,7 @@
 package org.edx.mobile.eliteu.bottomnavigation.course;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -66,14 +67,23 @@ public class FindCourseListFragment extends BaseLazyLoadFragment {
 
 
     public static Fragment newInstance(int course_type_id) {
-        FindCourseListFragment fragment = new FindCourseListFragment(course_type_id);
+        FindCourseListFragment fragment = new FindCourseListFragment();
+        Bundle args = new Bundle();
+        args.putInt("course_type_id", course_type_id);
+        fragment.setArguments(args);
         return fragment;
     }
 
-    @SuppressLint("ValidFragment")
-    public FindCourseListFragment(int course_type_id) {
-        this.course_type_id = course_type_id;
+    public FindCourseListFragment() {
 
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            course_type_id = getArguments().getInt("course_type_id");
+        }
     }
 
     @Override

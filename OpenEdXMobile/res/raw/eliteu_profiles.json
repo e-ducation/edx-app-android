@@ -2,7 +2,7 @@
   "fields": [
     {
       "name": "gender",
-      "label": "性别",
+      "label": "Gender",
       "type": "select",
       "data_type": "gender",
       "options": {
@@ -13,7 +13,7 @@
 
     {
       "name": "year_of_birth",
-      "label": "出生年份",
+      "label": "Birth year",
       "type": "select",
       "options": {
         "range_min": 1900,
@@ -24,7 +24,7 @@
 
     {
       "name": "bio",
-      "label": "个性签名",
+      "label": "Bio",
       "type": "textarea",
       "placeholder": "请填写"
     }

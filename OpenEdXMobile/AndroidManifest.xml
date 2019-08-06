@@ -42,6 +42,7 @@
         android:maxAspectRatio="2.4"
         android:resizeableActivity="true"
         android:supportsRtl="${supportsRtl}"
+        tools:replace="android:supportsRtl"
         android:theme="@style/AppTheme">
 
         <activity

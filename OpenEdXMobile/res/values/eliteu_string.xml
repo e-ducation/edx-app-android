@@ -145,7 +145,7 @@
     <string name="age_limit_tips">Children under 13 years old are not allowed to edit avatar. The default age is 0 years old, please check.</string>
     <string name="edit_feedback_hint">Please describe your questions or advice in detail.</string>
     <string name="contact_way">Mobile/QQ/Email</string>
-    <string name="select_image_tips">Image (optional, screenshot of problem is needed)</string>
+    <string name="select_image_tips">Image (optional, screenshot is needed)</string>
     <string name="submit_feedback_success">Feedback submit successfully</string>
     <string name="submit_feedback_failed">Feedback submit failed</string>
     <string name="tips_scan_code"> Please put the QR code into the box for automatical scanning.</string>
