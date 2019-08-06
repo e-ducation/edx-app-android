@@ -58,6 +58,10 @@ public class EliteuFindCourseFragment extends BaseFragment {
         return view;
     }
 
+    public EliteuFindCourseFragment(){
+
+    }
+
     private void initView(View view) {
         searchLayout = view.findViewById(R.id.search_layout);
         RxView.clicks(searchLayout)
