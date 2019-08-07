@@ -116,17 +116,21 @@ public interface EliteService {
                                        @Query("username") final String username);
 
     @GET("/elitemba/api/v1/course_types/")
-    Observable<PageHttpResult<CourseSubjectBean>> getCourseSubject();
+    Observable<PageHttpResult<CourseSubjectBean>> getCourseSubject(@Query("page_size") final int page_size);
 
     @GET("/elitemba/api/v1/courses_search/")
-    Observable<Page<CourseDetail>> getCourseSearchByTypeId(@Query("page_index") final int page_index,
+    Observable<Page<CourseDetail>> getCourseSearchByTypeId(@Query("page") final int page_index,
                                                            @Query("page_size") final int page_size,
                                                            @Query("course_type_id") final int course_type_id);
 
     @GET("/elitemba/api/v1/courses_search/")
-    Observable<Page<CourseDetail>> getCourseSearchByKeyWord(@Query("page_index") final int page_index,
+    Observable<Page<CourseDetail>> getCourseSearchByKeyWord(@Query("page") final int page_index,
                                                             @Query("page_size") final int page_size,
                                                             @Query("search_name") final String search_name);
+
+    @GET("/elitemba/api/v1/courses_search/")
+    Observable<Page<CourseDetail>> getCourseSearchAll(@Query("page") final int page_index,
+                                                            @Query("page_size") final int page_size);
 
     @GET("/api/v1/mobile/users/{username}/course_enrollments")
     Observable<List<EnrolledCoursesResponse>> getEnrolledCourses(@Path("username") final String username,

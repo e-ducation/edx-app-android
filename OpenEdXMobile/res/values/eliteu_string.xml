@@ -157,5 +157,6 @@
     <string name="active_can_not_scan">Please check the activation email first to activate the account before scanning.</string>
     <string name="scan_login_success">Scan to login successfully</string>
     <string name="get_verification_again">Resend</string>
+    <string name="all">全部</string>
 
 </resources>

@@ -137,6 +137,8 @@ public class EliteuFindCourseFragment extends BaseFragment {
 
         EliteuFindCourseFragment.SectionsPagerAdapter adapter = new EliteuFindCourseFragment.SectionsPagerAdapter(getActivity().getSupportFragmentManager());
 
+        adapter.addFragment(FindCourseListFragment.newInstance(0), getResources().getString(R.string.all));
+
         for (CourseSubjectBean subjectBean : courseSubjectBeans) {
             adapter.addFragment(FindCourseListFragment.newInstance(subjectBean.getId()), subjectBean.getSubject_name());
         }
