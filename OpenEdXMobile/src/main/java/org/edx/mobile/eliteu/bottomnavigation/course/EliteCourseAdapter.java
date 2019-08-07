@@ -97,7 +97,7 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
 
             this.course_name.setText(courseDetail.name);
-            this.course_professor.setText(context.getString(R.string.professor) + courseDetail.professor_name);
+            this.course_professor.setText(context.getString(R.string.professor) + " " + courseDetail.professor_name);
             this.course_status.setText(getformattedDate(courseDetail.start, courseDetail.start_type, courseDetail.start_display, context));
         }
 

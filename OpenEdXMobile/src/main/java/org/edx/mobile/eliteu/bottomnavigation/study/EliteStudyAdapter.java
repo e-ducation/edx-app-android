@@ -2,14 +2,12 @@ package org.edx.mobile.eliteu.bottomnavigation.study;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,6 +18,7 @@ import org.edx.mobile.R;
 import org.edx.mobile.eliteu.harvard.HarvardStatusUtil;
 import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.util.CourseUtil;
+import org.edx.mobile.eliteu.wight.RoundedProgressBar;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.util.Config;
 
@@ -136,7 +135,7 @@ public class EliteStudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         TextView course_name;
         RelativeLayout vip_expired_layout;
         FrameLayout rootView;
-        ProgressBar progressBar;
+        RoundedProgressBar progressBar;
         TextView progress_tv;
 
 
@@ -168,17 +167,18 @@ public class EliteStudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     throttleFirst(1, TimeUnit.SECONDS)
                     .subscribe(unit -> mOnItemClickListener.onItemClick(enrolledCoursesResponse));
 
-            if(enrolledCoursesResponse.getCourse().getProgress()==null){
+            if (enrolledCoursesResponse.getCourse().getProgress() == null) {
                 return;
             }
-            float progress = enrolledCoursesResponse.getCourse().getProgress().getTotal_grade();
-            int progress_int = (int) (progress * 100);
+            double progress = enrolledCoursesResponse.getCourse().getProgress().getTotal_grade();
+            int progress_int = (int) (progress * 100.00);
+
             progress_tv.setText(progress_int + "%");
             progressBar.setProgress(progress_int);
             if (enrolledCoursesResponse.getCourse().getProgress().isIs_pass()) {
-                progressBar.setProgressDrawable(ContextCompat.getDrawable(mContext, R.drawable.study_progress_green_drawable));
+                progressBar.setColorProgress("#8cc34a");
             } else {
-                progressBar.setProgressDrawable(ContextCompat.getDrawable(mContext, R.drawable.study_progress_blue_drawable));
+                progressBar.setColorProgress("#4788c7");
             }
 
         }

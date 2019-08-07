@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/cardview_shadow"
         android:visibility="gone"
         tools:visibility="visible">
@@ -48,11 +48,12 @@
     </FrameLayout>
 
     <TextView
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="15dp"
         android:text="@string/study_progress"
         android:textColor="#434343"
         android:textSize="18dp" />

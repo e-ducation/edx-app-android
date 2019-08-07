@@ -225,10 +225,10 @@ public class CourseEntry implements Serializable {
     }
 
     public static class Progress implements Serializable{
-        float total_grade;
+        double total_grade;
         boolean is_pass;
 
-        public float getTotal_grade() {
+        public double getTotal_grade() {
             return total_grade;
         }
 

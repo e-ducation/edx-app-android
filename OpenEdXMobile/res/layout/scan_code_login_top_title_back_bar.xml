@@ -26,7 +26,7 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:singleLine="true"
-        android:text="扫码登录"
+        android:text="@string/scan_code_login"
         android:textColor="@color/white"
         android:textSize="18dp" />
 
