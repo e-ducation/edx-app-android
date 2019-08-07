@@ -94,9 +94,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_above="@+id/bottom"
                 android:layout_centerHorizontal="true"
-                android:text="© 2019 广东英荔国际教育科技有限公司 版权所有"
+                android:text="@string/company_version1"
                 android:textColor="#aab2bd"
                 android:textSize="12dp" />
 
@@ -105,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="粤ICP备13044168号-5"
+                android:text="@string/company_version2"
                 android:textColor="#aab2bd"
                 android:textSize="12dp" />
 
