@@ -110,11 +110,11 @@
     <string name="course">Course</string>
     <string name="study">Study</string>
     <string name="mine">Mine</string>
-    <string name="professor">Professor: </string>
-    <string name="starting_class">On course</string>
+    <string name="professor">Professor:</string>
+    <string name="starting_class">On Course</string>
     <string name="please_enter">Please enter</string>
     <string name="no_search_data">No result</string>
-    <string name="harvard_time">Date of Expiry: </string>
+    <string name="harvard_time">Date of Expiry:</string>
     <string name="study_no_course"> There is no course in the learning list. Go and add courses.</string>
     <string name="find_eliteu_no_course">No courses</string>
     <string name="add_course">Add course</string>
@@ -122,26 +122,26 @@
     <string name="search_hint"> Search for course name, professor name</string>
     <string name="vip_is_expried">VIP expired</string>
     <string name="edit_profile_info">Edit personal info</string>
-    <string name="account_manager">Account manager</string>
-    <string name="scan_code_login">Scan code to login</string>
+    <string name="account_manager">Account Manager</string>
+    <string name="scan_code_login">Scan to Login</string>
     <string name="feedback">Feedback</string>
-    <string name="giveuspraise">Rate for us</string>
-    <string name="aboutus">About us</string>
+    <string name="giveuspraise">Rate for Us</string>
+    <string name="aboutus">About Us</string>
 
-    <string name="change_bind_mobile">Change mobile</string>
+    <string name="change_bind_mobile">Change Mobile</string>
     <string name="current_bind_mobile">Current mobile: </string>
     <string name="verification_code_countdown">s</string>
     <string name="enter_old_password">Enter old password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="double_enter_new_password">Confirm new password</string>
     <string name="about_us_text"><![CDATA[英荔商学院（www.EliteMBA.cn）是广东英荔国际教育科技有限公司旗下的商业管理类互联网课堂。<br/><br/>英荔与国内外商业管理学术界资深的教授和专家联手，精心设计并制作高质量且极具知识价值的体系化在线课程。同时，筛选并引进国外优质教育内容，向学习者提供经英荔团队打造后的本土化版本。<br/><br/>尽己所能地向更多学习者传递知识是教育者们的共同追求。英荔期望为教育者提供更有效的传递途径，增加知识的触及范围。在此，向各位专家、教授发出诚挚的开课邀请，期待创造、引入更多优质的课程资源，让知识在多元的世界产生更多元的价值。]]></string>
-    <string name="username">username</string>
+    <string name="username">Username</string>
     <string name="signature_edittext_hint">Please enter</string>
     <string name="signature_view_detail">View more</string>
     <string name="man">Male</string>
     <string name="women">Female</string>
     <string name="gender_other">Not provide</string>
-    <string name="person_info">Personal info</string>
+    <string name="person_info">Personal Info</string>
     <string name="age_limit_tips">Children under 13 years old are not allowed to edit avatar. The default age is 0 years old, please check.</string>
     <string name="edit_feedback_hint">Please describe your questions or advice in detail.</string>
     <string name="contact_way">Mobile/QQ/Email</string>
@@ -150,9 +150,10 @@
     <string name="submit_feedback_failed">Feedback submit failed</string>
     <string name="tips_scan_code"> Please put the QR code into the box for automatical scanning.</string>
     <string name="scan_result_tips">Web page login confirm</string>
-    <string name="scan_result_confim_login">Confirm login</string>
-    <string name="scan_result_cancle_login">Cancel login</string>
+    <string name="scan_result_confim_login">Confirm Login</string>
+    <string name="scan_result_cancle_login">Cancel Login</string>
     <string name="active_can_not_scan">Please check the activation email first to activate the account before scanning.</string>
     <string name="scan_login_success">Scan to login successfully</string>
+    <string name="get_verification_again">Resend</string>
 
 </resources>

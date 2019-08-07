@@ -300,7 +300,7 @@ public class BindMobileFragment extends BaseFragment {
                         //倒计时完毕置为可点击状态
                         verificationBtn.setEnabled(true);
                         verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_can_click));
-                        verificationBtn.setText(R.string.verification_code_btn_str);
+                        verificationBtn.setText(R.string.get_verification_again);
                     }
                 })
                 .subscribe();

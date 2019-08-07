@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import org.edx.mobile.eliteu.api.EliteApi;
 import org.edx.mobile.eliteu.article.ArticleActivity;
+import org.edx.mobile.eliteu.bottomnavigation.BottomNavigationMainDashboardActivity;
 import org.edx.mobile.eliteu.mainsite.bean.BlockCourseCategory.CategorieslistBean;
 
 import com.bumptech.glide.Glide;
@@ -42,7 +43,6 @@ import org.edx.mobile.eliteu.util.AndroidSizeUtil;
 import org.edx.mobile.eliteu.wight.CourseGridLayoutManager;
 import org.edx.mobile.eliteu.wight.GridSectionAverageGapItemDecoration;
 import org.edx.mobile.eliteu.wight.SpaceOrientationItemDecoration;
-import org.edx.mobile.event.MoveToDiscoveryTabEvent;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.view.Router;
 import org.json.JSONObject;
@@ -51,7 +51,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import de.greenrobot.event.EventBus;
 
 public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -180,7 +179,10 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 mainSiteCourseAdapter1.setData(list);
                 viewViewHolder.mRecyclerView.setAdapter(mainSiteCourseAdapter1);
                 viewViewHolder.divider.setVisibility(View.VISIBLE);
-                RxView.clicks(viewViewHolder.mRightLayout).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> EventBus.getDefault().post(new MoveToDiscoveryTabEvent()));
+                RxView.clicks(viewViewHolder.mRightLayout).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> {
+                    BottomNavigationMainDashboardActivity activity = (BottomNavigationMainDashboardActivity) mContext;
+                    activity.mBottomNavigationBar.selectTab(1);
+                });
                 break;
             case BLOCK_TYPE_RECOMMEND_PROFESSOR:
                 BlockProfessor blockProfessor = gson.fromJson(JSONObject.wrap(baseMainSiteBlockBean.getValue()).toString(), new TypeToken<BlockProfessor>() {

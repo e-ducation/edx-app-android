@@ -582,7 +582,7 @@
   <!--How most profile fields are formatted when viewing the edit screen-->
   <string name="edit_user_profile_field">{label}: {value}</string>
   <!--Default placeholder if a profile field is blank-->
-  <string name="edit_user_profile_field_placeholder">选择</string>
+  <string name="edit_user_profile_field_placeholder">请选择</string>
   <!--Button that saves changes to a profile text field-->
   <string name="edit_user_profile_textarea_submit_button">提交</string>
   <!--An option that will set the user profile's primary language to the language of their device's configured locale-->

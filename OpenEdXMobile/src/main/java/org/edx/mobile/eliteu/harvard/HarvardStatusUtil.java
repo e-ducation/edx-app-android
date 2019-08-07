@@ -71,7 +71,7 @@ public class HarvardStatusUtil {
         if (hmm_remaining_days > 0) {
             //哈佛有效期
             harvard_manager_layout.setVisibility(View.VISIBLE);
-            harvard_time.setText(context.getString(R.string.harvard_time) + account.getHmm_expiry_date());
+            harvard_time.setText(context.getString(R.string.harvard_time) + " " + account.getHmm_expiry_date());
 
             RxView.clicks(harvard_manager_layout)
                     .throttleFirst(1, TimeUnit.SECONDS)

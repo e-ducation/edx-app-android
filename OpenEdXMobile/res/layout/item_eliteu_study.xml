@@ -89,16 +89,12 @@
                 android:visibility="invisible"
                 tools:text="最近：2019-06-14" />
 
-            <ProgressBar
+            <org.edx.mobile.eliteu.wight.RoundedProgressBar
                 android:id="@+id/progressbar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="5dp"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:max="100"
-                android:progress="20"
-                android:progressDrawable="@drawable/study_progress_blue_drawable" />
+                android:layout_centerVertical="true" />
 
             <TextView
                 android:id="@+id/progress_tv"
