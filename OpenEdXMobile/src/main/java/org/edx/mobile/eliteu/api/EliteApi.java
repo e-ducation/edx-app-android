@@ -166,14 +166,18 @@ public class EliteApi {
      * @return 发现课程类别列表
      */
     public Observable<PageHttpResult<CourseSubjectBean>> getCourseSubject() {
-        return eliteService.getCourseSubject();
+        return eliteService.getCourseSubject(1000);
     }
 
     /**
      * @return 通过分类id查找课程
      */
     public Observable<Page<CourseDetail>> getCourseSearchByTypeId(int pageindex, int course_type_id) {
-        return eliteService.getCourseSearchByTypeId(pageindex, PAGE_SIZE, course_type_id);
+        if (course_type_id == 0) {
+            return eliteService.getCourseSearchAll(pageindex, PAGE_SIZE);
+        } else {
+            return eliteService.getCourseSearchByTypeId(pageindex, PAGE_SIZE, course_type_id);
+        }
     }
 
     /**
@@ -184,14 +188,14 @@ public class EliteApi {
     }
 
     public Observable<List<EnrolledCoursesResponse>> getEnrolledCourses(String username, String org) {
-        return eliteService.getEnrolledCourses(username,org);
+        return eliteService.getEnrolledCourses(username, org);
     }
 
-    public Observable<HttpResponseBean>  submitFeedback(String image_url,String username,String content,String contact){
-        return eliteService.submitFeedback(image_url,username,content,contact);
+    public Observable<HttpResponseBean> submitFeedback(String image_url, String username, String content, String contact) {
+        return eliteService.submitFeedback(image_url, username, content, contact);
     }
 
-    public Observable<HttpResponseBean> requestScanSuccess(String url){
+    public Observable<HttpResponseBean> requestScanSuccess(String url) {
         return eliteService.requestScanSuccess(url);
     }
 

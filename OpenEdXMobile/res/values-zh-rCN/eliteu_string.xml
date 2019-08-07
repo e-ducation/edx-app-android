@@ -19,13 +19,13 @@
     <string name="vip_data_of_expiry">到期日期：%1$s</string>
     <string name="vip_data_of_expiry2">过期日期：%1$s</string>
     <plurals name="vip_remainint_time">
-        <item quantity="one">会员身份将在%1$s天后过期</item>
-        <item quantity="other">会员身份将在%1$s天后过期</item>
+        <item quantity="one">会员身份将在 %1$s 天后过期</item>
+        <item quantity="other">会员身份将在 %1$s 天后过期</item>
     </plurals>
     <string name="vip_data_of_last_open">上次开通日期：%1$s</string>
     <plurals name="vip_expired_time">
-        <item quantity="one">会员身份已在%1$s天前过期</item>
-        <item quantity="other">会员身份已在%1$s天前过期</item>
+        <item quantity="one">会员身份已在 %1$s 天前过期</item>
+        <item quantity="other">会员身份已在 %1$s 天前过期</item>
     </plurals>
     <string name="vip_page_title">会员资格</string>
     <string name="chose_pay_way">选择支付方式</string>
@@ -145,7 +145,7 @@
     <string name="women">女</string>
     <string name="gender_other">其他/不想说</string>
     <string name="person_info">个人信息</string>
-    <string name="age_limit_tips">未满13岁不允许编辑头像，默认年龄为0岁，请注意修改。</string>
+    <string name="age_limit_tips">未满13岁不允许修改头像，仅显示默认头像。默认年龄为0岁，请注意修改。</string>
     <string name="edit_feedback_hint">请您详细描述需要反馈的问题和建议...</string>
     <string name="contact_way">手机号/QQ/邮箱</string>
     <string name="select_image_tips">图片（选填，提供问题截图）</string>
@@ -158,5 +158,6 @@
     <string name="active_can_not_scan">请先查询激活邮件，激活该账户才可以使用扫码功能</string>
     <string name="scan_login_success">扫码登录成功</string>
     <string name="get_verification_again">重新获取</string>
+    <string name="all">全部</string>
 
 </resources>
