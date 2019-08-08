@@ -280,7 +280,7 @@ public class EditProfileInfoFragment extends BaseFragment implements BaseFragmen
                         .into(viewHolder.profileImage);
             } else {
                 Glide.with(EditProfileInfoFragment.this)
-                        .load(R.drawable.profile_photo_placeholder)
+                        .load(R.drawable.default_profile_image)
                         .into(viewHolder.profileImage);
             }
 

@@ -89,7 +89,7 @@ public class BindMobileFragment extends BaseFragment {
         } else {
             getActivity().setTitle(R.string.change_bind_mobile);
             bind_mobile_tv.setVisibility(View.VISIBLE);
-            bind_mobile_tv.setText(getString(R.string.current_bind_mobile)+account.getPhone());
+            bind_mobile_tv.setText(getString(R.string.current_bind_mobile)+" "+account.getPhone());
             isChangeBind = true;
         }
         mCompositeDisposable = new CompositeDisposable();

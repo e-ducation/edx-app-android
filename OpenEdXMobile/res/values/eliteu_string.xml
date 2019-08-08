@@ -118,7 +118,7 @@
     <string name="study_no_course"> There is no course in the learning list. Go and add courses.</string>
     <string name="find_eliteu_no_course">No courses</string>
     <string name="add_course">Add course</string>
-    <string name="study_progress">Study progress</string>
+    <string name="study_progress">Study Progress</string>
     <string name="search_hint"> Search for course name, professor name</string>
     <string name="vip_is_expried">VIP expired</string>
     <string name="edit_profile_info">Edit personal info</string>
@@ -144,7 +144,7 @@
     <string name="women">Female</string>
     <string name="gender_other">Not provide</string>
     <string name="person_info">Personal Info</string>
-    <string name="age_limit_tips">Children under 13 years old are not allowed to edit avatar. The default age is 0 years old, please check.</string>
+    <string name="age_limit_tips">Children under 13 are not allowed to edit avatar. The default age is 0, please check.</string>
     <string name="edit_feedback_hint">Please describe your questions or advice in detail.</string>
     <string name="contact_way">Mobile/QQ/Email</string>
     <string name="select_image_tips">Image (optional, screenshot is needed)</string>
@@ -156,6 +156,7 @@
     <string name="scan_result_cancle_login">Cancel Login</string>
     <string name="active_can_not_scan">Please check the activation email first to activate the account before scanning.</string>
     <string name="scan_login_success">Scan to login successfully</string>
+    <string name="scan_login_fail">Scan to login failed</string>
     <string name="get_verification_again">Resend</string>
     <string name="all">全部</string>
 

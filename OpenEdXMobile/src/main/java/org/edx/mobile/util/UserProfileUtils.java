@@ -16,7 +16,7 @@ public class UserProfileUtils {
                                         @NonNull ImageView view) {
         if (null == event.getUri()) {
             Glide.with(context)
-                    .load(R.drawable.profile_photo_placeholder)
+                    .load(R.drawable.default_profile_image)
                     .into(view);
         } else {
             Glide.with(context)

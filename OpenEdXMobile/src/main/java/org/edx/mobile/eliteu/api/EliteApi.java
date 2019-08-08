@@ -174,9 +174,9 @@ public class EliteApi {
      */
     public Observable<Page<CourseDetail>> getCourseSearchByTypeId(int pageindex, int course_type_id) {
         if (course_type_id == 0) {
-            return eliteService.getCourseSearchAll(pageindex, PAGE_SIZE);
+            return eliteService.getCourseSearchAll(pageindex, PAGE_SIZE,true);
         } else {
-            return eliteService.getCourseSearchByTypeId(pageindex, PAGE_SIZE, course_type_id);
+            return eliteService.getCourseSearchByTypeId(pageindex, PAGE_SIZE, course_type_id,true);
         }
     }
 
@@ -184,7 +184,7 @@ public class EliteApi {
      * @return 通过关键字查找课程
      */
     public Observable<Page<CourseDetail>> getCourseSearchByKeyWord(String search_name) {
-        return eliteService.getCourseSearchByKeyWord(1, 100, search_name);
+        return eliteService.getCourseSearchByKeyWord(1, 100, search_name,true);
     }
 
     public Observable<List<EnrolledCoursesResponse>> getEnrolledCourses(String username, String org) {

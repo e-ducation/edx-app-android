@@ -20,7 +20,7 @@
             android:id="@+id/course_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             tools:ignore="ContentDescription"
             tools:src="@drawable/placeholder_course_card_image" />
 

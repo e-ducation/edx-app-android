@@ -108,11 +108,14 @@ public class EliteStudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         TextView harvard_time;
         FrameLayout harvard_manager_layout;
+        TextView listTitle;
 
         public HeaderViewHolder(View convertView) {
             super(convertView);
             harvard_time = convertView.findViewById(R.id.harvard_time);
             harvard_manager_layout = convertView.findViewById(R.id.harvard_manager_layout);
+            listTitle = convertView.findViewById(R.id.list_title);
+            listTitle.getPaint().setFakeBoldText(true);
         }
 
     }

@@ -73,6 +73,7 @@
         <item name="android:background">@color/toolbar_background_color</item>
         <item name="titleTextAppearance">@style/AppTheme.ToolBar.Title</item>
         <item name="subtitleTextAppearance">@style/AppTheme.ToolBar.SubTitle</item>
+        <item name="android:paddingRight">5dp</item>
     </style>
 
     <style name="AppTheme.ToolBar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
