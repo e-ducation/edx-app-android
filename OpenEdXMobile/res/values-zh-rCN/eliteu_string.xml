@@ -157,6 +157,7 @@
     <string name="scan_result_cancle_login">取消登录</string>
     <string name="active_can_not_scan">请先查询激活邮件，激活该账户才可以使用扫码功能</string>
     <string name="scan_login_success">扫码登录成功</string>
+    <string name="scan_login_fail">扫码登录失败</string>
     <string name="get_verification_again">重新获取</string>
     <string name="all">全部</string>
 

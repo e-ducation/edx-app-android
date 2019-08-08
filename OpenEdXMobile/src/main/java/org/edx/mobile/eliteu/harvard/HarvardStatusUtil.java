@@ -105,7 +105,7 @@ public class HarvardStatusUtil {
 
 
     public static boolean isHarvardUrl(String url) {
-        if (url.contains("myhbp.org.cn")) {
+        if (url.contains("myhbp.org.cn") && !url.contains("https://resource.myhbp.org.cn/")) {
             return true;
         } else {
             return false;

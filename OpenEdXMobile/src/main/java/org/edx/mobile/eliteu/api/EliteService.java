@@ -121,16 +121,19 @@ public interface EliteService {
     @GET("/elitemba/api/v1/courses_search/")
     Observable<Page<CourseDetail>> getCourseSearchByTypeId(@Query("page") final int page_index,
                                                            @Query("page_size") final int page_size,
-                                                           @Query("course_type_id") final int course_type_id);
+                                                           @Query("course_type_id") final int course_type_id,
+                                                           @Query("mobile") final boolean mobile);
 
     @GET("/elitemba/api/v1/courses_search/")
     Observable<Page<CourseDetail>> getCourseSearchByKeyWord(@Query("page") final int page_index,
                                                             @Query("page_size") final int page_size,
-                                                            @Query("search_name") final String search_name);
+                                                            @Query("search_name") final String search_name,
+                                                            @Query("mobile") final boolean mobile);
 
     @GET("/elitemba/api/v1/courses_search/")
     Observable<Page<CourseDetail>> getCourseSearchAll(@Query("page") final int page_index,
-                                                            @Query("page_size") final int page_size);
+                                                      @Query("page_size") final int page_size,
+                                                      @Query("mobile") final boolean mobile);
 
     @GET("/api/v1/mobile/users/{username}/course_enrollments")
     Observable<List<EnrolledCoursesResponse>> getEnrolledCourses(@Path("username") final String username,
@@ -140,9 +143,9 @@ public interface EliteService {
     @FormUrlEncoded
     @POST("/user_feeback/")
     Observable<HttpResponseBean> submitFeedback(@Field("image_url") String image_url,
-                                      @Field("username") String username,
-                                      @Field("content") String content,
-                                      @Field("contact") String contact);
+                                                @Field("username") String username,
+                                                @Field("content") String content,
+                                                @Field("contact") String contact);
 
     @GET
     Observable<HttpResponseBean> requestScanSuccess(@Url String url);

@@ -24,7 +24,7 @@
 
     {
       "name": "bio",
-      "label": "Bio",
+      "label": "Biography",
       "type": "textarea",
       "placeholder": "Edit"
     }

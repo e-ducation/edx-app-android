@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.inject.Inject;
@@ -212,13 +213,13 @@ public class MyUserCenterFragment extends BaseFragment {
 
         if (null == event.getUri()) {
             Glide.with(getActivity())
-                    .load(R.drawable.profile_photo_placeholder)
+                    .load(R.drawable.default_profile_image)
                     .into(profileImageView);
         } else {
             Glide.with(getActivity())
                     .load(event.getUri())
-                    .placeholder(R.drawable.profile_photo_placeholder)
-                    .dontAnimate().error(R.drawable.profile_photo_placeholder)
+                    .placeholder(R.drawable.default_profile_image)
+                    .dontAnimate().error(R.drawable.default_profile_image)
                     .into(profileImageView);
         }
     }
@@ -226,19 +227,19 @@ public class MyUserCenterFragment extends BaseFragment {
     private void loadProfileImage(@NonNull ProfileImage profileImage, @NonNull ImageView imageView) {
         if (profileImage == null) {
             Glide.with(this)
-                    .load(R.drawable.profile_photo_placeholder)
+                    .load(R.drawable.default_profile_image)
                     .into(imageView);
             return;
         }
         if (profileImage.hasImage()) {
             Glide.with(this)
                     .load(profileImage.getImageUrlMedium())
-                    .placeholder(R.drawable.profile_photo_placeholder)
-                    .dontAnimate().error(R.drawable.profile_photo_placeholder)
+                    .placeholder(R.drawable.default_profile_image)
+                    .dontAnimate().error(R.drawable.default_profile_image)
                     .into(imageView);
         } else {
             Glide.with(this)
-                    .load(R.drawable.profile_photo_placeholder)
+                    .load(R.drawable.default_profile_image)
                     .into(imageView);
         }
     }
@@ -263,9 +264,13 @@ public class MyUserCenterFragment extends BaseFragment {
 //                                        startActivity(intent);
 //                                    }
 //                                }, throwable -> throwable.printStackTrace());
-                        Intent intent = new Intent(getActivity(), ScanCodeResultActivity.class);
-                        intent.putExtra("url", config.getApiHostURL() + result);
-                        startActivity(intent);
+                        if (result.contains("/elitemba/api/v1/login_by_qrcode/?lms_login_qrcode=")){
+                            Intent intent = new Intent(getActivity(), ScanCodeResultActivity.class);
+                            intent.putExtra("url", config.getApiHostURL() + result);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(getActivity(),R.string.scan_login_fail,Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                     break;

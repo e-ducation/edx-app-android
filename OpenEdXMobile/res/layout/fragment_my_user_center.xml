@@ -28,11 +28,11 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image"
-                    style="@style/profile_image"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
-                    app:civ_border_width="1dp"
-                    tools:src="@drawable/profile_photo_placeholder" />
+                    tools:src="@drawable/profile_photo_placeholder"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription" />
 
 
             </FrameLayout>

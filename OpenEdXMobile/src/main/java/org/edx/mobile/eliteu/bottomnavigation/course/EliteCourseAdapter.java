@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 
 import org.edx.mobile.R;
 import org.edx.mobile.course.CourseDetail;
+import org.edx.mobile.eliteu.wight.GlidePlaceholderDrawable;
 import org.edx.mobile.model.api.StartType;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.DateUtil;
@@ -88,11 +89,9 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             if (courseDetail.media.course_image != null) {
 
                 Glide.with(context).load(courseDetail.media.course_image.getUri(config.getApiHostURL()))
-                        .placeholder(R.drawable.placeholder_course_card_image)
                         .into(this.course_image);
             } else {
                 Glide.with(context).load(R.drawable.placeholder_course_card_image)
-                        .placeholder(R.drawable.placeholder_course_card_image)
                         .into(this.course_image);
             }
 
@@ -113,10 +112,10 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                             .label_starting, "date", DateUtil.formatDateWithNoYear(startDate.getTime())).toString();
                 } else if (start_type == StartType.STRING && !TextUtils.isEmpty(start_display)) {
                     formattedDate = ResourceUtil.getFormattedString(context.getResources(), R.string
-                            .label_starting, "date", start_display).toString();
+                            .label_starting, "date", DateUtil.formatDateWithNoYear(DateUtil.convertToDate(start).getTime())).toString();
                 } else {
                     formattedDate = ResourceUtil.getFormattedString(context.getResources(), R.string
-                            .label_starting, "date", context.getString(R.string.assessment_soon)).toString();
+                            .label_starting, "date", DateUtil.formatDateWithNoYear(DateUtil.convertToDate(start).getTime())).toString();
                 }
 
             }
