@@ -28,8 +28,10 @@ import org.edx.mobile.eliteu.bottomnavigation.my.MyUserCenterFragment;
 import org.edx.mobile.eliteu.bottomnavigation.study.EliteuStudyFragment;
 import org.edx.mobile.eliteu.mainsite.ui.MainSiteFragment;
 import org.edx.mobile.eliteu.util.AccountPrefs;
+import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.eliteu.wight.CannotScrollViewPager;
 import org.edx.mobile.event.AccountDataLoadedEvent;
+import org.edx.mobile.event.MoveToDiscoveryTabEvent;
 import org.edx.mobile.event.NewVersionAvailableEvent;
 import org.edx.mobile.interfaces.RefreshListener;
 import org.edx.mobile.interfaces.SnackbarStatusListener;
@@ -106,6 +108,7 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
         initFragment();
         initStatusBar();
         initWhatsNew();
+        initDiscoveryTabEvent();
     }
 
     private void initUi() {
@@ -302,4 +305,7 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
         }
     }
 
+    private void initDiscoveryTabEvent(){
+        RxBus.getDefault().toObservable(MoveToDiscoveryTabEvent.class).subscribe(moveToDiscoveryTabEvent -> mBottomNavigationBar.selectTab(1));
+    }
 }

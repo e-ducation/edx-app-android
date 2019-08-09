@@ -15,8 +15,8 @@
     <string name="label_my_vip" tools:ignore="MissingTranslation">EliteMBA</string>
     <string name="vip_header_label">EliteMBA VIP Membership</string>
     <string name="vip_nonactivated_header_tip">Join VIP, view all EliteMBA courses for free.</string>
-    <string name="vip_data_of_begin">Open date: %1$s</string>
-    <string name="vip_data_of_expiry">Expire: %1$s</string>
+    <string name="vip_data_of_begin">Opened on: %1$s</string>
+    <string name="vip_data_of_expiry">Expire on: %1$s</string>
     <string name="vip_data_of_expiry2">Expire: %1$s</string>
     <plurals name="vip_remainint_time">
         <item quantity="one">VIP membership will expire in %1$s day</item>
@@ -24,8 +24,8 @@
     </plurals>
     <string name="vip_data_of_last_open">Last open date: %1$s</string>
     <plurals name="vip_expired_time">
-        <item quantity="one">VIP membership has expired in %1$s day</item>
-        <item quantity="other">VIP membership has expired in %1$s days</item>
+        <item quantity="one">VIP membership has expired for %1$s day</item>
+        <item quantity="other">VIP membership has expired for %1$s days</item>
     </plurals>
     <string name="vip_page_title">Membership</string>
     <string name="chose_pay_way">Payment Method</string>
@@ -48,9 +48,8 @@
     <string name="bind_mobie_dialog_negativeText">No</string>
     <string name="bind_mobie_dialog_positiveText">Bind Phone</string>
     <string name="not_bind_mobile">Unbound cellphone</string>
-    <string name="not_bind_mobile_2">Not Linked</string>
-    <string name="already_bind_mobile">Bound cellphone</string>
-    <string name="bind_mobile">Binding Your Cellphone</string>
+    <string name="not_bind_mobile_2">Not Bound</string>
+    <string name="bind_mobile">Bind mobile</string>
 
     <string name="course_detail_vip_info">Subscribe VIP</string>
     <string name="course_detail_vip_info_text">Enjoy MBA-like curriculum online with only ¥99.84/month!</string>
@@ -159,5 +158,6 @@
     <string name="scan_login_fail">Scan to login failed</string>
     <string name="get_verification_again">Resend</string>
     <string name="all">全部</string>
+    <string name="popular_recommendation">Top Recommends</string>
 
 </resources>

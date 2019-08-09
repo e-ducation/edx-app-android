@@ -35,8 +35,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:textColor="#656d78"
-                android:textSize="14dp"
-                tools:text="@string/vip_remainint_time" />
+                android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

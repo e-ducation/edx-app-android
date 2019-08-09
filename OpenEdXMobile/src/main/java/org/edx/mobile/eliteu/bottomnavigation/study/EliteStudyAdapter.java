@@ -156,6 +156,7 @@ public class EliteStudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             if (enrolledCoursesResponse.getCourse().getCourse_image(config.getApiHostURL()) != null) {
 
                 Glide.with(context).load(enrolledCoursesResponse.getCourse().getCourse_image(config.getApiHostURL()))
+                        .asBitmap()
                         .placeholder(R.drawable.placeholder_course_card_image)
                         .into(this.course_image);
             } else {

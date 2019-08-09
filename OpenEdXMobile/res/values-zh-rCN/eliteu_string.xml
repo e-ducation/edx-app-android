@@ -49,7 +49,6 @@
     <string name="bind_mobie_dialog_positiveText">绑定手机</string>
     <string name="not_bind_mobile">未绑定手机号</string>
     <string name="not_bind_mobile_2">未绑定</string>
-    <string name="already_bind_mobile">已绑定手机号</string>
     <string name="bind_mobile">绑定手机</string>
 
     <string name="course_detail_vip_info">订阅会员课程</string>
@@ -160,5 +159,6 @@
     <string name="scan_login_fail">扫码登录失败</string>
     <string name="get_verification_again">重新获取</string>
     <string name="all">全部</string>
+    <string name="popular_recommendation">热门推荐</string>
 
 </resources>
