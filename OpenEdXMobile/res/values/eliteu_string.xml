@@ -17,7 +17,7 @@
     <string name="vip_nonactivated_header_tip">Join VIP, view all EliteMBA courses for free.</string>
     <string name="vip_data_of_begin">Opened on: %1$s</string>
     <string name="vip_data_of_expiry">Expire on: %1$s</string>
-    <string name="vip_data_of_expiry2">Expire: %1$s</string>
+    <string name="vip_data_of_expiry2">Expire on: %1$s</string>
     <plurals name="vip_remainint_time">
         <item quantity="one">VIP membership will expire in %1$s day</item>
         <item quantity="other">VIP membership will expire in %1$s days</item>
@@ -37,8 +37,8 @@
     <string name="vip_tips_text"><![CDATA[The course you have chosen belongs to <font color="#3288cc">EliteMBA</font>.Become a VIP member and learn your course <font color="#3288cc">for free</font>.]]></string>
     <string name="vip_not_yet_text">No</string>
     <string name="become_vip">Yes</string>
-    <string name="mobile_hint_str">Please enter cellphone number</string>
-    <string name="verification_code_hint_str">Please enter verification code</string>
+    <string name="mobile_hint_str">Enter mobile number</string>
+    <string name="verification_code_hint_str">Enter verification code</string>
     <string name="verification_code_btn_str">Verification</string>
     <string name="verification_code_has_send">Verification sent</string>
     <string name="binding_success">Binding Succeed!</string>
@@ -49,7 +49,7 @@
     <string name="bind_mobie_dialog_positiveText">Bind Phone</string>
     <string name="not_bind_mobile">Unbound cellphone</string>
     <string name="not_bind_mobile_2">Not Bound</string>
-    <string name="bind_mobile">Bind mobile</string>
+    <string name="bind_mobile">Bind Mobile</string>
 
     <string name="course_detail_vip_info">Subscribe VIP</string>
     <string name="course_detail_vip_info_text">Enjoy MBA-like curriculum online with only ¥99.84/month!</string>
@@ -159,5 +159,6 @@
     <string name="get_verification_again">Resend</string>
     <string name="all">全部</string>
     <string name="popular_recommendation">Top Recommends</string>
+    <string name="detail">Details</string>
 
 </resources>

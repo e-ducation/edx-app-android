@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center_horizontal">
 
     <ImageView
@@ -16,27 +16,6 @@
         android:contentDescription="TODO"
         app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp"
         tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:contentDescription="TODO"
-        android:src="@drawable/scan_code"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/tips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/image"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/scan_result_tips"
-        android:textColor="#2e313c"
-        android:textSize="16dp" />
 
     <TextView
         android:id="@+id/cancle_login"
@@ -54,7 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/cancle_login"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="35dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/confim_scan_code_login_btn_bg"
@@ -64,5 +42,33 @@
         android:text="@string/scan_result_confim_login"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/confim_login"
+        android:layout_below="@+id/down_btn">
+
+        <TextView
+            android:id="@+id/tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/scan_result_tips"
+            android:textColor="#2e313c"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tips"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/scan_code"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

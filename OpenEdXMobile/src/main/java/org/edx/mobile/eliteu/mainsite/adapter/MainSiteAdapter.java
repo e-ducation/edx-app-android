@@ -153,6 +153,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<CategorieslistBean> mCategoryList = blockCourseCategory.getCategorieslist();
                 RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) holder;
                 CourseCategoryAdapter courseCategoryAdapter = new CourseCategoryAdapter(mCategoryList, mContext, router, config);
+                recyclerViewHolder.mText.getPaint().setFakeBoldText(true);
                 recyclerViewHolder.mText.setText(blockCourseCategory.getTitle());
                 recyclerViewHolder.mRecyclerView.setAdapter(courseCategoryAdapter);
                 break;
@@ -162,6 +163,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<MainSiteCourseBean> seriesList = blockSeriesCourse.getSeries();
                 RecyclerViewHolder recyclerViewHolder1 = (RecyclerViewHolder) holder;
                 MainSiteCourseAdapter mainSiteCourseAdapter = MainSiteCourseAdapter.builder().conetxt(mContext).config(config).router(router).type(MainSiteCourseAdapter.TYPE_URL).build();
+                recyclerViewHolder1.mText.getPaint().setFakeBoldText(true);
                 recyclerViewHolder1.mText.setText(blockSeriesCourse.getTitle());
                 mainSiteCourseAdapter.setData(seriesList);
                 recyclerViewHolder1.mRecyclerView.setAdapter(mainSiteCourseAdapter);
@@ -173,6 +175,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<MainSiteCourseBean> list = blockRecommendCourse.getCourses();
                 GlidViewViewHolder viewViewHolder = (GlidViewViewHolder) holder;
                 MainSiteCourseAdapter mainSiteCourseAdapter1 = MainSiteCourseAdapter.builder().layout(R.layout.main_site_course_griview_vertical_item).conetxt(mContext).config(config).type(MainSiteCourseAdapter.TYPE_COURSE).router(router).eliteapi(eliteApi).username(username).build();
+                viewViewHolder.mText.getPaint().setFakeBoldText(true);
                 viewViewHolder.mText.setText(blockRecommendCourse.getTitle());
                 viewViewHolder.mRightLayout.setVisibility(View.VISIBLE);
                 viewViewHolder.mText2.setText(R.string.all_course);
@@ -191,6 +194,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                 RecyclerViewHolder recyclerViewHolder2 = (RecyclerViewHolder) holder;
                 MainSiteProfessorAdapter professorAdapter = new MainSiteProfessorAdapter(mContext, config, router);
+                recyclerViewHolder2.mText.getPaint().setFakeBoldText(true);
                 recyclerViewHolder2.mText.setText(blockProfessor.getTitle());
                 recyclerViewHolder2.mRightLayout.setVisibility(View.VISIBLE);
                 recyclerViewHolder2.mText2.setText(R.string.all_professor);
@@ -206,6 +210,7 @@ public class MainSiteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 List<BlockStory.StoryBean> list2 = blockStory.getStory();
                 StoryRecyclerViewHolder viewHolder = (StoryRecyclerViewHolder) holder;
                 MainSiteStoryAdapter mainSiteStoryAdapter = new MainSiteStoryAdapter(mContext, config, router);
+                viewHolder.mText.getPaint().setFakeBoldText(true);
                 viewHolder.mText.setText(blockStory.getTitle());
                 viewHolder.mRightLayout.setVisibility(View.VISIBLE);
                 viewHolder.mText2.setText(R.string.all_story);

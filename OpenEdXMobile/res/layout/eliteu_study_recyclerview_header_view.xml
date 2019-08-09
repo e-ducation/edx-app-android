@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,38 +19,59 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:id="@+id/hashang1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:layout_marginTop="16dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="TODO"
-                android:scaleType="fitXY"
-                android:src="@drawable/harvard_management_mentor2"
+                android:src="@drawable/hashang1"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:contentDescription="TODO"
+                android:src="@drawable/hashang2"
                 tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/harvard_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/hashang1"
+                android:layout_alignParentLeft="true"
                 android:layout_marginLeft="14dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="12dp"
                 android:textColor="#656d78"
                 android:textSize="14dp"
                 tools:text="有效期至：2020-04-29" />
-        </LinearLayout>
+
+            <org.edx.mobile.view.custom.IconImageViewXml
+                android:id="@+id/icon_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                app:iconColor="#ccd1d9"
+                app:iconName="fa-angle-right" />
+        </RelativeLayout>
 
     </FrameLayout>
 
     <TextView
         android:id="@+id/list_title"
-        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -57,6 +79,7 @@
         android:paddingBottom="15dp"
         android:text="@string/study_progress"
         android:textColor="#434343"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 </LinearLayout>

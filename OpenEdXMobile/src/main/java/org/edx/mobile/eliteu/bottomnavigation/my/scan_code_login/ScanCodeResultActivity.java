@@ -56,6 +56,8 @@ public class ScanCodeResultActivity extends BaseFragmentActivity {
                 .subscribe(httpResponseBean -> {
                     if (httpResponseBean.getCode() == 200) {
                         Toast.makeText(ScanCodeResultActivity.this, R.string.scan_login_success, Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(ScanCodeResultActivity.this, R.string.scan_login_fail, Toast.LENGTH_LONG).show();
                     }
                     onBackPressed();
                 }, throwable -> throwable.printStackTrace());

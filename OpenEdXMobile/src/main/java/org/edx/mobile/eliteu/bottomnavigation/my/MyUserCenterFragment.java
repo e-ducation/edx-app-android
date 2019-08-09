@@ -264,14 +264,15 @@ public class MyUserCenterFragment extends BaseFragment {
 //                                        startActivity(intent);
 //                                    }
 //                                }, throwable -> throwable.printStackTrace());
-                        if (result.contains("/elitemba/api/v1/login_by_qrcode/?lms_login_qrcode=")){
+                        if (result.contains("/elitemba/api/v1/login_by_qrcode/?lms_login_qrcode=")) {
                             Intent intent = new Intent(getActivity(), ScanCodeResultActivity.class);
                             intent.putExtra("url", config.getApiHostURL() + result);
                             startActivity(intent);
-                        }else {
-                            Toast.makeText(getActivity(),R.string.scan_login_fail,Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), R.string.scan_login_fail, Toast.LENGTH_LONG).show();
                         }
-
+                    } else {
+                        Toast.makeText(getActivity(), R.string.scan_login_fail, Toast.LENGTH_LONG).show();
                     }
                     break;
             }
