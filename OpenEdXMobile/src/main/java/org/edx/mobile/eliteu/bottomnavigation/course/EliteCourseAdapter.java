@@ -88,7 +88,7 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public void setData(CourseDetail courseDetail, Context context, Config config) {
             if (courseDetail.media.course_image != null) {
 
-                Glide.with(context).load(courseDetail.media.course_image.getUri(config.getApiHostURL()))
+                Glide.with(context).load(courseDetail.media.course_image.getUri(config.getApiHostURL())).error(R.drawable.placeholder_course_card_image)
                         .into(this.course_image);
             } else {
                 Glide.with(context).load(R.drawable.placeholder_course_card_image)

@@ -27,8 +27,10 @@ import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 
 import org.edx.mobile.R;
+import org.edx.mobile.eliteu.util.RxBus;
 import org.edx.mobile.event.CourseDashboardRefreshEvent;
 import org.edx.mobile.event.MainDashboardRefreshEvent;
+import org.edx.mobile.event.MoveToDiscoveryTabEvent;
 import org.edx.mobile.event.NetworkConnectivityChangeEvent;
 import org.edx.mobile.event.SessionIdRefreshEvent;
 import org.edx.mobile.http.HttpStatus;
@@ -393,9 +395,10 @@ public class AuthenticatedWebView extends FrameLayout implements RefreshListener
                         @Override
                         public void run() {
                             //在h5页面点击按钮打开android中我的课程
-                            final Intent findCoursesIntent = DiscoveryActivity.newIntent(getContext());
-                            findCoursesIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                            getContext().startActivity(findCoursesIntent);
+//                            final Intent findCoursesIntent = DiscoveryActivity.newIntent(getContext());
+//                            findCoursesIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//                            getContext().startActivity(findCoursesIntent);
+                            RxBus.getDefault().post(new MoveToDiscoveryTabEvent());
                         }
                     }
             );
