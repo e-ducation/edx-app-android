@@ -56,6 +56,7 @@ import org.edx.mobile.http.notifications.FullScreenErrorNotification;
 import org.edx.mobile.model.Page;
 import org.edx.mobile.user.Account;
 import org.edx.mobile.util.NetworkUtil;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.view.OfflineSupportBaseFragment;
 import org.edx.mobile.view.custom.IconProgressBar;
 
@@ -361,7 +362,7 @@ public class VipFragment extends OfflineSupportBaseFragment {
      */
     private void selectWeChatPay(int package_id) {
         if (!DeviceProgramDetectionUtil.booleanWechatInstall(getActivity())) {
-            Toast.makeText(getActivity(), R.string.wechat_not_install, Toast.LENGTH_SHORT).show();
+            ToastUtil.makeText(getActivity(), R.string.wechat_not_install, Toast.LENGTH_SHORT).show();
             return;
         }
         if (!NetworkUtil.isConnected(getActivity())) {
@@ -434,21 +435,21 @@ public class VipFragment extends OfflineSupportBaseFragment {
 
                                             @Override
                                             public void onPayFailure(String resultInfo) {
-                                                Toast.makeText(getActivity(), R.string.pay_fail, Toast.LENGTH_SHORT).show();
+                                                ToastUtil.makeText(getActivity(), R.string.pay_fail, Toast.LENGTH_SHORT).show();
                                                 selectPayPopupWindow.hideProgress();
 
                                             }
 
                                             @Override
                                             public void onPayConfirmimg(String resultInfo) {
-                                                Toast.makeText(getActivity(), R.string.pay_confirming, Toast.LENGTH_SHORT).show();
+                                                ToastUtil.makeText(getActivity(), R.string.pay_confirming, Toast.LENGTH_SHORT).show();
                                                 selectPayPopupWindow.hideProgress();
 
                                             }
 
                                             @Override
                                             public void onPayCancel(String resultInfo) {
-                                                Toast.makeText(getActivity(), R.string.pay_cancle, Toast.LENGTH_SHORT).show();
+                                                ToastUtil.makeText(getActivity(), R.string.pay_cancle, Toast.LENGTH_SHORT).show();
                                                 selectPayPopupWindow.hideProgress();
 
                                             }
@@ -540,7 +541,7 @@ public class VipFragment extends OfflineSupportBaseFragment {
                             if (mRequestTimes == REPEAT_TIMES) {
                                 orderReqDisposable.dispose();
                                 hideCheckOrderStatusLoadingDialog();
-                                Toast.makeText(getActivity(), R.string.check_order_fail, Toast.LENGTH_SHORT).show();
+                                ToastUtil.makeText(getActivity(), R.string.check_order_fail, Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -566,10 +567,10 @@ public class VipFragment extends OfflineSupportBaseFragment {
                             selectPayPopupWindow.dismiss();
                             checkOrderStatus(mOrderId);
                         } else if (payResultEvent.getType() == PayResultEvent.PAY_FAIL) {
-                            Toast.makeText(getActivity(), R.string.pay_fail, Toast.LENGTH_SHORT).show();
+                            ToastUtil.makeText(getActivity(), R.string.pay_fail, Toast.LENGTH_SHORT).show();
                             selectPayPopupWindow.hideProgress();
                         } else if (payResultEvent.getType() == PayResultEvent.PAY_CANCEL) {
-                            Toast.makeText(getActivity(), R.string.pay_cancle, Toast.LENGTH_SHORT).show();
+                            ToastUtil.makeText(getActivity(), R.string.pay_cancle, Toast.LENGTH_SHORT).show();
                             selectPayPopupWindow.hideProgress();
                         }
                     }

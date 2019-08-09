@@ -54,7 +54,7 @@ public class EmailUtil {
 
         } catch (android.content.ActivityNotFoundException ex) {
             //There is no activity which can perform the intended share Intent
-            Toast.makeText(activityContext, activityContext.getString(R.string.email_client_not_present),
+            ToastUtil.makeText(activityContext, activityContext.getString(R.string.email_client_not_present),
                     Toast.LENGTH_SHORT)
                     .show();
             logger.error(ex);

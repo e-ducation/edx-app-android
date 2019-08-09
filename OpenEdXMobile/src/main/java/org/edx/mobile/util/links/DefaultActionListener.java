@@ -20,6 +20,7 @@ import org.edx.mobile.http.HttpStatusException;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.util.ResourceUtil;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.view.common.TaskProgressCallback;
 import org.edx.mobile.view.custom.URLInterceptorWebViewClient;
 import org.edx.mobile.view.dialog.EnrollmentFailureDialogFragment;
@@ -95,7 +96,7 @@ public class DefaultActionListener implements URLInterceptorWebViewClient.Action
 
                             @Override
                             protected void onFailure(@NonNull final Throwable error) {
-                                Toast.makeText(activity, R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
+                                ToastUtil.makeText(activity, R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -153,7 +154,7 @@ public class DefaultActionListener implements URLInterceptorWebViewClient.Action
                     protected void onResponse(@NonNull final ResponseBody responseBody) {
                         super.onResponse(responseBody);
                         logger.debug("Enrollment successful: " + courseId);
-                        Toast.makeText(activity, activity.getString(R.string.you_are_now_enrolled), Toast.LENGTH_SHORT).show();
+                        ToastUtil.makeText(activity, activity.getString(R.string.you_are_now_enrolled), Toast.LENGTH_SHORT).show();
 
                         environment.getAnalyticsRegistry().trackEnrolmentSuccess(courseId, emailOptIn);
 
@@ -175,7 +176,7 @@ public class DefaultActionListener implements URLInterceptorWebViewClient.Action
                                         logger.warn("Error during enroll api call\n" + error);
                                         isTaskInProgress = false;
                                         enrollCallback.onFailure(error);
-                                        Toast.makeText(activity, R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
+                                        ToastUtil.makeText(activity, R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }

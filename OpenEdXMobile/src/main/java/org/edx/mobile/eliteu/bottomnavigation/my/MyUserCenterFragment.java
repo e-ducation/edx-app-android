@@ -41,6 +41,7 @@ import org.edx.mobile.user.UserAPI;
 import org.edx.mobile.util.AppStoreUtils;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.view.Router;
 
 import java.util.concurrent.TimeUnit;
@@ -269,10 +270,10 @@ public class MyUserCenterFragment extends BaseFragment {
                             intent.putExtra("url", config.getApiHostURL() + result);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getActivity(), R.string.scan_login_fail, Toast.LENGTH_LONG).show();
+                            ToastUtil.makeText(getActivity(), R.string.scan_login_fail, Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), R.string.scan_login_fail, Toast.LENGTH_LONG).show();
+                        ToastUtil.makeText(getActivity(), R.string.scan_login_fail, Toast.LENGTH_LONG).show();
                     }
                     break;
             }
