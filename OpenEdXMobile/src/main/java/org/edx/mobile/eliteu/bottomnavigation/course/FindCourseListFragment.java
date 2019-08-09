@@ -26,6 +26,7 @@ import org.edx.mobile.http.notifications.FullScreenErrorNotification;
 import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.NetworkUtil;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.util.UiUtil;
 import org.edx.mobile.view.Router;
 import org.edx.mobile.view.custom.IconProgressBar;
@@ -155,7 +156,7 @@ public class FindCourseListFragment extends BaseLazyLoadFragment {
                 if (responseBody != null) {
                     router.showCourseDetail(getActivity(), responseBody);
                 } else {
-                    Toast.makeText(getActivity(), R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                    ToastUtil.makeText(getActivity(), R.string.error_unknown, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -166,7 +167,7 @@ public class FindCourseListFragment extends BaseLazyLoadFragment {
                     return;
                 }
                 error.printStackTrace();
-                Toast.makeText(getActivity(), R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                ToastUtil.makeText(getActivity(), R.string.error_unknown, Toast.LENGTH_SHORT).show();
             }
         });
     }

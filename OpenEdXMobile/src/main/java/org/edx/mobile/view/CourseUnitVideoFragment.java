@@ -39,6 +39,7 @@ import org.edx.mobile.player.TranscriptListener;
 import org.edx.mobile.util.AppConstants;
 import org.edx.mobile.util.MediaConsentUtils;
 import org.edx.mobile.util.NetworkUtil;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.view.adapters.TranscriptAdapter;
 import org.edx.mobile.view.dialog.IDialogCallback;
 import org.json.JSONObject;
@@ -244,7 +245,7 @@ public class CourseUnitVideoFragment extends CourseUnitFragment
         }
 
         if (entry.isVideoForWebOnly) {
-            Toast.makeText(getContext(), getString(R.string.video_only_on_web_short),
+            ToastUtil.makeText(getContext(), getString(R.string.video_only_on_web_short),
                     Toast.LENGTH_SHORT).show();
             return false;
         }

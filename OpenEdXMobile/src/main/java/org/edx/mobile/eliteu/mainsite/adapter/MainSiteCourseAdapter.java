@@ -23,6 +23,7 @@ import org.edx.mobile.eliteu.mainsite.bean.MainSiteCourseBean;
 import org.edx.mobile.eliteu.mainsite.ui.CannotClickWebViewActivity;
 import org.edx.mobile.http.callback.Callback;
 import org.edx.mobile.util.Config;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.view.Router;
 
 import java.util.List;
@@ -80,7 +81,7 @@ public class MainSiteCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                                                 if (responseBody != null) {
                                                     mBuilder.router.showCourseDetail(mBuilder.mContext, responseBody);
                                                 } else {
-                                                    Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                                    ToastUtil.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
                                                 }
                                                 itemViewHolder.whole_item_layout.setEnabled(true);
                                             }
@@ -89,7 +90,7 @@ public class MainSiteCourseAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                                             protected void onFailure(@NonNull Throwable error) {
                                                 super.onFailure(error);
                                                 error.printStackTrace();
-                                                Toast.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                                                ToastUtil.makeText(mBuilder.mContext, R.string.error_unknown, Toast.LENGTH_SHORT).show();
                                                 itemViewHolder.whole_item_layout.setEnabled(true);
                                             }
                                         });

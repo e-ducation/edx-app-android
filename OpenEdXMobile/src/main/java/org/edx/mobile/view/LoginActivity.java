@@ -41,6 +41,7 @@ import org.edx.mobile.util.Config;
 import org.edx.mobile.util.IntentFactory;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.TextUtils;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.util.images.ErrorUtils;
 import org.edx.mobile.view.dialog.ResetPasswordDialogFragment;
 import org.edx.mobile.view.login.LoginPresenter;
@@ -381,7 +382,7 @@ public class LoginActivity
         @Override
         public void fail(int errorCode, String defaultMsg) {
             if (errorCode == IThirdPartyConfig.ErrorCode.ERROR_NOT_INSTALLED) {
-                Toast.makeText(LoginActivity.this, defaultMsg, Toast.LENGTH_SHORT).show();
+                ToastUtil.makeText(LoginActivity.this, defaultMsg, Toast.LENGTH_SHORT).show();
             }
         }
 

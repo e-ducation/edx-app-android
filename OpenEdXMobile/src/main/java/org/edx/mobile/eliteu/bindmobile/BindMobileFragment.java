@@ -31,6 +31,7 @@ import org.edx.mobile.http.HttpStatus;
 import org.edx.mobile.user.Account;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.SoftKeyboardUtil;
+import org.edx.mobile.util.ToastUtil;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -185,7 +186,7 @@ public class BindMobileFragment extends BaseFragment {
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if (response.isSuccessful()) {
                             startCountDown();
-                            Toast.makeText(getActivity(), R.string.verification_code_has_send, Toast.LENGTH_LONG).show();
+                            ToastUtil.makeText(getActivity(), R.string.verification_code_has_send, Toast.LENGTH_LONG).show();
                         } else {
                             verificationBtn.setEnabled(true);
                             verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_can_click));
@@ -193,9 +194,9 @@ public class BindMobileFragment extends BaseFragment {
                             try {
                                 String errorMsg = response.errorBody().string().replace("\"", "");
                                 if (response.code() == HttpStatus.BAD_REQUEST) {
-                                    Toast.makeText(getActivity(), errorMsg, Toast.LENGTH_LONG).show();
+                                    ToastUtil.makeText(getActivity(), errorMsg, Toast.LENGTH_LONG).show();
                                 } else {
-                                    Toast.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_LONG).show();
+                                    ToastUtil.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_LONG).show();
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -208,7 +209,7 @@ public class BindMobileFragment extends BaseFragment {
                         t.printStackTrace();
                         verificationBtn.setEnabled(true);
                         verificationBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.new_bind_mobile_get_code_can_click));
-                        Toast.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_LONG).show();
+                        ToastUtil.makeText(getActivity(), R.string.get_verification_code_error, Toast.LENGTH_LONG).show();
                     }
                 });
     }

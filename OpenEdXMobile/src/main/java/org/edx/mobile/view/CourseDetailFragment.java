@@ -53,6 +53,7 @@ import org.edx.mobile.http.callback.ErrorHandlingCallback;
 import org.edx.mobile.logger.Logger;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.util.StandardCharsets;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.util.WebViewUtil;
 import org.edx.mobile.util.images.CourseCardUtils;
 import org.edx.mobile.util.images.TopAnchorFillWidthTransformation;
@@ -427,7 +428,7 @@ public class CourseDetailFragment extends BaseFragment {
                         mEnrolled = true;
                         logger.debug("Enrollment successful: " + courseDetail.course_id);
                         mEnrollButton.setText(R.string.view_course_button_text);
-                        Toast.makeText(getActivity(), R.string.you_are_now_enrolled, Toast.LENGTH_SHORT).show();
+                        ToastUtil.makeText(getActivity(), R.string.you_are_now_enrolled, Toast.LENGTH_SHORT).show();
 
                         new Handler().post(new Runnable() {
                             @Override
@@ -447,7 +448,7 @@ public class CourseDetailFragment extends BaseFragment {
 
                     @Override
                     protected void onFailure(@NonNull final Throwable error) {
-                        Toast.makeText(getActivity(), R.string.enrollment_failure, Toast.LENGTH_SHORT).show();
+                        ToastUtil.makeText(getActivity(), R.string.enrollment_failure, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -473,7 +474,7 @@ public class CourseDetailFragment extends BaseFragment {
             }
         } catch (Exception exception) {
             logger.debug(exception.toString());
-            Toast.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
+            ToastUtil.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -549,7 +550,7 @@ public class CourseDetailFragment extends BaseFragment {
             protected void onFailure(@NonNull Throwable error) {
                 super.onFailure(error);
                 logger.debug(error.toString());
-                Toast.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
+                ToastUtil.makeText(getContext(), R.string.cannot_show_dashboard, Toast.LENGTH_SHORT).show();
             }
         });
     }

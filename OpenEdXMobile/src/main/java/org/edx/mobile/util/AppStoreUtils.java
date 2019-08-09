@@ -123,7 +123,7 @@ public final class AppStoreUtils {
 
         // No Activity was resolved against any of the registered
         // URIS. Show a toast message to that effect.
-        Toast.makeText(context, R.string.app_version_upgrade_app_store_unavailable,
+        ToastUtil.makeText(context, R.string.app_version_upgrade_app_store_unavailable,
                 Toast.LENGTH_SHORT).show();
     }
 

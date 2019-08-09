@@ -95,7 +95,7 @@ public class BrowserUtil {
             AnalyticsRegistry analyticsRegistry = environment.getAnalyticsRegistry();
             analyticsRegistry.trackBrowserLaunched(url);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(context, R.string.cannot_open_url, Toast.LENGTH_SHORT).show();
+            ToastUtil.makeText(context, R.string.cannot_open_url, Toast.LENGTH_SHORT).show();
 
             // Send non-fatal exception
             logger.error(new Exception(String.format("No activity found (browser cannot handle request) for this url: %s, error:\n", url)

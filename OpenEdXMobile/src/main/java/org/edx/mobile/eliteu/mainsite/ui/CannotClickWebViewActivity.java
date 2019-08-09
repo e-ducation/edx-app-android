@@ -27,6 +27,7 @@ import org.edx.mobile.eliteu.api.EliteApi;
 import org.edx.mobile.http.callback.Callback;
 import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.util.AppConstants;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.view.Router;
 import org.edx.mobile.view.custom.EdxWebView;
 
@@ -150,7 +151,7 @@ public class CannotClickWebViewActivity extends BaseFragmentActivity {
                 if (responseBody != null) {
                     router.showCourseDetail(CannotClickWebViewActivity.this, responseBody);
                 } else {
-                    Toast.makeText(CannotClickWebViewActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                    ToastUtil.makeText(CannotClickWebViewActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -158,7 +159,7 @@ public class CannotClickWebViewActivity extends BaseFragmentActivity {
             protected void onFailure(@NonNull Throwable error) {
                 super.onFailure(error);
                 error.printStackTrace();
-                Toast.makeText(CannotClickWebViewActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                ToastUtil.makeText(CannotClickWebViewActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
             }
         });
 

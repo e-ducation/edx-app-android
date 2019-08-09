@@ -26,6 +26,7 @@ import org.edx.mobile.http.callback.Callback;
 import org.edx.mobile.model.Page;
 import org.edx.mobile.module.prefs.LoginPrefs;
 import org.edx.mobile.util.SoftKeyboardUtil;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.view.Router;
 
 
@@ -168,7 +169,7 @@ public class CourseSearchActivity extends BaseFragmentActivity {
                 if (responseBody != null) {
                     router.showCourseDetail(CourseSearchActivity.this, responseBody);
                 } else {
-                    Toast.makeText(CourseSearchActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                    ToastUtil.makeText(CourseSearchActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -179,7 +180,7 @@ public class CourseSearchActivity extends BaseFragmentActivity {
                     return;
                 }
                 error.printStackTrace();
-                Toast.makeText(CourseSearchActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
+                ToastUtil.makeText(CourseSearchActivity.this, R.string.error_unknown, Toast.LENGTH_SHORT).show();
             }
         });
     }

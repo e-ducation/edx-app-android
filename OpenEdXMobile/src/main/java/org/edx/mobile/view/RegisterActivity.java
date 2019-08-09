@@ -62,6 +62,7 @@ import org.edx.mobile.util.IntentFactory;
 import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.ResourceUtil;
 import org.edx.mobile.util.SoftKeyboardUtil;
+import org.edx.mobile.util.ToastUtil;
 import org.edx.mobile.util.images.ErrorUtils;
 import org.edx.mobile.view.custom.DividerWithTextView;
 
@@ -706,7 +707,7 @@ public class RegisterActivity extends BaseFragmentActivity
         @Override
         public void fail(int errorCode, String defaultMsg) {
             if (errorCode == IThirdPartyConfig.ErrorCode.ERROR_NOT_INSTALLED) {
-                Toast.makeText(RegisterActivity.this, defaultMsg, Toast.LENGTH_SHORT).show();
+                ToastUtil.makeText(RegisterActivity.this, defaultMsg, Toast.LENGTH_SHORT).show();
             }
         }
 

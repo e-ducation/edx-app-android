@@ -14,6 +14,7 @@ import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.eliteu.api.EliteApi;
 import org.edx.mobile.util.NetworkUtil;
+import org.edx.mobile.util.ToastUtil;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -55,9 +56,9 @@ public class ScanCodeResultActivity extends BaseFragmentActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(httpResponseBean -> {
                     if (httpResponseBean.getCode() == 200) {
-                        Toast.makeText(ScanCodeResultActivity.this, R.string.scan_login_success, Toast.LENGTH_LONG).show();
+                        ToastUtil.makeText(ScanCodeResultActivity.this, R.string.scan_login_success, Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(ScanCodeResultActivity.this, R.string.scan_login_fail, Toast.LENGTH_LONG).show();
+                        ToastUtil.makeText(ScanCodeResultActivity.this, R.string.scan_login_fail, Toast.LENGTH_LONG).show();
                     }
                     onBackPressed();
                 }, throwable -> throwable.printStackTrace());
