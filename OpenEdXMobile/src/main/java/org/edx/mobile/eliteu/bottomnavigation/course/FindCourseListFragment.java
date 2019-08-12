@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
-import com.yanzhenjie.recyclerview.OnItemClickListener;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 import com.yanzhenjie.recyclerview.widget.DefaultItemDecoration;
 
@@ -101,7 +100,6 @@ public class FindCourseListFragment extends BaseLazyLoadFragment {
         mRecyclerView = view.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.addItemDecoration(new DefaultItemDecoration(ContextCompat.getColor(getActivity(), R.color.mian_site_divider_color)));
-        mRecyclerView.setOnItemClickListener(mItemClickListener); // RecyclerView Item点击监听。
 
         mLoadMoreView = new SwipeRecyclerViewLoadMoreView(getContext());
         mRecyclerView.addFooterView(mLoadMoreView);
@@ -116,6 +114,12 @@ public class FindCourseListFragment extends BaseLazyLoadFragment {
         errorNotification = new FullScreenErrorNotification(mRefreshLayout);
 
         mAdapter = new EliteCourseAdapter(getActivity(), config);
+        mAdapter.setOnItemClickListener(courseDetail -> {
+            if (courseDetail == null) {
+                return;
+            }
+            goToCourseDetail(courseDetail.course_id);
+        });
         mRecyclerView.setAdapter(mAdapter);
 
     }
@@ -130,19 +134,6 @@ public class FindCourseListFragment extends BaseLazyLoadFragment {
     private SwipeRefreshLayout.OnRefreshListener mRefreshListener = () -> {
         page = 1;
         loadData(false);
-    };
-
-    /**
-     * Item点击监听。
-     */
-    private OnItemClickListener mItemClickListener = new OnItemClickListener() {
-        @Override
-        public void onItemClick(View itemView, int position) {
-            if (mDataList.size() == 0) {
-                return;
-            }
-            goToCourseDetail(mDataList.get(position).course_id);
-        }
     };
 
     private void goToCourseDetail(String course_id) {

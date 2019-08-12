@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.SearchView;
 import android.view.View;
 
+import com.gyf.immersionbar.ImmersionBar;
+
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.databinding.ActivityDiscoveryLaunchBinding;
@@ -27,6 +29,11 @@ public class DiscoveryLaunchActivity extends PresenterActivity<DiscoveryLaunchPr
     @Override
     protected DiscoveryLaunchPresenter.ViewInterface createView(@Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_discovery_launch);
+        ImmersionBar mImmersionBar = ImmersionBar.with(this)
+                .statusBarColor(R.color.white)
+                .statusBarDarkFont(true)
+                .fitsSystemWindows(true);
+        mImmersionBar.init();
         environment.getAnalyticsRegistry().trackScreenView(Analytics.Screens.LAUNCH_ACTIVITY);
         AuthPanelUtils.setAuthPanelVisible(true, binding.authPanel, environment);
         return new DiscoveryLaunchPresenter.ViewInterface() {
