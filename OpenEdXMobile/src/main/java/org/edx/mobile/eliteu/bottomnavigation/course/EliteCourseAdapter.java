@@ -8,13 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jakewharton.rxbinding3.view.RxView;
 
 import org.edx.mobile.R;
 import org.edx.mobile.course.CourseDetail;
-import org.edx.mobile.eliteu.wight.GlidePlaceholderDrawable;
 import org.edx.mobile.model.api.StartType;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.DateUtil;
@@ -23,6 +24,7 @@ import org.edx.mobile.util.images.CourseCardUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -76,6 +78,7 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView course_name;
         TextView course_status;
         TextView course_professor;
+        RelativeLayout rootview;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
@@ -83,6 +86,7 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             course_name = itemView.findViewById(R.id.course_name);
             course_status = itemView.findViewById(R.id.course_status);
             course_professor = itemView.findViewById(R.id.course_professor);
+            rootview = itemView.findViewById(R.id.root_view);
         }
 
         public void setData(CourseDetail courseDetail, Context context, Config config) {
@@ -98,6 +102,9 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             this.course_name.setText(courseDetail.name);
             this.course_professor.setText(context.getString(R.string.professor) + " " + courseDetail.professor_name);
             this.course_status.setText(getformattedDate(courseDetail.start, courseDetail.start_type, courseDetail.start_display, context));
+            RxView.clicks(this.rootview).
+                    throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(unit -> mOnItemClickListener.onItemClick(courseDetail));
         }
 
         public String getformattedDate(String start, StartType start_type, String start_display, Context context) {
@@ -144,5 +151,17 @@ public class EliteCourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             return TYPE_ITEM;
         }
     }
+
+    public interface OnItemClickListener {
+
+        void onItemClick(CourseDetail courseDetail);
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
+
+    private static OnItemClickListener mOnItemClickListener;
 
 }

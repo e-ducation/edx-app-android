@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
+import com.gyf.immersionbar.ImmersionBar;
 import com.umeng.analytics.MobclickAgent;
 
 import org.edx.mobile.R;
@@ -85,6 +86,12 @@ public abstract class BaseFragmentActivity extends BaseAppActivity
             configureActionBar();
             setToolBarFont();
             setToolbarShadowBasedOnOS();
+            ImmersionBar mImmersionBar = ImmersionBar.with(this)
+                    .statusBarColor(R.color.white)
+                    .statusBarDarkFont(true)
+                    .removeSupportView(toolbar)
+                    .fitsSystemWindows(true);
+            mImmersionBar.init();
         }
     }
 
