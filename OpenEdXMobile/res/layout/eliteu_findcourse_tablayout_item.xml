@@ -22,7 +22,7 @@
         android:layout_height="2dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#0f80bf"
+        android:background="@drawable/tablayout_indicator"
         android:visibility="gone"
         tools:visibility="visible" />
 

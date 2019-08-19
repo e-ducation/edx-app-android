@@ -193,7 +193,7 @@
   <!--Label indicating new course content has been downloaded-->
   <string name="new_course_content">新的课程内容</string>
   <!--Label for date when course starts-->
-  <string name="label_starting">即将于{date}开始</string>
+  <string name="label_starting">即将于{date}开课</string>
   <!--Label for course that has ended-->
   <string name="label_ended">{date}已结束</string>
   <!--Label for date when course is ending-->
