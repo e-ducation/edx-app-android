@@ -47,7 +47,8 @@ public class ScanCodeLoginActivity extends CaptureActivity {
 
     private void initStatusBar() {
         mImmersionBar = ImmersionBar.with(this)
-                .statusBarColor(R.color.black)
+                .statusBarColor(R.color.white)
+                .statusBarDarkFont(true)
                 .fitsSystemWindows(true);
         mImmersionBar.init();
     }
