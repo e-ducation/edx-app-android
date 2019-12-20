@@ -162,4 +162,9 @@
     <string name="popular_recommendation">热门推荐</string>
     <string name="detail">详情</string>
 
+    <string name="user_agreement_dialog">感谢使用英荔商学院！\n依据《网络安全法》，为更好地保障您的合法权益，我们调整并更新了《{license}》《{privacy_policy}》和《{tos_and_honor_code}》的相关内容，注册时请务必仔细阅读，充分理解全部内容后再勾选同意。登录后，您可随时在「设置」页面查阅协议内容。</string>
+    <string name="user_agreement_dialog_title">协议更新提醒</string>
+    <string name="user_agreement_dialog_yes_btn">我知道了</string>
+    <string name="user_agreement_dialog_no_btn">以后提醒</string>
+
 </resources>

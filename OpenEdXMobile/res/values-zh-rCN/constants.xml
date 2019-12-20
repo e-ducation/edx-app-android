@@ -1,4 +1,4 @@
 <resources>
-    <string name="privacy_file_link">file:///android_asset/privacy_policy_zh.html</string>
-    <string name="terms_file_link">file:///android_asset/terms_of_services_zh.html</string>
+    <string name="privacy_file_link">https://oss.elitemba.cn/web_static/docs/privacy_policy.html</string>
+    <string name="terms_file_link">https://oss.elitemba.cn/web_static/docs/disclaimer.html</string>
 </resources>

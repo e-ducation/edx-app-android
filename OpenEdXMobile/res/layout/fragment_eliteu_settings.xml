@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f5f5f5"
     tools:context="org.edx.mobile.view.SettingsFragment">
 
@@ -95,6 +96,72 @@
                 android:layout_height="wrap_content"
                 android:checked="true" />
         </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/user_agreement_item"
+            style="@style/eliteu_account_item_layout_style"
+            android:padding="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                style="@style/new_eliteu_account_item_tv_style"
+                android:text="@string/end_user_title"
+                android:layout_marginLeft="0dp" />
+
+            <org.edx.mobile.view.custom.IconImageViewXml
+                style="@style/eliteu_account_item_right_icon_style"
+                app:iconColor="#ccd1d9"
+                app:iconName="fa-angle-right" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/privacy_policy"
+            style="@style/eliteu_account_item_layout_style"
+            android:padding="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                style="@style/new_eliteu_account_item_tv_style"
+                android:layout_marginLeft="0dp"
+                android:text="@string/privacy_policy" />
+
+            <org.edx.mobile.view.custom.IconImageViewXml
+                style="@style/eliteu_account_item_right_icon_style"
+                app:iconColor="#ccd1d9"
+                app:iconName="fa-angle-right" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/disclaimer"
+            style="@style/eliteu_account_item_layout_style"
+            android:padding="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                style="@style/new_eliteu_account_item_tv_style"
+                android:text="@string/terms_of_service_title"
+                android:layout_marginLeft="0dp" />
+
+            <org.edx.mobile.view.custom.IconImageViewXml
+                style="@style/eliteu_account_item_right_icon_style"
+                app:iconColor="#ccd1d9"
+                app:iconName="fa-angle-right" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/logout_btn"

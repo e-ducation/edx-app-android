@@ -119,18 +119,26 @@ public class Router {
         sourceActivity.startActivity(settingsIntent);
     }
 
-    public void showLaunchScreen(Context context) {
+    public void showLaunchScreen(Context context,boolean not_frist_splash) {
         final Intent launchIntent = new Intent(context,
                 config.isNewLogistrationEnabled()
                         ? DiscoveryLaunchActivity.class
                         : LaunchActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        launchIntent.putExtra("not_frist_splash",not_frist_splash);
         context.startActivity(launchIntent);
     }
 
     public void showSplashScreen(Context context) {
         final Intent launchIntent = new Intent(context, SplashActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(launchIntent);
+    }
+
+    public void showSplashScreen(Context context,boolean not_frist_splash) {
+        final Intent launchIntent = new Intent(context, SplashActivity.class);
+        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        launchIntent.putExtra("not_frist_splash",not_frist_splash);
         context.startActivity(launchIntent);
     }
 
@@ -365,7 +373,7 @@ public class Router {
 
         delegate.unsubscribeAll();
 
-        showSplashScreen(context);
+        showSplashScreen(context,true);
     }
 
     /**

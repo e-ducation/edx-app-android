@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -92,6 +93,9 @@ public class RegisterActivity extends BaseFragmentActivity
     private View facebookButton;
     private View googleButton;
     private TextView errorTextView;
+    private ImageView selectIv;
+    private boolean isSelect = false;
+
 
     @Inject
     LoginPrefs loginPrefs;
@@ -205,6 +209,17 @@ public class RegisterActivity extends BaseFragmentActivity
                 AuthManager.getInstance().authQQ(RegisterActivity.this, mSocialAuthCallback);
             }
         });
+
+        selectIv = findViewById(R.id.register_select_iv);
+        selectIv.setOnClickListener(v -> {
+            if (!isSelect) {
+                isSelect = true;
+                selectIv.setImageResource(R.mipmap.register_protocol_selected);
+            } else {
+                isSelect = false;
+                selectIv.setImageResource(R.mipmap.register_protocol_un_select);
+            }
+        });
     }
 
     private void showErrorMessage(String errorMsg, @NonNull Icon errorIcon) {
@@ -280,6 +295,10 @@ public class RegisterActivity extends BaseFragmentActivity
     }
 
     private void createAccount() {
+        if(!isSelect) {
+            Toast.makeText(RegisterActivity.this,"只有同意遵守英荔商学院的用户协议、免责声明和隐私政策，才能创建账号",Toast.LENGTH_SHORT).show();
+            return;
+        }
         boolean hasError = false;
         // prepare query (POST body)
         Bundle parameters = new Bundle();

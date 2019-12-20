@@ -40,13 +40,14 @@ public class SplashActivity extends Activity {
             }
         }
 
+        boolean not_frist_splash = getIntent().getBooleanExtra("not_frist_splash", false);
         final IEdxEnvironment environment = MainApplication.getEnvironment(this);
         if (environment.getUserPrefs().getProfile() != null) {
             environment.getRouter().showMainDashboard(SplashActivity.this);
         } else if (!environment.getConfig().isRegistrationEnabled()) {
             startActivity(environment.getRouter().getLogInIntent());
         } else {
-            environment.getRouter().showLaunchScreen(SplashActivity.this);
+            environment.getRouter().showLaunchScreen(SplashActivity.this,not_frist_splash);
         }
     }
 

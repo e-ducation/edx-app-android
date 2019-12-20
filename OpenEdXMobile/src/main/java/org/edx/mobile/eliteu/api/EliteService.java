@@ -13,6 +13,7 @@ import org.edx.mobile.eliteu.professor.ProfessorBean;
 import org.edx.mobile.eliteu.professor.ProfessorsDetailBean;
 import org.edx.mobile.eliteu.mainsite.bean.PageHttpResult;
 import org.edx.mobile.eliteu.util.BaseHttpResult;
+import org.edx.mobile.eliteu.util.UserAgreementUtil;
 import org.edx.mobile.eliteu.vip.bean.AliPayReqBean;
 import org.edx.mobile.eliteu.vip.bean.WeChatReqBean;
 import org.edx.mobile.eliteu.vip.bean.VipBean;
@@ -149,5 +150,8 @@ public interface EliteService {
 
     @GET
     Observable<HttpResponseBean> requestScanSuccess(@Url String url);
+
+    @GET
+    Observable<UserAgreementUtil.UserAgreementVersion> requestUserAgreementVersion(@Url String url);
 
 }

@@ -12,6 +12,7 @@ import com.gyf.immersionbar.ImmersionBar;
 import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.databinding.ActivityDiscoveryLaunchBinding;
+import org.edx.mobile.eliteu.util.UserAgreementUtil;
 import org.edx.mobile.module.analytics.Analytics;
 import org.edx.mobile.util.SoftKeyboardUtil;
 
@@ -36,6 +37,11 @@ public class DiscoveryLaunchActivity extends PresenterActivity<DiscoveryLaunchPr
         mImmersionBar.init();
         environment.getAnalyticsRegistry().trackScreenView(Analytics.Screens.LAUNCH_ACTIVITY);
         AuthPanelUtils.setAuthPanelVisible(true, binding.authPanel, environment);
+        boolean not_frist_splash = getIntent().getBooleanExtra("not_frist_splash", false);
+        if (!not_frist_splash){
+            UserAgreementUtil userAgreementUtil = UserAgreementUtil.newInstance(environment.getEliteApi());
+            userAgreementUtil.check(this);
+        }
         return new DiscoveryLaunchPresenter.ViewInterface() {
             @Override
             public void setEnabledButtons(boolean courseDiscoveryEnabled) {
