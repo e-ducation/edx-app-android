@@ -165,5 +165,16 @@
     <string name="user_agreement_dialog_title">Reminder</string>
     <string name="user_agreement_dialog_yes_btn">Got it</string>
     <string name="user_agreement_dialog_no_btn">Later</string>
+    <string name="delete_account">Delete My Account</string>
+    <string name="delete_account_content"><![CDATA[We’re sorry to see you go!<br/>Please note: Deletion of your account and personal data is permanent and cannot be undone. EliteMBA will not be able to recover your account or the data that is deleted.<br/>Once your account is deleted, you cannot use it to take courses on the EliteMBA app, elitemba.cn, or any other site hosted by EliteMBA.<br/>You may also lose access to verified certificates and other program credentials. If you want to make a copy of these for your records before proceeding with deletion, please go to Dashboard to view your certificates.<br/><br/><font color="#f5a623">Warning: Account deletion is permanent. Please read the above carefully before proceeding. This is an irreversible action, and you will no longer be able to use the same email on EliteMBA.</font>]]></string>
+    <string name="delete_account_dialog_title">Are you sure?</string>
+    <string name="delete_account_dialog_content1">You have selected “Delete my account.” Deletion of your account and personal data is permanent and cannot be undone. EliteMBA will not be able to recover your account or the data that is deleted.</string>
+    <string name="delete_account_dialog_content2">If you still wish to continue and delete your account, please enter your account password:</string>
+
+    <string name="please_enter_password">Please enter your password</string>
+    <string name="password_error">Incorrect password</string>
+    <string name="user_not_exit">Invalid username</string>
+    <string name="password_can_not_yanzhneg">Your password can not be verified.</string>
+    <string name="delete_account_fail">Your account can not be deleted.</string>
 
 </resources>

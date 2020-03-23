@@ -204,4 +204,8 @@ public class EliteApi {
         return eliteService.requestUserAgreementVersion("https://oss.elitemba.cn/web_static/docs/version.json");
     }
 
+    public Observable<HttpResponseBean> deletAccount(String username,String password) {
+        return eliteService.deletAccount(username,password);
+    }
+
 }

@@ -69,4 +69,29 @@
 
     </RelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:background="#f5f5f5"
+        android:layout_height="1dp"/>
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:id="@+id/layout_delete_account"
+        style="@style/eliteu_account_item_layout_style">
+
+        <TextView
+            style="@style/new_eliteu_account_item_tv_style"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:text="@string/delete_account" />
+
+        <org.edx.mobile.view.custom.IconImageViewXml
+            android:id="@+id/icon_3"
+            style="@style/eliteu_account_item_right_icon_style"
+            app:iconColor="#ccd1d9"
+            app:iconName="fa-angle-right" />
+
+    </RelativeLayout>
+
+
 </LinearLayout>

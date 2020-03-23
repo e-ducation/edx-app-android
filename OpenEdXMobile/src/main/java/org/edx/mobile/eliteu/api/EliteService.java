@@ -154,4 +154,9 @@ public interface EliteService {
     @GET
     Observable<UserAgreementUtil.UserAgreementVersion> requestUserAgreementVersion(@Url String url);
 
+    @NonNull
+    @FormUrlEncoded
+    @POST("/api/mobile/v1/users/{username}/deactivate_logout/")
+    Observable<HttpResponseBean> deletAccount(@Path("username") final String username,@Field("password") String password);
+
 }

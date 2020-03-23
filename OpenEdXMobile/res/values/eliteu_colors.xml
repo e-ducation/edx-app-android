@@ -25,5 +25,7 @@
     <color name="new_bind_mobile_get_code_cannot_click">#ccd1d9</color>
     <color name="new_bind_mobile_get_code_can_click">#0f80bf</color>
     <color name="viewfinder_mask_s">@android:color/transparent</color>
+    <color name="confirm_delete_account_disenable_color">#e0e0e2</color>
+    <color name="confirm_delete_account_enable_color">#4788c7</color>
 
 </resources>

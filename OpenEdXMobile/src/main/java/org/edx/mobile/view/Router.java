@@ -23,6 +23,7 @@ import org.edx.mobile.deeplink.ScreenDef;
 import org.edx.mobile.discussion.DiscussionComment;
 import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
+import org.edx.mobile.eliteu.account.DeleteMyAccountActivity;
 import org.edx.mobile.eliteu.bindmobile.BindMobileActivity;
 import org.edx.mobile.eliteu.bottomnavigation.BottomNavigationMainDashboardActivity;
 import org.edx.mobile.eliteu.bottomnavigation.my.AboutUsActivity;
@@ -511,6 +512,15 @@ public class Router {
      */
     public void showResetPassword(@NonNull Activity sourceActivity) {
         Intent resetPasswordIntent = new Intent(sourceActivity, ResetPasswordActivity.class);
+        sourceActivity.startActivity(resetPasswordIntent);
+    }
+
+    /**
+     * 打开删除我的账号页面
+     * @param sourceActivity
+     */
+    public void showDeleteAccount(@NonNull Activity sourceActivity) {
+        Intent resetPasswordIntent = new Intent(sourceActivity, DeleteMyAccountActivity.class);
         sourceActivity.startActivity(resetPasswordIntent);
     }
 
