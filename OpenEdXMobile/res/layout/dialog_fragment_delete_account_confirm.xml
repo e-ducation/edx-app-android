@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/confirm_delete_account_dialog_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:text="@string/delete_account_dialog_title"
+        android:textColor="#6e6e6e"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:lineSpacingMultiplier="1.2"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_account_dialog_content1"
+        android:textColor="#f5a623"
+        android:textSize="16dp" />
+
+    <TextView
+        android:lineSpacingMultiplier="1.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/delete_account_dialog_content2"
+        android:textColor="#2e313c"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/confirm_delete_account_et_bg"
+        android:hint="@string/please_enter_password"
+        android:inputType="textPassword"
+        android:maxLength="100"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="#2e313c"
+        android:textColorHint="#bfc1c9"
+        android:textSize="16dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/ok_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/confirm_delete_account_et_bg"
+            android:paddingLeft="40dp"
+            android:paddingTop="10dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="10dp"
+            android:text="@string/label_ok"
+            android:textColor="@color/confirm_delete_account_disenable_color"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/cancle_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/confirm_delete_account_et_cancle_bg"
+            android:paddingLeft="40dp"
+            android:paddingTop="10dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="10dp"
+            android:text="@string/label_cancel"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

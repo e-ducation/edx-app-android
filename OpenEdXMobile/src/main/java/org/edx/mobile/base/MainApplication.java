@@ -55,6 +55,8 @@ import org.edx.mobile.util.Sha1Util;
 
 import java.io.File;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -190,6 +192,7 @@ public abstract class MainApplication extends MultiDexApplication {
         if (PermissionsUtil.checkPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, this)) {
             deleteExtraDownloadedFiles();
         }
+        disableAPIDialog();
     }
 
     private void checkIfAppVersionUpgraded(Context context) {
@@ -292,5 +295,23 @@ public abstract class MainApplication extends MultiDexApplication {
                 }
             }
         }).start();
+    }
+
+    /**
+     * 反射 禁止弹窗
+     */
+    private void disableAPIDialog(){
+        if (Build.VERSION.SDK_INT < 28)return;
+        try {
+            Class clazz = Class.forName("android.app.ActivityThread");
+            Method currentActivityThread = clazz.getDeclaredMethod("currentActivityThread");
+            currentActivityThread.setAccessible(true);
+            Object activityThread = currentActivityThread.invoke(null);
+            Field mHiddenApiWarningShown = clazz.getDeclaredField("mHiddenApiWarningShown");
+            mHiddenApiWarningShown.setAccessible(true);
+            mHiddenApiWarningShown.setBoolean(activityThread, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -134,4 +134,38 @@ public class TextUtils {
 
         return formattedHtml;
     }
+
+    public static CharSequence generateLicenseText2(@NonNull Resources resources,
+                                                   @StringRes int licenseTextId) {
+        final String platformName = "";
+        final CharSequence licenseAgreement = ResourceUtil.getFormattedString(resources, R.string.licensing_agreement, "platform_name", platformName);
+        final CharSequence terms = ResourceUtil.getFormattedString(resources, R.string.tos_and_honor_code, "platform_name", platformName);
+        final CharSequence privacyPolicy = resources.getString(R.string.privacy_policy);
+
+        final SpannableString agreementSpan = new SpannableString(licenseAgreement);
+        agreementSpan.setSpan(new URLSpan(TextUtils.createAppUri(
+                resources.getString(R.string.end_user_title),
+                resources.getString(R.string.eula_file_link))),
+                0, licenseAgreement.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        final SpannableString termsSpan = new SpannableString(terms);
+        termsSpan.setSpan(new URLSpan(TextUtils.createAppUri(
+                resources.getString(R.string.terms_of_service_title),
+                resources.getString(R.string.terms_file_link))),
+                0, terms.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        final SpannableString privacyPolicySpan = new SpannableString(privacyPolicy);
+        privacyPolicySpan.setSpan(new URLSpan(TextUtils.createAppUri(
+                resources.getString(R.string.privacy_policy_title),
+                resources.getString(R.string.privacy_file_link))),
+                0, privacyPolicy.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        final Map<String, CharSequence> keyValMap = new HashMap<>();
+        keyValMap.put("license", agreementSpan);
+        keyValMap.put("tos_and_honor_code", termsSpan);
+//        keyValMap.put("platform_name", platformName);
+        keyValMap.put("privacy_policy", privacyPolicySpan);
+
+        return ResourceUtil.getFormattedString(resources, licenseTextId, keyValMap);
+    }
 }

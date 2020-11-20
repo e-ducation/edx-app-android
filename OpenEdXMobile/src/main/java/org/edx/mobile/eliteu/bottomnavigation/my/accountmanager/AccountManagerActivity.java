@@ -19,6 +19,7 @@ public class AccountManagerActivity extends BaseFragmentActivity {
 
     RelativeLayout layoutBindMobile;
     RelativeLayout layoutResetPassword;
+    RelativeLayout layoutDeleteAccount;
     TextView bindMobileTv;
     AppBarLayout appBarLayout;
     @Inject
@@ -36,11 +37,13 @@ public class AccountManagerActivity extends BaseFragmentActivity {
     private void initUi() {
         layoutBindMobile = findViewById(R.id.layout_bind_mobile);
         layoutResetPassword = findViewById(R.id.layout_reset_password);
+        layoutDeleteAccount = findViewById(R.id.layout_delete_account);
         bindMobileTv = findViewById(R.id.binding_mobile_tv);
         appBarLayout = findViewById(R.id.appbar);
         BindMobileUtil.getInstance().initBindMobileButton(this, bindMobileTv);
         RxView.clicks(layoutBindMobile).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showBindMobile(this));
         RxView.clicks(layoutResetPassword).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showResetPassword(this));
+        RxView.clicks(layoutDeleteAccount).throttleFirst(1, TimeUnit.SECONDS).subscribe(unit -> router.showDeleteAccount(this));
     }
 
 }

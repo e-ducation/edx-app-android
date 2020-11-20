@@ -31,16 +31,18 @@ public class CourseDetail implements Parcelable {
     public Boolean is_subscribe_pay;
     public VipRecommendedPackage recommended_package;
     public String professor_name;
+    public Boolean can_free_enroll;
 
-    public static class VipRecommendedPackage implements Parcelable{
+    public static class VipRecommendedPackage implements Parcelable {
         public int id;
         public String name;
         public int month;
         public String price;
         public String suggested_price;
         public boolean is_recommended;
+
         protected VipRecommendedPackage(Parcel in) {
-            id =  in.readInt();
+            id = in.readInt();
             name = in.readString();
             month = in.readInt();
             price = in.readString();
@@ -202,6 +204,7 @@ public class CourseDetail implements Parcelable {
         is_subscribe_pay = (Boolean) in.readValue(Boolean.class.getClassLoader());
         recommended_package = (VipRecommendedPackage) in.readValue(VipRecommendedPackage.class.getClassLoader());
         professor_name = in.readString();
+        can_free_enroll = (Boolean) in.readValue(Boolean.class.getClassLoader());
     }
 
     @Override
@@ -234,6 +237,7 @@ public class CourseDetail implements Parcelable {
         dest.writeValue(is_subscribe_pay);
         dest.writeValue(recommended_package);
         dest.writeString(professor_name);
+        dest.writeValue(can_free_enroll);
     }
 
     @SuppressWarnings("unused")

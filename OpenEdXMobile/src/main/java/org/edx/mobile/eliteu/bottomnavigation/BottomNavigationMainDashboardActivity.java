@@ -22,6 +22,7 @@ import org.edx.mobile.BuildConfig;
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.deeplink.ScreenDef;
+import org.edx.mobile.eliteu.api.EliteApi;
 import org.edx.mobile.eliteu.bindmobile.BindMobileUtil;
 import org.edx.mobile.eliteu.bottomnavigation.course.EliteuFindCourseFragment;
 import org.edx.mobile.eliteu.bottomnavigation.my.MyUserCenterFragment;
@@ -29,6 +30,7 @@ import org.edx.mobile.eliteu.bottomnavigation.study.EliteuStudyFragment;
 import org.edx.mobile.eliteu.mainsite.ui.MainSiteFragment;
 import org.edx.mobile.eliteu.util.AccountPrefs;
 import org.edx.mobile.eliteu.util.RxBus;
+import org.edx.mobile.eliteu.util.UserAgreementUtil;
 import org.edx.mobile.eliteu.wight.CannotScrollViewPager;
 import org.edx.mobile.event.AccountDataLoadedEvent;
 import org.edx.mobile.event.MoveToDiscoveryTabEvent;
@@ -86,6 +88,9 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
     @javax.inject.Inject
     private AccountPrefs accountPrefs;
 
+    @Inject
+    EliteApi eliteApi;
+
     public static Context mContext;
 
     public static Intent newIntent(@Nullable @ScreenDef String screenName, @Nullable String pathId) {
@@ -109,6 +114,8 @@ public class BottomNavigationMainDashboardActivity extends BaseFragmentActivity 
         initStatusBar();
         initWhatsNew();
         initDiscoveryTabEvent();
+        UserAgreementUtil userAgreementUtil = UserAgreementUtil.newInstance(eliteApi);
+        userAgreementUtil.check(this);
     }
 
     private void initUi() {

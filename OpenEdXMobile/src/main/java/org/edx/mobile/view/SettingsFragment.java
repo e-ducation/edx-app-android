@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
+import com.jakewharton.rxbinding3.view.RxView;
 
 import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragment;
@@ -22,8 +24,13 @@ import org.edx.mobile.module.prefs.PrefManager;
 import org.edx.mobile.util.FileUtil;
 import org.edx.mobile.view.dialog.IDialogCallback;
 import org.edx.mobile.view.dialog.NetworkCheckDialogFragment;
+import org.edx.mobile.view.dialog.WebViewActivity;
+
+import java.util.concurrent.TimeUnit;
 
 import de.greenrobot.event.EventBus;
+import io.reactivex.functions.Consumer;
+import kotlin.Unit;
 
 
 public class SettingsFragment extends BaseFragment {
@@ -43,6 +50,8 @@ public class SettingsFragment extends BaseFragment {
     private LinearLayout sdCardSettingsLayout;
     private TextView logoutTextView;
 
+    private RelativeLayout user_agreement_item,privacy_policy,disclaimer;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +67,9 @@ public class SettingsFragment extends BaseFragment {
         wifiSwitch = (Switch) layout.findViewById(R.id.wifi_setting);
         sdCardSwitch = (Switch) layout.findViewById(R.id.download_location_switch);
         sdCardSettingsLayout = (LinearLayout) layout.findViewById(R.id.sd_card_setting_layout);
+        user_agreement_item = layout.findViewById(R.id.user_agreement_item);
+        privacy_policy = layout.findViewById(R.id.privacy_policy);
+        disclaimer = layout.findViewById(R.id.disclaimer);
         updateWifiSwitch();
         updateSDCardSwitch();
         logoutTextView = layout.findViewById(R.id.logout_btn);
@@ -72,6 +84,35 @@ public class SettingsFragment extends BaseFragment {
         for (SettingsExtension extension : extensionRegistry.forType(SettingsExtension.class)) {
             extension.onCreateSettingsView(settingsLayout);
         }
+
+        RxView.clicks(user_agreement_item).
+                throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Consumer<Unit>() {
+                    @Override
+                    public void accept(Unit unit) throws Exception {
+                      getActivity().startActivity(WebViewActivity.newIntent(getActivity(),getString(R.string.eula_file_link),getString(R.string.end_user_title)));
+                    }
+                });
+
+        RxView.clicks(privacy_policy).
+                throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Consumer<Unit>() {
+                    @Override
+                    public void accept(Unit unit) throws Exception {
+                        getActivity().startActivity(WebViewActivity.newIntent(getActivity(),getString(R.string.privacy_file_link),getString(R.string.privacy_policy)));
+                    }
+                });
+
+        RxView.clicks(disclaimer).
+                throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Consumer<Unit>() {
+                    @Override
+                    public void accept(Unit unit) throws Exception {
+                        getActivity().startActivity(WebViewActivity.newIntent(getActivity(),getString(R.string.terms_file_link),getString(R.string.terms_of_service_title)));
+                    }
+                });
+
+
         return layout;
     }
 

@@ -239,7 +239,7 @@ public class CourseDetailFragment extends BaseFragment {
         Glide.with(CourseDetailFragment.this)
                 .load(headerImageUrl)
 //                .placeholder(R.drawable.placeholder_course_card_image)
-                .placeholder(new GlidePlaceholderDrawable(getResources(),R.drawable.placeholder_course_card_image))
+                .placeholder(new GlidePlaceholderDrawable(getResources(), R.drawable.placeholder_course_card_image))
                 .transform(new TopAnchorFillWidthTransformation(getActivity()))
                 .into(mHeaderImageView);
     }
@@ -334,7 +334,7 @@ public class CourseDetailFragment extends BaseFragment {
 
     /**
      * Sets the onClickListener and the text for the enrollment button.
-     *
+     * <p>
      * If the current course is found in the list of cached course enrollment list, the button will
      * be for viewing a course, otherwise, it will be used to enroll in a course. One clicked, user
      * is then taken to the dashboard for target course.
@@ -362,16 +362,16 @@ public class CourseDetailFragment extends BaseFragment {
             mEnrollButton.setText(R.string.enroll_now_button_text);
         }
 
-        mEnrollButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!mEnrolled) {
-                    enrollInCourse();
-                } else {
-                    openCourseDashboard();
-                }
-            }
-        });
+//        mEnrollButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!mEnrolled) {
+//                    enrollInCourse();
+//                } else {
+//                    openCourseDashboard();
+//                }
+//            }
+//        });
     }
 
     private void configureEnrollButtonWithVip() {
@@ -392,6 +392,7 @@ public class CourseDetailFragment extends BaseFragment {
                         normalEnroll();
                         break;
                     case CourseUtil.CLICK_VIP_ENROLL:
+                    case CourseUtil.CLICK_FREE_ENROLL:
                         vipEnroll();
                         break;
                     case CourseUtil.CLICK_VIP_DIALOG:

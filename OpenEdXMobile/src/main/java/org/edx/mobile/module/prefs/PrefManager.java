@@ -253,6 +253,7 @@ public class PrefManager {
         public static final String FEATURES = "features";
         public static final String APP_INFO = "pref_app_info";
         public static final String USER_PREF = "pref_user";
+        public static final String USER_AGREEMENT_VERSION = "user_agreement_version";
 
         public static String[] getAll() {
             return new String[]{LOGIN, WIFI, VIDEOS, FEATURES, APP_INFO, USER_PREF};

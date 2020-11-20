@@ -108,12 +108,27 @@
                     <include layout="@layout/button_progress_indicator" />
                 </FrameLayout>
 
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/register_select_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/register_protocol_un_select"
+                        tools:ignore="ContentDescription" />
+
                 <TextView
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/by_creating_account_tv"
                     style="@style/agreement_text_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
                     tools:text="@string/by_creating_account" />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
 

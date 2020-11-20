@@ -1,6 +1,7 @@
 package org.edx.mobile.core;
 
 
+import org.edx.mobile.eliteu.api.EliteApi;
 import org.edx.mobile.module.analytics.AnalyticsRegistry;
 import org.edx.mobile.module.db.IDatabase;
 import org.edx.mobile.module.download.IDownloadManager;
@@ -33,4 +34,6 @@ public interface IEdxEnvironment {
     Router getRouter();
 
     Config getConfig();
+
+    EliteApi getEliteApi();
 }

@@ -4,6 +4,7 @@ package org.edx.mobile.core;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import org.edx.mobile.eliteu.api.EliteApi;
 import org.edx.mobile.module.analytics.AnalyticsRegistry;
 import org.edx.mobile.module.db.IDatabase;
 import org.edx.mobile.module.download.IDownloadManager;
@@ -49,6 +50,9 @@ public class EdxEnvironment implements IEdxEnvironment {
     @Inject
     EventBus eventBus;
 
+    @Inject
+    EliteApi eliteApi;
+
     @Override
     public IDatabase getDatabase() {
         return database;
@@ -86,6 +90,11 @@ public class EdxEnvironment implements IEdxEnvironment {
     @Override
     public Config getConfig() {
         return config;
+    }
+
+    @Override
+    public EliteApi getEliteApi() {
+        return eliteApi;
     }
 
     @Override

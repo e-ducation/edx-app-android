@@ -71,9 +71,14 @@ public class CourseUtil {
     public static final int CLICK_VIP_ENROLL = 1002;//vip购买
     public static final int CLICK_NORMAL_ENROLL = 1003;//单课购买
     public static final int CLICK_VIP_DIALOG = 1004;//VIP课程但是is_vip为false
+    public static final int CLICK_FREE_ENROLL = 1005;//免费加入
 
     public static int getEnrollButtonOnClickEvent(CourseDetail courseDetail) {
         int event = 0;
+        if (courseDetail.can_free_enroll) {
+            event = CLICK_VIP_ENROLL;
+            return event;
+        }
         if (courseDetail.has_cert) {
             event = CLICK_OPEN_COURSE;
         } else {

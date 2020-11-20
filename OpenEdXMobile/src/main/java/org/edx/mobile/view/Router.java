@@ -23,6 +23,7 @@ import org.edx.mobile.deeplink.ScreenDef;
 import org.edx.mobile.discussion.DiscussionComment;
 import org.edx.mobile.discussion.DiscussionThread;
 import org.edx.mobile.discussion.DiscussionTopic;
+import org.edx.mobile.eliteu.account.DeleteMyAccountActivity;
 import org.edx.mobile.eliteu.bindmobile.BindMobileActivity;
 import org.edx.mobile.eliteu.bottomnavigation.BottomNavigationMainDashboardActivity;
 import org.edx.mobile.eliteu.bottomnavigation.my.AboutUsActivity;
@@ -119,18 +120,26 @@ public class Router {
         sourceActivity.startActivity(settingsIntent);
     }
 
-    public void showLaunchScreen(Context context) {
+    public void showLaunchScreen(Context context,boolean not_frist_splash) {
         final Intent launchIntent = new Intent(context,
                 config.isNewLogistrationEnabled()
                         ? DiscoveryLaunchActivity.class
                         : LaunchActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        launchIntent.putExtra("not_frist_splash",not_frist_splash);
         context.startActivity(launchIntent);
     }
 
     public void showSplashScreen(Context context) {
         final Intent launchIntent = new Intent(context, SplashActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(launchIntent);
+    }
+
+    public void showSplashScreen(Context context,boolean not_frist_splash) {
+        final Intent launchIntent = new Intent(context, SplashActivity.class);
+        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        launchIntent.putExtra("not_frist_splash",not_frist_splash);
         context.startActivity(launchIntent);
     }
 
@@ -365,7 +374,7 @@ public class Router {
 
         delegate.unsubscribeAll();
 
-        showSplashScreen(context);
+        showSplashScreen(context,true);
     }
 
     /**
@@ -503,6 +512,15 @@ public class Router {
      */
     public void showResetPassword(@NonNull Activity sourceActivity) {
         Intent resetPasswordIntent = new Intent(sourceActivity, ResetPasswordActivity.class);
+        sourceActivity.startActivity(resetPasswordIntent);
+    }
+
+    /**
+     * 打开删除我的账号页面
+     * @param sourceActivity
+     */
+    public void showDeleteAccount(@NonNull Activity sourceActivity) {
+        Intent resetPasswordIntent = new Intent(sourceActivity, DeleteMyAccountActivity.class);
         sourceActivity.startActivity(resetPasswordIntent);
     }
 
